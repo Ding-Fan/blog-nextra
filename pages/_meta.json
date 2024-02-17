@@ -1,6 +1,5 @@
 {
   "index": "又不是不能写博客",
-  "genshin": "原神亲自启动",
   "nextra-bug": "nextra 和 vercel 结合生成 bug",
   "cross-the-wall": "翻越障壁",
   "japanese-handwriting": "日语的书写",
@@ -15,5 +14,6 @@
     "type": "page",
     "href": "https://twitter.com/shuding_",
     "newWindow": true
-  }
+  },
+  "genshin": "原神亲自启动"
 }
