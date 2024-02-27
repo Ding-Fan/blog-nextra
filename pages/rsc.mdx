@@ -1,0 +1,32 @@
+# 肉丝厂（React Server Comopnent)
+
+俺一直想要玩一玩 RSC ，但是想不出一个通用的场景。在 [洗盘子吧](./wash-dishes.mdx) 里提到想要一个展示 og 信息的 Card component ，这可是千载难逢的好机会
+
+
+先学一会儿
+React server components from scratch!
+https://youtu.be/MaebEqhZR84
+
+> 现在我们可以做 PHP 做了几十年的事情了！
+
+
+import OGCard from 'components/OGCard.server.tsx'
+import CSSEffect from 'components/CSSEffect.tsx'
+
+<div className='m-4'> 卧槽， GPT 会了 <CSSEffect effect="hoverClear" > 我还没会 学个屁 洗盘子吧 </CSSEffect> </div>
+
+<OGCard url="https://ogp.me/" />
+
+继续是了别的 url ，报错 CORS 。尝试使用 RSC ，结果 nextra 目前是 NextJS 13 ，官网都没看到文档入口
+
+看了几个视频后，感觉 RSC 改变了 JS 原有的 scope 的感觉（心智模型）
+
+回想起当初了解 svelte 的时候，感觉它的语法脱离了 JS 原本的语法（看见的 let 不是 JS 的 let）。现在的 RSC 里看见的 value/function 也不是 JS 原本的了。我会去想，哦这个是 server 里的东西，被用一个类似 id/tag 的东西告诉 client 可以用它。
+
+> GPT:
+> React Server Components (RSC) fundamentally shift how developers approach data fetching and UI rendering by blending server and client contexts seamlessly. This changes the traditional JavaScript scope and execution model by introducing a more direct connection between server and client. 
+
+总之我先 [装个 tailwind css](./nextra-bug.mdx#install-tailwind-css)
+
+
+

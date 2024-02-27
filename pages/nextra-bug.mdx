@@ -33,3 +33,21 @@
 import RichImage from '../components/RichImage'
 
 <RichImage effect='hoverClear' src='/images/2024-02-17-23-34-44.png' />
+
+## install tailwind CSS
+
+```tsx filename="_app.tsx"
+import type { AppProps } from "next/app";
+import "../globals.css"; // this must be put here
+
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}
+```
+
+Install Tailwind CSS with Next.js
+https://tailwindcss.com/docs/guides/nextjs
+
+这些 [没有文档记录的东西](https://github.com/shuding/nextra/issues/2573) ，不知哪天就会 Move fast , break things! 
+
+
