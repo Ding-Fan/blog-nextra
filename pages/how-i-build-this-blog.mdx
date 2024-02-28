@@ -1,4 +1,33 @@
-# nextra 和 vercel 结合生成 bug
+# how I build this blog
+
+## font-display
+
+There are three fonts used in this blog, they almost took 20MB. 
+
+I need use `font-display: swap;` so the downloading of the font [won't block](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) the text showing up.
+
+```css
+@font-face {
+  font-family: "Klee One Regular";
+  src: url("/fonts/KleeOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+```
+
+## make VSCode spell check work for mdx
+
+- Open an MDX file.
+- `Ctrl + Shift + p` Enable Spell Checking Document Language
+
+https://github.com/streetsidesoftware/vscode-spell-checker/issues/657#issuecomment-755459018
+
+## make image showing
+
+If I have a mdx file in a folder, eg. `archived/ielts.mdx` , I need to use `src="../images/name of the image"` to make it showing.
+
+## nextra 和 vercel 结合生成 bug
 
 > tldr: 在 vercel 里设置 environment variable `VERCEL_FORCE_NO_BUILD_CACHE = 1`
 
@@ -45,9 +74,7 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-Install Tailwind CSS with Next.js
-https://tailwindcss.com/docs/guides/nextjs
+[Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/guides/nextjs)
 
 这些 [没有文档记录的东西](https://github.com/shuding/nextra/issues/2573) ，不知哪天就会 Move fast , break things! 
-
 

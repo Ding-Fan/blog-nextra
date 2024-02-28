@@ -2,9 +2,8 @@
   "index": "又不是不能写博客",
   "history": "History",
   "ideas": "Ideas",
-  "rsc": "React Server Component",
   "wash-dishes": "洗盘子吧",
-  "nextra-bug": "nextra 和 vercel 结合生成 bug",
+  "how-i-build-this-blog": "How I Build This Blog",
   "cross-the-wall": "翻越障壁",
   "japanese-handwriting": "日语的书写",
   "another": "Another Page",
@@ -28,5 +27,6 @@
     "type": "folder",
     "display": "hidden"
   },
-  "collection": "collection"
+  "collection": "collection",
+  "archived": { "title": "Archived" }
 }
