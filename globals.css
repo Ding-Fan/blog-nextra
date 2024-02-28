@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Klee One Regular";
+  src: url("/fonts/KleeOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LXGW WenKai Regular";
+  src: url("/fonts/LXGWWenKai-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inconsolata Regular Nerd Font Complete";
+  src: url("/fonts/Inconsolata Regular Nerd Font Complete.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "Inconsolata Regular Nerd Font Complete", "LXGW WenKai Regular",
+    "Klee One Regular", serif;
+}
