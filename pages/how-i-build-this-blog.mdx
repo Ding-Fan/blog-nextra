@@ -78,3 +78,35 @@ export default function App({ Component, pageProps }: AppProps) {
 
 这些 [没有文档记录的东西](https://github.com/shuding/nextra/issues/2573) ，不知哪天就会 Move fast , break things! 
 
+
+## add RSS support
+
+I fond that there are a rss generator of nextra blog theme, I'm gonna give it a try.
+
+~~
+create `script/gen-rss.js` , fill it with [gen-rss.js](https://github.com/vercel/nextjs-portfolio-starter/blob/main/scripts/gen-rss.js)
+
+
+modify package.json 
+
+add the rss generation to build command
+
+```json
+    "build": "node ./scripts/gen-rss.js && next build",
+```
+
+add new dependencies
+
+```json
+    "gray-matter": "^4.0.3",
+    "rss": "^1.2.2"
+```
+
+~~
+
+~~install dependencies and run `build` ~~ of course it won't work, I'm using the nextra doc theme, it doesn't have frontmatter
+
+finally I managed to publish the `feed.xml` .
+
+
+

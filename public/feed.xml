@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[又不是不能写博客]]></title>
+        <description><![CDATA[又不是不能写博客]]></description>
+        <link>https://dingfan.date</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Sat, 02 Mar 2024 12:53:04 GMT</lastBuildDate>
+        <atom:link href="https://dingfan.date/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>about</link>
+            <guid isPermaLink="true">about</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>advanced</link>
+            <guid isPermaLink="true">advanced</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>another</link>
+            <guid isPermaLink="true">another</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>genshin</link>
+            <guid isPermaLink="true">genshin</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>history</link>
+            <guid isPermaLink="true">history</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>how-i-build-this-blog</link>
+            <guid isPermaLink="true">how-i-build-this-blog</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>ideas</link>
+            <guid isPermaLink="true">ideas</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>man-with-long-hair</link>
+            <guid isPermaLink="true">man-with-long-hair</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>now</link>
+            <guid isPermaLink="true">now</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>wash-dishes</link>
+            <guid isPermaLink="true">wash-dishes</guid>
+        </item>
+    </channel>
+</rss>
