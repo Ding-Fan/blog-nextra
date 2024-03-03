@@ -34,5 +34,6 @@
     "display": "hidden"
   },
   "collection": "collection",
-  "archived": { "title": "Archived" }
+  "archived": { "title": "Archived" },
+  "ielts": "IELTS"
 }
