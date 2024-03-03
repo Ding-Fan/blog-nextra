@@ -25,7 +25,7 @@
   "rss": {
     "title": "Minimum RSS",
     "type": "page",
-    "href": "dingfan.date/feed.xml",
+    "href": "feed.xml",
     "newWindow": true
   },
   "genshin": "原神亲自启动",
