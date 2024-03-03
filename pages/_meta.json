@@ -1,5 +1,6 @@
 {
   "index": "又不是不能写博客",
+  "read-integral-of-happiness": "读《幸福的积分》",
   "history": "History",
   "ideas": "Ideas",
   "wash-dishes": "洗盘子吧",
@@ -19,6 +20,12 @@
     "title": "📧 Send Email",
     "type": "page",
     "href": "mailto:ouud@fastmail.com",
+    "newWindow": true
+  },
+  "rss": {
+    "title": "Minimum RSS",
+    "type": "page",
+    "href": "dingfan.date/feed.xml",
     "newWindow": true
   },
   "genshin": "原神亲自启动",

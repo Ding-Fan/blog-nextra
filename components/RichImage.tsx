@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import BaseImage, { BaseImageProps } from "./BaseImage";
 import styles from "./RichImage.module.css";
+import Caption from "./Caption";
 
 interface RichImageProps extends BaseImageProps {
   effect?: "blur" | "hoverClear";
@@ -32,9 +33,7 @@ const RichImage = ({
   return (
     <div className={alignClass}>
       {theImage}
-      {caption && (
-        <div className="mt-2 text-xs text-gray-400 text-center">{caption}</div>
-      )}
+      {caption && <Caption children={caption} />}
     </div>
   );
 };
