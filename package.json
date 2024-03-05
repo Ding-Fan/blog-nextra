@@ -24,7 +24,8 @@
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rss": "^1.2.2"
+    "rss": "^1.2.2",
+    "ua-parser-js": "^1.0.37"
   },
   "devDependencies": {
     "@types/node": "18.11.10",
