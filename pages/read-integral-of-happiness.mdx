@@ -4,6 +4,8 @@
 
 在数学计算上，经常把一块区域细分成无限个小块计算面积再求和。这就是求积分。我瞎说的。
 
+- 幸福并不是一个线性函数，而更像是一个线性函数通过积分所得的面积。
+
 import CSSEffect from 'components/CSSEffect'
 import RichImage from 'components/RichImage'
 import Caption  from 'components/Caption'
@@ -23,14 +25,16 @@ import Caption  from 'components/Caption'
 
 - 人生只剩下工作的人，才会在工作上倾尽所有。你能够正常下班，是因为你找到了生活的其他部分，而他们没有。用怜悯替代抱怨，对同事及领导报以怜悯之心。
 
-<div className='flex flex-col items-center justify-center'>
-    <video className='w-full h-auto md:w-80' autoPlay muted loop
-    playsinline webkit-playsinline={true}>
-        <source src="videos/ezgif-7-53636bcd6f.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-    </video>
-    <Caption children={"《天下无贼》中找到了生活的其他部分的劫匪"} />
-</div>
+{/* ! not working on iOS safari */}
+{/* <video className='w-full h-auto md:w-80' autoPlay muted loop
+playsinline webkit-playsinline={true}>
+    <source src="videos/ezgif-7-53636bcd6f.mp4" type="video/mp4" />
+Your browser does not support the video tag.
+</video> */}
+
+<RichImage className="w-full md:w-80" caption={"《天下无贼》中找到了生活的其他部分的劫匪"} src="images/ezgif-7-53636bcd6f.gif" />
+
+- 提前退休始终是及其能干或极度幸运的少数人才能抵达的状态。退休制度本质是一种人的计划报废。
 
 - 资本主义社会与奴隶制社会相比，最大的进步是给奴隶自由选择奴隶主的权利。因此你可以不顾奴隶主的死活。
 
@@ -38,7 +42,17 @@ import Caption  from 'components/Caption'
 我以后成立一个公司，就叫 XX 和他的奴隶们有限责任公司
 </CSSEffect>
 
+- 那些在工作岗位上猝死的可怜之人所处的状况——他们以为自己可以提前退休，但迎来的实际上是提前死亡。
+
+- 对于大多数人来说，幸福与工作和学习极为相关，因为当我们上完所有该上的学和班，一生就基本已经结束了。
+
 - 对着车站牌随意选择一个从未去过的站点，然后将自己的一生耗在车上。
+
+<RichImage className="w-full md:w-80" caption={"https://github.com/996icu/996.ICU/blob/master/README_CN.md"} src="images/2024-03-08-00-53-27.png" />
+
+- 如果你有勇气拒绝你在公司话语体系下应得的奖金，那么慌张的就是你的领导和 HR ，不是你。
+
+- 当你开始从工作（出卖劳动力）中收获更多的收入，这也意味着在你停止工作去享受生活的那段时光里，所有的东西都变得更贵了。
 
 - 规定自己只有在跑步机上才能刷短视频
 
