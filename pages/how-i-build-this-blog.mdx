@@ -111,4 +111,20 @@ to do
 
 ## other
 
-video tag should have `playsinline` , otherwise it will jump out to fullscreen on mobile safari.
+For safari, [video tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) should have `playsinline` , otherwise it will jump out to fullscreen. If using JSX, [maybe should](https://stackoverflow.com/a/68219309/6236633) use `webkit-playsinline={true}`
+
+```tsx
+<div className='flex flex-col items-center justify-center'>
+    <video className='w-full h-auto md:w-80' autoPlay muted loop
+    playsinline webkit-playsinline={true}>
+        <source src="videos/ezgif-7-53636bcd6f.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <Caption children={"《天下无贼》中找到了生活的其他部分的劫匪"} />
+</div>
+```
+
+Friend with iPhone 12 says that it's still not working. The video still jump out. Okay, I'll go back to gif. [Feck it](https://www.quora.com/What-are-words-that-can-replace-the-f-word).
+
+看了看 svelte4 ，据说 [又要 svelte5](https://svelte.dev/blog/runes) ，语法大改动。也许 [用无聊的技术](https://boringtechnology.club/) 是对的，你还在各种技术栈反复横跳， [jquery 都 4 beta 了](https://blog.jquery.com/2024/02/06/jquery-4-0-0-beta/) , [PHP 都兰博基尼了](https://x.com/taylorotwell/status/1647010323147177985?s=20) 。
+
