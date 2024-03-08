@@ -1,5 +1,6 @@
 import React from "react";
 import { DocsThemeConfig } from "nextra-theme-docs";
+import Footer from "./components/Footer";
 
 const config: DocsThemeConfig = {
   logo: <span>又不是不能写博客</span>,
@@ -11,7 +12,9 @@ const config: DocsThemeConfig = {
   // },
   // docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
   footer: {
-    text: "Do not shot this.",
+    // text: "Do not shot this.",
+
+    component: <Footer />,
   },
 };
 
