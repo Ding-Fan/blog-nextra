@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "selector",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,md,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,md,mdx}",
@@ -9,7 +10,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,md,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        border: "inner 0 0 0 1px",
+      },
+    },
   },
   plugins: [],
 };
