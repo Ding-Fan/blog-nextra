@@ -19,7 +19,7 @@ const RichImage = ({
   classNameImg,
   ...props
 }: RichImageProps) => {
-  let theImage = <BaseImage {...props} />;
+  let theImage = <BaseImage className={ct(classNameImg)} {...props} />;
 
   if (effect === "blur") {
     theImage = (
