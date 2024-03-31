@@ -36,6 +36,18 @@ If using vscode ssh, need to install Code Spell Checker extension in ssh again(t
 
 If I have a mdx file in a folder, eg. `archived/ielts.mdx` , I need to use `src="../images/name of the image"` to make it showing.
 
+## variable
+
+I have to use `export` to define a variable/constant.
+
+```tsx
+export const photos = [
+"PXL_20240327_064431662.jpg"
+]
+```
+
+If I use `const photos` it will give me error.
+
 ## nextra 和 vercel 结合生成 bug
 
 > tldr: 在 vercel 里设置 environment variable `VERCEL_FORCE_NO_BUILD_CACHE = 1`
