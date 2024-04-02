@@ -3,6 +3,60 @@
 import Paragraph from 'components/Paragraph.tsx'
 import GalleryImage from 'components/GalleryImage.tsx'
 
+--- 
+
+<Paragraph
+    aied={
+        <div>
+            In Windows 11, if you can't choose 'Display orientation' because it's greyed out and you're using an extra screen, try this: First, change how the screens show (for example, from 'Only show on 2' to 'Duplicate'). Then, change it back. This might let you select 'Display orientation' again.
+        </div>
+    }
+    raw={
+        <div>
+            In windows 11, if the System - Display - Display orientation is disabled while using an external monitor, change the mode like "show only 2" to another like "mirror", and change it back, the Display orientation might be selectable.
+        </div>
+    }
+/>
+
+---
+
+<Paragraph
+    aied={
+        <div>
+            Study Japanese with intention and consistency. It's okay if the progress is small, but ensure it's uninterrupted. Additionally, make a habit of recording what I've learned.
+        </div>
+    }
+    raw={
+        <div>
+            Study Japanese deliberately. It could be small, but should not interrupt. Also try to log what I've learnt.
+        </div>
+    }
+/>
+
+---
+
+<Paragraph
+    aied={
+        <div>
+            If you notice that VSCode automatically selects an autocomplete option when you press the dot '.', you can disable this behavior by changing the following setting:
+        </div>
+
+    }
+    raw={
+        <div>
+            If you found that vscode will select auto complete while press the dot ".", you can disable it by change the setting to this
+        </div>
+    }
+/>
+
+```json
+    "editor.acceptSuggestionOnCommitCharacter": false
+``` 
+
+reference [1](https://stackoverflow.com/a/52816011/6236633) [2](https://stackoverflow.com/a/48287757/6236633)
+
+---
+
 <Paragraph
     aied={
         <div> 
