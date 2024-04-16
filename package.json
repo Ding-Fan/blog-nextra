@@ -19,6 +19,7 @@
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
     "@radix-ui/react-tabs": "^1.0.4",
+    "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "next": "^13.0.6",
     "nextra": "latest",
