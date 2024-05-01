@@ -1,0 +1,25 @@
+# code snippets
+
+## jellyfin album download
+
+```js
+let buttons = [...document.querySelectorAll('.detailPageContent .listViewUserDataButtons .listItemButton .more_vert')];
+
+let getDownloadButton = () => document.querySelector('div.actionSheetContent div.actionSheetScroller.scrollY button.listItem.listItem-button.actionSheetMenuItem.emby-button[data-id="download"]');
+
+function processButton(start, end) {
+    if (start < end) {
+        buttons[start].click();
+        setTimeout(() => {
+            let downloadButton = getDownloadButton();
+            if (downloadButton) {
+                downloadButton.click();
+            }
+            processButton(start + 1, end);  // Process the next button
+        }, 1000);
+    }
+}
+
+processButton(0, buttons.length);  // Start the recursive process
+
+```
