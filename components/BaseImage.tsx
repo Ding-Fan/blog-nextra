@@ -2,13 +2,8 @@ import React, { ImgHTMLAttributes } from "react";
 
 export interface BaseImageProps extends ImgHTMLAttributes<HTMLImageElement> {}
 
-const BaseImage = ({
-  className = "",
-  src = "",
-  alt = "",
-  ...props
-}: BaseImageProps) => {
-  return <img className={className} src={src} alt={alt} {...props} />;
+const BaseImage = ({ ...props }: BaseImageProps) => {
+  return <img {...props} />;
 };
 
 export default BaseImage;

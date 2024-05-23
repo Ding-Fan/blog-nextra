@@ -1,2 +1,94 @@
 # gbc website
 
+## try to development with https://t4stack.com/
+
+install bun
+ 
+https://bun.sh/
+
+curl -fsSL https://bun.sh/install | bash
+
+https://docs.t4stack.com/getting-started
+
+bun create t4-app@latest
+
+failed twice with same error
+
+```sh
+👉 Setting up a new t4 project.
+This script follows the steps below to create your project:
+1. Clone the t4-app repository into the specified folder.
+2. Remove git history
+3. Install dependencies
+4. Generate Drizzle client
+✖ Cloning t4-app into gbc-website
+🚫 Error: Failed to clone repository: Command failed: git clone  https://github.com/timothymiller/t4-app gbc-website
+Cloning into 'gbc-website'...
+error: RPC failed; curl 92 HTTP/2 stream 0 was not closed cleanly: CANCEL (err 8)
+error: 1992 bytes of body are still expected
+fetch-pack: unexpected disconnect while reading sideband packet
+fatal: early EOF
+fatal: fetch-pack: invalid index-pack output
+```
+
+checked t4 stack github code frequency
+
+https://github.com/timothymiller/t4-app/graphs/code-frequency
+
+feels not very active
+
+asked the error to gpt, got answer
+
+```sh
+git config --global http.postBuffer 524288000
+```
+
+tried, failed again
+
+searched https://stackoverflow.com/questions/59282476/error-rpc-failed-curl-92-http-2-stream-0-was-not-closed-cleanly-protocol-erro
+
+Abandon ship!
+
+## tamagui let's go!
+
+https://github.com/tamagui/tamagui/graphs/code-frequency
+
+looks healthy
+
+> For now recommended yarn if you are using Tamagui in a monorepo, as it's been proven on large projects where we've found issues with others.
+
+my last monorepo already lost in my disk
+
+tamagui let's go!
+
+https://tamagui.dev/docs/guides/next-js
+
+https://github.com/tamagui/tamagui/tree/master/apps/site
+
+bunx create-next-app@latest
+
+Error: (0 , import_react.createContext) is not a function tamagui
+
+Adding 'use client'; on top of the page 
+https://stackoverflow.com/a/74257324
+
+
+
+
+
+## references
+
+
+- https://www.tokyoweekender.com/entertainment/movies-tv/anime-locations-in-tokyo/
+  - 10 Real-life Anime Locations in Tokyo
+- https://www.klook.com/blog/real-life-japan-anime-places/
+  - Real-life Anime Places in Japan to Visit for your Anime Pilgrimage
+- https://japantour.xyz/2022/06/22/27-real-life-anime-locations-in-tokyo-with-map/
+  - 27 Real Life Anime Locations in Tokyo (WITH MAP!)
+- https://www.hida.jp/english/touristattractions/takayamacity/4000107.html
+  - Hyouka x Hida Takayama (Introducing the locations where the TV anime "Hyouka" was set)
+- https://animesitemap.pages.dev/anime/kimi-no-na-wa
+  - The anime that defined 2016
+Kimi no Na wa。
+- https://www.japannakama.co.uk/anime-pilgrimage-and-its-influence-on-japanese-tourism/
+- https://grapeejapan.com/123052
