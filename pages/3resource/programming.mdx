@@ -1,0 +1,44 @@
+# resources programming
+
+https://fullstackopen.com/en/
+
+create your own website
+https://github.com/neocities/neocities
+
+to copy a website
+https://www.httrack.com/page/1/en/index.html
+
+## monorepo
+
+https://monorepo.tools/
+
+## find the tech stack of website
+
+https://builtwith.com/
+
+## JsNumberThousandsSeparator
+
+> For ease of reading, numbers with many digits may be divided into groups using a delimiter, such as comma "," or dot ".", half-space (or thin space) " ", space " ", underbar "_" (as in maritime "21_450") or apostrophe «'». [^1]
+
+目前使用的方案是 `Number.prototype.toLocaleString()` [^2]
+
+```ts
+const number = 3500;
+
+console.log(number.toLocaleString()); // "3,500" if in U.S. English locale
+```
+
+options 可以控制小数位数、有效位数 [^3]
+
+相关参考
+
+- <https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators>
+
+[^1]: https://en.wikipedia.org/wiki/Decimal_separator#Digit_grouping
+[^2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
+[^3]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options
+
+Design Systems
+Database
+Best-in-class Design Systems with components and foundations references from top-tier tech companies and leading UI teams
+https://designsystems.surf/
