@@ -1,19 +1,5 @@
 {
   "index": "又不是不能写博客",
-  "create-more-consume-less": "多创造，少消费，不闹心，更充实",
-  "micro-blog": "Micro-blog",
-  "gallery": "Gallery",
-  "ai": "AI",
-  "job": "Job",
-  "read-htdp": "读《How to Design Programs》",
-  "read-integral-of-happiness": "读《幸福的积分》",
-  "history": "History",
-  "ideas": "Ideas",
-  "wash-dishes": "洗盘子吧",
-  "man-with-long-hair": "长着头发的男人",
-  "how-i-build-this-blog": "How I Build This Blog",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
   "about": {
     "title": "About",
     "type": "page"
@@ -40,6 +26,5 @@
     "display": "hidden"
   },
   "collection": "collection",
-  "archived": { "title": "Archived" },
-  "ielts": "IELTS"
+  "archived": { "title": "Archived" }
 }
