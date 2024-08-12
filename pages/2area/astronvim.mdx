@@ -1,0 +1,97 @@
+# astronvim
+
+this is not a step by step tutorial, I just note what I encountered.
+
+## keymaps need to know
+
+- currently, Leader key is space key
+- `Leader + e` to show the file explorer, move cursor to the file, press enter to open
+- `Leader + o` to focos on the file explorer, or use ctrl-w twice to switch between windows
+- Find files Leader + ff
+- Open Floating Terminal Leader + tf
+- Comment Leader + /
+- Next Buffer ]b
+- Previous Buffer [b
+- Close Buffer Leader + c
+
+[full list](https://docs.astronvim.com/mappings)
+
+## others
+
+install the newest neovim
+https://github.com/neovim/neovim
+https://github.com/neovim/neovim/blob/master/INSTALL.md
+
+astronvim has [Customizing auto-format on save](https://docs.astronvim.com/recipes/advanced_lsp/)
+
+when you edit config, look at the top, if there is a line like this, delete it
+
+```lua
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+```
+
+the best way to make edited config file working is, quit and start again!
+
+开始使用 AstroNvim
+https://blog.yuanji.dev/posts/getting-started-with-astronvim/
+
+astronvim config for reference
+https://github.com/takayukiooi/astronvim_config
+https://github.com/masakichi/dotfiles/tree/main/home/dot_config/nvim
+
+## install LSP(language server protocol)
+
+It might be better to use astro community packages, I tried to install java-language-server and failed.
+
+I installed
+
+- [typescript](https://docs.astronvim.com/recipes/advanced_lsp/#typescript-typescriptnvim)
+- [html-css](https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/pack/html-css)
+- [java](https://docs.astronvim.com/recipes/advanced_lsp/#java-nvim-jdtls)
+- [markdown](https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/pack/markdown)
+- [mdx](https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/pack/mdx)
+
+```lua
+  { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.java" },
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.mdx" },
+```
+
+also, you can
+
+- use `:Mason` to open the package manager mason
+- if you can't see a package list, use g? to show it(this is also written at the top of current mason window, g? is used to toggle the help page)
+- you can use `esc` to quit current window
+- Install package i
+- Uninstall package X
+- search by keyword, for example, I use /typescript to find the typescript-language-server
+
+## everybody like colorscheme
+
+神奈川! Dope for this guy! or, individual, if you [feel the word "guy" is offensive](https://github.com/mdx-js/mdx/issues/1599#issuecomment-1368502072).
+
+kanagawa-paper.nvim
+https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/colorscheme/kanagawa-paper-nvim
+
+I think I'll use the good old grovbox
+
+gruvbox-nvim
+https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/colorscheme/gruvbox-nvim
+
+add this line to `community.lua` , it might at `~/.config/nvim/lua/community.lua`
+
+```lua
+  { import = "astrocommunity.colorscheme.gruvbox-nvim" },
+```
+
+change this part to below, it might at `~/.config/nvim/lua/plugins/astroui.lua`
+
+```lua
+  opts = {
+    -- change colorscheme
+    colorscheme = "gruvbox",
+```
+
+maybe one day I'll try [flexoki](https://github.com/kepano/flexoki-neovim), and make a community package!(I'm just saying...)
