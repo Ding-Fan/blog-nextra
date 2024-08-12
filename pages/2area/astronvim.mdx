@@ -2,25 +2,9 @@
 
 this is not a step by step tutorial, I just note what I encountered.
 
-## keymaps need to know
+## first link first
 
-- currently, Leader key is space key
-- `Leader + e` to show the file explorer, move cursor to the file, press enter to open
-- `Leader + o` to focos on the file explorer, or use ctrl-w twice to switch between windows
-- Find files Leader + ff
-- Open Floating Terminal Leader + tf
-- Comment Leader + /
-- Next Buffer ]b
-- Previous Buffer [b
-- Close Buffer Leader + c
-
-[full list](https://docs.astronvim.com/mappings)
-
-## terminal
-
-- `Leader + tf` Toggle on Floating Terminal
-- `ctrl-\` `ctrl-n` leave the edit mode in terminal window, so you can toggle off it
-  - https://github.com/voldikss/vim-floaterm/issues/371#issuecomment-1236128589
+https://docs.astronvim.com
 
 ## others
 
@@ -44,6 +28,29 @@ https://blog.yuanji.dev/posts/getting-started-with-astronvim/
 astronvim config for reference
 https://github.com/takayukiooi/astronvim_config
 https://github.com/masakichi/dotfiles/tree/main/home/dot_config/nvim
+
+you can back to where you were by select `Recent` when start nvim
+
+## keymaps need to know
+
+- currently, Leader key is space key
+- `Leader + e` to show the file explorer, move cursor to the file, press enter to open
+- `Leader + o` to focos on the file explorer, or use ctrl-w twice to switch between windows
+- Find files Leader + ff
+- Open Floating Terminal Leader + tf
+- Comment Leader + /
+- Next Buffer ]b
+- Previous Buffer [b
+- Close Buffer Leader + c
+
+[full list](https://docs.astronvim.com/mappings)
+
+## terminal
+
+- `Leader + tf` Toggle on Floating Terminal
+- `ctrl-\` `ctrl-n` leave the edit mode in terminal window, so you can toggle off it
+  - https://github.com/voldikss/vim-floaterm/issues/371#issuecomment-1236128589
+  - https://www.reddit.com/r/neovim/comments/wk1vcc/comment/ijkob3z/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
 ## install LSP(language server protocol)
 
@@ -92,6 +99,8 @@ add this line to `community.lua` , it might at `~/.config/nvim/lua/community.lua
   { import = "astrocommunity.colorscheme.gruvbox-nvim" },
 ```
 
+`gruvbox-nvim` is the name of the repository, so I use it
+
 change this part to below, it might at `~/.config/nvim/lua/plugins/astroui.lua`
 
 ```lua
@@ -100,4 +109,40 @@ change this part to below, it might at `~/.config/nvim/lua/plugins/astroui.lua`
     colorscheme = "gruvbox",
 ```
 
+`gruvbox` is the [colorscheme name defined in the official repository](https://github.com/ellisonleao/gruvbox.nvim?tab=readme-ov-file#basic-usage)
+
 maybe one day I'll try [flexoki](https://github.com/kepano/flexoki-neovim), and make a community package!(I'm just saying...)
+
+## custom plugin
+
+I installed [github/copilot.vim](https://github.com/github/copilot.vim)
+
+From [documentation](https://docs.astronvim.com/configuration/customizing_plugins/#defining-plugins), I know I need to create a github-copilot.lua file in plugin directory.
+
+Firstly I created a copilot.lua file, but it looks messed up with the help of `:help copilot`, so I created a github-copilot.lua file.
+
+```lua
+return {
+  "github/copilot.vim",
+  -- https://github.com/orgs/community/discussions/118483
+  -- function body could be found in :help copilot
+  -- I modified the `J` to `j`
+  -- when auto complete triggered, use esc to turn it off, then use <C-j> to accept the suggestion
+  config = function()
+    -- use <C-j> to accept the suggestion
+    vim.keymap.set("i", "<C-j>", 'copilot#Accept("\\<CR>")', {
+      expr = true,
+      replace_keycodes = false,
+    })
+    vim.g.copilot_no_tab_map = true
+  end,
+}
+```
+
+quit and start nvim, use `:Copilot` , copy the one time code, paste in the new browser tab, done.
+
+## summary
+
+I love astronvim, it makes me back(or start) to vim! Thanks to the author and contributors, and Mr. [Yuanji](https://blog.yuanji.dev/posts/getting-started-with-astronvim/), I read your blog and it helps me a lot!
+
+Next time I should get git work. blame, diff, and so on.
