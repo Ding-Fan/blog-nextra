@@ -1,60 +1,55 @@
 # astronvim
 
-this is not a step by step tutorial, I just note what I encountered.
+This is not a step-by-step tutorial, instead, it's a collection of notes on what I encountered while setting up and using AstroNvim.
 
-## first link first
+## First Link First
 
-https://docs.astronvim.com
+[Official Documentation of AstroNvim](https://docs.astronvim.com)
 
-## others
+## Initial Setup
 
-install the newest neovim
-https://github.com/neovim/neovim
-https://github.com/neovim/neovim/blob/master/INSTALL.md
+Follow the [instruction](https://github.com/neovim/neovim/blob/master/INSTALL.md), install the latest Neovim.
 
-astronvim has [Customizing auto-format on save](https://docs.astronvim.com/recipes/advanced_lsp/)
-
-when you edit config, look at the top, if there is a line like this, delete it
+When editing configuration files, make sure to check the top of the file. If you see a line like this, delete it.
 
 ```lua
 if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 ```
 
-the best way to make edited config file working is, quit and start again!
+To ensure edited configuration files works correctly, the best way is to quit and start AstroNvim again.
 
-开始使用 AstroNvim
-https://blog.yuanji.dev/posts/getting-started-with-astronvim/
+When starting, you can return to where you were by select `Recent`.
 
-astronvim config for reference
-https://github.com/takayukiooi/astronvim_config
-https://github.com/masakichi/dotfiles/tree/main/home/dot_config/nvim
+Also, astronvim has [auto-format on save](https://docs.astronvim.com/recipes/advanced_lsp/).
 
-you can back to where you were by select `Recent` when start nvim
+I read [开始使用 AstroNvim](https://blog.yuanji.dev/posts/getting-started-with-astronvim/) to gain the first impression of astronvim. Then referenced these two repositories for the configuration.
 
-## keymaps need to know
+- [takayukiooi/astronvim_config](https://github.com/takayukiooi/astronvim_config)
+- [masakichi/dotfiles](https://github.com/masakichi/dotfiles/tree/main/home/dot_config/nvim)
 
-- currently, Leader key is space key
-- `Leader + e` to show the file explorer, move cursor to the file, press enter to open
-- `Leader + o` to focos on the file explorer, or use ctrl-w twice to switch between windows
-- Find files Leader + ff
-- Open Floating Terminal Leader + tf
-- Comment Leader + /
-- Next Buffer ]b
-- Previous Buffer [b
-- Close Buffer Leader + c
+## Keymaps Need to Know
 
-[full list](https://docs.astronvim.com/mappings)
+- currently, `Leader` key is set to the `Space` key, you can see many options after pressing the `Leader` key
+- `Leader + e` to show/hide the file explorer
+- move cursor(by `j` `k`) to a file, press enter to open it
+- `Leader + o` to focus on the file explorer, or use `ctrl + w` twice to switch between windows
+- Find files `Leader + ff`
+- Next Buffer `]b`
+- Previous Buffer `[b`
+- Close Buffer `Leader + c`
+- Comment `Leader + /`
 
-## terminal
+[full keymap list](https://docs.astronvim.com/mappings)
+
+## Terminal
 
 - `Leader + tf` Toggle on Floating Terminal
-- `ctrl-\` `ctrl-n` leave the edit mode in terminal window, so you can toggle off it
-  - https://github.com/voldikss/vim-floaterm/issues/371#issuecomment-1236128589
-  - https://www.reddit.com/r/neovim/comments/wk1vcc/comment/ijkob3z/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+- `ctrl-\` `ctrl-n` leave the edit mode in terminal window, so you can toggle it off
+  - reference [1](https://github.com/voldikss/vim-floaterm/issues/371#issuecomment-1236128589) [2](https://www.reddit.com/r/neovim/comments/wk1vcc/comment/ijkob3z/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
 
-## install LSP(language server protocol)
+## Install LSP(Language Server Protocol)
 
-It might be better to use astro community packages, I tried to install java-language-server and failed.
+It's generally better to use AstroNvim community packages. I tried to install java-language-server manually by `:Mason` and failed.
 
 I installed
 
@@ -75,33 +70,30 @@ I installed
 also, you can
 
 - use `:Mason` to open the package manager mason
-- if you can't see a package list, use g? to show it(this is also written at the top of current mason window, g? is used to toggle the help page)
+- if you can't see a package list, use `g?` to toggle the help page(this is also written at the top of current Mason window)
 - you can use `esc` to quit current window
 - Install package i
 - Uninstall package X
 - search by keyword, for example, I use /typescript to find the typescript-language-server
 
-## everybody like colorscheme
+## everybody likes colorscheme
 
-神奈川! Dope for this guy! or, individual, if you [feel the word "guy" is offensive](https://github.com/mdx-js/mdx/issues/1599#issuecomment-1368502072).
+神奈川! Dope for this guy! or, individual, if you prefer to avoid [the potentially offensive terms like "guy"](https://github.com/mdx-js/mdx/issues/1599#issuecomment-1368502072).
 
 kanagawa-paper.nvim
 https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/colorscheme/kanagawa-paper-nvim
 
-I think I'll use the good old grovbox
-
-gruvbox-nvim
-https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/colorscheme/gruvbox-nvim
+I'll use the good old [gruvbox-nvim](https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/colorscheme/gruvbox-nvim)
 
 add this line to `community.lua` , it might at `~/.config/nvim/lua/community.lua`
+
+Note: `gruvbox-nvim` is the name of the repository, don't get it wrong like `gruvbox` or `gruvbox.nvim`
 
 ```lua
   { import = "astrocommunity.colorscheme.gruvbox-nvim" },
 ```
 
-`gruvbox-nvim` is the name of the repository, so I use it
-
-change this part to below, it might at `~/.config/nvim/lua/plugins/astroui.lua`
+update the colorscheme, it might at `~/.config/nvim/lua/plugins/astroui.lua`
 
 ```lua
   opts = {
@@ -109,25 +101,25 @@ change this part to below, it might at `~/.config/nvim/lua/plugins/astroui.lua`
     colorscheme = "gruvbox",
 ```
 
-`gruvbox` is the [colorscheme name defined in the official repository](https://github.com/ellisonleao/gruvbox.nvim?tab=readme-ov-file#basic-usage)
+Note: `gruvbox` is the [colorscheme name defined in the official repository](https://github.com/ellisonleao/gruvbox.nvim?tab=readme-ov-file#basic-usage), don't get it wrong
 
-maybe one day I'll try [flexoki](https://github.com/kepano/flexoki-neovim), and make a community package!(I'm just saying...)
+Maybe one day I'll try [flexoki](https://github.com/kepano/flexoki-neovim), and create a community package!(just saying...)
 
-## custom plugin
+## Custom Plugin
 
 I installed [github/copilot.vim](https://github.com/github/copilot.vim)
 
-From [documentation](https://docs.astronvim.com/configuration/customizing_plugins/#defining-plugins), I know I need to create a github-copilot.lua file in plugin directory.
+From [astronvim documentation](https://docs.astronvim.com/configuration/customizing_plugins/#defining-plugins), I learned that I needed to create a `github-copilot.lua` file in plugin directory.
 
-Firstly I created a copilot.lua file, but it looks messed up with the help of `:help copilot`, so I created a github-copilot.lua file.
+Initially I created a `copilot.lua` file, but it messed up with the `:help copilot`, so I renamed it to `github-copilot.lua`.
 
 ```lua
 return {
   "github/copilot.vim",
   -- https://github.com/orgs/community/discussions/118483
-  -- function body could be found in :help copilot
+  -- function body could be found in `:help copilot`
   -- I modified the `J` to `j`
-  -- when auto complete triggered, use esc to turn it off, then use <C-j> to accept the suggestion
+  -- when auto complete is triggered, use Esc to turn it off, then use <C-j> to accept the suggestion
   config = function()
     -- use <C-j> to accept the suggestion
     vim.keymap.set("i", "<C-j>", 'copilot#Accept("\\<CR>")', {
@@ -139,10 +131,10 @@ return {
 }
 ```
 
-quit and start nvim, use `:Copilot` , copy the one time code, paste in the new browser tab, done.
+Save it and quit and start AstroNvim, use `:Copilot` to activate it, copy the one time code, paste in the browser tab, done.
 
-## summary
+## Summary
 
-I love astronvim, it makes me back(or start) to vim! Thanks to the author and contributors, and Mr. [Yuanji](https://blog.yuanji.dev/posts/getting-started-with-astronvim/), I read your blog and it helps me a lot!
+I love astronvim, it made me return(or start) to vim! Thanks to the authors and contributors, and Mr. [Yuanji](https://blog.yuanji.dev/posts/getting-started-with-astronvim/), I read your blog and it helps me a lot!
 
 Next time I should get git work. blame, diff, and so on.
