@@ -1,5 +1,6 @@
 {
   "index": "又不是不能写博客",
+  "astronvim": "AstroNvim",
   "about": {
     "title": "About",
     "type": "page"
@@ -26,5 +27,7 @@
     "display": "hidden"
   },
   "collection": "collection",
-  "archived": { "title": "Archived" }
+  "archived": {
+    "title": "Archived"
+  }
 }
