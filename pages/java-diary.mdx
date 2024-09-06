@@ -91,3 +91,42 @@ public class ClayFigure {
 }
 
 ```
+
+Yes, you can use name of the method followed by `()` to call the method. The `()` is called `parentheses` . You can put `arguments` inside the parentheses. Let's make the clay figure laugh 40 times.
+
+Of course you don't want to write `laugh();` 40 times. You can use a `loop` to do that.
+
+```java
+public class ClayFigure {
+    public static void main(String[] args) {
+        System.out.println("Hello, clay figure!");
+        for (int i = 0; i < 40; i++) {
+            laugh();
+        }
+    }
+
+    public static void laugh() {
+        System.out.println("ha");
+    }
+}
+
+```
+
+Or we can make the method `laugh` smarter.
+
+```java
+public class ClayFigure {
+    public static void main(String[] args) {
+        System.out.println("Hello, clay figure!");
+        laugh(40);
+    }
+
+    public static void laugh(int times) {
+        for (int i = 0; i < times; i++) {
+            System.out.println("ha");
+        }
+    }
+}
+```
+
+That looks better.
