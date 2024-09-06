@@ -43,7 +43,7 @@ public static void main(String[] args) // this is the HEAD
 }                                              // belongs to the BODY
 ```
 
-Let's create another `Method`.
+You don't know the main method is a `Method` ? Now you do. Let's create another `Method`.
 
 ```java
 public class ClayFigure {
@@ -56,4 +56,38 @@ public class ClayFigure {
         System.out.println("ha");
     }
 }
+```
+
+Now we have method `laugh` , which is `public static void` , and in its body, it prints out "ha". Let's call the `laugh` method in the `main` method.
+
+```java
+public class ClayFigure {
+    public static void main(String[] args) {
+        System.out.println("Hello, clay figure!");
+        laugh();
+    }
+
+    public static void laugh() {
+        System.out.println("ha");
+    }
+}
+```
+
+It seems our clay figure is happy, let's make it happier.
+
+```java
+public class ClayFigure {
+    public static void main(String[] args) {
+        System.out.println("Hello, clay figure!");
+        laugh();
+        laugh();
+        laugh();
+        laugh();
+    }
+
+    public static void laugh() {
+        System.out.println("ha");
+    }
+}
+
 ```
