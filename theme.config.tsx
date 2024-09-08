@@ -11,9 +11,17 @@ const config: DocsThemeConfig = {
   //   link: 'https://discord.com',
   // },
   // docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  darkMode: false,
+  nextThemes: {
+    // enableSystem: false,
+  },
+  editLink: {
+    component: null
+  },
+  feedback: {
+    content: null
+  },
   footer: {
-    // text: "Do not shot this.",
-
     component: <Footer />,
   },
 };

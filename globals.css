@@ -27,9 +27,19 @@
   font-display: swap;
 }
 
+:root {
+  /* https://stephango.com/flexoki */
+  --bg: #fffcf0;
+  --tx: #100f0f;
+}
+
 body {
   font-family: "Inconsolata Regular Nerd Font Complete", "LXGW WenKai Regular",
     "Klee One Regular", serif;
   @apply text-xl md:text-base;
-  background-color: #fffcf0 !important;
+  background-color: var(--bg) !important;
+}
+
+.nextra-content {
+  color: var(--tx) !important;
 }
