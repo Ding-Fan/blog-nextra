@@ -1,28 +1,64 @@
 # japan link
 
-- [台風経路図](https://www.jma.go.jp/bosai/map.html#6/39.551/153.347/&elem=root&typhoon=all&contents=typhoon)
+import OGCard from "components/OGCard.server.tsx";
 
-- [電車路線情報](https://transit.yahoo.co.jp/diainfo/area/4)
+export const LINKS = [
+  {
+    url: "https://cool-matan.vercel.app",
+    note: "curriculum",
+  },
+  {
+    url: "https://classroom.google.com/u/1/h",
+    note: "Google Classroom",
+  },
+  {
+    url: "https://www.jma.go.jp/bosai/map.html#6/39.551/153.347/&elem=root&typhoon=all&contents=typhoon",
+    note: "台風経路図",
+  },
+  {
+    url: "https://transit.yahoo.co.jp/diainfo/area/4",
+    note: "電車路線情報",
+  },
+  {
+    url: "https://sc.city.kawasaki.jp/saigai/index.htm",
+    note: "川崎災害情報",
+  },
+  {
+    url: "https://weather.yahoo.co.jp/weather/zoomradar/",
+    note: "天気図",
+  },
+  {
+    url: "https://tenki.jp/lite/forecast/3/17/4610/14131/",
+    note: "川崎天気",
+  },
+  {
+    url: "https://seocompanyjapan.com/#KantoDelivery",
+    note: "House Shifting and Mini Moving",
+  },
+  {
+    url: "https://tokyo.craigslist.org/search/hhh?sort=priceasc#search=1~gallery~0~100",
+    note: "住宅",
+  },
+  {
+    url: "https://my-best.com/",
+    note: "compare products before buying",
+  },
+  {
+    url: "https://www.janpara.co.jp/",
+    note: "PC・スマートフォン・デジカメ・オーディオの販売・買取なら全国51店舗の「じゃんぱら」へ",
+  },
+  {
+    url: "https://moov.ooo/",
+    note: "モノ選びに、もっと納得を。",
+  },
+  {
+    url: "https://keepa.com/#!",
+    note: "amazon price",
+  },
+];
 
-- [川崎災害情報](https://sc.city.kawasaki.jp/saigai/index.htm)
-
-- [天気図](https://weather.yahoo.co.jp/weather/zoomradar/)
-
-- [川崎天気](https://tenki.jp/lite/forecast/3/17/4610/14131/)
-
-- [curriculum](https://cool-matan.vercel.app)
-
-- https://seocompanyjapan.com/#KantoDelivery
-
-  - House Shifting and Mini Moving
-
-- https://tokyo.craigslist.org/search/hhh?sort=priceasc#search=1~gallery~0~100
-
-  - 住宅
-
-- https://classroom.google.com/u/1/h
-
-- [my best](https://my-best.com/) compare products before buying
-- [PC・スマートフォン・デジカメ・オーディオの販売・買取なら全国51店舗の「じゃんぱら」へ](https://www.janpara.co.jp/)
-- [モノ選びに、もっと納得を。](https://moov.ooo/)
-- [amazon price](https://keepa.com/#!)
+<div>
+  {LINKS.map((link) => (
+    <OGCard className="mb-2" url={link.url} note={link.note} />
+  ))}
+</div>

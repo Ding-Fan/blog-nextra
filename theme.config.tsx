@@ -14,6 +14,7 @@ const config: DocsThemeConfig = {
   darkMode: false,
   nextThemes: {
     // enableSystem: false,
+    forcedTheme: 'light',
   },
   editLink: {
     component: null
