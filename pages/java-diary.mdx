@@ -345,15 +345,19 @@ public class ClayFigure {
     public static double height = 34.2; // class variable
 
     public static void main(String[] args) {
-        ClayFigure clayFigureAomori = new ClayFigure(); // create a clayFigureAomori because it is from 青森
+
+        ClayFigure clayFigureAomori = new ClayFigure();
+        // the ClayFigure on the left is the type of the variable
+        // when you create a class, you are also creating a new type
+        // clayFigureAomori is the variable name, because it is from 青森
 
         System.out.println("Hello, clay figure!");
         laugh(4);
         laugh(2, "he");
         laugh(1, "ho");
 
-        System.out.println("Weight: " + clayFigureAomori.weight); // access the instance variable from the instance
-        System.out.println("Height: " + ClayFigure.height); // access the class variable from the class
+        System.out.println("Weight: " + clayFigureAomori.weight); // access the instance variable from the instance clayFigureAomori
+        System.out.println("Height: " + ClayFigure.height); // access the class variable from the class ClayFigure
     }
 
     public static void laugh(int timesOrWhatever) {
