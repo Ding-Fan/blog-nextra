@@ -31,4 +31,5 @@ body {
   font-family: "Inconsolata Regular Nerd Font Complete", "LXGW WenKai Regular",
     "Klee One Regular", serif;
   @apply text-xl md:text-base;
+  background-color: #fffcf0;
 }

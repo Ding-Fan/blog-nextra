@@ -1,0 +1,164 @@
+# linux
+
+micron crucial ssd
+sudo StorageExecutiveClient.run
+
+boot into uefi bios
+systemctl reboot --firmware-setup
+
+unzip japanese filename
+unzip -Ocp932 filename.zip
+
+[[Me.Areas.Linux.Start]]
+
+- ssh_exchange_identification: Connection closed by remote host under Git bash
+
+  - https://stackoverflow.com/a/60994276/6236633
+  - https://windowsreport.com/bad-owner-or-permissions-on-ssh-config
+  - https://idreamshen.github.io/posts/github-connection-closed/
+  - https://docs.github.com/en/authentication/troubleshooting-ssh/error-key-already-in-use
+
+- network fix
+
+https://gist.github.com/dingfanATyykj/0c1f766ac0841dd17d14d2072b8e4815
+
+### ubuntu 20 wired unmanaged
+
+#### try
+
+```sh
+code /etc/NetworkManager/NetworkManager.conf
+```
+
+```yaml
+# NetworkManager.conf
+[main]
+plugins=ifupdown,keyfile
+
+[ifupdown]
+managed=true
+
+[keyfile]
+unmanaged-devices=*,except:type:wifi,except:type:gsm,except:type:cdma,except:type:wwan,except:type:ethernet,except:type:vlan
+
+[device]
+wifi.scan-rand-mac-address=no
+
+```
+
+```sh
+sudo systemctl restart network-manager
+```
+
+https://superuser.com/a/1632034
+
+#### if not working, try
+
+https://askubuntu.com/a/1265396
+
+- screen flickering blinking
+
+  - https://bennis-blog.de/tag/popos/
+  - https://askubuntu.com/questions/1404771/screen-flicker-after-fresh-install-of-ubuntu-22-04
+  - https://www.dell.com/community/Linux-General/XPS-13-7390-Ubuntu-Screen-flickering/td-p/7430121/page/3
+    screen flickerling fix
+    https://gitlab.freedesktop.org/drm/intel/-/issues/4703#note_1531208
+
+- book
+  - Linux Pocket Guide, 3rd Edition
+
+[[Me.Resources.Linux.Command]]
+
+##### share clipboard
+
+<https://twitter.com/yetone/status/1544291987490484224?s=20&t=1FHSKt6x7C1uUEMzw4j1NQ>
+
+```sh
+ssh x11forwarding
+```
+
+- <https://superuser.com/a/367303>
+
+- linux command find ip address
+
+  - hostname -I
+
+- ssh to termux on android
+
+  - <https://gist.github.com/evandrocoan/f503188587587d7b1d1ba8746c9c6107>
+  - <https://joeprevite.com/ssh-termux-from-computer/>
+  - <https://github.com/CypherpunkArmory/UserLAnd/issues/1222>
+    - ssh user@address -p 2022
+
+- xps 13 7390 2 in 1 Linux fix
+
+  - <https://github.com/endeavour/DellXps7390-2in1-Manjaro-Linux-Fixes>
+  - <https://wiki.archlinux.org/title/Dell_XPS_13_2-in-1_(7390>)
+
+- xps 13 sleep not deep
+
+  - <https://www.reddit.com/r/pop_os/comments/fwfehh/how_to_make_deep_mem_sleep_default_and_persistent/>
+  - `sudo kernelstub -a "mem_sleep_default=deep"`
+    - `cat /sys/power/mem_sleep`
+      - it shows
+        - `s2idle [deep]`
+  - <https://www.kernel.org/doc/Documentation/power/states.txt>
+
+- <https://postmarketos.org/>
+  - A real Linux
+    distribution
+    for phones
+    and other mobile devices
+
+## gnome
+
+## disable tracker to make it faster
+
+https://www.linuxuprising.com/2019/07/how-to-completely-disable-tracker.html
+
+## dotfiles
+
+dotfiles
+
+Manage your dotfiles with Ansible
+https://medium.com/espinola-designs/manage-your-dotfiles-with-ansible-6dbedd5532bb
+
+https://github.com/geerlingguy/ansible-role-dotfiles
+
+https://github.com/elnappo/dotfiles
+
+https://thebroken.link/managing-dotfiles-with-ansible/
+
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#selecting-an-ansible-package-and-version-to-install
+
+https://phelipetls.github.io/posts/introduction-to-ansible/
+
+General-purpose dotfiles utilities
+https://dotfiles.github.io/utilities/
+
+A curated list of dotfiles resources.
+https://github.com/webpro/awesome-dotfiles
+
+### ansible
+
+https://github.com/ansible/ansible
+
+use ansible to manage dotfiles
+
+on ubuntu, don't use pip to install ansible, because it will cause error while using sudo
+just use `sudo apt install ansible`
+
+also install ansible-lint for vscode extension
+
+`sudo apt install ansible-lint`
+
+while using ansible-pull with github ssh url
+
+```sh
+sudo ansible-pull --accept-host-key --private-key path/to/your_private_key -U git@github.com:Ding-Fan/ansible_config.git
+```
+
+--accept-host-key only needed when first tile
+
+`sudo ansible-pull --private-key ~/.ssh/id_ed25519 -U git@github.com:Ding-Fan/ansible_config.git
+`

@@ -1,0 +1,42 @@
+# bash zsh
+
+- https://github.com/SukkaW/zsh-proxy
+
+  - sukka, 苏卡卡, zsh plugin, proxy
+
+- install oh my zsh
+  - <https://github.com/ohmyzsh/ohmyzsh#basic-installation>
+    - install plugins
+      - z
+        - <https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/z>
+      - auto suggestion
+        - <https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh>
+      - syntax highlighting
+        - <https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh>
+      - powerlevel10k theme
+        - https://github.com/romkatv/powerlevel10k#getting-started
+
+```sh
+alias yd="yarn dev"
+```
+
+##### copy the path of a file to the system clipboard
+
+```sh
+realpath Onivim2-x86_64-master_8bbaf25b07ff2ac4dc6c74823d5a69bc.AppImage | xclip -sel clip
+```
+
+<https://stackoverflow.com/a/62517779/6236633>
+
+##### copy all files in a folder, including hidden files, into a destination folder. auto create destination folder if it doesn't exist
+
+```sh
+mkdir /home/<new_user>
+cp -r /etc/skel/. /home/<new_user>
+```
+
+##### copy all files exclude files to another place
+
+```sh
+rsync -av --progress easylink-main-website/ easylink-app --exclude node_modules
+```
