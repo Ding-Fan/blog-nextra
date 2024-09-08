@@ -27,7 +27,7 @@ JAVA is a programming language, you can use it to command the machine works for 
 
 3000 years ago, someone made a great clay figure. Today, we will make the clay figure great again, with JAVA.
 
-```java
+```java copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -69,7 +69,7 @@ public static void main(String[] args) // this is the HEAD
 
 You don't know the main method is a `Method` ? Now you do. Let's **define** another `Method` . Remember? Head and Body.
 
-```java
+```java copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -84,7 +84,7 @@ public class ClayFigure {
 
 Now we have method `laugh` , which is `public static void` , and in its body, it prints out "ha". Let's **call** the `laugh` method in the `main` method.
 
-```java
+```java copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -99,7 +99,7 @@ public class ClayFigure {
 
 It seems our clay figure is happy, let's make it happier.
 
-```java
+```java copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -120,7 +120,7 @@ Yes, you can use name of the method followed by `()` to call the method. The `()
 
 You don't want to write `laugh();` 40 times? Of course. You can use a `loop` to do that.
 
-```java
+```java copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -140,7 +140,7 @@ public class ClayFigure {
 
 Or we can make the method `laugh` smarter.
 
-```java
+```java copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -166,7 +166,7 @@ Some of you might have realized that the `main` method has `String[] args` as it
 
 Can we make the clay figure laugh with different sounds? Yes, we can.
 
-```java
+```java copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -204,7 +204,7 @@ When you go to a ramen restaurant, you are expecting a bowl of ramen. Same to th
 
 Let's make methods to return the weight and height of the clay figure.
 
-```java
+```java copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -239,4 +239,133 @@ public class ClayFigure {
 }
 ```
 
-- introduce the variable of the class, and use it in the method
+The `weight` method returns an `int` , the `height` method returns a `double` . You can use the `return` keyword to return the value, remember to match the `return type` .
+
+## Class Variable
+
+There is another way to store the weight and height of the clay figure. You can use `class variable` .
+
+```java copy
+public class ClayFigure {
+
+    // https://bunka.nii.ac.jp/heritages/detail/515725
+    public static int weight = 1440;
+    public static double height = 34.2;
+
+    public static void main(String[] args) {
+        System.out.println("Hello, clay figure!");
+        laugh(4);
+        laugh(2, "he");
+        laugh(1, "ho");
+
+        System.out.println("Weight: " + ClayFigure.weight);
+        System.out.println("Height: " + ClayFigure.height);
+    }
+
+    public static void laugh(int timesOrWhatever) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println("ha");
+        }
+    }
+
+    public static void laugh(int timesOrWhatever, String sound) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println(sound);
+        }
+    }
+}
+```
+
+You can access the `class variable` by using the `class name` followed by `.` and the `variable name` .
+
+Do you know `Math.PI` ? It is a `class variable` in the `Math` class. You can access it by using `Math.PI` . Also `Integer.MAX_VALUE` , `Double.MIN_VALUE` , etc.
+
+Let's print them out.
+
+```java copy
+public class ClayFigure {
+
+    public static int weight = 1440;
+    public static double height = 34.2;
+
+    public static void main(String[] args) {
+        System.out.println("Hello, clay figure!");
+        laugh(4);
+        laugh(2, "he");
+        laugh(1, "ho");
+
+        System.out.println("Weight: " + ClayFigure.weight);
+        System.out.println("Height: " + ClayFigure.height);
+
+        System.out.println("PI: " + Math.PI);
+        System.out.println("MAX_VALUE: " + Integer.MAX_VALUE);
+        System.out.println("MIN_VALUE: " + Double.MIN_VALUE);
+    }
+
+    public static void laugh(int timesOrWhatever) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println("ha");
+        }
+    }
+
+    public static void laugh(int timesOrWhatever, String sound) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println(sound);
+        }
+    }
+}
+```
+
+Remove them after you see the output. The clay figure has nothing to do with `Math.PI` .
+
+## Instance Variable
+
+There is another way to store the weight and height of the clay figure. You can use `instance variable` .
+
+Wait... What is `instance` ?
+
+An `instance` is an object of a `class` . You can create multiple `instances` of a `class` . Each `instance` has its own `instance variable` .
+
+You must have many questions in your head. What is a `Class` ? What is an `Object` ? What is an `Instance` ? What is the difference between `instance variable` and `class variable` ?
+
+Calm down, let's make the clay figure great again.
+
+<RichImage
+  classNameImg="w-full md:w-80"
+  caption={"blueprint on the left, clay figure on the right"}
+  src="images/blueprint-and-figure.png"
+/>
+
+To create an `instance` , you can use the `new` keyword followed by the `class name` and `()` .
+
+```java copy
+public class ClayFigure {
+
+    public int weight = 1440; // instance variable
+    public static double height = 34.2; // class variable
+
+    public static void main(String[] args) {
+        ClayFigure clayFigureAomori = new ClayFigure(); // create a clayFigureAomori because it is from 青森
+
+        System.out.println("Hello, clay figure!");
+        laugh(4);
+        laugh(2, "he");
+        laugh(1, "ho");
+
+        System.out.println("Weight: " + clayFigureAomori.weight); // access the instance variable from the instance
+        System.out.println("Height: " + ClayFigure.height); // access the class variable from the class
+    }
+
+    public static void laugh(int timesOrWhatever) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println("ha");
+        }
+    }
+
+    public static void laugh(int timesOrWhatever, String sound) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println(sound);
+        }
+    }
+}
+```
