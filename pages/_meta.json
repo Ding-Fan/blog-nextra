@@ -1,5 +1,6 @@
 {
   "index": "又不是不能写博客",
+  "java-diary": "Han's Poignant JAVA Diary",
   "astronvim": "AstroNvim",
   "about": {
     "title": "About",
@@ -25,9 +26,5 @@
   "draft": {
     "type": "folder",
     "display": "hidden"
-  },
-  "collection": "collection",
-  "archived": {
-    "title": "Archived"
   }
 }
