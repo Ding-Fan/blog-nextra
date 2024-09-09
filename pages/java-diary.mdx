@@ -341,8 +341,59 @@ protected String name = "Clay Figure"; // protected: same to default, and its su
 private double height = 34.2; // private: only accessible within the class
 ```
 
-```java copy
-code here later
+Let's create a `mypackage` folder and put file `ClayFigure.java` and `Box.java` in it.
+
+```java filename="mypackage/ClayFigure.java" showLineNumbers copy
+package mypackage;
+
+public class ClayFigure {
+
+    private int weight = 1440;
+    protected double height = 34.2;
+    public String name = "Clay Figure";
+    int age = 3000;
+
+    public static void main(String[] args) {
+        System.out.println("Hello, clay figure!");
+    }
+
+    public static void laugh(int timesOrWhatever) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println("ha");
+        }
+    }
+
+    public static void laugh(int timesOrWhatever, String sound) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println(sound);
+        }
+    }
+}
+```
+
+```java filename="mypackage/Box.java" showLineNumbers copy
+package mypackage;
+
+public class Box {
+  public static void main(String[] args) {
+
+    ClayFigure ClayFigureInstance = new ClayFigure();
+
+    System.out.print("There is a ");
+    System.out.println(ClayFigureInstance.name);
+
+    System.out.print("The age is ");
+    System.out.println(ClayFigureInstance.age);
+    System.out.print("The height is ");
+    System.out.println(ClayFigureInstance.height);
+
+    // uncomment the following line and see the error
+    // comment it back then
+    // System.out.println(ClayFigureInstance.weight);
+
+
+  }
+}
 ```
 
 When you meet someone, you allow them to access your name( which is public), but not your bank account password(which is private).
