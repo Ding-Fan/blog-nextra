@@ -66,13 +66,12 @@ public static void main(String[] args) // this is the HEAD
 
 You don't know the main method is a `Method` ? Now you do. Let's **define** another `Method` . Remember? Head and Body.
 
-```java copy
+```java showLineNumbers {6-8} copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
     }
 
-    // new method here
     public static void laugh() {
         System.out.println("ha");
     }
@@ -81,7 +80,7 @@ public class ClayFigure {
 
 Now we have method `laugh` , which is `public static void` , and in its body, it prints out "ha". Let's **call** the `laugh` method in the `main` method.
 
-```java copy
+```java showLineNumbers {4} copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -117,7 +116,7 @@ Yes, you can use name of the method followed by `()` to call the method. The `()
 
 You don't want to write `laugh();` 40 times? Of course. You can use a `loop` to do that.
 
-```java copy
+```java showLineNumbers {4-6} copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -137,7 +136,7 @@ public class ClayFigure {
 
 Or we can make the method `laugh` smarter.
 
-```java copy
+```java showLineNumbers {4,7-11} copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -163,7 +162,7 @@ Some of you might have realized that the `main` method has `String[] args` as it
 
 Can we make the clay figure laugh with different sounds? Yes, we can.
 
-```java copy
+```java showLineNumbers {4-6,15-19} copy
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
@@ -171,7 +170,6 @@ public class ClayFigure {
         laugh(2, "he");
         laugh(1, "ho");
     }
-
 
     public static void laugh(int timesOrWhatever) {
         for (int i = 0; i < timesOrWhatever; i++) {
@@ -205,24 +203,9 @@ Let's make methods to return the weight and height of the clay figure.
 public class ClayFigure {
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
-        laugh(4);
-        laugh(2, "he");
-        laugh(1, "ho");
 
         System.out.println("Weight: " + weight());
         System.out.println("Height: " + height());
-    }
-
-    public static void laugh(int timesOrWhatever) {
-        for (int i = 0; i < timesOrWhatever; i++) {
-            System.out.println("ha");
-        }
-    }
-
-    public static void laugh(int timesOrWhatever, String sound) {
-        for (int i = 0; i < timesOrWhatever; i++) {
-            System.out.println(sound);
-        }
     }
 
     // https://bunka.nii.ac.jp/heritages/detail/515725
@@ -238,11 +221,11 @@ public class ClayFigure {
 
 The `weight` method returns an `int` , the `height` method returns a `double` . You can use the `return` keyword to return the value, remember to match the `return type` .
 
-## Class Variable
+## Class Variable: use keyword static
 
 There is another way to store the weight and height of the clay figure. You can use `class variable` .
 
-```java copy
+```java showLineNumbers {3-5,10-11} copy
 public class ClayFigure {
 
     // https://bunka.nii.ac.jp/heritages/detail/515725
@@ -251,24 +234,9 @@ public class ClayFigure {
 
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
-        laugh(4);
-        laugh(2, "he");
-        laugh(1, "ho");
 
         System.out.println("Weight: " + ClayFigure.weight);
         System.out.println("Height: " + ClayFigure.height);
-    }
-
-    public static void laugh(int timesOrWhatever) {
-        for (int i = 0; i < timesOrWhatever; i++) {
-            System.out.println("ha");
-        }
-    }
-
-    public static void laugh(int timesOrWhatever, String sound) {
-        for (int i = 0; i < timesOrWhatever; i++) {
-            System.out.println(sound);
-        }
     }
 }
 ```
@@ -279,7 +247,7 @@ Do you know `Math.PI` ? It is a `class variable` in the `Math` class. You can ac
 
 Let's print them out.
 
-```java copy
+```java showLineNumbers {12-14} copy
 public class ClayFigure {
 
     public static int weight = 1440;
@@ -287,9 +255,6 @@ public class ClayFigure {
 
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
-        laugh(4);
-        laugh(2, "he");
-        laugh(1, "ho");
 
         System.out.println("Weight: " + ClayFigure.weight);
         System.out.println("Height: " + ClayFigure.height);
@@ -298,24 +263,10 @@ public class ClayFigure {
         System.out.println("MAX_VALUE: " + Integer.MAX_VALUE);
         System.out.println("MIN_VALUE: " + Double.MIN_VALUE);
     }
-
-    public static void laugh(int timesOrWhatever) {
-        for (int i = 0; i < timesOrWhatever; i++) {
-            System.out.println("ha");
-        }
-    }
-
-    public static void laugh(int timesOrWhatever, String sound) {
-        for (int i = 0; i < timesOrWhatever; i++) {
-            System.out.println(sound);
-        }
-    }
 }
 ```
 
-Remove them after you see the output. The clay figure has nothing to do with `Math.PI` .
-
-## Instance Variable
+## Instance Variable: without keyword static
 
 There is another way to store the weight and height of the clay figure. You can use `instance variable` .
 
