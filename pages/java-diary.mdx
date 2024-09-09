@@ -333,7 +333,11 @@ Calm down, let's make the clay figure great again.
   src="images/blueprint-and-figure.png"
 />
 
-To create an `instance` , you can use the `new` keyword followed by the `class name` and `()` .
+- Class: The blueprint of the clay figure.
+- Object: The clay figure.
+- Instance: Same as object. Usually used to say "This object is an instance of that class".
+
+When you have a blueprint(class), you can create as many clay figure(instance) as you want. To create an `instance` , you can use the `new` keyword followed by the `class name` and `()` .
 
 ```java
 ClayFigure clayFigureAomori = new ClayFigure();
@@ -342,7 +346,7 @@ ClayFigure clayFigureAomori = new ClayFigure();
 // clayFigureAomori is the variable name, because it is from 青森
 ```
 
-```java showLineNumbers {3-4,8,15-19} copy
+```java showLineNumbers {3-4,8,12-16} copy
 public class ClayFigure {
 
     public int weight = 1440; // instance variable
@@ -353,9 +357,6 @@ public class ClayFigure {
         ClayFigure clayFigureAomori = new ClayFigure();
 
         System.out.println("Hello, clay figure!");
-        laugh(4);
-        laugh(2, "he");
-        laugh(1, "ho");
 
         // access the instance variable from the instance clayFigureAomori
         System.out.println("Weight: " + clayFigureAomori.weight);
