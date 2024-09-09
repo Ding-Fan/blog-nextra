@@ -13,6 +13,7 @@ import RichImage from "components/RichImage";
 - [(Website) Codecademy](https://www.codecademy.com/learn/learn-java)
 - [(Book) Head First Java](https://annas-archive.org/md5/a9d8a3c7d886b2ba675fd17bfabcd47c)
 - [(Online course) Introduction to Java](https://www.coursera.org/learn/java-introduction)
+- [(Example)learn java in y minutes](https://learnxinyminutes.com/docs/java/)
 - [(Human) I with ChatGPT can answer any questions you have](mailto:ouud@fastmail.com)
 
 ## Introduction
@@ -334,6 +335,13 @@ Calm down, let's make the clay figure great again.
 
 To create an `instance` , you can use the `new` keyword followed by the `class name` and `()` .
 
+```java
+ClayFigure clayFigureAomori = new ClayFigure();
+// the ClayFigure on the left is the type of the variable
+// when you create a class, you are also creating a new type
+// clayFigureAomori is the variable name, because it is from 青森
+```
+
 ```java copy
 public class ClayFigure {
 
@@ -343,9 +351,57 @@ public class ClayFigure {
     public static void main(String[] args) {
 
         ClayFigure clayFigureAomori = new ClayFigure();
-        // the ClayFigure on the left is the type of the variable
-        // when you create a class, you are also creating a new type
-        // clayFigureAomori is the variable name, because it is from 青森
+
+        System.out.println("Hello, clay figure!");
+        laugh(4);
+        laugh(2, "he");
+        laugh(1, "ho");
+
+        // access the instance variable from the instance clayFigureAomori
+        System.out.println("Weight: " + clayFigureAomori.weight);
+
+        // access the class variable from the class ClayFigure
+        System.out.println("Height: " + ClayFigure.height);
+    }
+
+    public static void laugh(int timesOrWhatever) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println("ha");
+        }
+    }
+
+    public static void laugh(int timesOrWhatever, String sound) {
+        for (int i = 0; i < timesOrWhatever; i++) {
+            System.out.println(sound);
+        }
+    }
+}
+```
+
+`static` can also be used for `method` , so there are `class method` and `instance method` .
+
+## Access Modifier
+
+```java
+public int weight = 1440; // public: everyone can access it
+private double height = 34.2; // private: only accessible within the class
+protected String name = "Clay Figure"; // protected: only the class and its subclasses can access it
+int age = 3000; // default: only the class and the package can access it
+```
+
+To explain them, let's create a package.
+
+```java copy
+public class ClayFigure {
+
+    private int weight = 1440;
+    protected height = 34.2;
+    public String name = "Clay Figure";
+    int age = 3000;
+
+    public static void main(String[] args) {
+
+        ClayFigure clayFigureAomori = new ClayFigure();
 
         System.out.println("Hello, clay figure!");
         laugh(4);
