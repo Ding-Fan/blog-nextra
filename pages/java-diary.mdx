@@ -34,7 +34,7 @@ public class ClayFigure {
 
 I guess you can write down the code above on the paper with pencil and with your eyes closed.(Just kidding, for Java's sake don't do that.) But you might not know what you are doing, what have you created. Let's break it down.
 
-You have created a `Class` . Just like the clay figure has head and body, so does the `Class` .
+You have created a `Class` . Just like the clay figure has head and body, so does the `Class` . The head defines what the class is, while the body contains its behaviors and properties.
 
 ```java
 public class ClayFigure // the HEAD
@@ -132,6 +132,10 @@ public class ClayFigure {
 
 ```
 
+- Postfix (`i++`, `i--`): The variable is used first, then changed.
+- Prefix (`++i`, `--i`): The variable is changed first, then used.
+
+
 ## Arguments and Parameters
 
 Or we can make the method `laugh` smarter.
@@ -151,14 +155,12 @@ public class ClayFigure {
 }
 ```
 
-Todo: explain parameter in the method
-
-Todo: explain i++
-
 That looks better. When we call the method, we passed an `argument` to the method. The `argument` is `40` . The `argument` is stored in the `parameter` named `timesOrWhatever` , which has type `int` . The `parameter` is like a variable, but it only exists in the method.
 
-- When you **call** the method, the thing between the parentheses is the `argument` .
-- When you **define** the method, the thing between the parentheses is the `parameter` .
+- When you **call** the method, the thing between the parentheses is the `argument` . Arguments are the actual values you provide when you call the method.
+- When you **define** the method, the thing between the parentheses is the `parameter` . Parameters are variables that are placeholders for the data you want to pass into a method.
+
+[AI explain parameter](https://chatgpt.com/share/4b0ad53c-afb3-4e3c-a4f7-74c53f05e17c)
 
 Some of you might have realized that the `main` method has `String[] args` as its parameter. `String[]` means an array `[]` of strings `String` . `args` is the name of the parameter. You can name the parameter whatever you like.
 
@@ -225,7 +227,7 @@ public class ClayFigure {
 
 The `weight` method returns an `int` , the `height` method returns a `double` . You can use the `return` keyword to return the value, remember to match the `return type` .
 
-## Class and Instance and Object
+## Class, Instance, Object
 
 - Class: The blueprint of the clay figure.
 - Object: The clay figure.
@@ -243,50 +245,169 @@ When you have a blueprint(class), you can create as many clay figure(instance) a
 ClayFigure clayFigureAomori = new ClayFigure();
 // the ClayFigure on the left is the type of the variable
 // when you create a class, you are also creating a new type
-// clayFigureAomori is the variable name, because it is from 青森
 ```
 
-As long as you have the blueprint, you can create as many clay figures as you want.
+- `ClayFigure` : This is the class name. It acts as the blueprint for creating objects, just like a recipe for a dish or a design for a clay figure.
+- `clayFigureAomori` : This is the variable name. It refers to the instance (or object) you create from the class `ClayFigure` . The name `clayFigureAomori` gives this specific object a unique identity, as if we were naming the clay figure based on where it was found (in 青森).
+- `new ClayFigure()` : The `new` keyword creates a new instance of the `ClayFigure` class. The part `ClayFigure()` is calling the constructor. A constructor?
 
-## Class Variable: use keyword static
 
-There is another way to store the weight and height of the clay figure. You can use `class variable` .
+### Constructor
 
-Todo: explain where to put the class variable
+<RichImage
+  classNameImg="w-full md:w-80"
+  caption={"constructor loves you"} 
+  src="images/real-constructor.png"
+/>
 
-```java showLineNumbers {3-5,10-11} copy
+Let's create a simple class:
+
+```java
 public class ClayFigure {
 
-    // https://bunka.nii.ac.jp/heritages/detail/515725
-    public static int weight = 1440;
-    public static double height = 34.2;
+}
+```
 
-    public static void main(String[] args) {
-        System.out.println("Hello, clay figure!");
+This is an empty class called `ClayFigure`. Now, let's add a **constructor**:
 
-        System.out.println("Weight: " + ClayFigure.weight);
-        System.out.println("Height: " + ClayFigure.height);
+```java
+public class ClayFigure {
+
+    public ClayFigure() {
+        System.out.println("This is the constructor");
     }
 }
 ```
 
-You can access the `class variable` by using the `class name` followed by `.` and the `variable name` .
+- The constructor has the **same name as the class** (`ClayFigure`).
+- Inside the constructor, we added a simple `System.out.println("This is the constructor");` to show that the constructor runs when an object is created.
 
-Do you know `Math.PI` ? It is a `class variable` in the `Math` class. You can access it by using `Math.PI` . Also `Integer.MAX_VALUE` , `Double.MIN_VALUE` , etc.
+Let's create an object using the `new` keyword:
 
-Let's print them out.
-
-```java showLineNumbers {12-14} copy
+```java
 public class ClayFigure {
 
-    public static int weight = 1440;
-    public static double height = 34.2;
+    public ClayFigure() {
+        System.out.println("This is the constructor");
+    }
+
+    public static void main(String[] args) {
+        // Create a new object of ClayFigure
+        ClayFigure myFigure = new ClayFigure();
+    }
+}
+```
+
+When you run this code, you will see:
+
+```
+This is the constructor
+```
+
+This shows that the **constructor** is automatically called when you create a new object (`new ClayFigure();`).
+
+- A **constructor**:
+  - Has **no return type** (not even `void`).
+  - Must have the **same name as the class**.
+  - Is automatically called when an object is created (`new ClayFigure()`).
+- You can overload constructors to provide different ways of initializing objects.
+- If you don't define a constructor, Java will automatically provide a default `no-argument` constructor.
+
+A **constructor** is used to create objects, while a **method** is used to perform actions. Even though a constructor looks a bit like a method, it's different.
+
+```java
+public class ClayFigure {
+
+    // This is the constructor
+    public ClayFigure() {
+        System.out.println("This is the constructor");
+    }
+
+    // This is a method
+    public void ClayFigure() {
+        System.out.println("This is a method");
+    }
+
+    public static void main(String[] args) {
+        // Create an object (calls the constructor)
+        ClayFigure myFigure = new ClayFigure();
+
+        // Call the method
+        myFigure.ClayFigure();
+    }
+}
+```
+
+When you run this code, it prints:
+
+```
+This is the constructor
+This is a method
+```
+
+- **Constructor**:
+  - It has **no return type** (not even `void`).
+  - It has the **same name as the class**.
+  - It is called automatically when you create a new object (`new ClayFigure();`).
+  
+- **Method**:
+  - It has a **return type** (like `void`, `int`, etc.).
+  - It can have any name (it could but doesn't have to match the class name).
+  - It is called manually when you want to perform some action (e.g., `myFigure.ClayFigure();`).
+
+## Class Variable, Instance Variable, Local Variable
+
+```java showLineNumbers copy
+public class ClayFigure {
+
+    // https://bunka.nii.ac.jp/heritages/detail/515725
+    public int weight = 1440; // instance variable
+    public static double height = 34.2; // class variable
 
     public static void main(String[] args) {
         System.out.println("Hello, clay figure!");
 
-        System.out.println("Weight: " + ClayFigure.weight);
+        // create an instance of the class
+        ClayFigure clayFigureAomori = new ClayFigure();
+
+        int age = 3000; // local variable
+
+        // access the instance variable from the instance clayFigureAomori
+        System.out.println("Weight: " + clayFigureAomori.weight);
+
+        // access the class variable from the class ClayFigure
         System.out.println("Height: " + ClayFigure.height);
+
+        // access the local variable by its name
+        System.out.println("Age: " + age);  
+    }
+}
+```
+
+### Class Variable: use keyword static
+
+```java
+class Example {
+    static int classVariable = 10; // class variable
+}
+```
+
+Definition: A class variable is declared with the static keyword inside a class but outside any method, constructor, or block. It belongs to the class, not to any particular instance. All instances share this variable.
+
+- Declared with `static` keyword.
+- Shared among all instances of the class.
+- Accessed via the class name (e.g., `ClayFigure.height` ).
+
+
+In Java, certain classes provide useful constants like `Math.PI` , `Integer.MAX_VALUE` , and `Double.MIN_VALUE` . These constants are **class variables** , also known as static variables.
+
+A class variable belongs to the class itself, rather than to instances of the class. You can access these variables without creating an object, simply by using the `class name` followed by `.` and the `variable name` .
+
+```java showLineNumbers {12-14} copy
+public class ClayFigure {
+
+    public static void main(String[] args) {
+        System.out.println("Hello, clay figure!");
 
         System.out.println("PI: " + Math.PI);
         System.out.println("MAX_VALUE: " + Integer.MAX_VALUE);
@@ -295,56 +416,51 @@ public class ClayFigure {
 }
 ```
 
-Todo: explain why can use Math.PI etc, because of java.lang . also String
+The `Math` class, as well as `Integer` , `Double` , and others, belong to the `java.lang` package. The `java.lang` package is automatically imported into every Java program, meaning you don't need to write an explicit import statement for classes in this package. 
 
-Todo: explain scientific notation in Double.MIN_VALUE
+When you print `Double.MIN_VALUE` , you will see a small number: `4.9E-324` . This is an example of scientific notation, a way of representing very small or very large numbers concisely. `4.9E-324` means `4.9 × 10^(-324)` , `E` is the exponent.
 
-## Instance Variable: without keyword static
+### Instance Variable: without keyword static
 
-There is another way to store the weight and height of the clay figure. You can use `instance variable` .
+```java
+class Example {
+    int instanceVariable = 5; // instance variable
+}
+```
 
-Todo: explain where to put the instance variable
+Definition: An instance variable is declared inside a class but outside any method, constructor, or block. It belongs to an instance of the class. Each object of the class has its own copy.
 
-Todo: explain local variable doesn't have modifier
+- No `static` keyword.
+- Each object has its own copy of the variable.
+- Accessed via the object reference (e.g., `clayFigureAomori.weight` ).
 
-```java showLineNumbers {3-4,8,12-16} copy
-public class ClayFigure {
+`static` can also be used for `method` , so there are `class method` and `instance method` .
 
-    public int weight = 1440; // instance variable
-    public static double height = 34.2; // class variable
+### Local Variable: inside a method
 
-    public static void main(String[] args) {
-
-        ClayFigure clayFigureAomori = new ClayFigure();
-
-        System.out.println("Hello, clay figure!");
-
-        // access the instance variable from the instance clayFigureAomori
-        System.out.println("Weight: " + clayFigureAomori.weight);
-
-        // access the class variable from the class ClayFigure
-        System.out.println("Height: " + ClayFigure.height);
-    }
-
-    public static void laugh(int timesOrWhatever) {
-        for (int i = 0; i < timesOrWhatever; i++) {
-            System.out.println("ha");
-        }
-    }
-
-    public static void laugh(int timesOrWhatever, String sound) {
-        for (int i = 0; i < timesOrWhatever; i++) {
-            System.out.println(sound);
-        }
+```java
+class Example {
+    void method() {
+        int localVariable = 1; // local variable
     }
 }
 ```
 
-Todo: compare class variable, instance variable with local variable in the method
+Definition: A local variable is declared inside a method, constructor, or block. It is only accessible within the block where it is declared.
 
-`static` can also be used for `method` , so there are `class method` and `instance method` .
+- Declared within methods or blocks.
+- Exists only during the execution of the method or block.
+- Not accessible outside its scope.
 
-## Access Modifier
+Since local variables are only accessible within the specific block or method where they are declared, there's no need for access modifiers like `private` , `public` , or `protected` . These modifiers control accessibility between classes or objects, which is not relevant for local variables because they can't be accessed from outside the method or block where they are defined.
+
+https://chatgpt.com/share/f2332f2e-aaf0-4c2f-b7a1-5816cac6aef0
+
+## Access Modifier: public, protected, default, private
+
+When you meet someone, you allow them to access your name(which is public), but not your bank account password(which is private).
+
+Access modifiers ( `private` , `public` , `protected` , etc.) are used to control how variables or methods of a class can be accessed from other classes or instances.
 
 ```java
 public int weight = 1440; // public: everyone can access it
@@ -403,12 +519,10 @@ public class Box {
     // comment it back then
     // System.out.println(ClayFigureInstance.weight);
 
-
   }
 }
 ```
 
-When you meet someone, you allow them to access your name(which is public), but not your bank account password(which is private).
 
 ## Japanese Tech Words
 
