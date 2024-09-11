@@ -221,6 +221,29 @@ public class ClayFigure {
 
 The `weight` method returns an `int` , the `height` method returns a `double` . You can use the `return` keyword to return the value, remember to match the `return type` .
 
+## Class and Instance and Object
+
+- Class: The blueprint of the clay figure.
+- Object: The clay figure.
+- Instance: Same as object. Usually used to say "This object is an instance of that class".
+
+<RichImage
+  classNameImg="w-full md:w-80"
+  caption={"blueprint on the left, clay figure on the right"}
+  src="images/blueprint-and-figure.png"
+/>
+
+When you have a blueprint(class), you can create as many clay figure(instance) as you want. To create an `instance` , you can use the `new` keyword followed by the `class name` and `()` .
+
+```java
+ClayFigure clayFigureAomori = new ClayFigure();
+// the ClayFigure on the left is the type of the variable
+// when you create a class, you are also creating a new type
+// clayFigureAomori is the variable name, because it is from 青森
+```
+
+As long as you have the blueprint, you can create as many clay figures as you want.
+
 ## Class Variable: use keyword static
 
 There is another way to store the weight and height of the clay figure. You can use `class variable` .
@@ -269,33 +292,6 @@ public class ClayFigure {
 ## Instance Variable: without keyword static
 
 There is another way to store the weight and height of the clay figure. You can use `instance variable` .
-
-Wait... What is `instance` ?
-
-An `instance` is an object of a `class` . You can create multiple `instances` of a `class` . Each `instance` has its own `instance variable` .
-
-You must have many questions in your head. What is a `Class` ? What is an `Object` ? What is an `Instance` ? What is the difference between `instance variable` and `class variable` ?
-
-Calm down, let's make the clay figure great again.
-
-<RichImage
-  classNameImg="w-full md:w-80"
-  caption={"blueprint on the left, clay figure on the right"}
-  src="images/blueprint-and-figure.png"
-/>
-
-- Class: The blueprint of the clay figure.
-- Object: The clay figure.
-- Instance: Same as object. Usually used to say "This object is an instance of that class".
-
-When you have a blueprint(class), you can create as many clay figure(instance) as you want. To create an `instance` , you can use the `new` keyword followed by the `class name` and `()` .
-
-```java
-ClayFigure clayFigureAomori = new ClayFigure();
-// the ClayFigure on the left is the type of the variable
-// when you create a class, you are also creating a new type
-// clayFigureAomori is the variable name, because it is from 青森
-```
 
 ```java showLineNumbers {3-4,8,12-16} copy
 public class ClayFigure {
@@ -396,7 +392,7 @@ public class Box {
 }
 ```
 
-When you meet someone, you allow them to access your name( which is public), but not your bank account password(which is private).
+When you meet someone, you allow them to access your name(which is public), but not your bank account password(which is private).
 
 ## Japanese Tech Words
 
