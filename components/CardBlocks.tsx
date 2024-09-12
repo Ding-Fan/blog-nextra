@@ -1,0 +1,70 @@
+import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid"; // Import the UUID generator
+import CardBlock from "./CardBlock";
+
+type Props = {};
+
+const CardBlocks = (props: Props) => {
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    // When the page loads, try to get cards from localStorage
+    const storedCards = JSON.parse(localStorage.getItem("cards")) || [];
+    setCards(storedCards);
+  }, []);
+
+  const addNewCard = () => {
+    const newCard = {
+      id: uuidv4(),
+      content: `Card ${cards.length + 1} Content`,
+      startTime: Date.now(),
+      //   interval: 12 * 60 * 60 * 1000, // 12 hours
+      interval: 5 * 60 * 1000, // 5 minutes
+    };
+    const newCards = [...cards, newCard];
+    saveCards(newCards);
+  };
+
+  const handleCardInteraction = (id) => {
+    handleBlueClick(id); // Reset block
+  };
+
+  const handleBlueClick = (id) => {
+    refreshCard(id);
+  };
+
+  const refreshCard = (id) => {
+    const updatedCards = cards.map((card) => {
+      if (card.id === id) {
+        return { ...card, startTime: Date.now() };
+      }
+      return card;
+    });
+    saveCards(updatedCards);
+  };
+
+  const saveCards = (newCards) => {
+    setCards(newCards);
+    localStorage.setItem("cards", JSON.stringify(newCards)); // Save to localStorage
+  };
+
+  return (
+    <div>
+      <button onClick={addNewCard} className="mb-4 p-2 bg-green-500 text-white">
+        Add New Card
+      </button>
+      {cards.map((card) => (
+        <CardBlock
+          key={card.id}
+          id={card.id}
+          content={card.content}
+          startTime={card.startTime}
+          interval={card.interval}
+          onIndicatorClick={handleCardInteraction}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default CardBlocks;
