@@ -53,6 +53,7 @@ const CardBlocks = (props: Props) => {
       <button onClick={addNewCard} className="mb-4 p-2 bg-green-500 text-white">
         Add New Card
       </button>
+      <div className="flex flex-col gap-2">
       {cards.map((card) => (
         <CardBlock
           key={card.id}
@@ -63,6 +64,7 @@ const CardBlocks = (props: Props) => {
           onIndicatorClick={handleCardInteraction}
         />
       ))}
+      </div>
     </div>
   );
 };
