@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import dayjs from "dayjs"; // Import dayjs
 import { v4 as uuidv4 } from "uuid"; // Import the UUID generator
 import CardBlock from "./CardBlock";
 
@@ -8,14 +9,32 @@ const CARD_DATA = [
   {
     id: "1",
     content: "bruth teeth",
-    startTime: 0,
-    interval: 12 * 60 * 60 * 1000, // 12 hours
+    startTime: dayjs(),
+    interval: dayjs.duration(12, "hours")
   },
   {
     id: "2",
     content: "throw out trash",
-    startTime: 0,
-    interval: 24 * 60 * 60 * 1000, // 24 hours
+    startTime: dayjs(),
+    interval: dayjs.duration(3, "days")
+  },
+  {
+    id: "3",
+    content: "do laundry",
+    startTime: dayjs(),
+    interval: dayjs.duration(4, "days")
+  },
+  {
+    id: "4",
+    content: "trim nails",
+    startTime: dayjs(),
+    interval: dayjs.duration(5, "days")
+  },
+  {
+    id: "5",
+    content: "take a shower",
+    startTime: dayjs(),
+    interval: dayjs.duration(1, "days")
   },
 ]
 
@@ -23,8 +42,17 @@ const CardBlocks = (props: Props) => {
   const [cards, setCards] = useState([]);
 
   const mergeCards = (defaultCards, storedCards) => {
-    const storedCardsMap = new Map(storedCards.map(card => [card.id, card]));
-    return defaultCards.map(card => storedCardsMap.get(card.id) || card);
+    const defaultCardsMap = new Map(defaultCards.map(card => [card.id, card]));
+    const allCardIds = new Set([...defaultCards.map(card => card.id), ...storedCards.map(card => card.id)]);
+
+    return Array.from(allCardIds).map(id => storedCards.find(card => card.id === id) || defaultCardsMap.get(id))
+  }
+
+  const clearCards = () => {
+    const confirmClear = window.confirm("Are you sure you want to clear all cards?");
+    if (!confirmClear) return;
+    localStorage.removeItem("cards");
+    setCards([]);
   }
 
   useEffect(() => {
@@ -73,6 +101,9 @@ const CardBlocks = (props: Props) => {
       <button onClick={addNewCard} className="mb-4 p-2 bg-green-500 text-white">
         Add New Card
       </button>
+      <button onClick={clearCards} className="mb-4 p-2 bg-red-500 text-white">
+        Clear All Cards
+      </button>
       <div className="flex flex-col gap-2">
         {cards.map((card) => (
           <CardBlock
@@ -84,7 +115,7 @@ const CardBlocks = (props: Props) => {
             onIndicatorClick={handleCardInteraction}
           />
         ))}
-      </div>
+      </but>
     </div>
   );
 };
