@@ -4,13 +4,33 @@ import CardBlock from "./CardBlock";
 
 type Props = {};
 
+const CARD_DATA = [
+  {
+    id: "1",
+    content: "bruth teeth",
+    startTime: 0,
+    interval: 12 * 60 * 60 * 1000, // 12 hours
+  },
+  {
+    id: "2",
+    content: "throw out trash",
+    startTime: 0,
+    interval: 24 * 60 * 60 * 1000, // 24 hours
+  },
+]
+
 const CardBlocks = (props: Props) => {
   const [cards, setCards] = useState([]);
+
+  const mergeCards = (defaultCards, storedCards) => {
+    const storedCardsMap = new Map(storedCards.map(card => [card.id, card]));
+    return defaultCards.map(card => storedCardsMap.get(card.id) || card);
+  }
 
   useEffect(() => {
     // When the page loads, try to get cards from localStorage
     const storedCards = JSON.parse(localStorage.getItem("cards")) || [];
-    setCards(storedCards);
+    setCards(mergeCards(CARD_DATA, storedCards));
   }, []);
 
   const addNewCard = () => {
@@ -54,16 +74,16 @@ const CardBlocks = (props: Props) => {
         Add New Card
       </button>
       <div className="flex flex-col gap-2">
-      {cards.map((card) => (
-        <CardBlock
-          key={card.id}
-          id={card.id}
-          content={card.content}
-          startTime={card.startTime}
-          interval={card.interval}
-          onIndicatorClick={handleCardInteraction}
-        />
-      ))}
+        {cards.map((card) => (
+          <CardBlock
+            key={card.id}
+            id={card.id}
+            content={card.content}
+            startTime={card.startTime}
+            interval={card.interval}
+            onIndicatorClick={handleCardInteraction}
+          />
+        ))}
       </div>
     </div>
   );
