@@ -200,6 +200,12 @@ const CARD_DATA = [
 const CardBlocks = (props: Props) => {
   const [cards, setCards] = useState([]);
 
+  const [openMenuCardId, setOpenMenuCardId] = useState(null);
+
+  const handleMenuToggle = (id) => {
+    setOpenMenuCardId((prevId) => (prevId === id ? null : id));
+  };
+
   const mergeCards = (defaultCards, storedCards) => {
     const defaultCardsMap = new Map(defaultCards.map(card => [card.id, card]));
     const allCardIds = new Set([...defaultCards.map(card => card.id), ...storedCards.map(card => card.id)]);
@@ -271,6 +277,11 @@ const CardBlocks = (props: Props) => {
     localStorage.setItem("cards", JSON.stringify(cardsToSave));
   };
 
+  const deleteCard = (id) => {
+    const updatedCards = cards.filter((card) => card.id !== id);
+    saveCards(updatedCards);
+  };
+
 
   // Compute progress and sort cards
   const sortedCards = cards
@@ -302,6 +313,9 @@ const CardBlocks = (props: Props) => {
             startTime={card.startTime}
             interval={card.interval}
             onIndicatorClick={handleCardInteraction}
+            onDeleteClick={deleteCard}
+            isMenuOpen={openMenuCardId === card.id}
+            onMenuToggle={handleMenuToggle}
           />
         ))}
       </div>
