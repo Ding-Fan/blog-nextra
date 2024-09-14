@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
+import { ct } from "../scripts/utils";
 
 type Props = {
   id: string;
   content: string;
-  startTime: number;
+  category: string;
+  startTime: dayjs.Dayjs;
   interval: number;
   onIndicatorClick: (id: string) => void;
 };
 
 const CardBlock = ({
   content,
+  category,
   id,
   onIndicatorClick,
   startTime,
@@ -19,7 +22,7 @@ const CardBlock = ({
   // Function to calculate the indicator height
   const calculateHeight = () => {
     const elapsed = dayjs().diff(startTime); // in milliseconds
-    const total = interval
+    const total = interval; // total duration in milliseconds
     const progress = (elapsed / total) * 100;
 
     // Cap the height between 0% and 100%
@@ -27,7 +30,6 @@ const CardBlock = ({
 
     return `${cappedProgress}%`;
   };
-
 
   const [indicatorHeight, setIndicatorHeight] = useState(calculateHeight());
 
@@ -55,8 +57,9 @@ const CardBlock = ({
           }}
         ></div>
       </div>
-      <div className="content h-32 border-black border-solid border bg-stone-50 flex-1">
-        <div>{content}</div>
+      <div className="content border-black border-solid border bg-stone-50 flex-1 p-2">
+        <div className="text-lg font-bold line-clamp-2" title={content}>{content}</div>
+        <div className="text-sm text-gray-500">{category}</div>
       </div>
     </div>
   );

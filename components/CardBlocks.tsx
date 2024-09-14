@@ -217,7 +217,15 @@ const CardBlocks = (props: Props) => {
   useEffect(() => {
     // When the page loads, try to get cards from localStorage
     const storedCards = JSON.parse(localStorage.getItem("cards")) || [];
-    setCards(mergeCards(CARD_DATA, storedCards));
+
+    // Convert stored startTime and interval back to Day.js objects
+    const processedStoredCards = storedCards.map((card) => ({
+      ...card,
+      startTime: dayjs(card.startTime),
+      interval: dayjs.duration(card.interval), // Reconstruct duration
+    }));
+
+    setCards(mergeCards(CARD_DATA, processedStoredCards));
   }, []);
 
   const addNewCard = () => {
@@ -243,7 +251,7 @@ const CardBlocks = (props: Props) => {
   const refreshCard = (id) => {
     const updatedCards = cards.map((card) => {
       if (card.id === id) {
-        return { ...card, startTime: Date.now() };
+        return { ...card, startTime: dayjs() }; // Use dayjs() instead of Date.now()
       }
       return card;
     });
@@ -252,8 +260,29 @@ const CardBlocks = (props: Props) => {
 
   const saveCards = (newCards) => {
     setCards(newCards);
-    localStorage.setItem("cards", JSON.stringify(newCards)); // Save to localStorage
+
+    // Convert Day.js objects to serializable formats
+    const cardsToSave = newCards.map((card) => ({
+      ...card,
+      startTime: card.startTime.toISOString(),
+      interval: card.interval.valueOf(), // Use valueOf() here
+    }));
+
+    localStorage.setItem("cards", JSON.stringify(cardsToSave));
   };
+
+
+  // Compute progress and sort cards
+  const sortedCards = cards
+    .map((card) => {
+      const elapsed = dayjs().diff(card.startTime); // in milliseconds
+      const total = card.interval; // in milliseconds
+      const progress = (elapsed / total) * 100;
+      const cappedProgress = Math.min(Math.max(progress, 0), 100);
+
+      return { ...card, progress: cappedProgress };
+    })
+    .sort((a, b) => b.progress - a.progress); // Sort in descending order
 
   return (
     <div>
@@ -264,11 +293,12 @@ const CardBlocks = (props: Props) => {
         Clear All Cards
       </button>
       <div className="flex flex-col gap-4">
-        {cards.map((card) => (
+        {sortedCards.map((card) => (
           <CardBlock
             key={card.id}
             id={card.id}
             content={card.content}
+            category={card.category}
             startTime={card.startTime}
             interval={card.interval}
             onIndicatorClick={handleCardInteraction}
