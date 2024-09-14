@@ -115,7 +115,7 @@ const CardBlocks = (props: Props) => {
             onIndicatorClick={handleCardInteraction}
           />
         ))}
-      </but>
+      </div>
     </div>
   );
 };
