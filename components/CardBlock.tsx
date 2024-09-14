@@ -16,19 +16,26 @@ const CardBlock = ({
   startTime,
   interval,
 }: Props) => {
-  const [indicatorHeight, setIndicatorHeight] = useState(
-    (dayjs().diff(startTime) / interval) * 100 + "%"
-  );
+  // Function to calculate the indicator height
+  const calculateHeight = () => {
+    const elapsed = dayjs().diff(startTime); // in milliseconds
+    const total = interval
+    const progress = (elapsed / total) * 100;
 
-  // Function to update the height of the indicator every second
+    // Cap the height between 0% and 100%
+    const cappedProgress = Math.min(Math.max(progress, 0), 100);
+
+    return `${cappedProgress}%`;
+  };
+
+
+  const [indicatorHeight, setIndicatorHeight] = useState(calculateHeight());
+
+  // Update the height every second
   useEffect(() => {
-    const updateHeight = () => {
-      const newHeight = (dayjs().diff(startTime) / interval) * 100 + "%";
-      setIndicatorHeight(newHeight);
-    };
-
-    // Update the height every second
-    const intervalId = setInterval(updateHeight, 1000);
+    const intervalId = setInterval(() => {
+      setIndicatorHeight(calculateHeight());
+    }, 1000);
 
     // Cleanup the interval when the component is unmounted
     return () => clearInterval(intervalId);
@@ -41,18 +48,15 @@ const CardBlock = ({
         onClick={() => onIndicatorClick(id)}
       >
         <div
-          className="w-5 bg-blue-500 "
+          className="w-5 bg-blue-500"
           style={{
             height: indicatorHeight,
+            transition: "height 1s linear",
           }}
         ></div>
       </div>
       <div className="content h-32 border-black border-solid border bg-stone-50 flex-1">
-        <div className="">{content}</div>
-        {/* <div className="">now: {dayjs().format("YYYY-MM-DD HH:mm:ss")}</div>
-        <div className="">
-          start time: {dayjs(startTime).format("YYYY-MM-DD HH:mm:ss")}
-        </div> */}
+        <div>{content}</div>
       </div>
     </div>
   );
