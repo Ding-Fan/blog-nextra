@@ -37,11 +37,11 @@ const CardBlock = ({
   return (
     <div className="flex flex-row items-stretch gap-2">
       <div
-        className="rounded-full overflow-hidden flex cursor-pointer"
+        className="rounded-full overflow-hidden flex cursor-pointer border-blue-500 border-solid border-2"
         onClick={() => onIndicatorClick(id)}
       >
         <div
-          className="w-5 bg-blue-500"
+          className="w-5 bg-blue-500 "
           style={{
             height: indicatorHeight,
           }}
