@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import dayjs from "dayjs"; // Import dayjs
 import { v4 as uuidv4 } from "uuid"; // Import the UUID generator
 import CardBlock from "./CardBlock";
@@ -228,7 +228,6 @@ const CardBlocks = (props: Props) => {
     const processedStoredCards = storedCards.map((card) => ({
       ...card,
       startTime: dayjs(card.startTime),
-      interval: dayjs.duration(card.interval), // Reconstruct duration
     }));
 
     setCards(mergeCards(CARD_DATA, processedStoredCards));
@@ -271,7 +270,7 @@ const CardBlocks = (props: Props) => {
     const cardsToSave = newCards.map((card) => ({
       ...card,
       startTime: card.startTime.toISOString(),
-      interval: card.interval.valueOf(), // Use valueOf() here
+      interval: card.interval,
     }));
 
     localStorage.setItem("cards", JSON.stringify(cardsToSave));
@@ -284,16 +283,25 @@ const CardBlocks = (props: Props) => {
 
 
   // Compute progress and sort cards
-  const sortedCards = cards
-    .map((card) => {
-      const elapsed = dayjs().diff(card.startTime); // in milliseconds
-      const total = card.interval; // in milliseconds
+  const sortedCards = useMemo(() => {
+    // Compute progress
+    const cardsWithProgress = cards.map((card) => {
+      const elapsed = dayjs().diff(card.startTime);
+      const total = card.interval;
       const progress = (elapsed / total) * 100;
       const cappedProgress = Math.min(Math.max(progress, 0), 100);
 
       return { ...card, progress: cappedProgress };
-    })
-    .sort((a, b) => b.progress - a.progress); // Sort in descending order
+    });
+
+    // If the menu is open, do not sort; keep the original order
+    if (openMenuCardId !== null) {
+      return cardsWithProgress;
+    }
+
+    // Otherwise, sort the cards
+    return cardsWithProgress.sort((a, b) => b.progress - a.progress);
+  }, [cards, openMenuCardId]);
 
   return (
     <div>

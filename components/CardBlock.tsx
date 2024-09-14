@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
-import { ct } from "../scripts/utils";
 
 type Props = {
   id: string;
@@ -48,6 +47,23 @@ const CardBlock = ({
     onMenuToggle(null);   // Close the menu
   };
 
+  const formatInterval = (intervalMs: number): string => {
+    const durationObj = dayjs.duration(intervalMs);
+
+    const days = Math.floor(durationObj.asDays());
+    const hours = durationObj.hours();
+    const minutes = durationObj.minutes();
+    const seconds = durationObj.seconds();
+
+    let parts = [];
+    if (days) parts.push(`${days} day${days !== 1 ? "s" : ""}`);
+    if (hours) parts.push(`${hours} hour${hours !== 1 ? "s" : ""}`);
+    if (minutes) parts.push(`${minutes} minute${minutes !== 1 ? "s" : ""}`);
+    if (seconds && !parts.length) parts.push(`${seconds} second${seconds !== 1 ? "s" : ""}`);
+
+    return parts.join(" ");
+  };
+
   // Function to calculate the indicator height
   const calculateHeight = () => {
     const elapsed = dayjs().diff(startTime); // in milliseconds
@@ -88,7 +104,9 @@ const CardBlock = ({
       </div>
       <div className="content border-black border-solid border bg-stone-50 flex-1 p-2">
         <div className="text-lg font-bold line-clamp-2" title={content}>{content}</div>
-        <div className="text-sm text-gray-500">{category}</div>
+        <div className="text-sm text-gray-500">
+          {category} - {formatInterval(interval)}
+        </div>
       </div>
       {isMenuOpen && (
         <div className="absolute z-10 mt-8 bg-white border rounded shadow w-32">
