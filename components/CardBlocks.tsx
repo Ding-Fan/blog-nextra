@@ -7,6 +7,13 @@ type Props = {};
 
 const CARD_DATA = [
   {
+    id: "2",
+    content: "test card",
+    startTime: dayjs(),
+    category: "hygiene",
+    interval: dayjs.duration(2, "minutes")
+  },
+  {
     id: "d69a052d-cd24-4049-9402-d1ef7a4cd3ba",
     content: "bruth teeth",
     startTime: dayjs(),
@@ -163,7 +170,7 @@ const CardBlocks = (props: Props) => {
       <button onClick={clearCards} className="mb-4 p-2 bg-red-500 text-white">
         Clear All Cards
       </button>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4">
         {cards.map((card) => (
           <CardBlock
             key={card.id}
