@@ -24,6 +24,18 @@ export const LINKS = [
     note: "川崎災害情報",
   },
   {
+    url: "http://www.kmoni.bosai.go.jp",
+    note: "リアルタイム　震度",
+  },
+  {
+    url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/kyoshin/",
+    note: "リアルタイム　震度 yahoo",
+  },
+  {
+    url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/",
+    note: "地震速報",
+  },
+  {
     url: "https://weather.yahoo.co.jp/weather/zoomradar/",
     note: "天気図",
   },
@@ -57,8 +69,8 @@ export const LINKS = [
   },
 ];
 
-<div>
+<div className="grid grid-cols-3 gap-4">
   {LINKS.map((link) => (
-    <OGCard className="mb-2" url={link.url} note={link.note} />
+    <OGCard key={link.url} className="mb-2" url={link.url} note={link.note} />
   ))}
 </div>
