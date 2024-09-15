@@ -7,6 +7,7 @@ type Props = {
   category: string;
   startTime: dayjs.Dayjs;
   interval: number;
+  progress: number; // New prop
   onIndicatorClick: (id: string) => void;
   onDeleteClick: (id: string) => void;
   isMenuOpen: boolean;
@@ -21,6 +22,7 @@ const CardBlock = ({
   onDeleteClick,
   startTime,
   interval,
+  progress,
   isMenuOpen,     // New prop
   onMenuToggle,   // New prop
 }: Props) => {
@@ -64,35 +66,14 @@ const CardBlock = ({
     return parts.join(" ");
   };
 
-  // Function to calculate the indicator height
-  const calculateHeight = () => {
-    const elapsed = dayjs().diff(startTime); // in milliseconds
-    const total = interval; // total duration in milliseconds
-    const progress = (elapsed / total) * 100;
-
-    // Cap the height between 0% and 100%
-    const cappedProgress = Math.min(Math.max(progress, 0), 100);
-
-    return `${cappedProgress}%`;
-  };
-
-  const [indicatorHeight, setIndicatorHeight] = useState(calculateHeight());
-
-  // Update the height every second
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setIndicatorHeight(calculateHeight());
-    }, 1000);
-
-    // Cleanup the interval when the component is unmounted
-    return () => clearInterval(intervalId);
-  }, [startTime, interval]);
+  // Use the passed progress to calculate the indicator height
+  const indicatorHeight = `${progress}%`;
 
   return (
     <div className="flex flex-row items-stretch gap-2 relative">
       <div
         className="rounded-full overflow-hidden flex cursor-pointer border-blue-500 border-solid border-2"
-        onClick={handleIndicatorClick} // Updated handler
+        onClick={handleIndicatorClick}
       >
         <div
           className="w-5 bg-blue-500"
@@ -103,7 +84,9 @@ const CardBlock = ({
         ></div>
       </div>
       <div className="content border-black border-solid border bg-stone-50 flex-1 p-2">
-        <div className="text-lg font-bold line-clamp-2" title={content}>{content}</div>
+        <div className="text-lg font-bold line-clamp-2" title={content}>
+          {content}
+        </div>
         <div className="text-sm text-gray-500">
           {category} - {formatInterval(interval)}
         </div>

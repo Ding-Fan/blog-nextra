@@ -201,6 +201,48 @@ const CardBlocks = (props: Props) => {
   const [cards, setCards] = useState([]);
 
   const [openMenuCardId, setOpenMenuCardId] = useState(null);
+  const [cardsWithProgress, setCardsWithProgress] = useState([]);
+
+  // Function to calculate progress and sort cards
+  const computeAndSortCards = () => {
+    const updatedCards = cards.map((card) => {
+      const elapsed = dayjs().diff(card.startTime); // in milliseconds
+      const total = card.interval; // in milliseconds
+      const progress = (elapsed / total) * 100;
+      const cappedProgress = Math.min(Math.max(progress, 0), 100);
+
+      return { ...card, progress: cappedProgress };
+    });
+
+    let sortedCards;
+
+    if (openMenuCardId !== null) {
+      // Do not sort when menu is open
+      sortedCards = updatedCards;
+    } else {
+      // Sort the cards
+      sortedCards = updatedCards.sort((a, b) => {
+        if (b.progress !== a.progress) {
+          return b.progress - a.progress;
+        }
+        // Tie-breaker
+        return cards.indexOf(a) - cards.indexOf(b);
+      });
+    }
+
+    setCardsWithProgress(sortedCards);
+  };
+
+  // Update progress and sorting every second
+  useEffect(() => {
+    computeAndSortCards();
+
+    const intervalId = setInterval(() => {
+      computeAndSortCards();
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [cards, openMenuCardId]);
 
   const handleMenuToggle = (id) => {
     setOpenMenuCardId((prevId) => (prevId === id ? null : id));
@@ -284,23 +326,28 @@ const CardBlocks = (props: Props) => {
 
   // Compute progress and sort cards
   const sortedCards = useMemo(() => {
-    // Compute progress
     const cardsWithProgress = cards.map((card) => {
-      const elapsed = dayjs().diff(card.startTime);
-      const total = card.interval;
+      const elapsed = dayjs().diff(card.startTime); // in milliseconds
+      const total = card.interval; // in milliseconds
       const progress = (elapsed / total) * 100;
       const cappedProgress = Math.min(Math.max(progress, 0), 100);
 
       return { ...card, progress: cappedProgress };
     });
 
-    // If the menu is open, do not sort; keep the original order
+    // If the menu is open, do not sort
     if (openMenuCardId !== null) {
       return cardsWithProgress;
     }
 
-    // Otherwise, sort the cards
-    return cardsWithProgress.sort((a, b) => b.progress - a.progress);
+    // Sort the cards stably
+    return cardsWithProgress.sort((a, b) => {
+      if (b.progress !== a.progress) {
+        return b.progress - a.progress;
+      }
+      // Tie-breaker: keep original order based on index
+      return cards.indexOf(a) - cards.indexOf(b);
+    });
   }, [cards, openMenuCardId]);
 
   return (
@@ -312,7 +359,7 @@ const CardBlocks = (props: Props) => {
         Clear All Cards
       </button>
       <div className="flex flex-col gap-4">
-        {sortedCards.map((card) => (
+        {cardsWithProgress.map((card) => (
           <CardBlock
             key={card.id}
             id={card.id}
@@ -320,6 +367,7 @@ const CardBlocks = (props: Props) => {
             category={card.category}
             startTime={card.startTime}
             interval={card.interval}
+            progress={card.progress} // Pass progress here
             onIndicatorClick={handleCardInteraction}
             onDeleteClick={deleteCard}
             isMenuOpen={openMenuCardId === card.id}
