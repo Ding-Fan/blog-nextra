@@ -25,7 +25,7 @@ const CARD_DATA = [
     content: "use perfume",
     startTime: dayjs(),
     category: "hygiene",
-    interval: dayjs.duration(3, "hours")
+    interval: dayjs.duration(2, "hours")
   },
   {
     id: "6c58a0b8-4838-4387-a519-831e7a78816e",
@@ -74,14 +74,14 @@ const CARD_DATA = [
     content: "wash feet",
     startTime: dayjs(),
     category: "hygiene",
-    interval: dayjs.duration(6, "hours")
+    interval: dayjs.duration(5, "hours")
   },
   {
     id: "3057b64c-5c4a-44aa-b412-564f2d2874e4",
     content: "wash face",
     startTime: dayjs(),
     category: "hygiene",
-    interval: dayjs.duration(6, "hours")
+    interval: dayjs.duration(5, "hours")
   },
   {
     id: "a6219279-24ae-4a69-a09c-a6d87e197917",
@@ -137,7 +137,7 @@ const CARD_DATA = [
     content: "organize handouts",
     startTime: dayjs(),
     category: "education",
-    interval: dayjs.duration(1, "days")
+    interval: dayjs.duration(12, "hours")
   },
   {
     id: "988b9826-dcc6-4b3c-afba-d6ec50300c82",
