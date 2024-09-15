@@ -199,123 +199,184 @@ const CARD_DATA = [
 
 const CardBlocks = (props: Props) => {
   const [cards, setCards] = useState([]);
-
-  const [openMenuCardId, setOpenMenuCardId] = useState(null);
   const [cardsWithProgress, setCardsWithProgress] = useState([]);
+  const [openMenuCardId, setOpenMenuCardId] = useState(null);
 
-  // Function to calculate progress and sort cards
-  const computeAndSortCards = () => {
-    const updatedCards = cards.map((card) => {
-      const elapsed = dayjs().diff(card.startTime); // in milliseconds
-      const total = card.interval; // in milliseconds
+  // Function to merge CARD_DATA with stored cards
+  const mergeCards = (defaultCards, storedCards) => {
+    const defaultCardsMap = new Map(defaultCards.map((card) => [card.id, card]));
+    const allCardIds = new Set([
+      ...defaultCards.map((card) => card.id),
+      ...storedCards.map((card) => card.id),
+    ]);
+
+    return Array.from(allCardIds).map(
+      (id) => storedCards.find((card) => card.id === id) || defaultCardsMap.get(id)
+    );
+  };
+
+  // Load initial cards on component mount
+  useEffect(() => {
+    const storedCards = JSON.parse(localStorage.getItem("cards")) || [];
+
+    // Convert stored startTime back to Day.js objects
+    const processedStoredCards = storedCards.map((card) => ({
+      ...card,
+      startTime: dayjs(card.startTime),
+    }));
+
+    // Merge CARD_DATA with stored cards
+    const initialCards = mergeCards(CARD_DATA, processedStoredCards);
+
+    setCards(initialCards);
+
+    // Initialize cardsWithProgress
+    const initialCardsWithProgress = initialCards.map((card) => {
+      const elapsed = dayjs().diff(card.startTime);
+      const total = card.interval;
       const progress = (elapsed / total) * 100;
       const cappedProgress = Math.min(Math.max(progress, 0), 100);
 
       return { ...card, progress: cappedProgress };
     });
 
-    let sortedCards;
+    setCardsWithProgress(initialCardsWithProgress);
 
-    if (openMenuCardId !== null) {
-      // Do not sort when menu is open
-      sortedCards = updatedCards;
-    } else {
-      // Sort the cards
-      sortedCards = updatedCards.sort((a, b) => {
-        if (b.progress !== a.progress) {
-          return b.progress - a.progress;
-        }
-        // Tie-breaker
-        return cards.indexOf(a) - cards.indexOf(b);
-      });
-    }
-
-    setCardsWithProgress(sortedCards);
-  };
-
-  // Update progress and sorting every second
-  useEffect(() => {
-    computeAndSortCards();
-
-    const intervalId = setInterval(() => {
-      computeAndSortCards();
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, [cards, openMenuCardId]);
+    // Immediately sort after initialization
+    computeAndSortCards(true);
+  }, []);
 
   const handleMenuToggle = (id) => {
     setOpenMenuCardId((prevId) => (prevId === id ? null : id));
   };
 
-  const mergeCards = (defaultCards, storedCards) => {
-    const defaultCardsMap = new Map(defaultCards.map(card => [card.id, card]));
-    const allCardIds = new Set([...defaultCards.map(card => card.id), ...storedCards.map(card => card.id)]);
+  const computeAndSortCards = (shouldSort = false) => {
+    // Update progress values in the current order
+    let updatedCards = cardsWithProgress.map((card) => {
+      const elapsed = dayjs().diff(card.startTime);
+      const total = card.interval;
+      const progress = (elapsed / total) * 100;
+      const cappedProgress = Math.min(Math.max(progress, 0), 100);
 
-    return Array.from(allCardIds).map(id => storedCards.find(card => card.id === id) || defaultCardsMap.get(id))
-  }
+      return { ...card, progress: cappedProgress };
+    });
 
-  const clearCards = () => {
-    const confirmClear = window.confirm("Are you sure you want to clear all cards?");
-    if (!confirmClear) return;
-    localStorage.removeItem("cards");
-    setCards([]);
-  }
+    // Handle additions (new cards)
+    const existingCardIds = new Set(updatedCards.map((card) => card.id));
+    const newCards = cards
+      .filter((card) => !existingCardIds.has(card.id))
+      .map((card) => {
+        const elapsed = dayjs().diff(card.startTime);
+        const total = card.interval;
+        const progress = (elapsed / total) * 100;
+        const cappedProgress = Math.min(Math.max(progress, 0), 100);
+
+        return { ...card, progress: cappedProgress };
+      });
+
+    // Append new cards to updatedCards
+    updatedCards = updatedCards.concat(newCards);
+
+    // Handle deletions (removed cards)
+    const cardsSet = new Set(cards.map((card) => card.id));
+    updatedCards = updatedCards.filter((card) => cardsSet.has(card.id));
+
+    let sortedCards;
+
+    if (shouldSort && openMenuCardId === null) {
+      // Sort the cards by progress
+      sortedCards = updatedCards
+        .slice() // Create a copy to avoid mutating in place
+        .sort((a, b) => {
+          if (b.progress !== a.progress) {
+            return b.progress - a.progress;
+          }
+          // Tie-breaker using card IDs for consistency
+          return a.id.localeCompare(b.id);
+        });
+    } else {
+      // Use the existing order without sorting
+      sortedCards = updatedCards;
+    }
+
+    setCardsWithProgress(sortedCards);
+  };
 
   useEffect(() => {
-    // When the page loads, try to get cards from localStorage
-    const storedCards = JSON.parse(localStorage.getItem("cards")) || [];
+    // Update progress every second without sorting
+    const progressInterval = setInterval(() => {
+      computeAndSortCards(false); // Update progress without sorting
+    }, 1000);
 
-    // Convert stored startTime and interval back to Day.js objects
-    const processedStoredCards = storedCards.map((card) => ({
+    return () => {
+      clearInterval(progressInterval);
+    };
+  }, [cardsWithProgress, openMenuCardId]); // Depend on cardsWithProgress and openMenuCardId
+
+  useEffect(() => {
+    // Sort cards every 4 minutes
+    const sortInterval = setInterval(() => {
+      computeAndSortCards(true); // Update progress and sort
+    }, 240000); // 240,000 milliseconds = 4 minutes
+
+    return () => {
+      clearInterval(sortInterval);
+    };
+  }, [cardsWithProgress, openMenuCardId]); // Depend on cardsWithProgress and openMenuCardId
+
+  // Recompute and sort when cards change (e.g., added or deleted)
+  useEffect(() => {
+    computeAndSortCards(true);
+  }, [cards]);
+
+  const saveCards = (newCards) => {
+    setCards(newCards);
+
+    // Update cardsWithProgress
+    const newCardsWithProgress = newCards.map((card) => {
+      const elapsed = dayjs().diff(card.startTime);
+      const total = card.interval;
+      const progress = (elapsed / total) * 100;
+      const cappedProgress = Math.min(Math.max(progress, 0), 100);
+
+      return { ...card, progress: cappedProgress };
+    });
+
+    setCardsWithProgress(newCardsWithProgress);
+
+    // Save to localStorage
+    const cardsToSave = newCards.map((card) => ({
       ...card,
-      startTime: dayjs(card.startTime),
+      startTime: card.startTime.toISOString(),
     }));
 
-    setCards(mergeCards(CARD_DATA, processedStoredCards));
-  }, []);
+    localStorage.setItem("cards", JSON.stringify(cardsToSave));
+  };
 
   const addNewCard = () => {
     const newCard = {
       id: uuidv4(),
       content: `Card ${cards.length + 1} Content`,
-      startTime: Date.now(),
-      //   interval: 12 * 60 * 60 * 1000, // 12 hours
+      startTime: dayjs(),
       interval: 5 * 60 * 1000, // 5 minutes
+      category: "new category", // You can set a default category
     };
     const newCards = [...cards, newCard];
     saveCards(newCards);
   };
 
   const handleCardInteraction = (id) => {
-    handleBlueClick(id); // Reset block
-  };
-
-  const handleBlueClick = (id) => {
     refreshCard(id);
   };
 
   const refreshCard = (id) => {
     const updatedCards = cards.map((card) => {
       if (card.id === id) {
-        return { ...card, startTime: dayjs() }; // Use dayjs() instead of Date.now()
+        return { ...card, startTime: dayjs() };
       }
       return card;
     });
     saveCards(updatedCards);
-  };
-
-  const saveCards = (newCards) => {
-    setCards(newCards);
-
-    // Convert Day.js objects to serializable formats
-    const cardsToSave = newCards.map((card) => ({
-      ...card,
-      startTime: card.startTime.toISOString(),
-      interval: card.interval,
-    }));
-
-    localStorage.setItem("cards", JSON.stringify(cardsToSave));
   };
 
   const deleteCard = (id) => {
@@ -323,32 +384,13 @@ const CardBlocks = (props: Props) => {
     saveCards(updatedCards);
   };
 
-
-  // Compute progress and sort cards
-  const sortedCards = useMemo(() => {
-    const cardsWithProgress = cards.map((card) => {
-      const elapsed = dayjs().diff(card.startTime); // in milliseconds
-      const total = card.interval; // in milliseconds
-      const progress = (elapsed / total) * 100;
-      const cappedProgress = Math.min(Math.max(progress, 0), 100);
-
-      return { ...card, progress: cappedProgress };
-    });
-
-    // If the menu is open, do not sort
-    if (openMenuCardId !== null) {
-      return cardsWithProgress;
-    }
-
-    // Sort the cards stably
-    return cardsWithProgress.sort((a, b) => {
-      if (b.progress !== a.progress) {
-        return b.progress - a.progress;
-      }
-      // Tie-breaker: keep original order based on index
-      return cards.indexOf(a) - cards.indexOf(b);
-    });
-  }, [cards, openMenuCardId]);
+  const clearCards = () => {
+    const confirmClear = window.confirm("Are you sure you want to clear all cards?");
+    if (!confirmClear) return;
+    localStorage.removeItem("cards");
+    setCards([]);
+    setCardsWithProgress([]);
+  };
 
   return (
     <div>
@@ -367,7 +409,7 @@ const CardBlocks = (props: Props) => {
             category={card.category}
             startTime={card.startTime}
             interval={card.interval}
-            progress={card.progress} // Pass progress here
+            progress={card.progress}
             onIndicatorClick={handleCardInteraction}
             onDeleteClick={deleteCard}
             isMenuOpen={openMenuCardId === card.id}
