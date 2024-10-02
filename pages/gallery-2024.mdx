@@ -1,7 +1,7 @@
 # gallery 2024
 
 import GalleryImage from "components/GalleryImage";
-import isUrl from "scripts/utils";
+import { isUrl } from "scripts/utils";
 
 export const photos = [
   {
@@ -30,7 +30,7 @@ export const photos = [
       <GalleryImage
         key={photo.name}
         caption={photo.caption ?? index + 1}
-        src={isUrl ? photo.name : `images/gallery/${photo.name}`}
+        src={isUrl(photo.name) ? photo.name : `images/gallery/${photo.name}`}
       />
     );
   })}

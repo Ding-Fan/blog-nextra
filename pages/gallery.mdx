@@ -1,7 +1,7 @@
 # gallery
 
 import GalleryImage from "components/GalleryImage";
-import isUrl from "scripts/utils";
+import { isUrl } from "scripts/utils";
 
 export const photos = [
   { name: "PXL_20240327_064431662.jpg" },
@@ -59,8 +59,10 @@ export const photos = [
       <GalleryImage
         key={photo.name}
         caption={photo.caption ?? index + 1}
-        src={isUrl ? photo.name : `images/gallery/${photo.name}`}
+        src={isUrl(photo.name) ? photo.name : `images/gallery/${photo.name}`}
       />
     );
-  })}
+
+})}
+
 </div>
