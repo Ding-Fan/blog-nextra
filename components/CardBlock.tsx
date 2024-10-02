@@ -72,7 +72,7 @@ const CardBlock = ({
   return (
     <div className="flex flex-row items-stretch gap-2 relative">
       <div
-        className="rounded-full overflow-hidden flex cursor-pointer border-blue-500 border-solid border-2"
+        className="rounded-l-lg overflow-hidden flex cursor-pointer border-blue-500 border-solid border-2"
         onClick={handleIndicatorClick}
       >
         <div
@@ -83,7 +83,7 @@ const CardBlock = ({
           }}
         ></div>
       </div>
-      <div className="content border-black border-solid border bg-stone-50 flex-1 p-2">
+      <div className="rounded-r-lg content border-black border-solid border bg-stone-50 flex-1 p-2">
         <div className="text-lg font-bold line-clamp-2" title={content}>
           {content}
         </div>
