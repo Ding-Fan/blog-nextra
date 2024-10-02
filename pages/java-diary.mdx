@@ -15,6 +15,7 @@ import RichImage from "components/RichImage";
 - [(Online course) Introduction to Java](https://www.coursera.org/learn/java-introduction)
 - [(Example)learn java in y minutes](https://learnxinyminutes.com/docs/java/)
 - [(Human) I with ChatGPT can answer any questions you have](mailto:ouud@fastmail.com)
+- [Basic syntax](https://www.figma.com/design/KxfvLg4e7fWGHqEVoFxW1v/Java-Cards?node-id=0-1&t=XRscfgUTy6YeG8mp-1)
 
 ## Introduction
 
@@ -135,7 +136,6 @@ public class ClayFigure {
 - Postfix (`i++`, `i--`): The variable is used first, then changed.
 - Prefix (`++i`, `--i`): The variable is changed first, then used.
 
-
 ## Arguments and Parameters
 
 Or we can make the method `laugh` smarter.
@@ -251,12 +251,11 @@ ClayFigure clayFigureAomori = new ClayFigure();
 - `clayFigureAomori` : This is the variable name. It refers to the instance (or object) you create from the class `ClayFigure` . The name `clayFigureAomori` gives this specific object a unique identity, as if we were naming the clay figure based on where it was found (in 青森).
 - `new ClayFigure()` : The `new` keyword creates a new instance of the `ClayFigure` class. The part `ClayFigure()` is calling the constructor. A constructor?
 
-
 ### Constructor
 
 <RichImage
   classNameImg="w-full md:w-80"
-  caption={"constructor loves you"} 
+  caption={"constructor loves you"}
   src="images/real-constructor.png"
 />
 
@@ -349,7 +348,6 @@ This is a method
   - It has **no return type** (not even `void`).
   - It has the **same name as the class**.
   - It is called automatically when you create a new object (`new ClayFigure();`).
-  
 - **Method**:
   - It has a **return type** (like `void`, `int`, etc.).
   - It can have any name (it could but doesn't have to match the class name).
@@ -357,7 +355,7 @@ This is a method
 
 <RichImage
   classNameImg="w-full md:w-80"
-  caption={""} 
+  caption={""}
   src="images/constructor-vs-method.png"
 />
 
@@ -385,7 +383,7 @@ public class ClayFigure {
         System.out.println("Height: " + ClayFigure.height);
 
         // access the local variable by its name
-        System.out.println("Age: " + age);  
+        System.out.println("Age: " + age);
     }
 }
 ```
@@ -404,7 +402,6 @@ Definition: A class variable is declared with the static keyword inside a class 
 - Shared among all instances of the class.
 - Accessed via the class name (e.g., `ClayFigure.height` ).
 
-
 In Java, certain classes provide useful constants like `Math.PI` , `Integer.MAX_VALUE` , and `Double.MIN_VALUE` . These constants are **class variables** , also known as static variables.
 
 A class variable belongs to the class itself, rather than to instances of the class. You can access these variables without creating an object, simply by using the `class name` followed by `.` and the `variable name` .
@@ -422,7 +419,7 @@ public class ClayFigure {
 }
 ```
 
-The `Math` class, as well as `Integer` , `Double` , and others, belong to the `java.lang` package. The `java.lang` package is automatically imported into every Java program, meaning you don't need to write an explicit import statement for classes in this package. 
+The `Math` class, as well as `Integer` , `Double` , and others, belong to the `java.lang` package. The `java.lang` package is automatically imported into every Java program, meaning you don't need to write an explicit import statement for classes in this package.
 
 When you print `Double.MIN_VALUE` , you will see a small number: `4.9E-324` . This is an example of scientific notation, a way of representing very small or very large numbers concisely. `4.9E-324` means `4.9 × 10^(-324)` , `E` is the exponent.
 
@@ -530,10 +527,9 @@ public class Box {
 ```
 
 Todo: create exercise about
-duck class, duck color: white duck, yellow duck, black duck. duck type: living duck, dead duck, rubber duck 
+duck class, duck color: white duck, yellow duck, black duck. duck type: living duck, dead duck, rubber duck
 class name for class variable
 this for instance variable
-
 
 ## Japanese Tech Words
 
