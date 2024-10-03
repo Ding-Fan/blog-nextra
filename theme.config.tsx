@@ -16,6 +16,9 @@ const config: DocsThemeConfig = {
     // enableSystem: false,
     forcedTheme: 'light',
   },
+  sidebar: {
+    toggleButton: true,
+  },
   editLink: {
     component: null
   },
