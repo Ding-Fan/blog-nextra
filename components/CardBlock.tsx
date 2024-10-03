@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
+import { ct } from "../scripts/utils";
 
 type Props = {
   id: string;
+  className?: string;
   content: string;
   category: string;
   startTime: dayjs.Dayjs;
-  interval: number;
-  progress: number; // New prop
-  onIndicatorClick: (id: string) => void;
-  onDeleteClick: (id: string) => void;
-  isMenuOpen: boolean;
-  onMenuToggle: (id: string | null) => void;
+  interval?: number;
+  progress?: number; // New prop
+  onIndicatorClick?: (id: string) => void;
+  onDeleteClick?: (id: string) => void;
+  isMenuOpen?: boolean;
+  onMenuToggle?: (id: string | null) => void;
 };
 
 const CardBlock = ({
+  className,
   content,
   category,
   id,
-  onIndicatorClick,
-  onDeleteClick,
+  onIndicatorClick = () => { },
+  onDeleteClick = () => { },
   startTime,
-  interval,
-  progress,
-  isMenuOpen,     // New prop
-  onMenuToggle,   // New prop
+  interval = 0,
+  progress = 100,
+  isMenuOpen = false,     // New prop
+  onMenuToggle = () => { },   // New prop
 }: Props) => {
 
 
@@ -70,7 +73,7 @@ const CardBlock = ({
   const indicatorHeight = `${progress}%`;
 
   return (
-    <div className="flex flex-row items-stretch gap-2 relative">
+    <div className={ct("flex flex-row items-stretch gap-2 relative", className)}>
       <div
         className="rounded-l-lg overflow-hidden flex cursor-pointer border-blue-500 border-solid border-2"
         onClick={handleIndicatorClick}
