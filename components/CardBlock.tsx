@@ -14,6 +14,7 @@ type Props = {
   onDeleteClick?: (id: string) => void;
   isMenuOpen?: boolean;
   onMenuToggle?: (id: string | null) => void;
+  type?: 'card' | 'pill'
 };
 
 const CardBlock = ({
@@ -28,7 +29,25 @@ const CardBlock = ({
   progress = 100,
   isMenuOpen = false,     // New prop
   onMenuToggle = () => { },   // New prop
+  type = 'card'
 }: Props) => {
+
+  const styles = {
+    card: {
+      wrapper: "gap-2",
+      indicatorWrapper: "rounded-l-lg ",
+      indicator: "w-5",
+      contentWrapper: "rounded-r-lg p-2",
+      contentText: "text-lg"
+    },
+    pill: {
+      wrapper: "gap-1",
+      indicatorWrapper: "rounded-l-md",
+      indicator: "w-2",
+      contentWrapper: "rounded-r-md",
+      contentText: "text-base"
+    }
+  }
 
 
   const handleIndicatorClick = () => {
@@ -73,26 +92,30 @@ const CardBlock = ({
   const indicatorHeight = `${progress}%`;
 
   return (
-    <div className={ct("flex flex-row items-stretch gap-2 relative", className)}>
+    <div className={ct("flex flex-row items-stretch relative", styles[type].wrapper, className)}>
       <div
-        className="rounded-l-lg overflow-hidden flex cursor-pointer border-blue-500 border-solid border-2"
+        className={ct("overflow-hidden flex cursor-pointer border-blue-500 border-solid border-2", styles[type].indicatorWrapper)}
         onClick={handleIndicatorClick}
       >
         <div
-          className="w-5 bg-blue-500"
+          className={ct("bg-blue-500", styles[type].indicator)}
           style={{
             height: indicatorHeight,
             transition: "height 1s linear",
           }}
         ></div>
       </div>
-      <div className="rounded-r-lg content border-black border-solid border bg-stone-50 flex-1 p-2">
-        <div className="text-lg font-bold line-clamp-2" title={content}>
+      <div className={ct("content border-black border-solid border bg-stone-50 flex-1", styles[type].contentWrapper)}>
+        <div className={ct("font-bold line-clamp-2", styles[type].contentText)} title={content}>
           {content}
         </div>
-        <div className="text-sm text-gray-500">
-          {category} - {formatInterval(interval)}
-        </div>
+        {
+          type === 'card' && (
+            <div className="text-sm text-gray-500">
+              {category} - {formatInterval(interval)}
+            </div>
+          )
+        }
       </div>
       {isMenuOpen && (
         <div className="absolute z-10 mt-8 bg-white border rounded shadow w-32">

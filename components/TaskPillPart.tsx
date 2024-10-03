@@ -46,6 +46,7 @@ const TaskPillPart: React.FC = () => {
           {card ? (
             <CardBlock
               id={card.id}
+              type='pill'
               content={card.content}
               category={card.category}
               startTime={card.startTime}
