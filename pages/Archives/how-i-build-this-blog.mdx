@@ -8,7 +8,7 @@ I will log my digital life so I will be more trackable rather than opaque. Digit
 
 ## font-display
 
-There are three fonts used in this blog, they almost took 20MB. 
+There are three fonts used in this blog, they almost took 20MB.
 
 I need use `font-display: swap;` so the downloading of the font [won't block](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) the text showing up.
 
@@ -31,7 +31,6 @@ https://github.com/streetsidesoftware/vscode-spell-checker/issues/657#issuecomme
 
 If using vscode ssh, need to install Code Spell Checker extension in ssh again(there will be a button `Install in SSH: 123.123.123.123` )
 
-
 ## make image showing
 
 If I have a mdx file in a folder, eg. `archived/ielts.mdx` , I need to use `src="../images/name of the image"` to make it showing.
@@ -41,9 +40,7 @@ If I have a mdx file in a folder, eg. `archived/ielts.mdx` , I need to use `src=
 I have to use `export` to define a variable/constant.
 
 ```tsx
-export const photos = [
-"PXL_20240327_064431662.jpg"
-]
+export const photos = ["PXL_20240327_064431662.jpg"];
 ```
 
 If I use `const photos` it will give me error.
@@ -52,9 +49,9 @@ If I use `const photos` it will give me error.
 
 > tldr: 在 vercel 里设置 environment variable `VERCEL_FORCE_NO_BUILD_CACHE = 1`
 
-![](../public/images/2024-02-17-23-22-58.png)
+![](../../public/images/2024-02-17-23-22-58.png)
 
-![](../public/images/2024-02-17-23-23-28.png)
+![](../../public/images/2024-02-17-23-23-28.png)
 
 我也不知怎么回事，也许 nextra 的 static site generation 和 vercel cache 产生奇妙反应，侧边栏就会出现类似 stale state 的现象。
 
@@ -62,7 +59,7 @@ If I use `const photos` it will give me error.
 
 据说要 [把 remote caching 关了](https://github.com/vercel/vercel/discussions/8057#discussioncomment-4585346)
 
-![](../public/images/2024-02-17-22-38-57.png)
+![](../../public/images/2024-02-17-22-38-57.png)
 
 再试一次，原神启动！
 
@@ -76,13 +73,13 @@ If I use `const photos` it will give me error.
 
 > EDIT (14th Oct 2022): The `VERCEL_FORCE_NO_BUILD_CACHE` env var now exists! Set this to `1` and the build cache will be skipped.
 
-![](../public/images/2024-02-17-23-21-54.png)
+![](../../public/images/2024-02-17-23-21-54.png)
 
 终于， [原神亲自启动](./genshin.mdx) 了。
 
-import RichImage from 'components/RichImage'
+import RichImage from "components/RichImage";
 
-<RichImage effect='hoverClear' src='/images/2024-02-17-23-34-44.png' />
+<RichImage effect="hoverClear" src="/images/2024-02-17-23-34-44.png" />
 
 ## install tailwind CSS
 
@@ -97,8 +94,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/guides/nextjs)
 
-这些 [没有文档记录的东西](https://github.com/shuding/nextra/issues/2573) ，不知哪天就会 Move fast , break things! 
-
+这些 [没有文档记录的东西](https://github.com/shuding/nextra/issues/2573) ，不知哪天就会 Move fast , break things!
 
 ## add RSS support
 
@@ -106,8 +102,7 @@ I found that there are a rss generator of nextra blog theme, I'm gonna give it a
 
 create `script/gen-rss.js` , fill it with [gen-rss.js](https://github.com/vercel/nextjs-portfolio-starter/blob/main/scripts/gen-rss.js)
 
-
-modify package.json 
+modify package.json
 
 add the rss generation to build command
 
@@ -141,13 +136,19 @@ create `.env.local` and use it like `process.env.SOME_ENV`
 For safari, [video tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) should have `playsinline` , otherwise it will jump out to fullscreen. If using JSX, [maybe should](https://stackoverflow.com/a/68219309/6236633) use `webkit-playsinline={true}`
 
 ```tsx
-<div className='flex flex-col items-center justify-center'>
-    <video className='w-full h-auto md:w-80' autoPlay muted loop
-    playsinline webkit-playsinline={true}>
-        <source src="videos/ezgif-7-53636bcd6f.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <Caption children={"《天下无贼》中找到了生活的其他部分的劫匪"} />
+<div className="flex flex-col items-center justify-center">
+  <video
+    className="w-full h-auto md:w-80"
+    autoPlay
+    muted
+    loop
+    playsinline
+    webkit-playsinline={true}
+  >
+    <source src="videos/ezgif-7-53636bcd6f.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <Caption children={"《天下无贼》中找到了生活的其他部分的劫匪"} />
 </div>
 ```
 
