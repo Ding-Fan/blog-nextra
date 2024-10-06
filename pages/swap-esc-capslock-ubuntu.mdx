@@ -1,0 +1,49 @@
+# Swap Esc with CapsLock in Ubuntu
+
+tldr: Use [input-remapper](https://github.com/sezanzeb/input-remapper)
+
+## Prerequisites
+
+- I'm on Pop!\_OS, wayland. I'm not sure if it works on other distros or desktop environments, you can try it.
+- Ensure there are no other tools or scripts doing the remapping.
+- Install input-remapper, open it.
+
+## Create preset
+
+1. In the Devices tab, choose your keyboard from the list.
+2. Click the "New Preset" button and name it "Swap Esc with CapsLock".
+
+## Mapping Caps Lock to Escape
+
+- Add a New Mapping:
+
+  1. In the Input panel, click "Add" and select "Empty Mapping".
+  2. Name it "CapsLock to Esc".
+
+- Configure the Mapping:
+  1. Input Panel: Click "Record" and press the Caps Lock key.
+  2. Output Panel: Choose Type "Key or Macro", Target "keyboard", in the text box, type "esc" then select "Escape" from the dropdown.
+
+## Mapping Escape to Caps Lock
+
+- Add a New Mapping:
+
+  1. In the Input panel, click "Add" and select "Empty Mapping".
+  2. Name it "Esc to CapsLock".
+
+- Configure the Mapping:
+  1. Input Panel: Click "Record" and press the Escape key.
+  2. Output Panel: Choose Type "Key or Macro", Target "keyboard", in the text box, type "CapsLock" then select "CapsLock" from the dropdown.
+
+## Check the Remapping
+
+- Click "Apply" to apply the preset.
+- Toggle on the "Autoload".
+- Reboot your computer and check if it works.
+- tools:
+  - [key test website](https://en.key-test.ru)
+  - [notepad website](https://justnotepad.com)
+
+## Conclusion
+
+I tried GNOME Tweaks and gsettings scripts, but they caused Escape or Caps Lock to act as both keys simultaneously. Input Remapper works good so far. Always check after reboot, don't check during configuration.
