@@ -11,6 +11,14 @@
 }
 
 @font-face {
+  font-family: "FZBIAOYSK";
+  src: url("/fonts/FZBIAOYSK.TTF") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "LXGW WenKai Regular";
   src: url("/fonts/LXGWWenKai-Regular.ttf") format("truetype");
   font-weight: 400;
@@ -34,7 +42,7 @@
 }
 
 body {
-  font-family: "Inconsolata Regular Nerd Font Complete", "LXGW WenKai Regular",
+  font-family: "Inconsolata Regular Nerd Font Complete", "FZBIAOYSK",
     "Klee One Regular", serif;
   @apply text-xl md:text-base;
   background-color: var(--bg) !important;
