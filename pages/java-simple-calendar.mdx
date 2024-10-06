@@ -52,8 +52,7 @@ public class SimpleCalendar {
       // After printing 7 days (a full week), move to the next line
       // The condition checks if (current day number + first day offset) is divisible by 7
       // For example, if the first day is Wednesday (3), the first week will have 3 padding empty slots
-      // and the first day of the month will be printed on the 5th position
-// (1 + 3) % 7 = 4, (2 + 3) % 7 = 5, (3 + 3) % 7 = 6, (4 + 3) % 7 = 0 (next line)
+// padding slot, padding slot, padding slot, (1 + 3) % 7 = 4, (2 + 3) % 7 = 5, (3 + 3) % 7 = 6, (4 + 3) % 7 = 0 (next line)
 // (5 + 3) % 7 = 1, (6 + 3) % 7 = 2, (7 + 3) % 7 = 3, (8 + 3) % 7 = 4, (9 + 3) % 7 = 5, (10 + 3) % 7 = 6, (11 + 3) % 7 = 0 (next line)
 // (12 + 3) % 7 = 1, (13 + 3) % 7 = 2, (14 + 3) % 7 = 3, (15 + 3) % 7 = 4, (16 + 3) % 7 = 5, (17 + 3) % 7 = 6, (18 + 3) % 7 = 0 (next line)
 // (19 + 3) % 7 = 1, (20 + 3) % 7 = 2, (21 + 3) % 7 = 3, (22 + 3) % 7 = 4, (23 + 3) % 7 = 5, (24 + 3) % 7 = 6, (25 + 3) % 7 = 0 (next line)
