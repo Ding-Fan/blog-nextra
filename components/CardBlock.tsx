@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+// CardBlock.tsx
+import React from "react";
 import dayjs from "dayjs";
 import { ct } from "../scripts/utils";
 
-type Props = {
+export type Props = {
   id: string;
   className?: string;
   content: string;
@@ -11,10 +12,7 @@ type Props = {
   interval?: number;
   progress?: number; // New prop
   onIndicatorClick?: (id: string) => void;
-  onDeleteClick?: (id: string) => void;
-  isMenuOpen?: boolean;
-  onMenuToggle?: (id: string | null) => void;
-  type?: 'card' | 'pill'
+  type?: "card" | "pill";
 };
 
 const CardBlock = ({
@@ -22,53 +20,27 @@ const CardBlock = ({
   content,
   category,
   id,
-  onIndicatorClick = () => { },
-  onDeleteClick = () => { },
+  onIndicatorClick = () => {},
   startTime,
   interval = 0,
   progress = 100,
-  isMenuOpen = false,     // New prop
-  onMenuToggle = () => { },   // New prop
-  type = 'card'
+  type = "card",
 }: Props) => {
-
   const styles = {
     card: {
       wrapper: "gap-2",
       indicatorWrapper: "rounded-l-lg ",
       indicator: "w-5",
       contentWrapper: "rounded-r-lg p-2",
-      contentText: "text-lg"
+      contentText: "text-lg",
     },
     pill: {
       wrapper: "gap-1",
       indicatorWrapper: "rounded-l-md",
       indicator: "w-2",
       contentWrapper: "rounded-r-md",
-      contentText: "text-base"
-    }
-  }
-
-
-  const handleIndicatorClick = () => {
-    onMenuToggle(id); // Toggle menu for this card
-  };
-
-  const handleComplete = () => {
-    onIndicatorClick(id); // Reset startTime
-    onMenuToggle(null);   // Close the menu
-  };
-
-  const handleDelete = () => {
-    const confirmDelete = window.confirm("Delete this card?");
-    if (confirmDelete) {
-      onDeleteClick(id);
-    }
-    onMenuToggle(null);   // Close the menu
-  };
-
-  const handleCancel = () => {
-    onMenuToggle(null);   // Close the menu
+      contentText: "text-base",
+    },
   };
 
   const formatInterval = (intervalMs: number): string => {
@@ -83,7 +55,8 @@ const CardBlock = ({
     if (days) parts.push(`${days} day${days !== 1 ? "s" : ""}`);
     if (hours) parts.push(`${hours} hour${hours !== 1 ? "s" : ""}`);
     if (minutes) parts.push(`${minutes} minute${minutes !== 1 ? "s" : ""}`);
-    if (seconds && !parts.length) parts.push(`${seconds} second${seconds !== 1 ? "s" : ""}`);
+    if (seconds && !parts.length)
+      parts.push(`${seconds} second${seconds !== 1 ? "s" : ""}`);
 
     return parts.join(" ");
   };
@@ -92,10 +65,19 @@ const CardBlock = ({
   const indicatorHeight = `${progress}%`;
 
   return (
-    <div className={ct("flex flex-row items-stretch relative", styles[type].wrapper, className)}>
+    <div
+      className={ct(
+        "flex flex-row items-stretch relative",
+        styles[type].wrapper,
+        className
+      )}
+    >
       <div
-        className={ct("overflow-hidden flex cursor-pointer border-blue-500 border-solid border-2", styles[type].indicatorWrapper)}
-        onClick={handleIndicatorClick}
+        className={ct(
+          "overflow-hidden flex cursor-pointer border-blue-500 border-solid border-2",
+          styles[type].indicatorWrapper
+        )}
+        onClick={() => onIndicatorClick(id)}
       >
         <div
           className={ct("bg-blue-500", styles[type].indicator)}
@@ -105,40 +87,24 @@ const CardBlock = ({
           }}
         ></div>
       </div>
-      <div className={ct("content border-black border-solid border bg-stone-50 flex-1", styles[type].contentWrapper)}>
-        <div className={ct("font-bold line-clamp-2", styles[type].contentText)} title={content}>
+      <div
+        className={ct(
+          "content border-black border-solid border bg-stone-50 flex-1",
+          styles[type].contentWrapper
+        )}
+      >
+        <div
+          className={ct("font-bold line-clamp-2", styles[type].contentText)}
+          title={content}
+        >
           {content}
         </div>
-        {
-          type === 'card' && (
-            <div className="text-sm text-gray-500">
-              {category} - {formatInterval(interval)}
-            </div>
-          )
-        }
+        {type === "card" && (
+          <div className="text-sm text-gray-500">
+            {category} - {formatInterval(interval)}
+          </div>
+        )}
       </div>
-      {isMenuOpen && (
-        <div className="absolute z-10 mt-8 bg-white border rounded shadow w-32">
-          <button
-            onClick={handleComplete}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-          >
-            Complete
-          </button>
-          <button
-            onClick={handleDelete}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-          >
-            Delete
-          </button>
-          <button
-            onClick={handleCancel}
-            className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-          >
-            Cancel
-          </button>
-        </div>
-      )}
     </div>
   );
 };

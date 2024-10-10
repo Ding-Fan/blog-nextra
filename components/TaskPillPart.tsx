@@ -10,28 +10,28 @@ const TaskPillPart: React.FC = () => {
       content: 'タスク1',
       startTime: dayjs(),
       category: 'hygiene',
-      interval: dayjs.duration(2, 'minutes'),
+      interval: dayjs.duration(2, 'minutes').asMilliseconds(),
     },
     {
       id: '3',
       content: 'タスク2',
       startTime: dayjs(),
       category: 'hygiene',
-      interval: dayjs.duration(2, 'minutes'),
+      interval: dayjs.duration(2, "minutes").asMilliseconds(),
     },
     {
       id: '4',
       content: 'タスク3',
       startTime: dayjs(),
       category: 'hygiene',
-      interval: dayjs.duration(2, 'minutes'),
+      interval: dayjs.duration(2, "minutes").asMilliseconds(),
     },
     {
       id: '5',
       content: 'タスク4',
       startTime: dayjs(),
       category: 'hygiene',
-      interval: dayjs.duration(2, 'minutes'),
+      interval: dayjs.duration(2, "minutes").asMilliseconds(),
     },
   ];
 
