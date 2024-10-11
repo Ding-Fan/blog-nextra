@@ -5,12 +5,12 @@ import DuckIcon from "./DuckIcon";
 type Props = {};
 
 const DuckHome = (props: Props) => {
-  const [duckCount, setDuckCount] = React.useState(0);
+  const [blackDuckCount, setBlackDuckCount] = React.useState(0);
   const [redDuckCount, setRedDuckCount] = React.useState(0);
   const [blueDuckCount, setBlueDuckCount] = React.useState(0);
 
-  const newDuck = () => {
-    setDuckCount(duckCount + 1);
+  const newBlackDuck = () => {
+    setBlackDuckCount(blackDuckCount + 1);
   };
 
   const newRedDuck = () => {
@@ -24,11 +24,11 @@ const DuckHome = (props: Props) => {
   return (
     <div className="grid grid-cols-3 gap-2">
       <div className="">
-        <Button onClick={newDuck}>new Duck();</Button>
+        <Button onClick={newBlackDuck}>new Duck("black");</Button>
         <div className="duck-area">
-          {[...Array(duckCount)].map((_, i) => (
+          {[...Array(blackDuckCount)].map((_, i) => (
             <div className="flex items-center">
-              <div className="mr-2">myDuck{i}</div>
+              <div className="mr-2 text-gray-400">myBlackDuck{i}</div>
               <DuckIcon key={i} className="w-8 " />
             </div>
           ))}
@@ -39,7 +39,7 @@ const DuckHome = (props: Props) => {
         <div className="duck-area">
           {[...Array(redDuckCount)].map((_, i) => (
             <div className="flex items-center">
-              <div className="mr-2">myRedDuck{i}</div>
+              <div className="mr-2 text-gray-400">myRedDuck{i}</div>
               <DuckIcon key={i} className="w-8 text-red-600" />
             </div>
           ))}
@@ -51,7 +51,7 @@ const DuckHome = (props: Props) => {
         <div className="duck-area">
           {[...Array(blueDuckCount)].map((_, i) => (
             <div className="flex items-center">
-              <div className="mr-2">myBlueDuck{i}</div>
+              <div className="mr-2 text-gray-400">myBlueDuck{i}</div>
               <DuckIcon key={i} className="w-8 text-blue-600" />
             </div>
           ))}
