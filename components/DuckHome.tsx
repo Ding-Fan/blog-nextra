@@ -1,21 +1,62 @@
 import { Button } from "nextra/components";
 import React from "react";
+import DuckIcon from "./DuckIcon";
 
 type Props = {};
 
 const DuckHome = (props: Props) => {
+  const [duckCount, setDuckCount] = React.useState(0);
+  const [redDuckCount, setRedDuckCount] = React.useState(0);
+  const [blueDuckCount, setBlueDuckCount] = React.useState(0);
+
   const newDuck = () => {
-    const duckArea = document.querySelector(".duck-area");
-    const index = duckArea.children.length + 1;
-    const duck = document.createElement("div");
-    duck.innerText = `myDuck${index} 🦆`;
-    duckArea.appendChild(duck);
+    setDuckCount(duckCount + 1);
+  };
+
+  const newRedDuck = () => {
+    setRedDuckCount(redDuckCount + 1);
+  };
+
+  const newBlueDuck = () => {
+    setBlueDuckCount(blueDuckCount + 1);
   };
 
   return (
-    <div className="">
-      <Button onClick={newDuck}>new Duck();</Button>
-      <div className="duck-area"></div>
+    <div className="grid grid-cols-3 gap-2">
+      <div className="">
+        <Button onClick={newDuck}>new Duck();</Button>
+        <div className="duck-area">
+          {[...Array(duckCount)].map((_, i) => (
+            <div className="flex items-center">
+              <div className="mr-2">myDuck{i}</div>
+              <DuckIcon key={i} className="w-8 " />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="">
+        <Button onClick={newRedDuck}>new Duck("red");</Button>
+        <div className="duck-area">
+          {[...Array(redDuckCount)].map((_, i) => (
+            <div className="flex items-center">
+              <div className="mr-2">myRedDuck{i}</div>
+              <DuckIcon key={i} className="w-8 text-red-600" />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="">
+        {/* blue duck */}
+        <Button onClick={newBlueDuck}>new Duck("blue");</Button>
+        <div className="duck-area">
+          {[...Array(blueDuckCount)].map((_, i) => (
+            <div className="flex items-center">
+              <div className="mr-2">myBlueDuck{i}</div>
+              <DuckIcon key={i} className="w-8 text-blue-600" />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
