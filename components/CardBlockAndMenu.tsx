@@ -14,9 +14,9 @@ const CardBlockAndMenu = ({
   id,
   onIndicatorClick,
   isMenuOpen = false,
-  onMenuToggle = () => {},
-  onDeleteClick = () => {},
-  onCompleteClick = () => {},
+  onMenuToggle = () => { },
+  onDeleteClick = () => { },
+  onCompleteClick = () => { },
   ...cardBlockProps
 }: Props) => {
   const handleComplete = () => {
