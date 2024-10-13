@@ -24,7 +24,7 @@ const WordList = ({ words = [], synonyms = [] }: Props) => {
   }
 
   return (
-    <div>
+    <div className='text-sm md:text-base'>
       <div className='grid grid-cols-3 md:grid-cols-5 gap-4'>
         {
           words.map((word, index) => (
