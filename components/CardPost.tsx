@@ -13,15 +13,25 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 const CardPost = ({ post, className }: Props) => {
   return (
     <div className={ct("bg-stone-50 relative", className)}>
-      <div className='relative top-1/2 font-bold'>
+      <div
+        className='relative inline-flex left-4 px-1 bg-stone-50 font-bold'
+        style={{ transform: "translateY(50%)" }}
+      >
         {post.author}
       </div>
       <div className='border-2 border-solid border-black p-4'>
         {post.content}
       </div>
-      <div>
-        {post.description}
-      </div>
+      {
+        post.description && (
+          <div
+            className='relative inline-flex left-1/2 px-1 bg-stone-50 font-bold'
+            style={{ transform: "translateY(-50%) translateX(-50%)" }}
+          >
+            {post.description}
+          </div>
+        )
+      }
     </div>
   );
 };
