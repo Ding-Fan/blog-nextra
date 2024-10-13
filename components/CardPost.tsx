@@ -19,7 +19,7 @@ const CardPost = ({ post, className }: Props) => {
       >
         {post.author}
       </div>
-      <div className='border-2 border-solid border-black p-4'>
+      <div className='border-2 border-solid border-black p-4 font-quote-content'>
         {post.content}
       </div>
       {
