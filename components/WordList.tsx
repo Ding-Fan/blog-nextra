@@ -29,7 +29,7 @@ const WordList = ({ words = [], synonyms = [] }: Props) => {
         {
           words.map((word, index) => (
             <div key={index} className='flex items-baseline gap-2'>
-              <Ruby className='border-b border-solid border-teal-800' ruby={word.ruby}>{word.content}</Ruby>
+              <Ruby className='border-b border-l pl-1 border-solid border-teal-800' ruby={word.ruby}>{word.content}</Ruby>
               <div onClick={() => search(word.content)}>
                 <FontAwesomeIcon icon={faSearch} className='cursor-pointer text-base self-start text-teal-800' />
               </div>
@@ -45,7 +45,7 @@ const WordList = ({ words = [], synonyms = [] }: Props) => {
                 {
                   synonym.content.map((word, index) => (
                     <div key={index}>
-                      <Ruby className='border-b border-solid border-teal-800' ruby={word.ruby}>{word.content}</Ruby>
+                      <Ruby className='border-b border-l pl-1 border-solid border-teal-800' ruby={word.ruby}>{word.content}</Ruby>
                     </div>
                   ))
                 }
