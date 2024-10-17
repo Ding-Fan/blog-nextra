@@ -1,6 +1,5 @@
-import { ct } from '@org/shared-utils';
 import React, { ReactNode } from 'react';
-// import { ct } from "../../../utils/utils";
+import { ct } from '../../scripts/utils';
 
 export interface IStep {
   id?: string | number;
