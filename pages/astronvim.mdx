@@ -113,6 +113,34 @@ Maybe one day I'll try [flexoki](https://github.com/kepano/flexoki-neovim), and 
 
 ## Custom Plugin
 
+Update:
+
+I now use [copilot-cmp](https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/completion/copilot-cmp).
+
+Add this line to `community.lua` , it might at `~/.config/nvim/lua/community.lua`.
+
+```lua filename="community.lua"
+  { import = "astrocommunity.completion.copilot-cmp" },
+```
+
+I want to make markdown enabled, so I created `~/.config/nvim/lua/plugins/copilot-override.lua` with content [like this](https://github.com/orgs/community/discussions/38074#discussioncomment-10912473):
+
+```lua filename="copilot-override.lua" showLineNumbers
+return {
+  "zbirenbaum/copilot.lua",
+  opts = {
+    suggestions = {
+      enabled = true,
+    },
+    filetypes = {
+      markdown = true, -- Explicitly enable markdown
+    },
+  },
+}
+```
+
+---
+
 I installed [github/copilot.vim](https://github.com/github/copilot.vim)
 
 From [astronvim documentation](https://docs.astronvim.com/configuration/customizing_plugins/#defining-plugins), I learned that I needed to create a `github-copilot.lua` file in plugin directory.

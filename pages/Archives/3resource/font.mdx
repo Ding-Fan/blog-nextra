@@ -1,5 +1,7 @@
 # font
 
+~/.local/share/fonts
+
 on linux set font, use this to clear font cache
 
 ```bash
@@ -32,3 +34,63 @@ https://github.com/JudouEco/JudouSans
 句读黑体，商用免费的多语言字体。Judou Sans is a multilingual open-source typeface.
 
 - [方正雅宋家族](https://www.foundertype.com/index.php/FontInfo/index/id/193)
+
+## English
+
+- mono
+  - https://sourcefoundry.org/hack/
+    - hack
+  - has font ligatures
+    - https://www.recursive.design/
+    - https://github.com/tonsky/FiraCode
+- https://github.com/mona-sans
+
+## Japanese
+
+- https://fonts.google.com/specimen/Klee+One?subset=japanese
+  - klee one
+
+https://mimi.moe.in/nmp/fonts/fonts
+
+### looks good to me
+
+- https://fonts.google.com/specimen/Quicksand
+
+### Interesting Fonts
+
+Special for reading
+https://sansforgetica.rmit.edu.au/
+
+Special for programming
+
+## Chinese, 中文
+
+#### 开源中文字体
+
+LXGW WenKai / 霞鹜文楷
+https://github.com/lxgw/LxgwWenKai
+
+#### 未分类
+
+6 寸 Kindle 用什么中文字体最适合阅读？
+https://zhuanlan.zhihu.com/p/42719167
+最适合 Kindle 阅读的字体是…
+https://zhuanlan.zhihu.com/p/64601035
+適合閱讀的中文字體
+https://lepture.com/zh/2014/chinese-fonts-and-yue-css
+电子书字体推荐
+https://pages.rainysummer.top/2020/01/12/Kindle%E5%B8%B8%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/
+Kindle 中文字体推荐：更换一下字形口味
+https://bookfere.com/post/423.html
+字体
+
+方正标雅宋
+https://www.dropbox.com/s/owum4xijqpa475r/FZBIAOYSK.TTF?dl=0
+
+#### linux 日文字体优先于中文字体 CJK
+
+```sh
+sudo vi /etc/fonts/conf.d/64-language-selector-prefer.conf
+```
+
+把所有 `SC` 的提到 `JP` 之前
