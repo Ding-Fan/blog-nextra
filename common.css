@@ -1,0 +1,49 @@
+.button {
+  all: 'unset';
+  box-sizing: 'border-box';
+}
+html {
+  scroll-behavior: smooth;
+  max-width: 100vw;
+  overflow-x: hidden; /* or another value as needed */
+}
+body {
+  scroll-behavior: smooth;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+li {
+  list-style: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gradient-text {
+  background-image: radial-gradient(
+    158.68% 1117.36% at 0% 258.68%,
+    #83d5d7 0%,
+    #86a6e8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+.gradient-conic {
+  background-image: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+}
