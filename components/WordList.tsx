@@ -8,16 +8,16 @@ interface Word {
   content: string
 }
 
-interface Synonym {
+interface Collection {
   content: Word[]
 }
 
 interface Props {
   words?: Word[]
-  synonyms?: Synonym[]
+  collection?: Collection[]
 }
 
-const WordList = ({ words = [], synonyms = [] }: Props) => {
+const WordList = ({ words = [], collection = [] }: Props) => {
 
   const search = (text: string) => {
     window.open(`https://dictionary.goo.ne.jp/word/${text}`, '_blank');
@@ -39,11 +39,11 @@ const WordList = ({ words = [], synonyms = [] }: Props) => {
       </div>
       <div className='grid grid-cols-2 md:grid-cols-3 mt-6'>
         {
-          synonyms.map((synonym, index) => {
+          collection.map((collection, index) => {
             return (
               <div key={index} className='flex gap-2 border border-solid border-cyan-600 p-2 place-content-center'>
                 {
-                  synonym.content.map((word, index) => (
+                  collection.content.map((word, index) => (
                     <div key={index}>
                       <Ruby className='border-b border-l pl-1 border-solid border-teal-800' ruby={word.ruby}>{word.content}</Ruby>
                     </div>

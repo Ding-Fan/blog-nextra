@@ -25,9 +25,8 @@ export const WORD_DATA = [
   { ruby: "ちほうし", content: "地方紙" },
   { ruby: "よそうがい", content: "予想外" },
   { ruby: "いらいしん", content: "依頼心" },
-  { ruby: "こじだい", content: "古時代" },
+  { ruby: "ぜんじだい", content: "前時代" },
   { ruby: "むかんしん", content: "無関心" },
-  { ruby: "ぎゃっこうか", content: "逆効果" },
   { ruby: "こうたいせい", content: "交代制" },
   { ruby: "あいてがわ", content: "相手側" },
   { ruby: '', content: 'そそっかしく' },
@@ -52,18 +51,6 @@ export const SYNONYM_DATA = [
       {
         ruby: "",
         content: "さっさと"
-      }
-    ]
-  },
-  {
-    content: [
-      {
-        ruby: "さかさまに",
-        content: "逆さまに",
-      },
-      {
-        ruby: "逆に",
-        content: "ぎゃくに"
       }
     ]
   },
@@ -166,3 +153,21 @@ export const SYNONYM_DATA = [
 
 ]
 
+export const COLLECTION_DATA = [
+  {
+    content: [
+      {
+        ruby: "さかさまに",
+        content: "逆さまに",
+      },
+      {
+        ruby: "ぎゃくに",
+        content: "逆に",
+      },
+      {
+        ruby: "ぎゃっこうか",
+        content: "逆効果"
+      },
+    ]
+  },
+]
