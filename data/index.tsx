@@ -1,5 +1,47 @@
-
 export const WORD_DATA = [
+  { ruby: "すいみんしょうがい", content: "睡眠障害" },
+  { ruby: "そうとう", content: "相当" },
+  { ruby: "けいこう", content: "傾向" },
+  { ruby: "ちょうしょをみがき", content: "長所を磨き" },
+  { ruby: "はっき", content: "発揮" },
+  { ruby: "しごとにつける", content: "仕事に就ける" },
+  { ruby: "たいおんをちょうせつ", content: "体温を調節" },
+  { ruby: "きしょう", content: "起床" },
+  { ruby: "ねっちゅう", content: "熱中" },
+  { ruby: "ゆずらない", content: "譲らない" },
+  { ruby: "ごうとう", content: "強盗" },
+  { ruby: "しょうとつ", content: "衝突" },
+  { ruby: "つくす", content: "尽くす" },
+  { ruby: "けいい", content: "敬意" },
+  { ruby: "あらためる", content: "改める" },
+  { ruby: "かがくぶっしつ", content: "化学物質" },
+  { ruby: "ゆうこうきかん", content: "有効期間" },
+  { ruby: "たいりょくをしょうもう", content: "体力を消耗" },
+  { ruby: "しめている", content: "占めている" },
+  { ruby: "ようりょうをえない", content: "要領を得ない" },
+  { ruby: "ちゅうもくど", content: "注目度" },
+  { ruby: "こうせいのう", content: "高性能" },
+  { ruby: "けいかくあん", content: "計画案" },
+  { ruby: "べつこうどう", content: "別行動" },
+  { ruby: "しょうかき", content: "消火器" },
+  { ruby: "そうじんこう", content: "総人口" },
+  { ruby: "さいしゅっぱつ", content: "再出発" },
+  { ruby: "きんむさき", content: "勤務先" },
+  { ruby: "なまほうそう", content: "生放送" },
+  { ruby: "おおくろう", content: "大苦労" },
+  { ruby: "ぜんぽうのしんごう", content: "前方の信号" },
+  { ruby: "せいしきなふくそう", content: "正式な服装" },
+  { ruby: "ひにく", content: "皮肉" },
+  { ruby: "", content: "くれぐれも" },
+  { ruby: "しつぼう", content: "失望" },
+  { ruby: "めぐりあう", content: "巡り会う" },
+  { ruby: "", content: "いわゆる" },
+  { ruby: "かんで", content: "噛んで" },
+  { ruby: "かつじばなれ", content: "活字離れ" },
+  { ruby: "ほしょう", content: "保証" },
+  { ruby: "ふり", content: "不利" },
+  { ruby: "みりょくをかんじる", content: "魅力を感じる" },
+  { ruby: "", content: "" },
   { ruby: "ひょうじゅん", content: "標準" },
   { ruby: "こうぼう", content: "攻防" },
   { ruby: "くわしい", content: "詳しい" },
@@ -42,132 +84,27 @@ export const WORD_DATA = [
 ]
 
 export const SYNONYM_DATA = [
-  {
-    content: [
-      {
-        ruby: "あわただしく",
-        content: "慌ただしく",
-      },
-      {
-        ruby: "",
-        content: "さっさと"
-      }
-    ]
-  },
-  {
-    content: [
-      {
-        ruby: "ちゃくちゃくと",
-        content: "着々と",
-      },
-      {
-        ruby: "じゅんちょうに",
-        content: "順調に"
-      }
-    ]
-  },
-  {
-    content: [
-      {
-        ruby: "あまくみて",
-        content: "甘く見て",
-      },
-      {
-        ruby: "ゆだんして",
-        content: "油断して"
-      }
-    ]
-  },
-  {
-    content: [
-      {
-        ruby: "マンネリかしている",
-        content: "マンネリ化している",
-      },
-      {
-        ruby: "しんせんみがない",
-        content: "新鮮味がない"
-      }
-    ]
-  },
-  {
-    content: [
-      {
-        ruby: "とぴっく",
-        content: "トピック",
-      },
-      {
-        ruby: "わだい",
-        content: "話題"
-      }
-    ]
-  },
-  {
-    content: [
-      {
-        ruby: "あいにく",
-        content: "あいにく",
-      },
-      {
-        ruby: "うんわるく",
-        content: "運悪く"
-      }
-    ]
-  },
-  {
-    content: [
-      {
-        ruby: "かつがれた",
-        content: "担がれた",
-      },
-      {
-        ruby: "だまされた",
-        content: "騙された"
-      }
-    ]
-  },
-  {
-    content: [
-      {
-        ruby: "ね",
-        content: "根",
-      },
-      {
-        ruby: "せいしつ",
-        content: "性質"
-      }
-    ]
-  },
-  {
-    content: [
-      {
-        ruby: "けっこうな",
-        content: "結構な",
-      },
-      {
-        ruby: "すばらしい",
-        content: "素晴らしい"
-      }
-    ]
-  }
-
+  { content: [{ ruby: "いちだんと", content: "一段と", }, { ruby: "", content: "ますます" }] },
+  { content: [{ ruby: "おちた", content: "落ちた", }, { ruby: "", content: "ふるわない" }] },
+  { content: [{ ruby: "きじゅん", content: "基準", }, { ruby: "", content: "ものさし" }] },
+  { content: [{ ruby: "あつかましい", content: "厚かましい", }, { ruby: "むえんりょな", content: "無遠慮な" }] },
+  { content: [{ ruby: "こうこくぬし", content: "広告主", }, { ruby: "", content: "スポンサー" }] },
+  { content: [{ ruby: "みせをたたむ", content: "店を畳む", }, { ruby: "みせをとじる", content: "店を閉じる" }] },
+  { content: [{ ruby: "しずかに", content: "静かに", }, { ruby: "", content: "しいん" }] },
+  { content: [{ ruby: "つくりなおして", content: "作り直して", }, { ruby: "かいぞうして", content: "改造して" }] },
+  { content: [{ ruby: "えん", content: "縁", }, { ruby: "かんけい", content: "関係" }] },
+  { content: [{ ruby: "ストレートなはつげん", content: "ストレートな発言", }, { ruby: "えんりょないはつげん", content: "遠慮ない発言" }] },
+  { content: [{ ruby: "あわただしく", content: "慌ただしく", }, { ruby: "", content: "さっさと" }] },
+  { content: [{ ruby: "ちゃくちゃくと", content: "着々と", }, { ruby: "じゅんちょうに", content: "順調に" }] },
+  { content: [{ ruby: "あまくみて", content: "甘く見て", }, { ruby: "ゆだんして", content: "油断して" }] },
+  { content: [{ ruby: "マンネリかしている", content: "マンネリ化している", }, { ruby: "しんせんみがない", content: "新鮮味がない" }] },
+  { content: [{ ruby: "とぴっく", content: "トピック", }, { ruby: "わだい", content: "話題" }] },
+  { content: [{ ruby: "あいにく", content: "あいにく", }, { ruby: "うんわるく", content: "運悪く" }] },
+  { content: [{ ruby: "かつがれた", content: "担がれた", }, { ruby: "だまされた", content: "騙された" }] },
+  { content: [{ ruby: "ね", content: "根", }, { ruby: "せいしつ", content: "性質" }] },
+  { content: [{ ruby: "けっこうな", content: "結構な", }, { ruby: "すばらしい", content: "素晴らしい" }] }
 ]
 
 export const COLLECTION_DATA = [
-  {
-    content: [
-      {
-        ruby: "さかさまに",
-        content: "逆さまに",
-      },
-      {
-        ruby: "ぎゃくに",
-        content: "逆に",
-      },
-      {
-        ruby: "ぎゃっこうか",
-        content: "逆効果"
-      },
-    ]
-  },
+  { content: [{ ruby: "さかさまに", content: "逆さまに", }, { ruby: "ぎゃくに", content: "逆に", }, { ruby: "ぎゃっこうか", content: "逆効果" },] },
 ]
