@@ -1,4 +1,4 @@
-{
+export default {
   "index": "又不是不能写博客",
   "java-diary": "Han's Poignant JAVA Diary",
   "astronvim": "AstroNvim",
@@ -23,8 +23,4 @@
     "newWindow": true
   },
   "genshin": "原神亲自启动",
-  "draft": {
-    "type": "folder",
-    "display": "hidden"
-  }
 }

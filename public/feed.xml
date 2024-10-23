@@ -4,13 +4,8 @@
         <description><![CDATA[又不是不能写博客]]></description>
         <link>https://dingfan.date</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 05 Aug 2024 21:26:26 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 23 Oct 2024 09:27:48 GMT</lastBuildDate>
         <atom:link href="https://dingfan.date/feed.xml" rel="self" type="application/rss+xml"/>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>1</link>
-            <guid isPermaLink="true">1</guid>
-        </item>
         <item>
             <title><![CDATA[No title]]></title>
             <link>about</link>
@@ -18,18 +13,18 @@
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>advanced</link>
-            <guid isPermaLink="true">advanced</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>another</link>
-            <guid isPermaLink="true">another</guid>
+            <link>astronvim</link>
+            <guid isPermaLink="true">astronvim</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
             <link>create-more-consume-less</link>
             <guid isPermaLink="true">create-more-consume-less</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>gallery-2024</link>
+            <guid isPermaLink="true">gallery-2024</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
@@ -43,13 +38,18 @@
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>history</link>
-            <guid isPermaLink="true">history</guid>
+            <link>japanese</link>
+            <guid isPermaLink="true">japanese</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>how-i-build-this-blog</link>
-            <guid isPermaLink="true">how-i-build-this-blog</guid>
+            <link>java-diary</link>
+            <guid isPermaLink="true">java-diary</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>java-simple-calendar</link>
+            <guid isPermaLink="true">java-simple-calendar</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
@@ -58,8 +58,28 @@
         </item>
         <item>
             <title><![CDATA[No title]]></title>
+            <link>move-multiple-files-neo-tree</link>
+            <guid isPermaLink="true">move-multiple-files-neo-tree</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>naval-seek-wealth</link>
+            <guid isPermaLink="true">naval-seek-wealth</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
             <link>now</link>
             <guid isPermaLink="true">now</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>python</link>
+            <guid isPermaLink="true">python</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>quotes</link>
+            <guid isPermaLink="true">quotes</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
@@ -68,13 +88,18 @@
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>rsc</link>
-            <guid isPermaLink="true">rsc</guid>
+            <link>swap-esc-capslock-ubuntu</link>
+            <guid isPermaLink="true">swap-esc-capslock-ubuntu</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>wash-dishes</link>
-            <guid isPermaLink="true">wash-dishes</guid>
+            <link>threejs</link>
+            <guid isPermaLink="true">threejs</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>threejs.xr-calendar</link>
+            <guid isPermaLink="true">threejs.xr-calendar</guid>
         </item>
     </channel>
 </rss>
