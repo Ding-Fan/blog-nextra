@@ -10,58 +10,21 @@
 - [card block](./Archives/card-block)
 
 import OGCard from "components/OGCard.server.tsx";
+import { getOssUrl } from "scripts/utils";
+import { HOMEPAGE_LINKS } from "data";
 
-export const LINKS = [
-  {
-    url: "https://tenki.jp/lite/forecast/3/17/4610/14131/",
-    note: "川崎天気",
-  },
-  {
-    url: "https://cool-matan.vercel.app",
-    note: "curriculum",
-  },
-  {
-    url: "https://classroom.google.com/u/1/h",
-    note: "Google Classroom",
-  },
-  {
-    url: "https://www.youtube.com",
-    note: "youtube",
-  },
-  {
-    url: "https://transit.yahoo.co.jp/diainfo/area/4",
-    note: "電車路線情報",
-  },
-  {
-    url: "https://www.jma.go.jp/bosai/map.html#6/39.551/153.347/&elem=root&typhoon=all&contents=typhoon",
-    note: "台風経路図",
-  },
-  {
-    url: "https://www.youtube.com/@kurzgesagt",
-    note: "Kurzgesagt – In a Nutshell@youtube",
-  },
-  {
-    url: "https://www.youtube.com/@3blue1brown",
-    note: "3Blue1Brown@youtube",
-  },
-  {
-    url: "https://youtube.com/playlist?list=PLhfrWIlLOoKPc2RecyiM_A9nf3fUU3e6g",
-    note: "Free Cisco CCNA 200-301 Course@youtube",
-  },
-];
-
-<div className="grid grid-cols-3 gap-4">
-  {LINKS.map((link) => (
+<div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+  {HOMEPAGE_LINKS.map((link) => (
     <OGCard key={link.url} className="mb-2" url={link.url} note={link.note} />
   ))}
 </div>
 
-import RichImage from "../components/RichImage";
+import RichImage from "components/RichImage";
 
 <div className="grid place-content-center">
   <RichImage
-    caption="我有一个博客，名字叫“又不是不能写博客”，你帮我生成一张头图"
+    caption={'"If you can\'t tell, does it matter?"'}
     className="w-full md:w-80"
-    src="images/2024-02-28-19-01-02.png"
+    src={getOssUrl("girl90s.png")}
   />
 </div>

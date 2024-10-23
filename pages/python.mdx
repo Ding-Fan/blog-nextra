@@ -1,0 +1,59 @@
+# python
+
+import RichImage from "components/RichImage";
+import { getOssUrl } from "scripts/utils";
+
+## use python show a world map
+
+### Install dependency
+
+```bash
+pip install geopandas matplotlib
+```
+
+### Main python code `map.py`
+
+```python
+# map.py
+import geopandas as gpd
+import matplotlib.pyplot as plt
+
+# Load the world map dataset
+world = gpd.read_file("./ne_110m_admin_0_countries/ne_110m_admin_0_countries.shp")
+
+# Plot the world map
+world.plot()
+
+# Add title to the map
+plt.title('World Map')
+
+# Show the plot
+plt.show()
+```
+
+### Download the map data file
+
+- https://www.naturalearthdata.com/downloads/110m-cultural-vectors/
+
+<RichImage
+  className="w-full"
+  src={getOssUrl("32a23f53-9029-4fa3-9c71-474de2bef349.png")}
+/>
+
+Extract the files and put them next to `map.py`
+
+Now your file structure looks like this
+
+<RichImage
+  className="w-full"
+  src={getOssUrl("ccf43dbf-b162-4b97-aea6-a65d05ceb511.png")}
+/>
+
+In terminal, execute it with `python .\map.py`
+
+Result:
+
+<RichImage
+  className="w-full"
+  src={getOssUrl("737fd18d-cf3a-44ad-9102-b1afe82452c7.png")}
+/>

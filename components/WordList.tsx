@@ -25,11 +25,11 @@ const WordList = ({ words = [], collection = [] }: Props) => {
 
   return (
     <div className='text-sm md:text-base'>
-      <div className='grid grid-cols-3 md:grid-cols-5 gap-4'>
+      <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
         {
           words.map((word, index) => (
             <div key={index} className='flex items-baseline gap-2'>
-              <Ruby className='border-b border-l pl-1 border-solid border-teal-800' ruby={word.ruby}>{word.content}</Ruby>
+              <Ruby className='border-b border-l pl-1 border-solid border-teal-800 text-lg' ruby={word.ruby}>{word.content}</Ruby>
               <div onClick={() => search(word.content)}>
                 <FontAwesomeIcon icon={faSearch} className='cursor-pointer text-base self-start text-teal-800' />
               </div>

@@ -58,7 +58,7 @@ const OGCard = ({ url, note, className }) => {
   return (
     <div
       className={ct(
-        "border cursor-pointer hover:shadow-lg border-solid border-gray-300 rounded-lg p-2 md:p-4 flex",
+        "border cursor-pointer transition-all hover:shadow-md duration-400 hover:scale-105 border-solid border-zinc-400 rounded-lg p-1 flex",
         className
       )}
       onClick={handleClick}
@@ -73,21 +73,21 @@ const OGCard = ({ url, note, className }) => {
       <div className="flex flex-col justify-center flex-1">
         {note && (
           <div
-            className="text-lg md:text-2xl pb-2 line-clamp-2 break-all"
+            className="text-sm font-semibold line-clamp-2 break-all"
             title={note}
           >
             {note}
           </div>
         )}
         <div
-          className="text-base md:text-xl pb-1 font-semibold line-clamp-2 break-all"
+          className="text-sm line-clamp-2 break-all"
           title={ogData?.title || url}
         >
           {ogData?.title || url}
         </div>
         {ogData?.description ? (
           <div
-            className="text-sm md:text-base text-gray-600 line-clamp-2 break-all"
+            className="text-xs text-gray-600 line-clamp-2 break-all"
             title={ogData.description}
           >
             {ogData.description}
@@ -95,7 +95,7 @@ const OGCard = ({ url, note, className }) => {
         ) : (
           !loading && (
             <div
-              className="text-sm md:text-base text-gray-600 line-clamp-2 break-all"
+              className="text-xs text-gray-600 line-clamp-2 break-all"
               title={url}
             >
               {url}

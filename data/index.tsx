@@ -1,3 +1,5 @@
+import { getOssUrl } from "../scripts/utils";
+
 export const WORD_DATA = [
   { ruby: "すいみんしょうがい", content: "睡眠障害" },
   { ruby: "そうとう", content: "相当" },
@@ -108,3 +110,75 @@ export const SYNONYM_DATA = [
 export const COLLECTION_DATA = [
   { content: [{ ruby: "さかさまに", content: "逆さまに", }, { ruby: "ぎゃくに", content: "逆に", }, { ruby: "ぎゃっこうか", content: "逆効果" },] },
 ]
+
+export const PHOTOS_2024 = [
+  {
+    name: "DJI_20240926143510_0056_D.JPG",
+  },
+  {
+    name: "DJI_20240926123030_0028_D.JPG",
+  },
+  {
+    name: "DJI_20240926115136_0027_D.JPG",
+  },
+  {
+    name: "DJI_20240926134504_0043_D.JPG",
+  },
+  {
+    name: "DJI_20240926134212_0035_D.JPG",
+  },
+  {
+    name: "DJI_20240926134352_0040_D.JPG",
+  },
+  {
+    name: "DJI_20240926140854_0054_D.JPG",
+  },
+].map((i) => {
+  return {
+    name: getOssUrl(i.name)
+  }
+});
+
+
+export const HOMEPAGE_LINKS = [
+  {
+    url: "https://tenki.jp/lite/forecast/3/17/4610/14131/",
+    note: "川崎天気",
+  },
+  {
+    url: "https://cool-matan.vercel.app",
+    note: "curriculum",
+  },
+  {
+    url: "https://classroom.google.com/u/1/h",
+    note: "Google Classroom",
+  },
+  {
+    url: "https://www.youtube.com",
+    note: "youtube",
+  },
+  {
+    url: "https://transit.yahoo.co.jp/diainfo/area/4",
+    note: "電車路線情報",
+  },
+  {
+    url: "https://www.jma.go.jp/bosai/map.html#6/39.551/153.347/&elem=root&typhoon=all&contents=typhoon",
+    note: "台風経路図",
+  },
+  {
+    url: "https://www.youtube.com/@kurzgesagt",
+    note: "Kurzgesagt – In a Nutshell@youtube",
+  },
+  {
+    url: "https://www.youtube.com/@3blue1brown",
+    note: "3Blue1Brown@youtube",
+  },
+  {
+    url: "https://youtube.com/playlist?list=PLhfrWIlLOoKPc2RecyiM_A9nf3fUU3e6g",
+    note: "Free Cisco CCNA 200-301 Course@youtube",
+  },
+  {
+    url: "https://dash.cloudflare.com/",
+    note: "Cloudflare Dashboard"
+  }
+];
