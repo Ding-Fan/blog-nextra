@@ -3,6 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef, useState, useCallback, useEffect } from "react";
 import { Group } from "three";
 
+
 const TiltingRectangle: React.FC<{ setSelectedPosition: (position: [number, number, number]) => void }> = ({ setSelectedPosition }) => {
   const rectangleRef = useRef<Group>(null);
   const [tiltData, setTiltData] = useState({ beta: 0, gamma: 0 });
@@ -17,7 +18,7 @@ const TiltingRectangle: React.FC<{ setSelectedPosition: (position: [number, numb
     const rowIndex = Math.min(rows - 1, Math.max(0, Math.round((beta * 4 + 90) / 180 * (rows - 1))));
     const x = colIndex * boxSize - gridWidth / 2 + boxSize / 2;
     const y = -(rowIndex * boxSize - gridHeight / 2 + boxSize / 2);
-    return [x, y, 1];
+    return [x, y, 1] as [number, number, number];
   }, [columns, rows, boxSize, gridWidth, gridHeight]);
 
   useEffect(() => {
@@ -27,8 +28,9 @@ const TiltingRectangle: React.FC<{ setSelectedPosition: (position: [number, numb
         setTiltData({ beta: beta || 0, gamma: gamma || 0 });
       };
 
-      if (typeof DeviceOrientationEvent.requestPermission === "function") {
-        DeviceOrientationEvent.requestPermission()
+      // Updated to check for permission in a more robust way that handles compatibility across devices
+      if (window.DeviceOrientationEvent && typeof (window.DeviceOrientationEvent as any).requestPermission === "function") {
+        (window.DeviceOrientationEvent as any).requestPermission()
           .then((response) => {
             if (response === "granted") {
               window.addEventListener("deviceorientation", handleOrientation);
@@ -48,7 +50,7 @@ const TiltingRectangle: React.FC<{ setSelectedPosition: (position: [number, numb
   useFrame(() => {
     if (rectangleRef.current) {
       const newPosition = getBoxPosition(tiltData.beta, tiltData.gamma);
-      rectangleRef.current.position.set(...newPosition);
+      rectangleRef.current.position.set(newPosition[0], newPosition[1], newPosition[2]);
       setSelectedPosition([newPosition[0], newPosition[1], 0]);
     }
   });
