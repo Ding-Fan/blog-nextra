@@ -1,7 +1,6 @@
 # python
 
 import RichImage from "components/RichImage";
-import { getOssUrl } from "scripts/utils";
 
 ## use python show a world map
 
@@ -36,8 +35,9 @@ plt.show()
 - https://www.naturalearthdata.com/downloads/110m-cultural-vectors/
 
 <RichImage
+  isOss
   className="w-full"
-  src={getOssUrl("32a23f53-9029-4fa3-9c71-474de2bef349.png")}
+  src={"32a23f53-9029-4fa3-9c71-474de2bef349.png"}
 />
 
 Extract the files and put them next to `map.py`
@@ -45,8 +45,9 @@ Extract the files and put them next to `map.py`
 Now your file structure looks like this
 
 <RichImage
+  isOss
   className="w-full"
-  src={getOssUrl("ccf43dbf-b162-4b97-aea6-a65d05ceb511.png")}
+  src={"ccf43dbf-b162-4b97-aea6-a65d05ceb511.png"}
 />
 
 In terminal, execute it with `python .\map.py`
@@ -54,6 +55,7 @@ In terminal, execute it with `python .\map.py`
 Result:
 
 <RichImage
+  isOss
   className="w-full"
-  src={getOssUrl("737fd18d-cf3a-44ad-9102-b1afe82452c7.png")}
+  src={"737fd18d-cf3a-44ad-9102-b1afe82452c7.png"}
 />

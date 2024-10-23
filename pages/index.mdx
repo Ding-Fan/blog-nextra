@@ -10,7 +10,6 @@
 - [card block](./Archives/card-block)
 
 import OGCard from "components/OGCard.server.tsx";
-import { getOssUrl } from "scripts/utils";
 import { HOMEPAGE_LINKS } from "data";
 
 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -23,8 +22,9 @@ import RichImage from "components/RichImage";
 
 <div className="grid place-content-center">
   <RichImage
+    isOss
     caption={'"If you can\'t tell, does it matter?"'}
     className="w-full md:w-80"
-    src={getOssUrl("girl90s.png")}
+    src={"girl90s.png"}
   />
 </div>
