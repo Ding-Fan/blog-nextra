@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Nextra docs template",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --experimental-https",
     "build": "node ./scripts/gen-rss.js && next build",
     "start": "next start"
   },
@@ -31,6 +31,7 @@
     "cheerio": "^1.0.0-rc.12",
     "class-variance-authority": "^0.7.0",
     "framer-motion": "^11.11.9",
+    "lodash": "^4.17.21",
     "next": "^13.0.6",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
