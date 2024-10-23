@@ -73,7 +73,7 @@ const OGCard = ({ url, note, className }) => {
       <div className="flex flex-col justify-center flex-1">
         {note && (
           <div
-            className="text-sm font-semibold line-clamp-2 break-all"
+            className="text-sm font-bold line-clamp-2 break-all"
             title={note}
           >
             {note}
