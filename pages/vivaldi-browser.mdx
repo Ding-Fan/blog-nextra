@@ -1,0 +1,154 @@
+# vivaldi browser
+
+## Reassigning `Ctrl + P` for Quick Tab Switching
+
+By default, Ctrl + P in Vivaldi is set to the print command. To repurpose it for switching tabs, follow these steps:
+
+- Open Vivaldi and navigate to **Settings -> Keyboard**
+- In the **Window** section:
+    - Find the Print option and remove the `Ctrl + P` shortcut.
+    - Find Quick Commands and assign `Ctrl + P` to it.
+
+Once configured, you can use `Ctrl + P` to quickly access open tabs via Quick Commands.
+
+## Customizing Vivaldi’s Interface with CSS and JavaScript
+
+Vivaldi allows users to modify its user interface by editing HTML, CSS, and JavaScript files. Below are the steps to add custom styles and scripts.
+
+### Locate the Vivaldi window.html File
+
+To apply custom modifications, you need to edit the `window.html` file located in Vivaldi's installation directory. The typical file path is:
+
+```
+<YOURVIVALDIDIRECTORY>\Application\<VERSION>\resources\vivaldi
+```
+
+For example, on Windows:
+
+```
+C:\Users\my_user_name\AppData\Local\Vivaldi\Application\6.9.3447.54\resources\vivaldi\
+```
+
+Create a folder named `for-vivaldi` in the `vivaldi` directory. Create `custom.css` and `custom.js` files in this folder.
+
+### Backup and Edit window.html
+
+- Backup the `window.html` file before making any changes. For example, copy and paste it.
+- Open `window.html` in a text editor.
+- Add the following lines to `<head>` tags include your custom CSS and JavaScript files:
+
+```html
+<link rel="stylesheet" href="./for-vivaldi/custom.css" />
+<script src="./for-vivaldi/custom.js"></script>
+```
+
+### Inspect and Modify Vivaldi's UI
+
+To inspect the Vivaldi user interface and identify elements for customization:
+
+- Enter `vivaldi://inspect/#apps` into the address bar, press enter.
+- Click `inspect` of Vivaldi `window.html` to begin inspecting UI elements.
+
+### Add a Restart Button to the Toolbar
+
+To create a restart button in the toolbar:
+
+- Set `vivaldi://restart` as the homepage.
+- If you don't have it, add a Home button to the toolbar via **Menu -> View -> Customize Toolbar**
+- In your `custom.css`, add the [following code](https://forum.vivaldi.net/post/505882) to style the restart button:
+
+```css filename="custom.css" copy 
+button.ToolbarButton-Button[title*="Homepage (Alt+Home)"] svg path {
+  d: path(
+    "M9 12l-4.463 4.969-4.537-4.969h3c0-4.97 4.03-9 9-9 2.395 0 4.565.942 6.179 2.468l-2.004 2.231c-1.081-1.05-2.553-1.699-4.175-1.699-3.309 0-6 2.691-6 6h3zm10.463-4.969l-4.463 4.969h3c0 3.309-2.691 6-6 6-1.623 0-3.094-.65-4.175-1.699l-2.004 2.231c1.613 1.526 3.784 2.468 6.179 2.468 4.97 0 9-4.03 9-9h3l-4.537-4.969z"
+  );
+  transform: scale(0.9) !important;
+  transform-origin: 157% 154% !important;
+}
+```
+
+### Make the (left)TabBar auto hide
+
+Set the Tab Bar to the left and drag to adjust its width to the minimum.
+
+Add these to your `custom.css`:
+
+```css filename="custom.css" copy
+.tabs-left #tabs-tabbar-container:hover .tab-strip.expandable {
+    width: 300px;
+    background-color: rgba(32, 31, 31, 0.89);
+    z-index: 3;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.388);
+}
+
+.toggle-expandable-button .ToolbarButton-Button {
+  width: 32px;
+  transform: rotate(180deg);
+  filter: brightness(0.5);
+}
+/* Optional: Style the button when active */
+.toggle-expandable-button .ToolbarButton-Button.active {
+  filter: brightness(1);
+}
+```
+
+Add these to your `custom.js`:
+
+```javascript filename="custom.js" copy
+window.onload = function () {
+  // Wait for the UI to load
+  setTimeout(() => {
+    // Select the Workspaces button toolbar
+    var workspacesToolbar = document.querySelector('.tabbar-workspace-button');
+
+    if (workspacesToolbar) {
+      // Create a new button toolbar container
+      var buttonToolbar = document.createElement('div');
+      buttonToolbar.className = 'button-toolbar toggle-expandable-button';
+
+      // Set custom width to make it a short button
+      buttonToolbar.style.width = ''; // Adjust width as needed
+
+      // Create the button element
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'ToolbarButton-Button';
+      button.title = 'Toggle Tab Bar Expansion';
+      button.setAttribute('aria-label', 'Toggle Tab Bar Expansion');
+      button.setAttribute('tabindex', '-1');
+
+      // Create the icon for the button (customize the SVG as needed)
+      var iconSpan = document.createElement('span');
+      iconSpan.className = 'button-icon';
+      iconSpan.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 16 16">
+          <!-- Example icon: a double arrow -->
+          <path d="M4 8 L8 4 L8 7 L12 7 L12 9 L8 9 L8 12 Z" fill="currentColor"></path>
+        </svg>
+      `;
+
+      // Append the icon to the button
+      button.appendChild(iconSpan);
+
+      // Append the button to the button toolbar container
+      buttonToolbar.appendChild(button);
+
+      // Insert the new button toolbar before the Workspaces toolbar
+      workspacesToolbar.parentNode.insertBefore(buttonToolbar, workspacesToolbar);
+
+      // Add event listener to the button to toggle the 'expandable' class
+      var tabStrip = document.querySelector('.tabs-left #tabs-tabbar-container .tab-strip');
+      if (tabStrip) {
+        button.addEventListener('click', function () {
+          var isEnabled = tabStrip.classList.toggle('expandable');
+          // Optionally, update button appearance
+          button.classList.toggle('active', isEnabled);
+        });
+      }
+    }
+  }, 1234);
+};
+```
+
+Restart Vivaldi to apply your customizations. You should now see an **arrow button** above the Workspaces button, which allows you to toggle the auto-hide feature.
