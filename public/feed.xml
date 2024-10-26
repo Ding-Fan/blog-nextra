@@ -4,7 +4,7 @@
         <description><![CDATA[又不是不能写博客]]></description>
         <link>https://dingfan.date</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 23 Oct 2024 12:01:05 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 26 Oct 2024 02:51:23 GMT</lastBuildDate>
         <atom:link href="https://dingfan.date/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[No title]]></title>
@@ -15,6 +15,16 @@
             <title><![CDATA[No title]]></title>
             <link>astronvim</link>
             <guid isPermaLink="true">astronvim</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>chatgpt.prompts.human-character</link>
+            <guid isPermaLink="true">chatgpt.prompts.human-character</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>chatgpt.prompts.ゆかり</link>
+            <guid isPermaLink="true">chatgpt.prompts.ゆかり</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
@@ -98,8 +108,8 @@
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>threejs.xr-calendar</link>
-            <guid isPermaLink="true">threejs.xr-calendar</guid>
+            <link>vivaldi-browser</link>
+            <guid isPermaLink="true">vivaldi-browser</guid>
         </item>
     </channel>
 </rss>
