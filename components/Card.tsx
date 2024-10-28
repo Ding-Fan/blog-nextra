@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({ frontContent, backContent, className }) => 
       style={{ perspective: "1000px" }}
     >
       <div
-        className={ct("relative w-60 h-56 bg-white rounded-lg shadow-xl transition-transform duration-500 hover:shadow-2xl hover:scale-105", flipped && "-rotate-y-180")}
+        className={ct("relative w-60 h-36 bg-white rounded-lg shadow-xl transition-transform duration-500 hover:shadow-2xl hover:scale-105", flipped && "-rotate-y-180")}
         onClick={handleClick}
         style={{
           transformStyle: "preserve-3d",
@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({ frontContent, backContent, className }) => 
             transformStyle: "preserve-3d",
           }}
         >
-          <div className="flex justify-center items-start h-full  rounded-lg p-5">
+          <div className="flex justify-center items-center h-full  rounded-lg p-5">
             <div className="text-center font-bold text-xl">
               {frontContent}
             </div>

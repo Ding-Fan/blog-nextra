@@ -18,3 +18,8 @@ export function getOssUrl(name: string): string {
   const OSS_BASE_URL = "https://pub-d73fbea1d5a74032a6bef88df97b73f2.r2.dev/";
   return `${OSS_BASE_URL}${name}`;
 }
+
+export function getRandomItem<T>(list: T[]): T {
+  const randomIndex = Math.floor(Math.random() * list.length);
+  return list[randomIndex];
+}
