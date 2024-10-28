@@ -1,5 +1,6 @@
 import React, { HTMLAttributes, useState } from "react";
 import { ct } from "../scripts/utils";
+import { setTimeout } from "timers";
 
 interface CardProps extends HTMLAttributes<HTMLElement> {
   frontContent: React.ReactNode;
@@ -8,8 +9,14 @@ interface CardProps extends HTMLAttributes<HTMLElement> {
 
 const Card: React.FC<CardProps> = ({ frontContent, backContent, className }) => {
   const [flipped, setFlipped] = useState(false);
+  const [doAnimation, setDoAnimation] = useState(false);
+  const animationTime = 300;
 
   const handleClick = () => {
+    setDoAnimation(true);
+    setTimeout(() => {
+      setDoAnimation(false);
+    }, animationTime);
     setFlipped(!flipped);
   };
 
@@ -19,7 +26,7 @@ const Card: React.FC<CardProps> = ({ frontContent, backContent, className }) => 
       style={{ perspective: "1000px" }}
     >
       <div
-        className={ct("relative w-[80vw] md:w-60 h-36 bg-white rounded-lg shadow-xl transition-transform duration-300 hover:shadow-2xl hover:scale-105", flipped && "-rotate-y-180")}
+        className={ct("relative w-[80vw] md:w-60 h-36 bg-white rounded-lg shadow-xl transition-transform hover:shadow-2xl", `duration-${animationTime}`, doAnimation && "scale-110", flipped && "-rotate-y-180")}
         onClick={handleClick}
         style={{
           transformStyle: "preserve-3d",
