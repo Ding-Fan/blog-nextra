@@ -24,7 +24,7 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/gallery.mdx"
-  ],
+, "pages/ui.mdx"  ],
   "exclude": [
     "node_modules"
   ]

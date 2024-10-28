@@ -15,10 +15,9 @@ module.exports = {
         border: "inner 0 0 0 1px",
       },
       fontFamily: {
-        'quote-content': ['LinBiolinum_R', 'FZBIAOYSK'],
-      }
+        "quote-content": ["LinBiolinum_R", "FZBIAOYSK"],
+      },
     },
   },
-  plugins: [
-  ],
+  plugins: [require("tailwindcss-3d")],
 };

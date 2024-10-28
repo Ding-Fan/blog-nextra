@@ -13,7 +13,6 @@ const config: DocsThemeConfig = {
   // docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
   darkMode: false,
   nextThemes: {
-    // enableSystem: false,
     forcedTheme: 'light',
   },
   sidebar: {
