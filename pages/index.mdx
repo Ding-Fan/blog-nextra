@@ -11,33 +11,14 @@
 
 import OGCard from "components/OGCard.server.tsx";
 import { HOMEPAGE_LINKS, WORD_DATA } from "data";
-import Card from "components/Card";
-import { getRandomItem } from "scripts/utils";
-import { useState, useEffect } from "react";
+import RandomCard from "components/RandomCard";
 
-export const randomItem = getRandomItem(WORD_DATA);
-
-export const RandomItemComponent = ({ list }) => {
-  const [randomItem, setRandomItem] = useState(null);
-
-// Run only on the client
-useEffect(() => {
-const item = getRandomItem(list);
-setRandomItem(item);
-}, [list]);
-
-if (!randomItem) {
-return <p>Loading...</p>;
-}
-
-return <Card
-className={"m-2"}
-frontContent={<div className="text-3xl">{randomItem.content}</div>}
-backContent={randomItem.ruby}
-/>;
-};
-
-<RandomItemComponent list={WORD_DATA} />
+<div className="flex justify-center my-2 md:my-4">
+  <RandomCard list={WORD_DATA} />
+  const search = (text: string) => {
+    window.open(`https://dictionary.goo.ne.jp/word/${text}`, '_blank');
+  }
+</div>
 
 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
   {HOMEPAGE_LINKS.map((link) => (

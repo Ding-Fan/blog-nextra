@@ -4,7 +4,7 @@ import BaseButton, { BaseButtonProps } from './BaseButton';
 // import { BaseButton, BaseButtonProps } from "./ui";
 // import { ct } from "../utils/utils";
 
-type ButtonNames = 'default' | 'secondary' | 'hero' | 'createList';
+type ButtonNames = 'default' | 'secondary' | 'hero' | 'createList' | 'primary';
 
 interface ButtonProps extends BaseButtonProps {
   name?: ButtonNames;
@@ -13,6 +13,11 @@ interface ButtonProps extends BaseButtonProps {
 const Button = ({ className, name = 'default', ...props }: ButtonProps) => {
   const buttonProps: Record<ButtonNames, BaseButtonProps> = {
     default: {},
+    primary: {
+      className:
+        'flex justify-center items-center py-2 px-8 h-12 text-[18px] transition-all duration-250 ease-in-out w-full bg-sky-200',
+      hover: 'highlight',
+    },
     hero: {
       className:
         'flex md:justify-center items-center py-2 px-8 h-12 text-[18px] transition-all duration-250 ease-in-out',
