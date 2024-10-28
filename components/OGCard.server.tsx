@@ -58,19 +58,19 @@ const OGCard = ({ url, note, className }) => {
   return (
     <div
       className={ct(
-        "border cursor-pointer transition-all hover:shadow-md duration-400 hover:scale-105 border-solid border-zinc-400 rounded-lg p-1 flex",
+        "border cursor-pointer transition-all hover:shadow-md duration-400 hover:scale-105 border-solid border-zinc-400 rounded-lg flex",
         className
       )}
       onClick={handleClick}
     >
       {ogData?.image && (
         <img
-          className="w-24 h-24 object-cover rounded-lg mr-4"
+          className="w-full h-full object-cover object-cover rounded-lg"
           src={ogData.image}
           alt={ogData.title || "Image"}
         />
       )}
-      <div className="flex flex-col justify-center flex-1">
+      <div className="flex flex-col justify-center flex-1 p-1">
         {note && (
           <div
             className="text-sm font-bold line-clamp-2 break-all"
