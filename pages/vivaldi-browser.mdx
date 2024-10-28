@@ -6,8 +6,8 @@ By default, Ctrl + P in Vivaldi is set to the print command. To repurpose it for
 
 - Open Vivaldi and navigate to **Settings -> Keyboard**
 - In the **Window** section:
-    - Find the Print option and remove the `Ctrl + P` shortcut.
-    - Find Quick Commands and assign `Ctrl + P` to it.
+  - Find the Print option and remove the `Ctrl + P` shortcut.
+  - Find Quick Commands and assign `Ctrl + P` to it.
 
 Once configured, you can use `Ctrl + P` to quickly access open tabs via Quick Commands.
 
@@ -27,6 +27,12 @@ For example, on Windows:
 
 ```
 C:\Users\my_user_name\AppData\Local\Vivaldi\Application\6.9.3447.54\resources\vivaldi\
+```
+
+on Ubuntu:
+
+```
+/opt/vivaldi/resources/vivaldi/
 ```
 
 Create a folder named `for-vivaldi` in the `vivaldi` directory. Create `custom.css` and `custom.js` files in this folder.
@@ -52,7 +58,7 @@ To create a restart button in the toolbar:
 - If you don't have it, add a Home button to the toolbar via **Menu -> View -> Customize Toolbar**
 - In your `custom.css`, add the [following code](https://forum.vivaldi.net/post/505882) to style the restart button:
 
-```css filename="custom.css" copy 
+```css filename="custom.css" copy
 button.ToolbarButton-Button[title*="Homepage (Alt+Home)"] svg path {
   d: path(
     "M9 12l-4.463 4.969-4.537-4.969h3c0-4.97 4.03-9 9-9 2.395 0 4.565.942 6.179 2.468l-2.004 2.231c-1.081-1.05-2.553-1.699-4.175-1.699-3.309 0-6 2.691-6 6h3zm10.463-4.969l-4.463 4.969h3c0 3.309-2.691 6-6 6-1.623 0-3.094-.65-4.175-1.699l-2.004 2.231c1.613 1.526 3.784 2.468 6.179 2.468 4.97 0 9-4.03 9-9h3l-4.537-4.969z"
@@ -65,9 +71,13 @@ button.ToolbarButton-Button[title*="Homepage (Alt+Home)"] svg path {
 ### Make the (left)TabBar auto hide
 
 {
+
 <div className="flex justify-center pt-4 pb-2">
   <video className="w-72" controls muted>
-    <source src="https://pub-d73fbea1d5a74032a6bef88df97b73f2.r2.dev/Recording%202024-10-24%20210145.mp4" type="video/mp4" />
+    <source
+      src="https://pub-d73fbea1d5a74032a6bef88df97b73f2.r2.dev/Recording%202024-10-24%20210145.mp4"
+      type="video/mp4"
+    />
     Your browser does not support the video tag.
   </video>
 </div>
