@@ -274,19 +274,51 @@ export const HOMEPAGE_LINKS = [
   },
   {
     url: "https://www.collinsdictionary.com",
-    note: "Collins Dictionary"
+    note: "Collins Dictionary",
   },
   {
     url: "https://www.abaxlms.com",
-    note: "ABAX LMS"
+    note: "ABAX LMS",
   },
   {
     url: "https://soundcloud.com/abax-lms/sets/toeic-skills-3-full-audio/s-wHBQrVlV441",
-    note: "TOEIC Skills 3 Full Audio"
+    note: "TOEIC Skills 3 Full Audio",
   },
   {
     url: "https://classroom.google.com/u/1/h",
     note: "Google Classroom",
+  },
+  {
+    url: "/japanese",
+    note: "Japanese",
+  },
+  {
+    url: "/Archives/CCNA",
+    note: "CCNA",
+  },
+  {
+    url: "/Archives/input",
+    note: "input",
+  },
+  {
+    url: "/Archives/japan.link",
+    note: "japan link",
+  },
+  {
+    url: "/micro-blog",
+    note: "micro blog",
+  },
+  {
+    url: "/Archives/card-block",
+    note: "card block",
+  },
+  {
+    url: "/Archives/resource.information.idea.note",
+    note: "idea note",
+  },
+  {
+    url: "/Archives/dopamine-record",
+    note: "dopamine record",
   },
   {
     url: "https://www.youtube.com",
@@ -302,7 +334,7 @@ export const HOMEPAGE_LINKS = [
   },
   {
     url: "https://www.youtube.com/@kurzgesagt",
-    note: "Kurzgesagt – In a Nutshell@youtube",
+    note: "Kurzgesagt - In a Nutshell@youtube",
   },
   {
     url: "https://www.youtube.com/@3blue1brown",

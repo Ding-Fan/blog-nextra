@@ -58,7 +58,7 @@ const OGCard = ({ url, note, className }) => {
   return (
     <div
       className={ct(
-        "border cursor-pointer transition-all hover:shadow-md duration-400 hover:scale-105 border-solid border-zinc-400 rounded-lg flex items-stretch",
+        "border cursor-pointer transition-all ease-out hover:shadow-md duration-400 hover:scale-105 border-solid border-zinc-400 rounded-lg flex items-stretch",
         className
       )}
       onClick={handleClick}
