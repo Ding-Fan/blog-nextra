@@ -10,7 +10,12 @@
 - [card block](./Archives/card-block)
 
 import OGCard from "components/OGCard.server.tsx";
-import { HOMEPAGE_LINKS } from "data";
+import { HOMEPAGE_LINKS, WORD_DATA } from "data";
+import RandomCard from "components/RandomCard";
+
+<div className="flex justify-center my-2 md:my-4">
+  <RandomCard list={WORD_DATA} />
+</div>
 
 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
   {HOMEPAGE_LINKS.map((link) => (

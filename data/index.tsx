@@ -273,6 +273,18 @@ export const HOMEPAGE_LINKS = [
     note: "curriculum",
   },
   {
+    url: "https://www.collinsdictionary.com",
+    note: "Collins Dictionary"
+  },
+  {
+    url: "https://www.abaxlms.com",
+    note: "ABAX LMS"
+  },
+  {
+    url: "https://soundcloud.com/abax-lms/sets/toeic-skills-3-full-audio/s-wHBQrVlV441",
+    note: "TOEIC Skills 3 Full Audio"
+  },
+  {
     url: "https://classroom.google.com/u/1/h",
     note: "Google Classroom",
   },
