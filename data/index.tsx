@@ -277,6 +277,10 @@ export const HOMEPAGE_LINKS = [
     note: "Collins Dictionary",
   },
   {
+    url: "https://bsky.app",
+    note: "Bluesky"
+  },
+  {
     url: "https://www.abaxlms.com",
     note: "ABAX LMS",
   },
