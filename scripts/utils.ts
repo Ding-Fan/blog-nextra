@@ -23,3 +23,9 @@ export function getRandomItem<T>(list: T[]): T {
   const randomIndex = Math.floor(Math.random() * list.length);
   return list[randomIndex];
 }
+
+export function getNextItem<T>(list: T[], currentItem: T): T {
+  const currentIndex = list.indexOf(currentItem);
+  const nextIndex = (currentIndex + 1) % list.length;
+  return list[nextIndex];
+}

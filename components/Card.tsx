@@ -26,7 +26,7 @@ const Card: React.FC<CardProps> = ({ frontContent, backContent, className }) => 
       style={{ perspective: "1000px" }}
     >
       <div
-        className={ct("relative cursor-pointer w-[80vw] md:w-60 h-36 bg-white rounded-lg shadow-xl transition-transform hover:shadow-2xl", `duration-${animationTime}`, doAnimation && "scale-110", flipped && "-rotate-y-180")}
+        className={ct("relative cursor-pointer w-[80vw] md:w-96 h-36 bg-white rounded-lg shadow-xl transition-transform hover:shadow-2xl", `duration-${animationTime}`, doAnimation && "scale-110", flipped && "-rotate-y-180")}
         onClick={handleClick}
         style={{
           transformStyle: "preserve-3d",
