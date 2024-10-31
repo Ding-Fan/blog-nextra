@@ -4,7 +4,7 @@ import React, { useCallback } from "react";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export interface Props extends React.HTMLAttributes<HTMLDivElement> {}
+export interface Props extends React.HTMLAttributes<HTMLDivElement> { }
 
 // todo:
 // use recipe
@@ -12,7 +12,7 @@ export interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Loading = ({ className }: Props) => {
   return (
-    <div className={"h-full w-full flex items-center justify-center"}>
+    <div className={"h-full w-full flex items-center justify-center animate-spin"}>
       <FontAwesomeIcon className={className} icon={faSpinner} />
     </div>
   );

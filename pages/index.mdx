@@ -3,8 +3,13 @@
 import OGCard from "components/OGCard.server.tsx";
 import { HOMEPAGE_LINKS, WORD_DATA } from "data";
 import ShowCard from "components/ShowCard";
+import ShowQuote from "components/ShowQuote";
 
-<div className="flex justify-center my-2 md:my-4">
+<div className="flex justify-center my-2 md:my-8">
+  <ShowQuote />
+</div>
+
+<div className="flex justify-center my-4">
   <ShowCard list={WORD_DATA} />
 </div>
 

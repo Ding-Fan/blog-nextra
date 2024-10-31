@@ -8,6 +8,7 @@ import {
   faShuffle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Loading from "./Loading";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   list: any[];
@@ -31,14 +32,14 @@ const ShowCard = ({ list, className }: Props) => {
     setShowItem(newItem);
   };
 
-  // Handel next click to get the next item in the list
+  // Handle next click to get the next item in the list
   const handleNext = () => {
     const newItem = getNextItem(list, showItem);
     setShowItem(newItem);
   };
 
   if (!showItem) {
-    return <p>Loading...</p>;
+    return <Loading />
   }
 
   return (

@@ -1,13 +1,10 @@
 // CardPost.tsx
 import React, { ReactNode } from 'react';
 import { ct } from '../scripts/utils';
+import { Quote } from '../data';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  post: {
-    author: ReactNode;
-    content: ReactNode;
-    description?: ReactNode;
-  }
+  post: Quote;
 }
 
 const CardPost = ({ post, className }: Props) => {
@@ -25,7 +22,7 @@ const CardPost = ({ post, className }: Props) => {
       {
         post.description && (
           <div
-            className='relative inline-flex left-1/2 px-1 bg-stone-50 font-bold'
+            className='relative left-1/2 px-1 bg-stone-50 font-bold truncate max-w-[60vw]'
             style={{ transform: "translateY(-50%) translateX(-50%)" }}
           >
             {post.description}
