@@ -1,6 +1,29 @@
 import { getOssUrl } from "../scripts/utils";
 
 export const WORD_DATA = [
+  { ruby: "おしむ", content: "惜しむ" },
+  { ruby: "つつしむ", content: "謹む" },
+  { ruby: "はばむ", content: "阻む" },
+  { ruby: "はずむ", content: "弾む" },
+  { ruby: "はげむ", content: "励む" },
+  { ruby: "うみにのぞむいえ", content: "海に臨む家" },
+  { ruby: "いどむ", content: "挑む" },
+  { ruby: "つまむ", content: "摘む" },
+  { ruby: "おどす", content: "脅す" },
+  { ruby: "おどかす", content: "脅かす" },
+  { ruby: "つくす", content: "尽くす" },
+  { ruby: "くつがえす", content: "覆す" },
+  { ruby: "もよおす", content: "催す" },
+  { ruby: "ほどこす", content: "施す" },
+  { ruby: "うながす", content: "促す" },
+  { ruby: "ひたす", content: "浸す" },
+  { ruby: "しりぞく", content: "退く" },
+  { ruby: "あおぐ", content: "仰ぐ" },
+  { ruby: "つぐ", content: "継ぐ" },
+  { ruby: "あざむく", content: "欺く" },
+  { ruby: "なつく", content: "懐く" },
+  { ruby: "おもむく", content: "赴く" },
+  { ruby: "つらぬく", content: "貫く" },
   { ruby: "すいみんしょうがい", content: "睡眠障害" },
   { ruby: "そうとう", content: "相当" },
   { ruby: "けいこう", content: "傾向" },
@@ -73,7 +96,7 @@ export const WORD_DATA = [
   { ruby: "むかんしん", content: "無関心" },
   { ruby: "こうたいせい", content: "交代制" },
   { ruby: "あいてがわ", content: "相手側" },
-  { ruby: '', content: 'そそっかしく' },
+  { ruby: "", content: "そそっかしく" },
   { ruby: "くるって", content: "狂って" },
   { ruby: "みぎかたあがり", content: "右肩上がり" },
   { ruby: "", content: "わざと" },
@@ -83,33 +106,134 @@ export const WORD_DATA = [
   { ruby: "", content: "たちまち" },
   { ruby: "かかくきょうそう", content: "価格競争" },
   { ruby: "きょうつう", content: "共通" },
-]
+];
 
 export const SYNONYM_DATA = [
-  { content: [{ ruby: "いちだんと", content: "一段と", }, { ruby: "", content: "ますます" }] },
-  { content: [{ ruby: "おちた", content: "落ちた", }, { ruby: "", content: "ふるわない" }] },
-  { content: [{ ruby: "きじゅん", content: "基準", }, { ruby: "", content: "ものさし" }] },
-  { content: [{ ruby: "あつかましい", content: "厚かましい", }, { ruby: "むえんりょな", content: "無遠慮な" }] },
-  { content: [{ ruby: "こうこくぬし", content: "広告主", }, { ruby: "", content: "スポンサー" }] },
-  { content: [{ ruby: "みせをたたむ", content: "店を畳む", }, { ruby: "みせをとじる", content: "店を閉じる" }] },
-  { content: [{ ruby: "しずかに", content: "静かに", }, { ruby: "", content: "しいん" }] },
-  { content: [{ ruby: "つくりなおして", content: "作り直して", }, { ruby: "かいぞうして", content: "改造して" }] },
-  { content: [{ ruby: "えん", content: "縁", }, { ruby: "かんけい", content: "関係" }] },
-  { content: [{ ruby: "ストレートなはつげん", content: "ストレートな発言", }, { ruby: "えんりょないはつげん", content: "遠慮ない発言" }] },
-  { content: [{ ruby: "あわただしく", content: "慌ただしく", }, { ruby: "", content: "さっさと" }] },
-  { content: [{ ruby: "ちゃくちゃくと", content: "着々と", }, { ruby: "じゅんちょうに", content: "順調に" }] },
-  { content: [{ ruby: "あまくみて", content: "甘く見て", }, { ruby: "ゆだんして", content: "油断して" }] },
-  { content: [{ ruby: "マンネリかしている", content: "マンネリ化している", }, { ruby: "しんせんみがない", content: "新鮮味がない" }] },
-  { content: [{ ruby: "とぴっく", content: "トピック", }, { ruby: "わだい", content: "話題" }] },
-  { content: [{ ruby: "あいにく", content: "あいにく", }, { ruby: "うんわるく", content: "運悪く" }] },
-  { content: [{ ruby: "かつがれた", content: "担がれた", }, { ruby: "だまされた", content: "騙された" }] },
-  { content: [{ ruby: "ね", content: "根", }, { ruby: "せいしつ", content: "性質" }] },
-  { content: [{ ruby: "けっこうな", content: "結構な", }, { ruby: "すばらしい", content: "素晴らしい" }] }
-]
+  {
+    content: [
+      { ruby: "いちだんと", content: "一段と" },
+      { ruby: "", content: "ますます" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "おちた", content: "落ちた" },
+      { ruby: "", content: "ふるわない" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "きじゅん", content: "基準" },
+      { ruby: "", content: "ものさし" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "あつかましい", content: "厚かましい" },
+      { ruby: "むえんりょな", content: "無遠慮な" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "こうこくぬし", content: "広告主" },
+      { ruby: "", content: "スポンサー" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "みせをたたむ", content: "店を畳む" },
+      { ruby: "みせをとじる", content: "店を閉じる" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "しずかに", content: "静かに" },
+      { ruby: "", content: "しいん" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "つくりなおして", content: "作り直して" },
+      { ruby: "かいぞうして", content: "改造して" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "えん", content: "縁" },
+      { ruby: "かんけい", content: "関係" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "ストレートなはつげん", content: "ストレートな発言" },
+      { ruby: "えんりょないはつげん", content: "遠慮ない発言" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "あわただしく", content: "慌ただしく" },
+      { ruby: "", content: "さっさと" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "ちゃくちゃくと", content: "着々と" },
+      { ruby: "じゅんちょうに", content: "順調に" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "あまくみて", content: "甘く見て" },
+      { ruby: "ゆだんして", content: "油断して" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "マンネリかしている", content: "マンネリ化している" },
+      { ruby: "しんせんみがない", content: "新鮮味がない" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "とぴっく", content: "トピック" },
+      { ruby: "わだい", content: "話題" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "あいにく", content: "あいにく" },
+      { ruby: "うんわるく", content: "運悪く" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "かつがれた", content: "担がれた" },
+      { ruby: "だまされた", content: "騙された" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "ね", content: "根" },
+      { ruby: "せいしつ", content: "性質" },
+    ],
+  },
+  {
+    content: [
+      { ruby: "けっこうな", content: "結構な" },
+      { ruby: "すばらしい", content: "素晴らしい" },
+    ],
+  },
+];
 
 export const COLLECTION_DATA = [
-  { content: [{ ruby: "さかさまに", content: "逆さまに", }, { ruby: "ぎゃくに", content: "逆に", }, { ruby: "ぎゃっこうか", content: "逆効果" },] },
-]
+  {
+    content: [
+      { ruby: "さかさまに", content: "逆さまに" },
+      { ruby: "ぎゃくに", content: "逆に" },
+      { ruby: "ぎゃっこうか", content: "逆効果" },
+    ],
+  },
+];
 
 export const PHOTOS_2024 = [
   {
@@ -135,10 +259,9 @@ export const PHOTOS_2024 = [
   },
 ].map((i) => {
   return {
-    name: getOssUrl(i.name)
-  }
+    name: getOssUrl(i.name),
+  };
 });
-
 
 export const HOMEPAGE_LINKS = [
   {
@@ -179,6 +302,6 @@ export const HOMEPAGE_LINKS = [
   },
   {
     url: "https://dash.cloudflare.com/",
-    note: "Cloudflare Dashboard"
-  }
+    note: "Cloudflare Dashboard",
+  },
 ];
