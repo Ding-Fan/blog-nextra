@@ -3,28 +3,28 @@ import { getOssUrl } from "../scripts/utils";
 
 export const WORD_DATA = [
   {
-    ruby: "よごす",
-    content: "汚す",
+    ruby: "ふくをよごす",
+    content: "服を汚す",
   },
   {
-    ruby: "きたない",
-    content: "汚い",
+    ruby: "へやがきたない",
+    content: "部屋が汚い",
   },
   {
-    ruby: "ちょう",
-    content: "腸",
+    ruby: "ちょうないかんきょう",
+    content: "腸内環境",
   },
   {
-    ruby: "ちょうかく",
-    content: "聴覚",
+    ruby: "ちょうかくがするどい",
+    content: "聴覚が鋭い",
   },
   {
-    ruby: "ちょうこう",
-    content: "聴講",
+    ruby: "こうぎをちょうこうする",
+    content: "講義を聴講する",
   },
   {
-    ruby: "きく",
-    content: "聴く",
+    ruby: "おんがくをきく",
+    content: "音楽を聴く",
   },
   {
     ruby: "どう",
@@ -63,8 +63,8 @@ export const WORD_DATA = [
     content: "疲れる",
   },
   {
-    ruby: "かいぼう",
-    content: "解剖",
+    ruby: "したいをかいぼうする",
+    content: "死体を解剖する",
   },
   {
     ruby: "ますい",
@@ -86,7 +86,6 @@ export const WORD_DATA = [
     ruby: "げり",
     content: "下痢",
   },
-
   { ruby: "おしむ", content: "惜しむ" },
   { ruby: "つつしむ", content: "謹む" },
   { ruby: "はばむ", content: "阻む" },
