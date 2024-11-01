@@ -1,0 +1,31 @@
+# java subnetwork
+
+Let's say here is an ip address: 192.168.10.8/24
+
+From the first octet, we can see that:
+
+- this is a class C address 
+- the default subnet mask of class C address is /24.
+- from the ip address we can see that the subnet mask is /24.
+- So this network doesn't have any subnetworks, or it has only one network.
+- the network address is 192.168.10.0
+- the broadcast address is 192.168.10.255
+- the range of ip addresses is 192.168.10.1 - 192.168.10.254
+- can have maximum 254 hosts(devices) in this network.
+
+## class of ip address
+
+The class of an ip address is determined by the first octet of the ip address.
+
+- Class A: 1-126
+  - which is 00000001-01111110
+- Class B: 128-191
+  - which is 10000000-10111111
+- Class C: 192-223
+  - which is 11000000-11011111
+- Class D: 224-239
+  - which is 11100000-11101111
+- Class E: 240-255
+  - which is 11110000-11111111
+
+## CIDR
