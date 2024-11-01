@@ -2,6 +2,31 @@ import { ReactNode } from "react";
 import { getOssUrl } from "../scripts/utils";
 
 export const WORD_DATA = [
+
+  {
+    ruby: "ほっとする",
+    content: "ほっとする",
+  },
+  {
+    ruby: "ねむれない",
+    content: "眠れない",
+  },
+  {
+    ruby: "ねられない",
+    content: "寝られない",
+  },
+  {
+    ruby: "げんかくがみえる",
+    content: "幻覚が見える"
+  },
+  {
+    ruby: "こぼさずにそそぐ、こぼさずにつぐ",
+    content: "こぼさずに注ぐ"
+  },
+  {
+    ruby: "おすいがわんないにながれこむ",
+    content: "汚水が湾内に流れ込む"
+  },
   {
     ruby: "ふくをよごす",
     content: "服を汚す",
@@ -54,6 +79,319 @@ export const WORD_DATA = [
     ruby: "ほっそく、はっそく",
     content: "発足",
   },
+  { ruby: "はっき", content: "発揮" },
+  {
+    ruby: "しょくはつ",
+    content: "触発"
+  },
+  {
+    ruby: "のりこえ",
+    content: "乗り越え"
+  },
+  {
+    ruby: "ことなり",
+    content: "異なり"
+  },
+  {
+    ruby: "てきたいしん",
+    content: "敵対心"
+  },
+  {
+    ruby: "はんのう",
+    content: "反応"
+  },
+  {
+    ruby: "しゅうきょう",
+    content: "宗教"
+  },
+  {
+    ruby: "きばん",
+    content: "基盤"
+  },
+  {
+    ruby: "みかいじん",
+    content: "未開人"
+  },
+  {
+    ruby: "もたらす",
+    content: "もたらす"
+  },
+  {
+    ruby: "ささやきかけであり",
+    content: "ささやきかけであり"
+  },
+  {
+    ruby: "みんぞく",
+    content: "民族"
+  },
+  {
+    ruby: "いわば",
+    content: "いわば"
+  },
+  {
+    ruby: "しょうちょう",
+    content: "象徴"
+  },
+  {
+    ruby: "かいしゃく",
+    content: "解釈"
+  },
+  {
+    ruby: "きょうちょうする",
+    content: "強調する"
+  },
+  {
+    ruby: "けいじ",
+    content: "啓示"
+  },
+  {
+    ruby: "ないてきな",
+    content: "内的な"
+  },
+  {
+    ruby: "ねじまげられた",
+    content: "ねじ曲げられた"
+  },
+  {
+    ruby: "わかちました",
+    content: "分かちました"
+  },
+  {
+    ruby: "きゃっかんてきな",
+    content: "客観的な"
+  },
+  {
+    ruby: "しこり",
+    content: "しこり"
+  },
+  {
+    ruby: "ふせぐ",
+    content: "防ぐ"
+  },
+  {
+    ruby: "たもと",
+    content: "袂"
+  },
+  {
+    ruby: "しっと",
+    content: "嫉妬"
+  },
+  {
+    ruby: "くうそうする",
+    content: "空想する"
+  },
+  {
+    ruby: "とうそう",
+    content: "闘争"
+  },
+  {
+    ruby: "ゆうい",
+    content: "優位"
+  },
+  {
+    ruby: "げんしじだい",
+    content: "原始時代"
+  },
+  {
+    ruby: "あらわれる",
+    content: "表れる"
+  },
+  {
+    ruby: "げんそくにしたがう",
+    content: "原則に従う"
+  },
+  {
+    ruby: "かど",
+    content: "過度"
+  },
+  {
+    ruby: "かんげん",
+    content: "還元"
+  },
+  {
+    ruby: "いかにも",
+    content: "いかにも"
+  },
+  {
+    ruby: "こそすれ",
+    content: "こそすれ"
+  },
+  {
+    ruby: "のは、のが、のを",
+    content: "のは、のが、のを"
+  },
+  {
+    ruby: "ぜんじだい",
+    content: "前時代"
+  },
+  {
+    ruby: "ちゅうしゃいはん",
+    content: "駐車違反"
+  },
+  {
+    ruby: "こま",
+    content: "駒"
+  },
+  {
+    ruby: "ひふ",
+    content: "皮膚"
+  },
+  {
+    ruby: "けいようし",
+    content: "形容詞"
+  },
+  {
+    ruby: "ややこしい",
+    content: "ややこしい"
+  },
+  {
+    ruby: "じょうきげん",
+    content: "上機嫌"
+  },
+  {
+    ruby: "ふきげん",
+    content: "不機嫌"
+  },
+  {
+    ruby: "しょうじる",
+    content: "生じる"
+  },
+  {
+    ruby: "まつわる",
+    content: "まつわる"
+  },
+  {
+    ruby: "かざんふんか",
+    content: "火山噴火"
+  },
+  {
+    ruby: "よくあつ",
+    content: "抑圧"
+  },
+  {
+    ruby: "よい",
+    content: "善い"
+  },
+  {
+    ruby: "みぢか",
+    content: "身近"
+  },
+  {
+    ruby: "となえた",
+    content: "唱えた"
+  },
+  {
+    ruby: "そしされた",
+    content: "阻止された"
+  },
+  {
+    ruby: "とびだす",
+    content: "飛び出す"
+  },
+  {
+    ruby: "ひろがり",
+    content: "広がり"
+  },
+  {
+    ruby: "じゅうなんなはっそうりょく",
+    content: "柔軟な発想力"
+  },
+  {
+    ruby: "ふつごう",
+    content: "不都合"
+  },
+  {
+    ruby: "きおくのかなた",
+    content: "記憶の彼方"
+  },
+  {
+    ruby: "みけんにしわをよせる",
+    content: "眉間にしわを寄せる"
+  },
+  {
+    ruby: "とざされて",
+    content: "閉ざされて"
+  },
+  {
+    ruby: "あらわれて",
+    content: "現れて"
+  },
+  {
+    ruby: "かてい",
+    content: "過程"
+  },
+  {
+    ruby: "しかめっつら",
+    content: "しかめっ面"
+  },
+  {
+    ruby: "とてつもなく",
+    content: "とてつもなく"
+  },
+  {
+    ruby: "けんびきょう",
+    content: "顕微鏡"
+  },
+  {
+    ruby: "けんざいいしき",
+    content: "顕在意識"
+  },
+  {
+    ruby: "いちぶぶんにすぎません",
+    content: "一部分にすぎません"
+  },
+  {
+    ruby: "こころみ",
+    content: "試み"
+  },
+  {
+    ruby: "よみがえる",
+    content: "蘇る"
+  },
+  {
+    ruby: "よくどう",
+    content: "欲動"
+  },
+  {
+    ruby: "よびこんで",
+    content: "呼び込んで"
+  },
+  {
+    ruby: "ひめ",
+    content: "秘め"
+  },
+  {
+    ruby: "りょういき",
+    content: "領域"
+  },
+  {
+    ruby: "しょうどう",
+    content: "衝動"
+  },
+  {
+    ruby: "あたえられる",
+    content: "与えられる"
+  },
+  {
+    ruby: "とりあつかい",
+    content: "取り扱い"
+  },
+  {
+    ruby: "きおくのしこり",
+    content: "記憶のしこり"
+  },
+  {
+    ruby: "ともなった",
+    content: "伴った"
+  },
+  {
+    ruby: "かぎをかけわすれ",
+    content: "鍵をかけ忘れ"
+  },
+  {
+    ruby: "くみたて",
+    content: "組み立て"
+  },
   {
     ruby: "ひろう",
     content: "疲労",
@@ -62,6 +400,7 @@ export const WORD_DATA = [
     ruby: "つかれる",
     content: "疲れる",
   },
+  { ruby: "おおくろう", content: "大苦労" },
   {
     ruby: "したいをかいぼうする",
     content: "死体を解剖する",
@@ -79,9 +418,30 @@ export const WORD_DATA = [
     content: "酔う",
   },
   {
-    ruby: "しょうもう",
-    content: "消耗",
+    ruby: "すうちじく",
+    content: "数値軸"
   },
+  {
+    ruby: "きんじきょくせん",
+    content: "近似曲線"
+  },
+  {
+    ruby: "めもり",
+    content: "目盛"
+  },
+  {
+    ruby: "しばしば",
+    content: "屡々"
+  },
+  {
+    ruby: "はんれい",
+    content: "凡例"
+  },
+  {
+    ruby: "",
+    content: "うんざり"
+  },
+  { ruby: "たいりょくをしょうもう", content: "体力を消耗" },
   {
     ruby: "げり",
     content: "下痢",
@@ -113,7 +473,6 @@ export const WORD_DATA = [
   { ruby: "そうとう", content: "相当" },
   { ruby: "けいこう", content: "傾向" },
   { ruby: "ちょうしょをみがき", content: "長所を磨き" },
-  { ruby: "はっき", content: "発揮" },
   { ruby: "しごとにつける", content: "仕事に就ける" },
   { ruby: "たいおんをちょうせつ", content: "体温を調節" },
   { ruby: "きしょう", content: "起床" },
@@ -121,12 +480,10 @@ export const WORD_DATA = [
   { ruby: "ゆずらない", content: "譲らない" },
   { ruby: "ごうとう", content: "強盗" },
   { ruby: "しょうとつ", content: "衝突" },
-  { ruby: "つくす", content: "尽くす" },
   { ruby: "けいい", content: "敬意" },
   { ruby: "あらためる", content: "改める" },
   { ruby: "かがくぶっしつ", content: "化学物質" },
   { ruby: "ゆうこうきかん", content: "有効期間" },
-  { ruby: "たいりょくをしょうもう", content: "体力を消耗" },
   { ruby: "しめている", content: "占めている" },
   { ruby: "ようりょうをえない", content: "要領を得ない" },
   { ruby: "ちゅうもくど", content: "注目度" },
@@ -138,11 +495,10 @@ export const WORD_DATA = [
   { ruby: "さいしゅっぱつ", content: "再出発" },
   { ruby: "きんむさき", content: "勤務先" },
   { ruby: "なまほうそう", content: "生放送" },
-  { ruby: "おおくろう", content: "大苦労" },
   { ruby: "ぜんぽうのしんごう", content: "前方の信号" },
   { ruby: "せいしきなふくそう", content: "正式な服装" },
   { ruby: "ひにく", content: "皮肉" },
-  { ruby: "", content: "くれぐれも" },
+  { ruby: "くれぐれも", content: "呉呉も" },
   { ruby: "しつぼう", content: "失望" },
   { ruby: "めぐりあう", content: "巡り会う" },
   { ruby: "", content: "いわゆる" },
@@ -151,7 +507,6 @@ export const WORD_DATA = [
   { ruby: "ほしょう", content: "保証" },
   { ruby: "ふり", content: "不利" },
   { ruby: "みりょくをかんじる", content: "魅力を感じる" },
-  { ruby: "", content: "" },
   { ruby: "ひょうじゅん", content: "標準" },
   { ruby: "こうぼう", content: "攻防" },
   { ruby: "くわしい", content: "詳しい" },

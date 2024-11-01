@@ -4,7 +4,7 @@
         <description><![CDATA[又不是不能写博客]]></description>
         <link>https://dingfan.date</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 26 Oct 2024 02:51:23 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 01 Nov 2024 07:26:09 GMT</lastBuildDate>
         <atom:link href="https://dingfan.date/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[No title]]></title>
@@ -48,18 +48,28 @@
         </item>
         <item>
             <title><![CDATA[No title]]></title>
+            <link>happy-memories</link>
+            <guid isPermaLink="true">happy-memories</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
             <link>japanese</link>
             <guid isPermaLink="true">japanese</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>java-diary</link>
-            <guid isPermaLink="true">java-diary</guid>
+            <link>java.diary</link>
+            <guid isPermaLink="true">java.diary</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>java-simple-calendar</link>
-            <guid isPermaLink="true">java-simple-calendar</guid>
+            <link>java.simple-calendar</link>
+            <guid isPermaLink="true">java.simple-calendar</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>java.subnetwork</link>
+            <guid isPermaLink="true">java.subnetwork</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
@@ -105,6 +115,11 @@
             <title><![CDATA[No title]]></title>
             <link>threejs</link>
             <guid isPermaLink="true">threejs</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>ui</link>
+            <guid isPermaLink="true">ui</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
