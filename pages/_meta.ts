@@ -1,6 +1,6 @@
 export default {
   "index": "又不是不能写博客",
-  "java-diary": "Han's Poignant JAVA Diary",
+  "java.diary": "Han's Poignant JAVA Diary",
   "astronvim": "AstroNvim",
   "about": {
     "title": "About",
