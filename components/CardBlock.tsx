@@ -20,7 +20,7 @@ const CardBlock = ({
   content,
   category,
   id,
-  onIndicatorClick = () => {},
+  onIndicatorClick = () => { },
   startTime,
   interval = 0,
   progress = 100,
