@@ -971,6 +971,10 @@ export const HOMEPAGE_LINKS = [
     note: "川崎天気",
   },
   {
+    url: "https://weathernews.jp/onebox/radar/",
+    note: "雨雲レーダー",
+  },
+  {
     url: "https://cool-matan.vercel.app",
     note: "curriculum",
   },
