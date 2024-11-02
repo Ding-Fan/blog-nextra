@@ -123,7 +123,7 @@ export const WORDS_DATA = [
         content: "九個"
       },
       {
-        ruby: "じゅっこ",
+        ruby: "じっこ",
         content: "十個"
       },
       {
