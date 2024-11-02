@@ -1,5 +1,27 @@
 # japanese
 
+ひとつ
+ふたつ
+みっつ
+よっつ
+いつつ
+むっつ
+ななつ
+やっつ
+ここのつ
+とお
+じゅういち
+じゅうに
+にじゅう
+
+かなと拍　はく
+長音　ちょうおん
+撥音　はつおん
+促音　そくおん
+拗音　ようおん
+アクセント
+イントネーション
+
 傍ら　かたわら
 
 挟む　はさむ
@@ -68,9 +90,14 @@ https://kaku-navi.com/kanji/kanji15234.html
 https://kakijun.com/c/8981.html
 
 import WordList from "components/WordList";
-import { WORD_DATA, SYNONYM_DATA, COLLECTION_DATA } from "data";
+import { WORDS_DATA, SYNONYM_DATA, COLLECTION_DATA } from "data";
 
-<WordList words={WORD_DATA} collection={SYNONYM_DATA} />
+<div>
+  {WORDS_DATA.map((data, index) => (
+    <WordList key={data.id} words={data.content} />
+  ))}
+</div>
+<WordList collection={SYNONYM_DATA} />
 <WordList collection={COLLECTION_DATA} />
 
 ## ともなく・ともなしに

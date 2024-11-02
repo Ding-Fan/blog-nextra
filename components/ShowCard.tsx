@@ -54,7 +54,7 @@ const ShowCard = ({ list, className }: Props) => {
           <div>
             <FontAwesomeIcon
               icon={faSearch}
-              className="cursor-pointer text-base self-start text-teal-800"
+              className="cursor-pointer text-base self-start"
             />
           </div>
         </Button>

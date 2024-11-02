@@ -15,7 +15,7 @@ const Button = ({ className, name = 'default', ...props }: ButtonProps) => {
     default: {},
     primary: {
       className:
-        'flex justify-center items-center py-2 px-8 h-12 text-[18px] transition-all duration-250 ease-in-out w-full bg-sky-200',
+        'flex justify-center items-center py-2 px-8 h-12 text-[18px] transition-all duration-250 ease-in-out w-full bg-teal-800 text-white',
       hover: 'highlight',
     },
     hero: {
@@ -28,7 +28,9 @@ const Button = ({ className, name = 'default', ...props }: ButtonProps) => {
       hover: 'highlight',
     },
     secondary: {
-      className: 'bg-bogu-red',
+      className:
+        'flex justify-center items-center py-2 px-8 h-12 text-[18px] transition-all duration-250 ease-in-out w-full text-teal-800 border border-solid border-teal-800',
+      hover: 'highlight',
     },
   };
 

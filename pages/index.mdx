@@ -1,8 +1,8 @@
 # 又不是不能写博客
 
 import OGCard from "components/OGCard.server.tsx";
-import { HOMEPAGE_LINKS, WORD_DATA } from "data";
-import ShowCard from "components/ShowCard";
+import { HOMEPAGE_LINKS } from "data";
+import ShowCards from "components/ShowCards";
 import ShowQuote from "components/ShowQuote";
 
 <div className="flex justify-center my-2 md:my-8">
@@ -10,7 +10,7 @@ import ShowQuote from "components/ShowQuote";
 </div>
 
 <div className="flex justify-center my-4">
-  <ShowCard list={WORD_DATA} />
+  <ShowCards />
 </div>
 
 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
