@@ -1476,6 +1476,14 @@ export const HOMEPAGE_LINKS = [
     note: "雨雲レーダー",
   },
   {
+    url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/kyoshin/",
+    note: "リアルタイム　震度 yahoo",
+  },
+  {
+    url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/",
+    note: "地震速報",
+  },
+  {
     url: "https://cool-matan.vercel.app",
     note: "curriculum",
   },
