@@ -1,6 +1,6 @@
 import Card from "./Card";
 import { ct, getNextItem, getRandomItem } from "../scripts/utils";
-import { useState, useEffect, HTMLAttributes } from "react";
+import { useState, useEffect, HTMLAttributes, ReactNode } from "react";
 import Button from "./Button";
 import {
   faArrowRight,
@@ -12,9 +12,16 @@ import Loading from "./Loading";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   list: any[];
+  flippable?: boolean;
+  frontRender: (item: any) => ReactNode;
 }
 
-const ShowCard = ({ list, className }: Props) => {
+const ShowCard = ({
+  list,
+  frontRender,
+  flippable = true,
+  className,
+}: Props) => {
   const [showItem, setShowItem] = useState(null);
 
   const search = (text: string) => {
@@ -39,15 +46,16 @@ const ShowCard = ({ list, className }: Props) => {
   };
 
   if (!showItem) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
     <div>
       <Card
         className={ct(className)}
-        frontContent={<div className="text-3xl">{showItem.content}</div>}
+        frontContent={frontRender(showItem)}
         backContent={showItem.ruby}
+        flippable={flippable}
       />
       <div className="grid grid-cols-3 mt-2 gap-2">
         <Button name="primary" onClick={() => search(showItem.content)}>

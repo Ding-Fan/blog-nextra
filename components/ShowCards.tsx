@@ -1,25 +1,32 @@
 // ShowCards.tsx
-import { useEffect, useState } from 'react';
-import ShowCard from './ShowCard';
-import Button from './Button';
-import { Word, WORDS_DATA } from '../data';
-
-interface DataSet {
-  id: string;
-  title: string;
-  content: Word[]
-}
+import { useEffect, useState } from "react";
+import ShowCard from "./ShowCard";
+import Button from "./Button";
+import { Word, Words, WORDS_DATA } from "../data";
+import SimpleContent from "./SimpleContent";
+import SpoilerContent from "./SpoilerContent";
 
 interface ShowCardsProps {
-  dataSets?: DataSet[];
+  dataSets?: Words[];
 }
 
 const ShowCards: React.FC<ShowCardsProps> = ({ dataSets = WORDS_DATA }) => {
-
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleButtonClick = (index: number) => {
     setActiveIndex(index);
+  };
+
+  const renderContent = (item) => {
+    if (item.content) {
+      // Data Type 1
+      return <SimpleContent item={item} />;
+    } else if (item.text) {
+      // Data Type 2
+      return <SpoilerContent item={item} />;
+    } else {
+      return null;
+    }
   };
 
   return (
@@ -28,11 +35,7 @@ const ShowCards: React.FC<ShowCardsProps> = ({ dataSets = WORDS_DATA }) => {
       <div className="grid grid-cols-2 gap-2 my-4">
         {dataSets.map((dataSet, index) => (
           <Button
-            name={
-              activeIndex === index
-                ? 'primary'
-                : 'secondary'
-            }
+            name={activeIndex === index ? "primary" : "secondary"}
             key={index}
             onClick={() => handleButtonClick(index)}
             className={`mx-2`}
@@ -44,7 +47,11 @@ const ShowCards: React.FC<ShowCardsProps> = ({ dataSets = WORDS_DATA }) => {
 
       {/* ShowCard component displaying the active data set */}
       <div className="flex justify-center my-4">
-        <ShowCard list={dataSets[activeIndex].content} />
+        <ShowCard
+          flippable={dataSets[activeIndex].flippable}
+          list={dataSets[activeIndex].content}
+          frontRender={(item) => renderContent(item)}
+        />
       </div>
     </div>
   );

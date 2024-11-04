@@ -5,144 +5,153 @@ export interface Word {
   ruby: string;
   content: string;
 }
+export interface Words {
+  id: string;
+  title: string;
+  flippable: boolean;
+  content: Word[];
+}
 
 export const WORDS_DATA = [
   // 助数詞
   {
-    id: '0',
+    id: "0",
     title: "数字",
+    flippable: true,
     content: [
       {
         ruby: "ぜろ、れい",
-        content: "ゼロ、零"
+        content: "ゼロ、零",
       },
       {
         ruby: "いち",
-        content: "一"
+        content: "一",
       },
       {
         ruby: "に",
-        content: "二"
+        content: "二",
       },
       {
         ruby: "さん",
-        content: "三"
+        content: "三",
       },
       {
         ruby: "よん、し",
-        content: "四"
+        content: "四",
       },
       {
         ruby: "ご",
-        content: "五"
+        content: "五",
       },
       {
         ruby: "ろく",
-        content: "六"
+        content: "六",
       },
       {
         ruby: "なな、しち",
-        content: "七"
+        content: "七",
       },
       {
         ruby: "はち",
-        content: "八"
+        content: "八",
       },
       {
         ruby: "きゅう、く",
-        content: "九"
+        content: "九",
       },
       {
         ruby: "じゅう",
-        content: "十"
+        content: "十",
       },
       {
         ruby: "にじゅう",
-        content: "二十"
+        content: "二十",
       },
       {
         ruby: "ひゃく",
-        content: "百"
+        content: "百",
       },
       {
         ruby: "せん",
-        content: "千"
+        content: "千",
       },
       {
         ruby: "まん",
-        content: "万"
+        content: "万",
       },
       {
         ruby: "おく",
-        content: "億"
+        content: "億",
       },
       {
         ruby: "ちょう",
-        content: "兆"
+        content: "兆",
       },
-    ]
+    ],
   },
   {
-    id: '1',
+    id: "1",
     title: "個",
+    flippable: true,
     content: [
       {
         ruby: "いっこ",
-        content: "一個"
+        content: "一個",
       },
       {
         ruby: "にこ",
-        content: "二個"
+        content: "二個",
       },
       {
         ruby: "さんこ",
-        content: "三個"
+        content: "三個",
       },
       {
         ruby: "よんこ",
-        content: "四個"
+        content: "四個",
       },
       {
         ruby: "ごこ",
-        content: "五個"
+        content: "五個",
       },
       {
         ruby: "ろっこ",
-        content: "六個"
+        content: "六個",
       },
       {
         ruby: "ななこ",
-        content: "七個"
+        content: "七個",
       },
       {
         ruby: "はちこ、はっこ",
-        content: "八個"
+        content: "八個",
       },
       {
         ruby: "きゅうこ",
-        content: "九個"
+        content: "九個",
       },
       {
         ruby: "じっこ",
-        content: "十個"
+        content: "十個",
       },
       {
         ruby: "じゅういっこ",
-        content: "十一個"
+        content: "十一個",
       },
       {
         ruby: "じゅうにこ",
-        content: "十二個"
+        content: "十二個",
       },
       {
         ruby: "にじゅっこ",
-        content: "二十個"
+        content: "二十個",
       },
-    ]
+    ],
   },
   {
     id: "2",
     title: "基本",
+    flippable: true,
     content: [
       {
         ruby: "ほっとする",
@@ -187,299 +196,299 @@ export const WORDS_DATA = [
       { ruby: "はっき", content: "発揮" },
       {
         ruby: "しょくはつ",
-        content: "触発"
+        content: "触発",
       },
       {
         ruby: "のりこえ",
-        content: "乗り越え"
+        content: "乗り越え",
       },
       {
         ruby: "ことなり",
-        content: "異なり"
+        content: "異なり",
       },
       {
         ruby: "てきたいしん",
-        content: "敵対心"
+        content: "敵対心",
       },
       {
         ruby: "はんのう",
-        content: "反応"
+        content: "反応",
       },
       {
         ruby: "しゅうきょう",
-        content: "宗教"
+        content: "宗教",
       },
       {
         ruby: "きばん",
-        content: "基盤"
+        content: "基盤",
       },
       {
         ruby: "みかいじん",
-        content: "未開人"
+        content: "未開人",
       },
       {
         ruby: "もたらす",
-        content: "もたらす"
+        content: "もたらす",
       },
       {
         ruby: "ささやきかけであり",
-        content: "ささやきかけであり"
+        content: "ささやきかけであり",
       },
       {
         ruby: "みんぞく",
-        content: "民族"
+        content: "民族",
       },
       {
         ruby: "いわば",
-        content: "いわば"
+        content: "いわば",
       },
       {
         ruby: "しょうちょう",
-        content: "象徴"
+        content: "象徴",
       },
       {
         ruby: "かいしゃく",
-        content: "解釈"
+        content: "解釈",
       },
       {
         ruby: "きょうちょうする",
-        content: "強調する"
+        content: "強調する",
       },
       {
         ruby: "けいじ",
-        content: "啓示"
+        content: "啓示",
       },
       {
         ruby: "ないてきな",
-        content: "内的な"
+        content: "内的な",
       },
       {
         ruby: "ねじまげられた",
-        content: "ねじ曲げられた"
+        content: "ねじ曲げられた",
       },
       {
         ruby: "わかちました",
-        content: "分かちました"
+        content: "分かちました",
       },
       {
         ruby: "きゃっかんてきな",
-        content: "客観的な"
+        content: "客観的な",
       },
       {
         ruby: "しこり",
-        content: "しこり"
+        content: "しこり",
       },
       {
         ruby: "ふせぐ",
-        content: "防ぐ"
+        content: "防ぐ",
       },
       {
         ruby: "たもと",
-        content: "袂"
+        content: "袂",
       },
       {
         ruby: "しっと",
-        content: "嫉妬"
+        content: "嫉妬",
       },
       {
         ruby: "くうそうする",
-        content: "空想する"
+        content: "空想する",
       },
       {
         ruby: "とうそう",
-        content: "闘争"
+        content: "闘争",
       },
       {
         ruby: "ゆうい",
-        content: "優位"
+        content: "優位",
       },
       {
         ruby: "げんしじだい",
-        content: "原始時代"
+        content: "原始時代",
       },
       {
         ruby: "あらわれる",
-        content: "表れる"
+        content: "表れる",
       },
       {
         ruby: "かど",
-        content: "過度"
+        content: "過度",
       },
       {
         ruby: "かんげん",
-        content: "還元"
+        content: "還元",
       },
       {
         ruby: "いかにも",
-        content: "いかにも"
+        content: "いかにも",
       },
       {
         ruby: "こそすれ",
-        content: "こそすれ"
+        content: "こそすれ",
       },
       {
         ruby: "のは、のが、のを",
-        content: "のは、のが、のを"
+        content: "のは、のが、のを",
       },
       {
         ruby: "ぜんじだい",
-        content: "前時代"
+        content: "前時代",
       },
       {
         ruby: "ちゅうしゃいはん",
-        content: "駐車違反"
+        content: "駐車違反",
       },
       {
         ruby: "こま",
-        content: "駒"
+        content: "駒",
       },
       {
         ruby: "ひふ",
-        content: "皮膚"
+        content: "皮膚",
       },
       {
         ruby: "けいようし",
-        content: "形容詞"
+        content: "形容詞",
       },
       {
         ruby: "ややこしい",
-        content: "ややこしい"
+        content: "ややこしい",
       },
       {
         ruby: "じょうきげん",
-        content: "上機嫌"
+        content: "上機嫌",
       },
       {
         ruby: "ふきげん",
-        content: "不機嫌"
+        content: "不機嫌",
       },
       {
         ruby: "しょうじる",
-        content: "生じる"
+        content: "生じる",
       },
       {
         ruby: "まつわる",
-        content: "まつわる"
+        content: "まつわる",
       },
       {
         ruby: "かざんふんか",
-        content: "火山噴火"
+        content: "火山噴火",
       },
       {
         ruby: "よくあつ",
-        content: "抑圧"
+        content: "抑圧",
       },
       {
         ruby: "よい",
-        content: "善い"
+        content: "善い",
       },
       {
         ruby: "みぢか",
-        content: "身近"
+        content: "身近",
       },
       {
         ruby: "となえた",
-        content: "唱えた"
+        content: "唱えた",
       },
       {
         ruby: "そしされた",
-        content: "阻止された"
+        content: "阻止された",
       },
       {
         ruby: "とびだす",
-        content: "飛び出す"
+        content: "飛び出す",
       },
       {
         ruby: "ひろがり",
-        content: "広がり"
+        content: "広がり",
       },
       {
         ruby: "ふつごう",
-        content: "不都合"
+        content: "不都合",
       },
       {
         ruby: "とざされて",
-        content: "閉ざされて"
+        content: "閉ざされて",
       },
       {
         ruby: "あらわれて",
-        content: "現れて"
+        content: "現れて",
       },
       {
         ruby: "かてい",
-        content: "過程"
+        content: "過程",
       },
       {
         ruby: "しかめっつら",
-        content: "しかめっ面"
+        content: "しかめっ面",
       },
       {
         ruby: "とてつもなく",
-        content: "とてつもなく"
+        content: "とてつもなく",
       },
       {
         ruby: "けんびきょう",
-        content: "顕微鏡"
+        content: "顕微鏡",
       },
       {
         ruby: "けんざいいしき",
-        content: "顕在意識"
+        content: "顕在意識",
       },
       {
         ruby: "いちぶぶんにすぎません",
-        content: "一部分にすぎません"
+        content: "一部分にすぎません",
       },
       {
         ruby: "こころみ",
-        content: "試み"
+        content: "試み",
       },
       {
         ruby: "よみがえる",
-        content: "蘇る"
+        content: "蘇る",
       },
       {
         ruby: "よくどう",
-        content: "欲動"
+        content: "欲動",
       },
       {
         ruby: "よびこんで",
-        content: "呼び込んで"
+        content: "呼び込んで",
       },
       {
         ruby: "ひめ",
-        content: "秘め"
+        content: "秘め",
       },
       {
         ruby: "りょういき",
-        content: "領域"
+        content: "領域",
       },
       {
         ruby: "しょうどう",
-        content: "衝動"
+        content: "衝動",
       },
       {
         ruby: "あたえられる",
-        content: "与えられる"
+        content: "与えられる",
       },
       {
         ruby: "とりあつかい",
-        content: "取り扱い"
+        content: "取り扱い",
       },
       {
         ruby: "きおくのしこり",
-        content: "記憶のしこり"
+        content: "記憶のしこり",
       },
       {
         ruby: "ともなった",
-        content: "伴った"
+        content: "伴った",
       },
       {
         ruby: "かぎをかけわすれ",
-        content: "鍵をかけ忘れ"
+        content: "鍵をかけ忘れ",
       },
       {
         ruby: "くみたて",
-        content: "組み立て"
+        content: "組み立て",
       },
       {
         ruby: "ひろう",
@@ -504,27 +513,27 @@ export const WORDS_DATA = [
       },
       {
         ruby: "すうちじく",
-        content: "数値軸"
+        content: "数値軸",
       },
       {
         ruby: "きんじきょくせん",
-        content: "近似曲線"
+        content: "近似曲線",
       },
       {
         ruby: "めもり",
-        content: "目盛"
+        content: "目盛",
       },
       {
         ruby: "しばしば",
-        content: "屡々"
+        content: "屡々",
       },
       {
         ruby: "はんれい",
-        content: "凡例"
+        content: "凡例",
       },
       {
         ruby: "",
-        content: "うんざり"
+        content: "うんざり",
       },
       { ruby: "たいりょくをしょうもう", content: "体力を消耗" },
       {
@@ -621,11 +630,12 @@ export const WORDS_DATA = [
       { ruby: "", content: "たちまち" },
       { ruby: "かかくきょうそう", content: "価格競争" },
       { ruby: "きょうつう", content: "共通" },
-    ]
+    ],
   },
   {
     id: "3",
     title: "表現",
+    flippable: true,
     content: [
       { ruby: "ようりょうをえない", content: "要領を得ない" },
       { ruby: "ちょうしょをみがき", content: "長所を磨き" },
@@ -637,7 +647,7 @@ export const WORDS_DATA = [
       { ruby: "みりょくをかんじる", content: "魅力を感じる" },
       { ruby: "みぎかたあがり", content: "右肩上がり" },
       { ruby: "せいこうをおさめた", content: "成功を収めた" },
-      { ruby: "したいをかいぼうする", content: "死体を解剖する", },
+      { ruby: "したいをかいぼうする", content: "死体を解剖する" },
       { ruby: "きおくのかなた", content: "記憶の彼方" },
       { ruby: "みけんにしわをよせる", content: "眉間にしわを寄せる" },
       { ruby: "じゅうなんなはっそうりょく", content: "柔軟な発想力" },
@@ -645,15 +655,420 @@ export const WORDS_DATA = [
       { ruby: "げんかくがみえる", content: "幻覚が見える" },
       { ruby: "こぼさずにそそぐ、こぼさずにつぐ", content: "こぼさずに注ぐ" },
       { ruby: "おすいがわんないにながれこむ", content: "汚水が湾内に流れ込む" },
-      { ruby: "ふくをよごす", content: "服を汚す", },
-      { ruby: "へやがきたない", content: "部屋が汚い", },
-      { ruby: "ちょうないかんきょう", content: "腸内環境", },
-      { ruby: "ちょうかくがするどい", content: "聴覚が鋭い", },
-      { ruby: "こうぎをちょうこうする", content: "講義を聴講する", },
-      { ruby: "おんがくをきく", content: "音楽を聴く", },
-    ]
-  }
-]
+      { ruby: "ふくをよごす", content: "服を汚す" },
+      { ruby: "へやがきたない", content: "部屋が汚い" },
+      { ruby: "ちょうないかんきょう", content: "腸内環境" },
+      { ruby: "ちょうかくがするどい", content: "聴覚が鋭い" },
+      { ruby: "こうぎをちょうこうする", content: "講義を聴講する" },
+      { ruby: "おんがくをきく", content: "音楽を聴く" },
+    ],
+  },
+  {
+    id: "4",
+    title: "文法",
+    flippable: true,
+    content: [
+      {
+        text: [
+          { type: "spoiler", content: ["男たる者"] },
+          {
+            type: "normal",
+            content: "男たる者は人前で涙を見せないものだ、と彼は言った。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["したところで"] },
+          {
+            type: "normal",
+            content: "今さら後悔したところで、もう遅い。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["とは"] },
+          {
+            type: "normal",
+            content: "あの人がうそをついていたとは、いまだに信じられません。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["じゃあるまいし"] },
+          {
+            type: "normal",
+            content:
+              "旅行じゃあるまいし、こんな大きいバッグを持って通勤なんてできません。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["といえども"] },
+          {
+            type: "normal",
+            content:
+              "ここから中へは、大統領といえどもIDカードを提示せずには入れません。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["こととて"] },
+          {
+            type: "normal",
+            content: "知らぬこととて、失礼いたしました。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["からというもの"] },
+          {
+            type: "normal",
+            content:
+              "犬を飼い始めてからというもの、すっかり生活スタイルが変わった。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["であれ", "であれ"] },
+          {
+            type: "normal",
+            content:
+              "社長であれなんであれ、ここではここのルールに従ってもらいます。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ともなく"] },
+          {
+            type: "normal",
+            content: "隣に座った人たちの会話を、聞くともなく聞いていた。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["でなくてなんだろう"] },
+          {
+            type: "normal",
+            content:
+              "彼らは何度別れても出会ってしまう。これが宿命でなくてなんだろう。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["といい", "といい"] },
+          {
+            type: "normal",
+            content: "立地条件といい間取りといい、最高の物件だ。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["に至っても"] },
+          {
+            type: "normal",
+            content:
+              "国中からバッシングされるに至っても、彼は事の重大さを認識していない。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["にして"] },
+          {
+            type: "normal",
+            content:
+              "あれだけ優秀な彼にして落ちるのだから、いかにその試験の難しいことか。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["とばかりに"] },
+          {
+            type: "normal",
+            content: "彼は、来るなとばかりに背を向けた。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["にして"] },
+          {
+            type: "normal",
+            content:
+              "一歳にして筆を持ったというこの子は、生まれながらの書道家なのだろう。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["なくしては"] },
+          {
+            type: "normal",
+            content: "国民の信頼なくしては政権は維持できない。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["にあって"] },
+          {
+            type: "normal",
+            content: "この非常時にあって、仲間割れしている場合ではない。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ものでもない"] },
+          {
+            type: "normal",
+            content:
+              "こちらにも非がないものでもなかったが、どう考えても先方に責任があった。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["に足る"] },
+          {
+            type: "normal",
+            content: "こんな雑誌は、お金を出して買うに足るものではない。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ともなると"] },
+          {
+            type: "normal",
+            content: "花見シーズンともなると、この辺はにぎやかになりますよ。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ならではの"] },
+          {
+            type: "normal",
+            content: "歌舞伎は、日本ならではの伝統芸能です。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["にはあたらない"] },
+          {
+            type: "normal",
+            content:
+              "誰でも若いときには年寄りの気持ちがわからないものだ。怒るにはあたらない。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ないではすまない"] },
+          {
+            type: "normal",
+            content:
+              "誤って友人のカメラを壊してしまった。弁償しないではすまないだろう。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ずにはおかない"] },
+          {
+            type: "normal",
+            content:
+              "彼女の並外れた美しい容姿は、すれ違う人々を振り返らせずにはおかない。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["までだ"] },
+          {
+            type: "normal",
+            content: "今回だめだったら、また挑戦するまでだ。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["に即して"] },
+          {
+            type: "normal",
+            content: "ニュースは、事実に即して報道されるものだ。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["までもない"] },
+          {
+            type: "normal",
+            content:
+              "スポーツをしないまでも、歩くなどして体を動かしたほうが良い。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["までもない"] },
+          {
+            type: "normal",
+            content: "このくらいの簡単な計算なら、電卓を使うまでもない。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ものを"] },
+          {
+            type: "normal",
+            content:
+              "今日がセールと知っていたら昨日買わなかったものを、損をしてしまった。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["をもって"] },
+          {
+            type: "normal",
+            content: "入金の確認をもって契約が成立したものとする。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["がゆえに"] },
+          {
+            type: "normal",
+            content: "あの頃は若いがゆえに、無茶をしたものだ。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["やいなや"] },
+          {
+            type: "normal",
+            content: "子供は目を覚ますやいなや、母親を呼んだ。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["めいた"] },
+          {
+            type: "normal",
+            content: "その人は、謎めいた言葉を残して死んだ。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["を皮切りに"] },
+          {
+            type: "normal",
+            content:
+              "我々のコンサートは、３月６日の北海道を皮切りに、２０ヶ所で行います。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["まみれ"] },
+          {
+            type: "normal",
+            content: "娘は初めてのお菓子作りで、服も顔も粉まみれになっていた。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["べく"] },
+          {
+            type: "normal",
+            content: "父親は息子を帰国させるべく、来日した。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["をおいてほかにない"] },
+          {
+            type: "normal",
+            content: "大学の専門を活かすには、貴社をおいてほかにはありません。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ことやら"] },
+          {
+            type: "normal",
+            content:
+              "A「うちの会社大丈夫かな」B「かなり危ないらしいよ。この先、どうなることやら…」",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["こそあれ"] },
+          {
+            type: "normal",
+            content:
+              "彼の歌には、使い古した表現やメロディーこそあれ、新しさや魅力的な表現は見つからない。",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["こそ"] },
+          {
+            type: "normal",
+            content:
+              "A「あの木になっている柿は食べないんですか」B「色こそきれいだけど、渋くて食べられないの」",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ことにして"] },
+          {
+            type: "normal",
+            content:
+              "A「あ、これ内緒にしてって言われてたんだった。聞かなかったことにして」B「わかった」",
+          },
+        ],
+      },
+      {
+        text: [
+          { type: "spoiler", content: ["ことのないように"] },
+          {
+            type: "normal",
+            content:
+              "バスに乗ってから小銭を探して人を待たせることのないように、乗る前から用意しておきましょう。",
+          },
+        ],
+      },
+    ],
+  },
+];
 
 export const COLLECTION_DATA = [
   {
@@ -781,7 +1196,6 @@ export const SYNONYM_DATA = [
     ],
   },
 ];
-
 
 export interface Quote {
   author?: ReactNode;
