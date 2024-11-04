@@ -1068,6 +1068,93 @@ export const WORDS_DATA = [
       },
     ],
   },
+  {
+    id: "5",
+    title: "日",
+    flippable: true,
+    content: [
+      {
+        ruby: "ついたち",
+        content: "一日"
+      },
+      {
+        ruby: "ふつか",
+        content: "二日"
+      },
+      {
+        ruby: "みっか",
+        content: "三日"
+      },
+      {
+        ruby: "よっか",
+        content: "四日"
+      },
+      {
+        ruby: "いつか",
+        content: "五日"
+      },
+      {
+        ruby: "むいか",
+        content: "六日"
+      },
+      {
+        ruby: "なのか",
+        content: "七日"
+      },
+      {
+        ruby: "ようか",
+        content: "八日"
+      },
+      {
+        ruby: "ここのか",
+        content: "九日"
+      },
+      {
+        ruby: "とおか",
+        content: "十日"
+      },
+      {
+        ruby: "じゅういちにち",
+        content: "十一日"
+      },
+      {
+        ruby: "じゅうににち",
+        content: "十二日"
+      },
+      {
+        ruby: "じゅうさんにち",
+        content: "十三日"
+      },
+      {
+        ruby: "じゅうよっか",
+        content: "十四日"
+      },
+      {
+        ruby: "じゅうごにち",
+        content: "十五日"
+      },
+      {
+        ruby: "じゅうろくにち",
+        content: "十六日"
+      },
+      {
+        ruby: "じゅうしちにち",
+        content: "十七日"
+      },
+      {
+        ruby: "じゅうはちにち",
+        content: "十八日"
+      },
+      {
+        ruby: "じゅうくにち",
+        content: "十九日"
+      },
+      {
+        ruby: "はつか",
+        content: "二十日"
+      },
+    ]
+  }
 ];
 
 export const COLLECTION_DATA = [
