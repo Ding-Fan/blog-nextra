@@ -666,7 +666,7 @@ export const WORDS_DATA = [
   {
     id: "4",
     title: "文法",
-    flippable: true,
+    flippable: false,
     content: [
       {
         text: [
