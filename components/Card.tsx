@@ -1,6 +1,7 @@
-import React, { HTMLAttributes, useState } from "react";
+import React, { HTMLAttributes, useEffect, useState } from "react";
 import { ct } from "../scripts/utils";
 import { setTimeout } from "timers";
+import { useStore } from '../state';
 
 interface CardProps extends HTMLAttributes<HTMLElement> {
   frontContent: React.ReactNode;
@@ -8,22 +9,33 @@ interface CardProps extends HTMLAttributes<HTMLElement> {
   flippable?: boolean;
 }
 
+export const ANIMATION_TIME = 300;
+
 const Card: React.FC<CardProps> = ({
   frontContent,
   backContent,
   className,
   flippable = true,
 }) => {
-  const [flipped, setFlipped] = useState(false);
+  const flipped = useStore((state) => state.flipped);
+  const setFlipped = useStore((state) => state.setFlipped);
+  // **Updated Code:** Initialize doAnimation state to false
   const [doAnimation, setDoAnimation] = useState(false);
-  const animationTime = 300;
+
+  // **Updated Code:** Use useEffect to update doAnimation when flipped changes
+  useEffect(() => {
+    setDoAnimation(true); // Set doAnimation to true when flipped changes
+    const timer = setTimeout(() => {
+      setDoAnimation(false); // Reset doAnimation after ANIMATION_TIME
+    }, ANIMATION_TIME);
+
+    // Cleanup the timer when component unmounts or before next effect runs
+    return () => clearTimeout(timer);
+  }, [flipped]); // Dependency array includes flipped
 
   const handleClick = () => {
     if (!flippable) return;
-    setDoAnimation(true);
-    setTimeout(() => {
-      setDoAnimation(false);
-    }, animationTime);
+    // **Updated Code:** Removed setDoAnimation from handleClick
     setFlipped(!flipped);
   };
 
@@ -32,7 +44,7 @@ const Card: React.FC<CardProps> = ({
       <div
         className={ct(
           "relative cursor-pointer w-[80vw] md:w-96 h-36 bg-white rounded-lg shadow-xl transition-transform hover:shadow-2xl",
-          `duration-${animationTime}`,
+          `duration-${ANIMATION_TIME}`,
           doAnimation && "scale-110",
           flipped && "-rotate-y-180"
         )}

@@ -32,13 +32,13 @@ const ShowCards: React.FC<ShowCardsProps> = ({ dataSets = WORDS_DATA }) => {
   return (
     <div>
       {/* Buttons to switch between data sets */}
-      <div className="grid grid-cols-2 gap-2 my-4">
+      <div className="grid grid-cols-3 gap-2 my-4">
         {dataSets.map((dataSet, index) => (
           <Button
             name={activeIndex === index ? "primary" : "secondary"}
             key={index}
             onClick={() => handleButtonClick(index)}
-            className={`mx-2`}
+            className={`mx-2 py-2`}
           >
             {dataSet.title}
           </Button>

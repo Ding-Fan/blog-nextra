@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "./Loading";
+import { useStore } from '../state'; // <-- Added import
 
 interface Props extends HTMLAttributes<HTMLElement> {
   list: any[];
@@ -23,6 +24,8 @@ const ShowCard = ({
   className,
 }: Props) => {
   const [showItem, setShowItem] = useState(null);
+  // **Updated Code:** Added state variable to lock handleNext during flip
+  const [isFlipping, setIsFlipping] = useState(false); // <-- Added state
 
   const search = (text: string) => {
     window.open(`https://dictionary.goo.ne.jp/word/${text}`, "_blank");
@@ -33,16 +36,26 @@ const ShowCard = ({
     setShowItem(list[0]);
   }, [list]);
 
+  // **Updated Code:** Get autoFlip from Zustand store
+  const autoFlip = useStore((state) => state.autoFlip); // <-- Added line
+
   // Handle shuffle click to get a new random item
   const handleRandomize = () => {
     const newItem = getRandomItem(list);
     setShowItem(newItem);
   };
 
-  // Handle next click to get the next item in the list
-  const handleNext = () => {
+  // **Updated Code:** Updated handleNext to trigger await autoFlip and implement lock
+  const handleNext = async () => { // <-- Made handleNext async
+    if (isFlipping) return; // <-- Check if flipping
+    setIsFlipping(true); // <-- Set flipping lock
+
+    await autoFlip(); // <-- Await autoFlip from the store
+
     const newItem = getNextItem(list, showItem);
     setShowItem(newItem);
+
+    setIsFlipping(false); // <-- Release flipping lock
   };
 
   if (!showItem) {
