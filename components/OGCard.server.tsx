@@ -58,7 +58,7 @@ const OGCard = ({ url, note, className }) => {
   return (
     <div
       className={ct(
-        "border cursor-pointer transition-all ease-out hover:shadow-md duration-400 hover:scale-105 border-solid border-zinc-400 rounded-lg flex items-stretch",
+        "border cursor-pointer transition-all ease-out hover:shadow-md duration-400 hover:scale-105 border-solid border-zinc-400 rounded-lg overflow-hidden",
         className
       )}
       onClick={handleClick}
@@ -66,7 +66,7 @@ const OGCard = ({ url, note, className }) => {
       {ogData?.image && (
         <div>
           <img
-            className="aspect-square max-w-24 h-full object-contain rounded-l-lg"
+            className="w-full object-contain"
             src={ogData.image}
             alt={ogData.title || "Image"}
           />
@@ -81,29 +81,36 @@ const OGCard = ({ url, note, className }) => {
             {note}
           </div>
         )}
-        <div
-          className="text-sm line-clamp-2 break-all"
-          title={ogData?.title || url}
-        >
-          {ogData?.title || url}
-        </div>
-        {ogData?.description ? (
-          <div
-            className="text-xs text-gray-600 line-clamp-2 break-all"
-            title={ogData.description}
-          >
-            {ogData.description}
-          </div>
-        ) : (
-          !loading && (
-            <div
-              className="text-xs text-gray-600 line-clamp-2 break-all"
-              title={url}
-            >
-              {url}
-            </div>
+        {
+          !(ogData?.image) && (
+            <>
+              <div
+                className="text-sm line-clamp-2 break-all"
+                title={ogData?.title || url}
+              >
+                {ogData?.title || url}
+              </div>
+
+              {ogData?.description ? (
+                <div
+                  className="text-xs text-gray-600 line-clamp-2 break-all"
+                  title={ogData.description}
+                >
+                  {ogData.description}
+                </div>
+              ) : (
+                !loading && (
+                  <div
+                    className="text-xs text-gray-600 line-clamp-2 break-all"
+                    title={url}
+                  >
+                    {url}
+                  </div>
+                )
+              )}
+            </>
           )
-        )}
+        }
       </div>
     </div>
   );
