@@ -1,5 +1,5 @@
 import Card from "./Card";
-import { ct, getNextItem, getRandomItem } from "../scripts/utils";
+import { ct, getNextItem, getRandomItem, withLock } from "../scripts/utils";
 import { useState, useEffect, HTMLAttributes, ReactNode } from "react";
 import Button from "./Button";
 import {
@@ -39,24 +39,27 @@ const ShowCard = ({
   // **Updated Code:** Get autoFlip from Zustand store
   const autoFlip = useStore((state) => state.autoFlip); // <-- Added line
 
-  // Handle shuffle click to get a new random item
-  const handleRandomize = () => {
-    const newItem = getRandomItem(list);
-    setShowItem(newItem);
+  const handleRandomize = async () => {
+    withLock(isFlipping, setIsFlipping, async () => {
+      if (flippable) {
+        await autoFlip();
+      }
+
+      const newItem = getRandomItem(list);
+      setShowItem(newItem);
+    });
   };
 
-  // **Updated Code:** Updated handleNext to trigger await autoFlip and implement lock
-  const handleNext = async () => { // <-- Made handleNext async
-    if (isFlipping) return; // <-- Check if flipping
-    setIsFlipping(true); // <-- Set flipping lock
+  const handleNext = () => {
+    withLock(isFlipping, setIsFlipping, async () => {
+      if (flippable) {
+        await autoFlip();
+      }
 
-    await autoFlip(); // <-- Await autoFlip from the store
-
-    const newItem = getNextItem(list, showItem);
-    setShowItem(newItem);
-
-    setIsFlipping(false); // <-- Release flipping lock
-  };
+      const newItem = getNextItem(list, showItem);
+      setShowItem(newItem);
+    });
+  }
 
   if (!showItem) {
     return <Loading />;

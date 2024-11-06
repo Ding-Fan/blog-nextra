@@ -29,3 +29,14 @@ export function getNextItem<T>(list: T[], currentItem: T): T {
   const nextIndex = (currentIndex + 1) % list.length;
   return list[nextIndex];
 }
+
+export const withLock = async (lockState: boolean, setLock: (state: boolean) => void, callback: () => Promise<void>) => {
+  if (lockState) return; // If lock is active, return early
+  setLock(true); // Set lock to active
+
+  try {
+    await callback(); // Execute the callback passed in
+  } finally {
+    setLock(false); // Release the lock after completion, even if there’s an error
+  }
+};
