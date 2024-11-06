@@ -1,44 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { ct } from "../scripts/utils";
 
+
 const OGCard = ({ url, note, className }) => {
   const [ogData, setOgData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getOGTags = async (url) => {
+
+      let data = { q: url }
+      let key = process.env.NEXT_PUBLIC_LINKPREVIEW_API_KEY;
       let response;
+
       try {
-        response = await fetch(url);
+        response = await fetch('https://api.linkpreview.net', {
+          method: 'POST',
+          headers: {
+            'X-Linkpreview-Api-Key': key,
+          },
+          mode: 'cors',
+          body: JSON.stringify(data),
+        })
+          .then(res => res.json())
+
       } catch (error) {
         console.log("Error fetching OG data for URL:", url);
       }
 
-      if (!response || !response.ok) {
-        console.log("Bad response from URL:", url);
-        return null;
-      }
-
-      const html = await response.text();
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, "text/html");
-
-      const getMetaContent = (selector: string): string | undefined => {
-        const element = doc.querySelector(selector) as HTMLMetaElement | null;
-        return element?.content;
-      };
-
-      const getMetaTag = (name: string): string | undefined =>
-        getMetaContent(`meta[property='og:${name}']`) ||
-        getMetaContent(`meta[name='${name}']`) ||
-        getMetaContent(`meta[property='twitter:${name}']`);
-
-      return {
-        title: getMetaTag("title") || doc.querySelector("title")?.innerText,
-        description: getMetaTag("description"),
-        image: getMetaTag("image"),
-        url,
-      };
+      return response;
     };
 
     getOGTags(url).then((data) => {
@@ -66,7 +56,7 @@ const OGCard = ({ url, note, className }) => {
       {ogData?.image && (
         <div>
           <img
-            className="w-full object-contain"
+            className="object-cover h-20"
             src={ogData.image}
             alt={ogData.title || "Image"}
           />
