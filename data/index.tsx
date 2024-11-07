@@ -12,6 +12,18 @@ export interface Words {
   content: Word[];
 }
 
+export const PROMPT_DATA = [
+  {
+    title: "",
+    content: (
+      <>
+        ```markdown
+        ```
+      </>
+    ),
+  },
+];
+
 export const WORDS_DATA = [
   // 助数詞
   {
@@ -1075,86 +1087,86 @@ export const WORDS_DATA = [
     content: [
       {
         ruby: "ついたち",
-        content: "一日"
+        content: "一日",
       },
       {
         ruby: "ふつか",
-        content: "二日"
+        content: "二日",
       },
       {
         ruby: "みっか",
-        content: "三日"
+        content: "三日",
       },
       {
         ruby: "よっか",
-        content: "四日"
+        content: "四日",
       },
       {
         ruby: "いつか",
-        content: "五日"
+        content: "五日",
       },
       {
         ruby: "むいか",
-        content: "六日"
+        content: "六日",
       },
       {
         ruby: "なのか",
-        content: "七日"
+        content: "七日",
       },
       {
         ruby: "ようか",
-        content: "八日"
+        content: "八日",
       },
       {
         ruby: "ここのか",
-        content: "九日"
+        content: "九日",
       },
       {
         ruby: "とおか",
-        content: "十日"
+        content: "十日",
       },
       {
         ruby: "じゅういちにち",
-        content: "十一日"
+        content: "十一日",
       },
       {
         ruby: "じゅうににち",
-        content: "十二日"
+        content: "十二日",
       },
       {
         ruby: "じゅうさんにち",
-        content: "十三日"
+        content: "十三日",
       },
       {
         ruby: "じゅうよっか",
-        content: "十四日"
+        content: "十四日",
       },
       {
         ruby: "じゅうごにち",
-        content: "十五日"
+        content: "十五日",
       },
       {
         ruby: "じゅうろくにち",
-        content: "十六日"
+        content: "十六日",
       },
       {
         ruby: "じゅうしちにち",
-        content: "十七日"
+        content: "十七日",
       },
       {
         ruby: "じゅうはちにち",
-        content: "十八日"
+        content: "十八日",
       },
       {
         ruby: "じゅうくにち",
-        content: "十九日"
+        content: "十九日",
       },
       {
         ruby: "はつか",
-        content: "二十日"
+        content: "二十日",
       },
-    ]
-  }
+    ],
+  },
 ];
 
 export const COLLECTION_DATA = [
