@@ -5,26 +5,32 @@ export interface Word {
   ruby: string;
   content: string;
 }
-export interface Words {
+export type ListItem = Word | TextItem;
+export interface DataSetItem {
   id: string;
   title: string;
   flippable: boolean;
-  content: Word[];
+  content: ListItem[];
+}
+// Define possible text types
+export type TextType = "spoiler" | "normal"; // Extend as needed
+
+// Define the structure of each text item
+export interface TextItem {
+  text: {
+    type: TextType;
+    content: string | string[];
+  }[];
 }
 
 export const PROMPT_DATA = [
   {
     title: "",
-    content: (
-      <>
-        ```markdown
-        ```
-      </>
-    ),
+    content: <>```markdown ```</>,
   },
 ];
 
-export const WORDS_DATA = [
+export const WORDS_DATA: DataSetItem[] = [
   // 助数詞
   {
     id: "0",
