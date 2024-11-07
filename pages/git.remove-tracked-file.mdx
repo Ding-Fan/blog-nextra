@@ -1,0 +1,7 @@
+# Update .gitignore and Remove Tracked File
+
+I received an email alerting me about an API key leak on GitHub. I quickly rushed to my computer, revoked the leaked key, and updated the `.gitignore` file with `.env.*`, but Git was still tracking my `.env.local` file.
+
+To resolve this, I used `git rm --cached .env.*` to remove the tracking, made a new commit, and pushed it. My `.env.local` file remains on my local machine but has been removed from Git tracking.
+
+[Git will continue to track any files that are already being tracked](https://stackoverflow.com/a/1274447)
