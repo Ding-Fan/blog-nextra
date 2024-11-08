@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card, { CardProps } from "./Card";
 import { ct, getNextItem, getRandomItem, withLock } from "../scripts/utils";
 import { useState, useEffect, HTMLAttributes, ReactNode } from "react";
 import Button from "./Button";
@@ -9,12 +9,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "./Loading";
-import { useStore } from '../state'; // <-- Added import
+import { useStore } from "../state"; // <-- Added import
+import { ListItem } from "../data";
 
-interface Props extends HTMLAttributes<HTMLElement> {
-  list: any[];
-  flippable?: boolean;
-  frontRender: (item: any) => ReactNode;
+interface Props<T>
+  extends HTMLAttributes<HTMLElement>,
+    Pick<CardProps, "flippable" | "id"> {
+  list: T[];
+  frontRender: (item: T) => ReactNode;
 }
 
 const ShowCard = ({
@@ -22,8 +24,10 @@ const ShowCard = ({
   frontRender,
   flippable = true,
   className,
-}: Props) => {
+  id,
+}: Props<ListItem>) => {
   const [showItem, setShowItem] = useState(null);
+  const [itemIndex, setItemIndex] = useState(0);
   // **Updated Code:** Added state variable to lock handleNext during flip
   const [isFlipping, setIsFlipping] = useState(false); // <-- Added state
 
@@ -34,6 +38,7 @@ const ShowCard = ({
   // Run only on the client
   useEffect(() => {
     setShowItem(list[0]);
+    setItemIndex(0);
   }, [list]);
 
   // **Updated Code:** Get autoFlip from Zustand store
@@ -45,8 +50,9 @@ const ShowCard = ({
         await autoFlip();
       }
 
-      const newItem = getRandomItem(list);
+      const [newItem, index] = getRandomItem(list);
       setShowItem(newItem);
+      setItemIndex(index as number);
     });
   };
 
@@ -56,10 +62,11 @@ const ShowCard = ({
         await autoFlip();
       }
 
-      const newItem = getNextItem(list, showItem);
+      const [newItem, index] = getNextItem(list, showItem);
       setShowItem(newItem);
+      setItemIndex(index as number);
     });
-  }
+  };
 
   if (!showItem) {
     return <Loading />;
@@ -72,6 +79,7 @@ const ShowCard = ({
         frontContent={frontRender(showItem)}
         backContent={showItem.ruby}
         flippable={flippable}
+        id={`${itemIndex + 1}`}
       />
       <div className="grid grid-cols-3 mt-2 gap-2">
         <Button name="primary" onClick={() => search(showItem.content)}>

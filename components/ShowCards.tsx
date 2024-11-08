@@ -2,12 +2,12 @@
 import { useEffect, useState } from "react";
 import ShowCard from "./ShowCard";
 import Button from "./Button";
-import { Word, Words, WORDS_DATA } from "../data";
+import { DataSetItem, WORDS_DATA } from "../data";
 import SimpleContent from "./SimpleContent";
 import SpoilerContent from "./SpoilerContent";
 
 interface ShowCardsProps {
-  dataSets?: Words[];
+  dataSets?: DataSetItem[];
 }
 
 const ShowCards: React.FC<ShowCardsProps> = ({ dataSets = WORDS_DATA }) => {

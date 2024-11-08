@@ -1,4 +1,5 @@
 import clsx, { ClassValue } from "clsx";
+import next from "next";
 import { twMerge } from "tailwind-merge";
 
 export function ct(...inputs: ClassValue[]) {
@@ -19,18 +20,22 @@ export function getOssUrl(name: string): string {
   return `${OSS_BASE_URL}${name}`;
 }
 
-export function getRandomItem<T>(list: T[]): T {
+export function getRandomItem<T>(list: T[]): (number | T)[] {
   const randomIndex = Math.floor(Math.random() * list.length);
-  return list[randomIndex];
+  return [list[randomIndex], randomIndex];
 }
 
-export function getNextItem<T>(list: T[], currentItem: T): T {
+export function getNextItem<T>(list: T[], currentItem: T): (number | T)[] {
   const currentIndex = list.indexOf(currentItem);
   const nextIndex = (currentIndex + 1) % list.length;
-  return list[nextIndex];
+  return [list[nextIndex], nextIndex];
 }
 
-export const withLock = async (lockState: boolean, setLock: (state: boolean) => void, callback: () => Promise<void>) => {
+export const withLock = async (
+  lockState: boolean,
+  setLock: (state: boolean) => void,
+  callback: () => Promise<void>
+) => {
   if (lockState) return; // If lock is active, return early
   setLock(true); // Set lock to active
 

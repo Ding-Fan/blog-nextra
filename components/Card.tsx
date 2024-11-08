@@ -1,12 +1,13 @@
 import React, { HTMLAttributes, useEffect, useState } from "react";
 import { ct } from "../scripts/utils";
 import { setTimeout } from "timers";
-import { useStore } from '../state';
+import { useStore } from "../state";
 
-interface CardProps extends HTMLAttributes<HTMLElement> {
+export interface CardProps extends HTMLAttributes<HTMLElement> {
   frontContent: React.ReactNode;
   backContent: React.ReactNode;
   flippable?: boolean;
+  id?: string;
 }
 
 export const ANIMATION_TIME = 300;
@@ -16,6 +17,7 @@ const Card: React.FC<CardProps> = ({
   backContent,
   className,
   flippable = true,
+  id,
 }) => {
   const flipped = useStore((state) => state.flipped);
   const setFlipped = useStore((state) => state.setFlipped);
@@ -63,6 +65,11 @@ const Card: React.FC<CardProps> = ({
         >
           <div className="flex justify-center items-center h-full  rounded-lg p-5">
             <div className="text-center font-bold text-xl">{frontContent}</div>
+            {id && (
+              <div className="absolute top-0 left-0 p-2 text-xs">
+                {id}
+              </div>
+            )}
           </div>
         </div>
         {/* Back of the card */}
