@@ -21,6 +21,7 @@ const ShowLinks: React.FC = () => {
                 className="mb-2"
                 url={link.url}
                 note={link.note}
+                image={link.image}
               />
             ))}
           </div>

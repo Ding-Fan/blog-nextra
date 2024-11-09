@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { ct } from "../scripts/utils";
 
 
-const OGCard = ({ url, note, className }) => {
+const OGCard = ({ url, note, className, image }) => {
   const [ogData, setOgData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (image) {
+      return
+    }
+
     const getOGTags = async (url) => {
 
       let data = { q: url }
@@ -39,7 +43,7 @@ const OGCard = ({ url, note, className }) => {
       }
       setLoading(false);
     });
-  }, [url]);
+  }, [url, image]);
 
   const handleClick = () => {
     window.open(ogData?.url || url, "_blank");
@@ -53,7 +57,7 @@ const OGCard = ({ url, note, className }) => {
       )}
       onClick={handleClick}
     >
-      {ogData?.image && (
+      {ogData?.image ? (
         <div>
           <img
             className="object-cover h-20"
@@ -61,7 +65,13 @@ const OGCard = ({ url, note, className }) => {
             alt={ogData.title || "Image"}
           />
         </div>
-      )}
+      ) : (image && <div>
+        <img
+          className="object-cover h-20"
+          src={image}
+          alt={note || "Image"}
+        />
+      </div>)}
       <div className="flex flex-col justify-center flex-1 p-1">
         {note && (
           <div

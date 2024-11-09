@@ -4,6 +4,7 @@ export interface Link {
   url: string;
   note: string;
   tags?: string[];
+  image?: string;
 }
 
 export interface Word {

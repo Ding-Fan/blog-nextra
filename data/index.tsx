@@ -1135,6 +1135,57 @@ export const WORDS_DATA: DataSetItem[] = [
       },
     ],
   },
+  {
+    id: "6",
+    title: "自／他動詞",
+    flippable: true,
+    content: [
+      {
+        ruby: "わたしが弟を起こす",
+        content: "わたしは起きる",
+      },
+      {
+        ruby: "ドアを開けます",
+        content: "ドアが開きます",
+      },
+      {
+        ruby: "扉を閉める",
+        content: "扉が閉まる",
+      },
+      {
+        ruby: "先生が授業を始める",
+        content: "授業が始まる",
+      },
+      {
+        ruby: "太陽が氷を溶かす",
+        content: "氷が溶ける",
+      },
+      {
+        ruby: "火を消します",
+        content: "火が消えます",
+      },
+      {
+        ruby: "荷物を入れます",
+        content: "犬が入ります",
+      },
+      {
+        ruby: "電気をつけます",
+        content: "電気がつきます",
+      },
+      {
+        ruby: "車を止めます",
+        content: "車が止まります",
+      },
+      {
+        ruby: "本を出します",
+        content: "切符が出ます",
+      },
+      {
+        ruby: "",
+        content: "",
+      },
+    ]
+  }
 ];
 
 export const COLLECTION_DATA = [
@@ -1443,11 +1494,13 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://tenki.jp/lite/forecast/3/17/4610/14131/",
     note: "川崎天気",
+    image: "https://static.tenki.jp/images/ogp/ogp-top.jpg",
     tags: ["weather"],
   },
   {
     url: "https://weathernews.jp/onebox/radar/",
     note: "雨雲レーダー",
+    image: "https://weathernews.jp/onebox/img/og_img.jpg",
     tags: ["weather"],
   },
   {
@@ -1473,16 +1526,19 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://bsky.app",
     note: "Bluesky",
+    image: "https://bsky.app/static/social-card-default-gradient.png",
     tags: ["sns"],
   },
   {
     url: "https://www.abaxlms.com",
     note: "ABAX LMS",
+    image: "https://www.abaxlms.com/images/icons/apple-touch-icon.png",
     tags: ["english"],
   },
   {
     url: "https://soundcloud.com/abax-lms/sets/toeic-skills-3-full-audio/s-wHBQrVlV441",
     note: "TOEIC Skills 3 Full Audio",
+    image: "https://www.abaxlms.com/images/icons/apple-touch-icon.png",
     tags: ["english"],
   },
   {
@@ -1525,6 +1581,7 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://www.youtube.com",
     note: "youtube",
+    image: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
     tags: ["sns"],
   },
   {
@@ -1540,16 +1597,19 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://www.youtube.com/@kurzgesagt",
     note: "Kurzgesagt - In a Nutshell@youtube",
+    image: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
     tags: ["study"],
   },
   {
     url: "https://www.youtube.com/@3blue1brown",
     note: "3Blue1Brown@youtube",
+    image: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
     tags: ["study"],
   },
   {
     url: "https://youtube.com/playlist?list=PLhfrWIlLOoKPc2RecyiM_A9nf3fUU3e6g",
     note: "Free Cisco CCNA 200-301 Course@youtube",
+    image: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
     tags: ["study"],
   },
   {

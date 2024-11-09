@@ -10,7 +10,7 @@ export interface CardProps extends HTMLAttributes<HTMLElement> {
   id?: string;
 }
 
-export const ANIMATION_TIME = 300;
+export const ANIMATION_TIME = 400;
 
 const Card: React.FC<CardProps> = ({
   frontContent,
