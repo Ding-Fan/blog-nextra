@@ -1463,6 +1463,12 @@ export const POSTS_DATA: Post[] = [
 ];
 
 export const PHOTOS_2024 = [
+
+  { name: "DJI_20240706165714_0018_D.JPG" },
+  { name: "DJI_20240802191958_0016_D.JPG" },
+  { name: "DJI_20240814113806_0012_D.JPG" },
+  { name: "DJI_20240814184157_0074_D.JPG" },
+  { name: "DJI_20240814134429_0027_D.JPG" },
   {
     name: "DJI_20240926143510_0056_D.JPG",
   },
@@ -1480,6 +1486,9 @@ export const PHOTOS_2024 = [
   },
   {
     name: "DJI_20240926134352_0040_D.JPG",
+  },
+  {
+    name: "DJI_20240926135057_0051_D.JPG"
   },
   {
     name: "DJI_20240926140854_0054_D.JPG",
@@ -1506,11 +1515,13 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/kyoshin/",
     note: "リアルタイム　震度 yahoo",
+    image: "https://s.yimg.jp/images/weather/social/img_ogp_kyoshin.png",
     tags: ["alert"],
   },
   {
     url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/",
     note: "地震速報",
+    image: "https://s.yimg.jp/images/weather/social/weather_ogp.png",
     tags: ["alert"],
   },
   {
