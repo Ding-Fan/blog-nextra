@@ -1,6 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import next from "next";
 import { twMerge } from "tailwind-merge";
+import { Link } from "../data/types";
 
 export function ct(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -44,4 +45,28 @@ export const withLock = async (
   } finally {
     setLock(false); // Release the lock after completion, even if there’s an error
   }
+};
+
+export const groupLinksByTag = (links: Link[]): { [tag: string]: Link[] } => {
+  const tagMap: { [tag: string]: Link[] } = {};
+  const noTag: Link[] = [];
+
+  links.forEach((link) => {
+    if (!link.tags || link.tags.length === 0) {
+      noTag.push(link);
+      return;
+    }
+    link.tags.forEach((tag) => {
+      if (!tagMap[tag]) {
+        tagMap[tag] = [];
+      }
+      tagMap[tag].push(link);
+    });
+  });
+
+  if (noTag.length > 0) {
+    tagMap['No Tag'] = noTag;
+  }
+
+  return tagMap;
 };

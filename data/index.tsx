@@ -1,34 +1,6 @@
 import { ReactNode } from "react";
 import { getOssUrl } from "../scripts/utils";
-
-export interface Word {
-  ruby: string;
-  content: string;
-}
-export type ListItem = Word | TextItem;
-export interface DataSetItem {
-  id: string;
-  title: string;
-  flippable: boolean;
-  content: ListItem[];
-}
-// Define possible text types
-export type TextType = "spoiler" | "normal"; // Extend as needed
-
-// Define the structure of each text item
-export interface TextItem {
-  text: {
-    type: TextType;
-    content: string | string[];
-  }[];
-}
-
-export const PROMPT_DATA = [
-  {
-    title: "",
-    content: <>```markdown ```</>,
-  },
-];
+import { DataSetItem, Link, Post } from "./types";
 
 export const WORDS_DATA: DataSetItem[] = [
   // 助数詞
@@ -896,16 +868,6 @@ export const WORDS_DATA: DataSetItem[] = [
       },
       {
         text: [
-          { type: "spoiler", content: ["ないではすまない"] },
-          {
-            type: "normal",
-            content:
-              "誤って友人のカメラを壊してしまった。弁償しないではすまないだろう。",
-          },
-        ],
-      },
-      {
-        text: [
           { type: "spoiler", content: ["ずにはおかない"] },
           {
             type: "normal",
@@ -1302,14 +1264,7 @@ export const SYNONYM_DATA = [
   },
 ];
 
-export interface Quote {
-  author?: ReactNode;
-  content?: ReactNode;
-  description?: ReactNode;
-  hidden?: boolean;
-}
-
-export const POSTS_DATA: Quote[] = [
+export const POSTS_DATA: Post[] = [
   {
     author: "勝　海舟",
     content: "急いでも仕方がない。寝ころんで待つのが第一だと思っています。",
@@ -1484,46 +1439,56 @@ export const PHOTOS_2024 = [
   };
 });
 
-export const HOMEPAGE_LINKS = [
+export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://tenki.jp/lite/forecast/3/17/4610/14131/",
     note: "川崎天気",
+    tags: ["weather"],
   },
   {
     url: "https://weathernews.jp/onebox/radar/",
     note: "雨雲レーダー",
+    tags: ["weather"],
   },
   {
     url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/kyoshin/",
     note: "リアルタイム　震度 yahoo",
+    tags: ["alert"],
   },
   {
     url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/",
     note: "地震速報",
+    tags: ["alert"],
   },
   {
     url: "https://cool-matan.vercel.app",
     note: "curriculum",
+    tags: ["study"],
   },
   {
     url: "https://www.collinsdictionary.com",
     note: "Collins Dictionary",
+    tags: ["english"],
   },
   {
     url: "https://bsky.app",
     note: "Bluesky",
+    tags: ["sns"],
   },
   {
     url: "https://www.abaxlms.com",
     note: "ABAX LMS",
+    tags: ["english"],
   },
   {
     url: "https://soundcloud.com/abax-lms/sets/toeic-skills-3-full-audio/s-wHBQrVlV441",
     note: "TOEIC Skills 3 Full Audio",
+    tags: ["english"],
   },
   {
     url: "https://classroom.google.com/u/1/h",
     note: "Google Classroom",
+    tags: ["study"],
   },
   {
     url: "/japanese",
@@ -1560,29 +1525,36 @@ export const HOMEPAGE_LINKS = [
   {
     url: "https://www.youtube.com",
     note: "youtube",
+    tags: ["sns"],
   },
   {
     url: "https://transit.yahoo.co.jp/diainfo/area/4",
     note: "電車路線情報",
+    tags: ["alert"],
   },
   {
     url: "https://www.jma.go.jp/bosai/map.html#6/39.551/153.347/&elem=root&typhoon=all&contents=typhoon",
     note: "台風経路図",
+    tags: ["alert"],
   },
   {
     url: "https://www.youtube.com/@kurzgesagt",
     note: "Kurzgesagt - In a Nutshell@youtube",
+    tags: ["study"],
   },
   {
     url: "https://www.youtube.com/@3blue1brown",
     note: "3Blue1Brown@youtube",
+    tags: ["study"],
   },
   {
     url: "https://youtube.com/playlist?list=PLhfrWIlLOoKPc2RecyiM_A9nf3fUU3e6g",
     note: "Free Cisco CCNA 200-301 Course@youtube",
+    tags: ["study"],
   },
   {
     url: "https://dash.cloudflare.com/",
     note: "Cloudflare Dashboard",
+    tags: ["info"],
   },
 ];

@@ -2,9 +2,10 @@
 import { useEffect, useState } from "react";
 import ShowCard from "./ShowCard";
 import Button from "./Button";
-import { DataSetItem, WORDS_DATA } from "../data";
 import SimpleContent from "./SimpleContent";
 import SpoilerContent from "./SpoilerContent";
+import { DataSetItem } from "../data/types";
+import { WORDS_DATA } from "../data";
 
 interface ShowCardsProps {
   dataSets?: DataSetItem[];

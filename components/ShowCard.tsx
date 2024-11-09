@@ -10,11 +10,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "./Loading";
 import { useStore } from "../state"; // <-- Added import
-import { ListItem } from "../data";
+import { ListItem } from "../data/types";
 
 interface Props<T>
   extends HTMLAttributes<HTMLElement>,
-    Pick<CardProps, "flippable" | "id"> {
+  Pick<CardProps, "flippable" | "id"> {
   list: T[];
   frontRender: (item: T) => ReactNode;
 }

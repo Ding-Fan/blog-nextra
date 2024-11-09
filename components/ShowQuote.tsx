@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { POSTS_DATA, Quote } from "../data";
+import { POSTS_DATA } from "../data";
 import CardPost from "./CardPost";
 import Loading from "./Loading";
+import { Post } from "../data/types";
 
 const ShowQuote = () => {
-  const [quote, setQuote] = useState<Quote>(null);
+  const [quote, setQuote] = useState<Post>(null);
 
   // get random item from POSTS_DATA
   useEffect(() => {

@@ -1,8 +1,8 @@
-import { Quote } from "../data";
+import { Post } from "../data/types";
 import CardPost from "./CardPost";
 
 interface Props {
-  data: Quote[]
+  data: Post[]
 }
 
 const CardPosts = ({ data }: Props) => {
