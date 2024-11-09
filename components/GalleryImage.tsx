@@ -1,7 +1,7 @@
 import React from "react";
 import RichImage, { RichImageProps } from "./RichImage";
 
-interface Props extends RichImageProps {}
+interface Props extends RichImageProps { }
 
 const GalleryImage = ({ src, caption }: Props) => {
   return (
@@ -10,6 +10,7 @@ const GalleryImage = ({ src, caption }: Props) => {
       classNameImg="max-h-[70vh]"
       effect="framed"
       src={src}
+      loading="lazy"
     />
   );
 };
