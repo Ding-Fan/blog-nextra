@@ -669,15 +669,6 @@ export const WORDS_DATA: DataSetItem[] = [
       },
       {
         text: [
-          { type: "spoiler", content: ["したところで"] },
-          {
-            type: "normal",
-            content: "今さら後悔したところで、もう遅い。",
-          },
-        ],
-      },
-      {
-        text: [
           { type: "spoiler", content: ["とは"] },
           {
             type: "normal",
