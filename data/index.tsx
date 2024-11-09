@@ -1464,6 +1464,10 @@ export const POSTS_DATA: Post[] = [
 
 export const PHOTOS_2024 = [
 
+  { name: "DJI_20240428160010_0074_D.JPG" },
+  { name: "DJI_20240428171513_0095_D.JPG" },
+  { name: "DJI_20240428171532_0097_D.JPG" },
+  { name: "DJI_20240502121122_0038_D.JPG" },
   { name: "DJI_20240509160852_0001_D.JPG" },
   { name: "DJI_20240529190404_0015_D.JPG" },
   { name: "DJI_20240623161415_0014_D.JPG" },
