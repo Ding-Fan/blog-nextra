@@ -1314,9 +1314,9 @@ export const POSTS_DATA: Post[] = [
     hidden: false,
   },
   {
-    author: "",
+    author: "Parkinson's law",
     content: "work expands so as to fill the time available for its completion",
-    description: "Parkinson's law",
+    description: "",
     hidden: false,
   },
   {

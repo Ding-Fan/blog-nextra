@@ -9,7 +9,7 @@ const CardPosts = ({ data }: Props) => {
   return (
     <div>
       {
-        data.map((post, index) => <CardPost key={index} post={post} />)
+        data.map((post, index) => <CardPost className="my-4" key={index} post={post} />)
       }
     </div>
   )

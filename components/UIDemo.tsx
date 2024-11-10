@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import CardBlock from "./CardBlock";
 import CardStack from "./CardStack";
 import DayBox from "./DayBox";
+import CardPost from "./CardPost";
 
 const UIDemo = () => {
   const styles = {
@@ -33,6 +34,13 @@ const UIDemo = () => {
           <CardBlock type="pill" id="id" content="content" category="" startTime={dayjs()} />
           <CardBlock type="pill" id="id" content="content" category="" startTime={dayjs()} />
         </div>
+      </div>
+      <div className={styles.wrapper}>
+        <CardPost post={{
+          title: "title",
+          content: "content",
+          description: "description",
+        }} />
       </div>
     </div>
   )

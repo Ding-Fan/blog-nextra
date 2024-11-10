@@ -1,5 +1,5 @@
 // CardPost.tsx
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ct } from '../scripts/utils';
 import { Post } from '../data/types';
 
@@ -9,23 +9,30 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 
 const CardPost = ({ post, className }: Props) => {
   return (
-    <div className={ct("bg-stone-50 relative", className)}>
-      <div
-        className='relative inline-flex left-4 px-1 bg-stone-50 font-bold'
-        style={{ transform: "translateY(50%)" }}
-      >
-        {post.author || post.title}
-      </div>
-      <div className='border-2 border-solid border-black p-4 font-quote-content'>
+    <div className={ct("relative", className)}>
+      <div className='p-4 font-quote-content'>
         {post.content}
       </div>
+      {/* learn from this */}
+      {/* https://mui.com/material-ui/react-text-field/ */}
+      <fieldset className='p-2 border-2 border-solid border-black absolute -top-[10px] left-0 bottom-0 right-0' >
+        {
+          (post.author || post.title) && (
+            <legend
+              className='px-2 font-bold'
+            >
+              {post.author || post.title}
+            </legend>
+          )
+        }
+      </fieldset>
+
       {
         post.description && (
-          <div
-            className='relative left-1/2 px-1 bg-stone-50 font-bold truncate max-w-[60vw]'
-            style={{ transform: "translateY(-50%) translateX(-50%)" }}
-          >
-            {post.description}
+          <div>
+            <div className='ml-auto p-2 w-fit text-xs truncate '>
+              {post.description}
+            </div>
           </div>
         )
       }
