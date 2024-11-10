@@ -688,16 +688,6 @@ export const WORDS_DATA: DataSetItem[] = [
       },
       {
         text: [
-          { type: "spoiler", content: ["といえども"] },
-          {
-            type: "normal",
-            content:
-              "ここから中へは、大統領といえどもIDカードを提示せずには入れません。",
-          },
-        ],
-      },
-      {
-        text: [
           { type: "spoiler", content: ["こととて"] },
           {
             type: "normal",
@@ -854,16 +844,6 @@ export const WORDS_DATA: DataSetItem[] = [
             type: "normal",
             content:
               "誰でも若いときには年寄りの気持ちがわからないものだ。怒るにはあたらない。",
-          },
-        ],
-      },
-      {
-        text: [
-          { type: "spoiler", content: ["ずにはおかない"] },
-          {
-            type: "normal",
-            content:
-              "彼女の並外れた美しい容姿は、すれ違う人々を振り返らせずにはおかない。",
           },
         ],
       },

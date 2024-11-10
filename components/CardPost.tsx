@@ -16,7 +16,7 @@ const CardPost = ({ post, className }: Props) => {
       {/* learn from this */}
       {/* https://mui.com/material-ui/react-text-field/ */}
       {/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend */}
-      <fieldset className='p-2 border-2 border-solid border-black absolute -top-[10px] left-0 bottom-0 right-0' >
+      <fieldset className='p-2 border-2 border-solid border-black absolute -top-[10px] left-0 bottom-0 right-0 pointer-events-none' >
         {
           (post.author || post.title) && (
             <legend
