@@ -155,18 +155,6 @@ export const WORDS_DATA: DataSetItem[] = [
         content: "火山噴火の影響で炊事が滞っている",
       },
       {
-        ruby: "ひたして",
-        content: "浸して",
-      },
-      {
-        ruby: "つげた",
-        content: "告げた",
-      },
-      {
-        ruby: "うちわけひょうばっすい",
-        content: "内訳表抜粋",
-      },
-      {
         ruby: "かれはしょうかきをもっててぎわをみせようとしたが",
         content: "彼は消火器を持って手際を見せようとしたが",
       },
@@ -177,6 +165,18 @@ export const WORDS_DATA: DataSetItem[] = [
       {
         ruby: "たいりょくのしょうもうがはてしないようにかんじた",
         content: "体力の消耗が果てしないように感じた",
+      },
+      {
+        ruby: "ひたして",
+        content: "浸して",
+      },
+      {
+        ruby: "つげた",
+        content: "告げた",
+      },
+      {
+        ruby: "うちわけひょうばっすい",
+        content: "内訳表抜粋",
       },
       {
         ruby: "さえない",
