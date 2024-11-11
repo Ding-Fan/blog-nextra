@@ -1654,6 +1654,14 @@ export const TAG_ORDER_MAP: { [tag: string]: number } = {
 
 export const HOMEPAGE_LINKS: Link[] = [
   {
+    url: "https://mynoise.net",
+    note: "Noise BGM",
+    image: "https://mynoise.net/Pix/logo_256.png",
+    tags: ["bgm", "tool"],
+    weight: 10,
+    icon: <FontAwesomeIcon className="" icon={faCloudSun} />,
+  },
+  {
     url: "https://tenki.jp/lite/forecast/3/17/4610/14131/",
     note: "川崎天気",
     image: "https://static.tenki.jp/images/ogp/ogp-top.jpg",
