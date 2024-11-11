@@ -82,7 +82,7 @@ const ShowCard = ({
         id={`${itemIndex + 1}`}
       />
       <div className="grid grid-cols-3 mt-2 gap-2">
-        <Button name="primary" onClick={() => search(showItem.content)}>
+        <Button name="primary" className="bg-rose-200" onClick={() => search(showItem.content)}>
           <div>
             <FontAwesomeIcon
               icon={faSearch}

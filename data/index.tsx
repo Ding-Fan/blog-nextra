@@ -1,5 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getOssUrl } from "../scripts/utils";
 import { DataSetItem, Link, Post } from "./types";
+import { faBluesky, faTelegram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faBookAtlas, faChalkboardUser, faCloudRain, faCloudSun, faHouseCrack } from "@fortawesome/free-solid-svg-icons";
 
 export const WORDS_DATA: DataSetItem[] = [
   // 助数詞
@@ -1645,7 +1648,7 @@ export const PHOTOS_2024 = [
 export const TAG_ORDER_MAP: { [tag: string]: number } = {
   school: 1,
   weather: 2,
-  study: 3,
+  sns: 3,
   alert: 4,
 };
 
@@ -1656,41 +1659,63 @@ export const HOMEPAGE_LINKS: Link[] = [
     image: "https://static.tenki.jp/images/ogp/ogp-top.jpg",
     tags: ["weather"],
     weight: 10,
+    icon: <FontAwesomeIcon className="" icon={faCloudSun} />,
   },
   {
     url: "https://weathernews.jp/onebox/radar/",
     note: "雨雲レーダー",
     image: "https://weathernews.jp/onebox/img/og_img.jpg",
     tags: ["weather"],
+    icon: <FontAwesomeIcon className="" icon={faCloudRain} />,
   },
   {
     url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/kyoshin/",
     note: "リアルタイム　震度 yahoo",
     image: "https://s.yimg.jp/images/weather/social/img_ogp_kyoshin.png",
     tags: ["alert"],
+    icon: <FontAwesomeIcon className="" icon={faHouseCrack} />,
   },
   {
     url: "https://typhoon.yahoo.co.jp/weather/jp/earthquake/",
     note: "地震速報",
     image: "https://s.yimg.jp/images/weather/social/weather_ogp.png",
     tags: ["alert"],
+    icon: <FontAwesomeIcon className="" icon={faHouseCrack} />,
   },
   {
     url: "https://cool-matan.vercel.app",
     note: "curriculum",
     tags: ["school"],
     weight: 10,
+    icon: <FontAwesomeIcon className="" icon={faChalkboardUser} />,
   },
   {
     url: "https://www.collinsdictionary.com",
     note: "Collins Dictionary",
     tags: ["english"],
+    icon: <FontAwesomeIcon className="" icon={faBookAtlas} />,
   },
   {
     url: "https://bsky.app",
     note: "Bluesky",
     image: "https://bsky.app/static/social-card-default-gradient.png",
     tags: ["sns"],
+    icon: <FontAwesomeIcon className="text-sky-400" icon={faBluesky} />,
+  },
+  {
+    url: "https://web.telegram.org/k/",
+    note: "Telegram",
+    image: "",
+    tags: ["sns"],
+    weight: 10,
+    icon: <FontAwesomeIcon className="text-sky-500" icon={faTelegram} />,
+  },
+  {
+    url: "https://app.fastmail.com",
+    note: "Fastmail",
+    image: "https://app.fastmail.com/static/images/og-header-image.png",
+    tags: ["sns"],
+    weight: 10,
   },
   {
     url: "https://www.abaxlms.com",
@@ -1746,6 +1771,7 @@ export const HOMEPAGE_LINKS: Link[] = [
     note: "youtube",
     image: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
     tags: ["sns"],
+    icon: <FontAwesomeIcon className="text-rose-600" icon={faYoutube} />,
   },
   {
     url: "https://transit.yahoo.co.jp/diainfo/area/4",

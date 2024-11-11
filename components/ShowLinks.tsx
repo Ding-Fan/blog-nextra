@@ -38,6 +38,7 @@ const ShowLinks: React.FC = () => {
                     url={link.url}
                     note={link.note}
                     image={link.image}
+                    icon={link.icon}
                   />
                 ))}
               </div>

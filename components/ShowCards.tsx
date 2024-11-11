@@ -39,7 +39,7 @@ const ShowCards: React.FC<ShowCardsProps> = ({ dataSets = WORDS_DATA }) => {
             name={activeIndex === index ? "primary" : "secondary"}
             key={index}
             onClick={() => handleButtonClick(index)}
-            className={`mx-2 py-2`}
+            className={`p-1`}
           >
             {dataSet.title}
           </Button>

@@ -10,19 +10,19 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 const CardPost = ({ post, className }: Props) => {
   return (
     <div className={ct("relative", className)}>
-      <div className='p-4 font-quote-content'>
+      <div className='p-2 pt-6 font-quote-content'>
         {post.content}
       </div>
       {/* learn from this */}
       {/* https://mui.com/material-ui/react-text-field/ */}
       {/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend */}
-      <fieldset className='p-2 border-2 border-solid border-black absolute -top-[10px] left-0 bottom-0 right-0 pointer-events-none' >
+      <fieldset className='p-2 border border-solid border-indigo-900 absolute -top-[10px] left-0 bottom-0 right-0 pointer-events-none' >
         {
           (post.author || post.title) && (
             <legend
-              className='px-2 font-bold'
+              className='px-2 text-lg font-semibold font-serif'
             >
-              {post.author || post.title}
+              {post.author || (post.title as string)?.toUpperCase()}
             </legend>
           )
         }

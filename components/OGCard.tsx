@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ct } from "../scripts/utils";
 
-const OGCard = ({ url, note, className, image }) => {
+const OGCard = ({ url, note, className, image, icon }) => {
   const [ogData, setOgData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -61,22 +61,13 @@ const OGCard = ({ url, note, className, image }) => {
       )}
       onClick={handleClick}
     >
-      {imageSrc && (
-        <div className="flex items-center justify-center">
-          <img
-            className="object-cover h-20"
-            src={imageSrc}
-            alt={imageAlt}
-          />
-        </div>
-      )}
       <div className="flex flex-col justify-center flex-1 p-1">
         {note && (
           <div
-            className="text-sm font-bold line-clamp-2 break-all"
+            className="text-sm font-bold line-clamp-2 break-all flex items-center"
             title={note}
           >
-            {note}
+            {icon && <span className="mr-1">{icon}</span>} {note}
           </div>
         )}
         {
@@ -100,6 +91,16 @@ const OGCard = ({ url, note, className, image }) => {
           )
         }
       </div>
+
+      {imageSrc && (
+        <div className="flex items-center justify-center">
+          <img
+            className="object-cover h-20"
+            src={imageSrc}
+            alt={imageAlt}
+          />
+        </div>
+      )}
     </div>
   );
 };

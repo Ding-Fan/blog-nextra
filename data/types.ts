@@ -6,6 +6,7 @@ export interface Link {
   tags?: string[];
   image?: string;
   weight?: number; // base is 10, higher is more important
+  icon?: ReactNode;
 }
 
 export interface Word {
