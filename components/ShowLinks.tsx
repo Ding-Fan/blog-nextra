@@ -18,7 +18,7 @@ const ShowLinks: React.FC = () => {
             {groupedLinks[tag].map((link: Link) => (
               <OGCard
                 key={link.url}
-                className="mb-2"
+                className="mb-2 bg-white/45"
                 url={link.url}
                 note={link.note}
                 image={link.image}

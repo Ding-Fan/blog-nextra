@@ -49,6 +49,11 @@ const OGCard = ({ url, note, className, image }) => {
     window.open(ogData?.url || url, "_blank");
   };
 
+  const imageSrc = image || ogData?.image;
+  const imageAlt = note || ogData?.title || "Image";
+  const titleText = ogData?.title || url;
+  const descriptionText = ogData?.description || (!loading ? url : '');
+
   return (
     <div
       className={ct(
@@ -57,21 +62,15 @@ const OGCard = ({ url, note, className, image }) => {
       )}
       onClick={handleClick}
     >
-      {ogData?.image ? (
-        <div>
+      {imageSrc && (
+        <div className="flex items-center justify-center">
           <img
             className="object-cover h-20"
-            src={ogData.image}
-            alt={ogData.title || "Image"}
+            src={imageSrc}
+            alt={imageAlt}
           />
         </div>
-      ) : (image && <div>
-        <img
-          className="object-cover h-20"
-          src={image}
-          alt={note || "Image"}
-        />
-      </div>)}
+      )}
       <div className="flex flex-col justify-center flex-1 p-1">
         {note && (
           <div
@@ -85,28 +84,18 @@ const OGCard = ({ url, note, className, image }) => {
           !(ogData?.image) && (
             <>
               <div
-                className="text-sm line-clamp-2 break-all"
-                title={ogData?.title || url}
+                className="text-sm text-zinc-600 my-1 line-clamp-2 break-all"
+                title={titleText}
               >
-                {ogData?.title || url}
+                {titleText}
               </div>
-
-              {ogData?.description ? (
+              {descriptionText && (
                 <div
                   className="text-xs text-gray-600 line-clamp-2 break-all"
-                  title={ogData.description}
+                  title={descriptionText}
                 >
-                  {ogData.description}
+                  {descriptionText}
                 </div>
-              ) : (
-                !loading && (
-                  <div
-                    className="text-xs text-gray-600 line-clamp-2 break-all"
-                    title={url}
-                  >
-                    {url}
-                  </div>
-                )
               )}
             </>
           )

@@ -1508,7 +1508,7 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://cool-matan.vercel.app",
     note: "curriculum",
-    tags: ["study"],
+    tags: ["school"],
   },
   {
     url: "https://www.collinsdictionary.com",
@@ -1525,18 +1525,18 @@ export const HOMEPAGE_LINKS: Link[] = [
     url: "https://www.abaxlms.com",
     note: "ABAX LMS",
     image: "https://www.abaxlms.com/images/icons/apple-touch-icon.png",
-    tags: ["english"],
+    tags: ["school"],
   },
   {
     url: "https://soundcloud.com/abax-lms/sets/toeic-skills-3-full-audio/s-wHBQrVlV441",
     note: "TOEIC Skills 3 Full Audio",
     image: "https://www.abaxlms.com/images/icons/apple-touch-icon.png",
-    tags: ["english"],
+    tags: ["school"],
   },
   {
     url: "https://classroom.google.com/u/1/h",
     note: "Google Classroom",
-    tags: ["study"],
+    tags: ["school"],
   },
   {
     url: "/japanese",
