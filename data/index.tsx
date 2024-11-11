@@ -143,6 +143,207 @@ export const WORDS_DATA: DataSetItem[] = [
     flippable: true,
     content: [
       {
+        ruby: "すいとうちょう",
+        content: "出納帳",
+      },
+      {
+        ruby: "とどこおって",
+        content: "滞って",
+      },
+      {
+        ruby: "ひたして",
+        content: "浸して",
+      },
+      {
+        ruby: "つげた",
+        content: "告げた",
+      },
+      {
+        ruby: "ばっすい",
+        content: "抜粋",
+      },
+      {
+        ruby: "さかさま",
+        content: "逆様",
+      },
+      {
+        ruby: "ひろうえん",
+        content: "披露宴",
+      },
+      {
+        ruby: "さえない",
+        content: "冴えない",
+      },
+      {
+        ruby: "ちゅうとはんぱ",
+        content: "中途半端",
+      },
+      {
+        ruby: "ついやす",
+        content: "費やす",
+      },
+      {
+        ruby: "にんたい",
+        content: "忍耐",
+      },
+      {
+        ruby: "てぎわ",
+        content: "手際",
+      },
+      {
+        ruby: "ねっている",
+        content: "練っている",
+      },
+      {
+        ruby: "はてしない",
+        content: "果てしない",
+      },
+      {
+        ruby: "せっちゅう",
+        content: "折衷",
+      },
+      {
+        ruby: "つつしむ",
+        content: "慎む",
+      },
+      {
+        ruby: "ふもと",
+        content: "麓",
+      },
+      {
+        ruby: "もよおす",
+        content: "催す",
+      },
+      {
+        ruby: "ただよって",
+        content: "漂って",
+      },
+      {
+        ruby: "ひんこん",
+        content: "貧困",
+      },
+      {
+        ruby: "けっさく",
+        content: "傑作",
+      },
+      {
+        ruby: "こまやかな",
+        content: "細やかな",
+      },
+      {
+        ruby: "よしあし",
+        content: "良し悪し",
+      },
+      {
+        ruby: "えんかつ",
+        content: "円滑",
+      },
+      {
+        ruby: "しりぞく",
+        content: "退く",
+      },
+      {
+        ruby: "むぞうさ",
+        content: "無造作",
+      },
+      {
+        ruby: "へだてて",
+        content: "隔てて",
+      },
+      {
+        ruby: "そくばく",
+        content: "束縛",
+      },
+      {
+        ruby: "みえ",
+        content: "見栄",
+      },
+      {
+        ruby: "はんじょう",
+        content: "繁盛",
+      },
+      {
+        ruby: "つのって",
+        content: "募って",
+      },
+      {
+        ruby: "びょうしゃ",
+        content: "描写",
+      },
+      {
+        ruby: "ねたむ",
+        content: "妬む",
+      },
+      {
+        ruby: "たいぐう",
+        content: "待遇",
+      },
+      {
+        ruby: "うちわけ",
+        content: "内訳",
+      },
+      {
+        ruby: "ひかえた",
+        content: "控えた",
+      },
+      {
+        ruby: "かっきてき",
+        content: "画期的",
+      },
+      {
+        ruby: "とどまる",
+        content: "留まる",
+      },
+      {
+        ruby: "むじゅん",
+        content: "矛盾",
+      },
+      {
+        ruby: "ふけて",
+        content: "老けて",
+      },
+      {
+        ruby: "あてな",
+        content: "宛名",
+      },
+      {
+        ruby: "やとう",
+        content: "雇う",
+      },
+      {
+        ruby: "しゃれ",
+        content: "洒落",
+      },
+      {
+        ruby: "ほっそく",
+        content: "発足",
+      },
+      {
+        ruby: "たずさえて",
+        content: "携えて",
+      },
+      {
+        ruby: "しょうもう",
+        content: "消耗",
+      },
+      {
+        ruby: "すきま",
+        content: "隙間",
+      },
+      {
+        ruby: "はばむ",
+        content: "阻む",
+      },
+      {
+        ruby: "したわれて",
+        content: "慕われて",
+      },
+      {
+        ruby: "すいじ",
+        content: "炊事",
+      },
+
+      {
         ruby: "ほっとする",
         content: "ほっとする",
       },
