@@ -86,7 +86,7 @@ const ShowCard = ({
           <div>
             <FontAwesomeIcon
               icon={faSearch}
-              className="cursor-pointer text-base self-start"
+              className="cursor-pointer text-base self-start text-teal-700"
             />
           </div>
         </Button>
@@ -98,7 +98,7 @@ const ShowCard = ({
           <div>
             <FontAwesomeIcon
               icon={faShuffle}
-              className="cursor-pointer text-base self-start text-teal-800"
+              className="cursor-pointer text-base self-start text-teal-700"
             />
           </div>
         </Button>
@@ -106,7 +106,7 @@ const ShowCard = ({
           <div>
             <FontAwesomeIcon
               icon={faArrowRight}
-              className="cursor-pointer text-base self-start text-teal-800"
+              className="cursor-pointer text-base self-start text-teal-700"
             />
           </div>
         </Button>
