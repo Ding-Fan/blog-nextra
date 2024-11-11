@@ -147,8 +147,12 @@ export const WORDS_DATA: DataSetItem[] = [
         content: "出納帳",
       },
       {
-        ruby: "とどこおって",
-        content: "滞って",
+        ruby: "ふもとでおしゃれなひろうえんをもよおす",
+        content: "麓でお洒落な披露宴を催す",
+      },
+      {
+        ruby: "かざんふんかのえいきょうですいじがとどこおっている",
+        content: "火山噴火の影響で炊事が滞っている",
       },
       {
         ruby: "ひたして",
@@ -165,10 +169,6 @@ export const WORDS_DATA: DataSetItem[] = [
       {
         ruby: "さかさま",
         content: "逆様",
-      },
-      {
-        ruby: "ひろうえん",
-        content: "披露宴",
       },
       {
         ruby: "さえない",
@@ -205,14 +205,6 @@ export const WORDS_DATA: DataSetItem[] = [
       {
         ruby: "つつしむ",
         content: "慎む",
-      },
-      {
-        ruby: "ふもと",
-        content: "麓",
-      },
-      {
-        ruby: "もよおす",
-        content: "催す",
       },
       {
         ruby: "ただよって",
@@ -311,21 +303,14 @@ export const WORDS_DATA: DataSetItem[] = [
         content: "雇う",
       },
       {
-        ruby: "しゃれ",
-        content: "洒落",
-      },
-      {
-        ruby: "ほっそく",
+        ruby: "ほっそく、はっそく",
         content: "発足",
       },
       {
         ruby: "たずさえて",
         content: "携えて",
       },
-      {
-        ruby: "しょうもう",
-        content: "消耗",
-      },
+      { ruby: "たいりょくをしょうもう", content: "体力を消耗" },
       {
         ruby: "すきま",
         content: "隙間",
@@ -337,10 +322,6 @@ export const WORDS_DATA: DataSetItem[] = [
       {
         ruby: "したわれて",
         content: "慕われて",
-      },
-      {
-        ruby: "すいじ",
-        content: "炊事",
       },
 
       {
@@ -378,10 +359,6 @@ export const WORDS_DATA: DataSetItem[] = [
       {
         ruby: "ほっさ",
         content: "発作",
-      },
-      {
-        ruby: "ほっそく、はっそく",
-        content: "発足",
       },
       { ruby: "はっき", content: "発揮" },
       {
@@ -561,10 +538,6 @@ export const WORDS_DATA: DataSetItem[] = [
         content: "まつわる",
       },
       {
-        ruby: "かざんふんか",
-        content: "火山噴火",
-      },
-      {
         ruby: "よくあつ",
         content: "抑圧",
       },
@@ -725,7 +698,6 @@ export const WORDS_DATA: DataSetItem[] = [
         ruby: "",
         content: "うんざり",
       },
-      { ruby: "たいりょくをしょうもう", content: "体力を消耗" },
       {
         ruby: "げり",
         content: "下痢",
@@ -742,10 +714,8 @@ export const WORDS_DATA: DataSetItem[] = [
       { ruby: "おどかす", content: "脅かす" },
       { ruby: "つくす", content: "尽くす" },
       { ruby: "くつがえす", content: "覆す" },
-      { ruby: "もよおす", content: "催す" },
       { ruby: "ほどこす", content: "施す" },
       { ruby: "うながす", content: "促す" },
-      { ruby: "ひたす", content: "浸す" },
       { ruby: "しりぞく", content: "退く" },
       { ruby: "あおぐ", content: "仰ぐ" },
       { ruby: "つぐ", content: "継ぐ" },
