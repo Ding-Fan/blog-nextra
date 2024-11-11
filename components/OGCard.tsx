@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ct } from "../scripts/utils";
 
-
 const OGCard = ({ url, note, className, image }) => {
   const [ogData, setOgData] = useState(null);
   const [loading, setLoading] = useState(true);

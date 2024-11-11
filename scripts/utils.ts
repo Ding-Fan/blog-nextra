@@ -64,7 +64,14 @@ export const groupLinksByTag = (links: Link[]): { [tag: string]: Link[] } => {
     });
   });
 
+  // Sort the links within each tag by weight
+  for (const tag in tagMap) {
+    tagMap[tag].sort((a, b) => (b.weight || 0) - (a.weight || 0));
+  }
+
   if (noTag.length > 0) {
+    // Sort the 'No Tag' links as well
+    noTag.sort((a, b) => (b.weight || 0) - (a.weight || 0));
     tagMap['No Tag'] = noTag;
   }
 

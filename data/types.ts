@@ -5,6 +5,7 @@ export interface Link {
   note: string;
   tags?: string[];
   image?: string;
+  weight?: number; // base is 10, higher is more important
 }
 
 export interface Word {
@@ -29,10 +30,9 @@ export interface TextItem {
   }[];
 }
 
-type CommonKeys = 'title' | 'author'
+type CommonKeys = "title" | "author";
 export interface Post extends Partial<Record<CommonKeys, ReactNode>> {
   content?: ReactNode;
   description?: ReactNode;
   hidden?: boolean;
 }
-

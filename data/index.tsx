@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { getOssUrl } from "../scripts/utils";
 import { DataSetItem, Link, Post } from "./types";
 
@@ -1155,8 +1154,8 @@ export const WORDS_DATA: DataSetItem[] = [
         ruby: "",
         content: "",
       },
-    ]
-  }
+    ],
+  },
 ];
 
 export const COLLECTION_DATA = [
@@ -1434,7 +1433,6 @@ export const POSTS_DATA: Post[] = [
 ];
 
 export const PHOTOS_2024 = [
-
   { name: "DJI_20240428160010_0074_D.JPG" },
   { name: "DJI_20240428171513_0095_D.JPG" },
   { name: "DJI_20240428171532_0097_D.JPG" },
@@ -1469,7 +1467,7 @@ export const PHOTOS_2024 = [
     name: "DJI_20240926134352_0040_D.JPG",
   },
   {
-    name: "DJI_20240926135057_0051_D.JPG"
+    name: "DJI_20240926135057_0051_D.JPG",
   },
   {
     name: "DJI_20240926140854_0054_D.JPG",
@@ -1480,12 +1478,20 @@ export const PHOTOS_2024 = [
   };
 });
 
+export const TAG_ORDER_MAP: { [tag: string]: number } = {
+  school: 1,
+  weather: 2,
+  study: 3,
+  alert: 4,
+};
+
 export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://tenki.jp/lite/forecast/3/17/4610/14131/",
     note: "川崎天気",
     image: "https://static.tenki.jp/images/ogp/ogp-top.jpg",
     tags: ["weather"],
+    weight: 10,
   },
   {
     url: "https://weathernews.jp/onebox/radar/",
@@ -1509,6 +1515,7 @@ export const HOMEPAGE_LINKS: Link[] = [
     url: "https://cool-matan.vercel.app",
     note: "curriculum",
     tags: ["school"],
+    weight: 10,
   },
   {
     url: "https://www.collinsdictionary.com",
