@@ -163,12 +163,20 @@ export const WORDS_DATA: DataSetItem[] = [
         content: "告げた",
       },
       {
-        ruby: "ばっすい",
-        content: "抜粋",
+        ruby: "うちわけひょうばっすい",
+        content: "内訳表抜粋",
       },
       {
-        ruby: "さかさま",
-        content: "逆様",
+        ruby: "かれはしょうかきをもっててぎわをみせようとしたが",
+        content: "彼は消火器を持って手際を見せようとしたが",
+      },
+      {
+        ruby: "さかさまにしてしまい",
+        content: "逆さまにしてしまい",
+      },
+      {
+        ruby: "たいりょくのしょうもうがはてしないようにかんじた",
+        content: "体力の消耗が果てしないように感じた",
       },
       {
         ruby: "さえない",
@@ -187,16 +195,8 @@ export const WORDS_DATA: DataSetItem[] = [
         content: "忍耐",
       },
       {
-        ruby: "てぎわ",
-        content: "手際",
-      },
-      {
         ruby: "ねっている",
         content: "練っている",
-      },
-      {
-        ruby: "はてしない",
-        content: "果てしない",
       },
       {
         ruby: "せっちゅう",
@@ -271,10 +271,6 @@ export const WORDS_DATA: DataSetItem[] = [
         content: "待遇",
       },
       {
-        ruby: "うちわけ",
-        content: "内訳",
-      },
-      {
         ruby: "ひかえた",
         content: "控えた",
       },
@@ -310,7 +306,6 @@ export const WORDS_DATA: DataSetItem[] = [
         ruby: "たずさえて",
         content: "携えて",
       },
-      { ruby: "たいりょくをしょうもう", content: "体力を消耗" },
       {
         ruby: "すきま",
         content: "隙間",
@@ -336,6 +331,7 @@ export const WORDS_DATA: DataSetItem[] = [
         ruby: "ねられない",
         content: "寝られない",
       },
+      { ruby: "よそうがい", content: "予想外" },
       {
         ruby: "どう",
         content: "胴",
@@ -716,7 +712,6 @@ export const WORDS_DATA: DataSetItem[] = [
       { ruby: "くつがえす", content: "覆す" },
       { ruby: "ほどこす", content: "施す" },
       { ruby: "うながす", content: "促す" },
-      { ruby: "しりぞく", content: "退く" },
       { ruby: "あおぐ", content: "仰ぐ" },
       { ruby: "つぐ", content: "継ぐ" },
       { ruby: "あざむく", content: "欺く" },
@@ -740,7 +735,6 @@ export const WORDS_DATA: DataSetItem[] = [
       { ruby: "こうせいのう", content: "高性能" },
       { ruby: "けいかくあん", content: "計画案" },
       { ruby: "べつこうどう", content: "別行動" },
-      { ruby: "しょうかき", content: "消火器" },
       { ruby: "そうじんこう", content: "総人口" },
       { ruby: "さいしゅっぱつ", content: "再出発" },
       { ruby: "きんむさき", content: "勤務先" },
@@ -776,7 +770,6 @@ export const WORDS_DATA: DataSetItem[] = [
       { ruby: "じこりゅう", content: "自己流" },
       { ruby: "うんどうりょう", content: "運動量" },
       { ruby: "ちほうし", content: "地方紙" },
-      { ruby: "よそうがい", content: "予想外" },
       { ruby: "いらいしん", content: "依頼心" },
       { ruby: "ぜんじだい", content: "前時代" },
       { ruby: "むかんしん", content: "無関心" },
