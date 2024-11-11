@@ -20,7 +20,7 @@ const CardPost = ({ post, className }: Props) => {
         {
           (post.author || post.title) && (
             <legend
-              className='px-2 text-lg font-semibold font-serif'
+              className='px-2 text-lg font-semibold font-serif text-indigo-900'
             >
               {post.author || (post.title as string)?.toUpperCase()}
             </legend>
