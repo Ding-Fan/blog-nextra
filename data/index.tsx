@@ -160,7 +160,7 @@ export const WORDS_DATA: DataSetItem[] = [
       },
       {
         ruby: "さかさまにしてしまい",
-        content: "逆さまにしてしまい",
+        content: "逆様にしてしまい",
       },
       {
         ruby: "たいりょくのしょうもうがはてしないようにかんじた",
