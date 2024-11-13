@@ -35,10 +35,7 @@ const ShowLinks: React.FC = () => {
                   <OGCard
                     key={link.url}
                     className="mb-2 bg-white/45"
-                    url={link.url}
-                    note={link.note}
-                    image={link.image}
-                    icon={link.icon}
+                    {...link}
                   />
                 ))}
               </div>

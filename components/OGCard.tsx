@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ct } from "../scripts/utils";
+import { Link } from "../data/types";
 
-const OGCard = ({ url, note, className, image, icon, description }) => {
+interface OGCardProps extends Link, React.HTMLAttributes<HTMLElement> {
+}
+
+const OGCard = ({ url, note, className, image, icon, description }: OGCardProps) => {
   const [ogData, setOgData] = useState(null);
   const [loading, setLoading] = useState(true);
 
