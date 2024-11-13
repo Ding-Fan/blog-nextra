@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ct } from "../scripts/utils";
 
-const OGCard = ({ url, note, className, image, icon }) => {
+const OGCard = ({ url, note, className, image, icon, description }) => {
   const [ogData, setOgData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -51,7 +51,7 @@ const OGCard = ({ url, note, className, image, icon }) => {
   const imageSrc = image || ogData?.image;
   const imageAlt = note || ogData?.title || "Image";
   const titleText = ogData?.title || url;
-  const descriptionText = ogData?.description || (!loading ? url : '');
+  const descriptionText = description || ogData?.description || (!loading ? url : '');
 
   return (
     <div

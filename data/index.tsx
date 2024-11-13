@@ -1810,6 +1810,13 @@ export const HOMEPAGE_LINKS: Link[] = [
     tags: ["study"],
   },
   {
+    url: "https://www.youtube.com/@%E3%81%8B%E3%81%8F%E9%AB%98%E6%A0%A1%E7%94%9Fasmr",
+    note: "かく高校生asmr",
+    image: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
+    tags: ["study"],
+    description: "書く練習",
+  },
+  {
     url: "https://dash.cloudflare.com/",
     note: "Cloudflare Dashboard",
     tags: ["info"],
