@@ -5,12 +5,12 @@ import { Link } from "../data/types";
 interface OGCardProps extends Link, React.HTMLAttributes<HTMLElement> {
 }
 
-const OGCard = ({ url, note, className, image, icon, description }: OGCardProps) => {
+const OGCard = ({ needFetch, url, note, className, image, icon, description }: OGCardProps) => {
   const [ogData, setOgData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (image) {
+    if (!needFetch) {
       return
     }
 
