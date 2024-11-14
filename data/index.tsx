@@ -1703,6 +1703,13 @@ export const HOMEPAGE_LINKS: Link[] = [
     image: IMAGE_LINK.coursera,
   },
   {
+    url: "https://youtu.be/BRZ_Jr3r9qE",
+    note: "Oriental ,Ethnic Disorders Session by Special K for Massar LA // Organic House Music",
+    image: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
+    tags: ["bgm"],
+    icon: <FontAwesomeIcon className="text-rose-600" icon={faYoutube} />,
+  },
+  {
     url: "https://cool-matan.vercel.app",
     note: "curriculum",
     tags: ["school"],
