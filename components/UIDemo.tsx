@@ -4,6 +4,8 @@ import CardBlock from "./CardBlock";
 import CardStack from "./CardStack";
 import DayBox from "./DayBox";
 import CardPost from "./CardPost";
+import FadeIn from './animation/FadeIn';
+import BaseImage from './BaseImage';
 
 const UIDemo = () => {
   const styles = {
@@ -42,6 +44,20 @@ const UIDemo = () => {
           description: "description",
         }} />
       </div>
+
+
+
+
+
+      {/* <Candle /> */}
+
+      <div>
+        <FadeIn>
+          <BaseImage src="https://placecats.com/300/200" />
+        </FadeIn>
+      </div>
+
+
     </div>
   )
 }

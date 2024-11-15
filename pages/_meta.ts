@@ -1,7 +1,5 @@
 export default {
   "index": "又不是不能写博客",
-  "java.diary": "Han's Poignant JAVA Diary",
-  "astronvim": "AstroNvim",
   "about": {
     "title": "About",
     "type": "page"
@@ -22,5 +20,4 @@ export default {
     "href": "feed.xml",
     "newWindow": true
   },
-  "genshin": "原神亲自启动",
 }

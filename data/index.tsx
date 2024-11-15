@@ -1675,6 +1675,45 @@ export const HOMEPAGE_LINKS: Link[] = [
     icon: <FontAwesomeIcon className="" icon={faCloudSun} />,
   },
   {
+    url: "https://seocompanyjapan.com/#KantoDelivery",
+    note: "House Shifting and Mini Moving",
+  },
+  {
+    url: "https://1003blocks.substack.com/p/web3-367",
+    note: "ONGAESHI",
+    tags: ["web3", "blockchain", "japan", "job"],
+  },
+  {
+    url: "https://github.com/kjk/edna",
+    note: "Note taking for developers and power users",
+    tags: ["tool"],
+  },
+  {
+    url: "https://www.janpara.co.jp/",
+    note: "PC・スマートフォン・デジカメ・オーディオの販売・買取なら全国51店舗の「じゃんぱら」へ",
+  },
+  {
+    url: "https://moov.ooo/",
+    note: "モノ選びに、もっと納得を。",
+  },
+  {
+    url: "https://keepa.com/#!",
+    note: "amazon price",
+  },
+  {
+    url: "https://my-best.com/",
+    note: "compare products before buying",
+  },
+  {
+    url: "https://tokyo.craigslist.org/search/hhh?sort=priceasc#search=1~gallery~0~100",
+    note: "住宅",
+  },
+  {
+    url: "https://weather.yahoo.co.jp/weather/zoomradar/",
+    note: "天気図",
+    tags: ["weather"],
+  },
+  {
     url: "https://weathernews.jp/onebox/radar/",
     note: "雨雲レーダー",
     image: "https://weathernews.jp/onebox/img/og_img.jpg",
@@ -1811,8 +1850,18 @@ export const HOMEPAGE_LINKS: Link[] = [
     tags: ["alert"],
   },
   {
+    url: "http://www.kmoni.bosai.go.jp",
+    note: "リアルタイム　震度",
+    tags: ["alert"],
+  },
+  {
     url: "https://www.jma.go.jp/bosai/map.html#6/39.551/153.347/&elem=root&typhoon=all&contents=typhoon",
     note: "台風経路図",
+    tags: ["alert"],
+  },
+  {
+    url: "https://sc.city.kawasaki.jp/saigai/index.htm",
+    note: "川崎災害情報",
     tags: ["alert"],
   },
   {
