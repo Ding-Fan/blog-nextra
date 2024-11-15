@@ -13,16 +13,17 @@ const config: DocsThemeConfig = {
   // docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
   darkMode: false,
   nextThemes: {
-    forcedTheme: 'light',
+    forcedTheme: "light",
   },
   sidebar: {
     toggleButton: true,
+    defaultMenuCollapseLevel: 1,
   },
   editLink: {
-    component: null
+    component: null,
   },
   feedback: {
-    content: null
+    content: null,
   },
   footer: {
     component: <Footer />,
