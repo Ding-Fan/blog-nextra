@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getOssUrl } from "../scripts/utils";
 import { DataSetItem, Link, Post } from "./types";
-import { faBluesky, faTelegram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faBluesky, faDiscord, faTelegram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faBookAtlas, faChalkboardUser, faCloudRain, faCloudSun, faHouseCrack } from "@fortawesome/free-solid-svg-icons";
 
 export const IMAGE_LINK = {
@@ -1703,6 +1703,13 @@ export const HOMEPAGE_LINKS: Link[] = [
     image: IMAGE_LINK.coursera,
   },
   {
+    url: "https://youtu.be/BRZ_Jr3r9qE",
+    note: "Oriental ,Ethnic Disorders Session by Special K for Massar LA // Organic House Music",
+    image: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
+    tags: ["bgm"],
+    icon: <FontAwesomeIcon className="text-rose-600" icon={faYoutube} />,
+  },
+  {
     url: "https://cool-matan.vercel.app",
     note: "curriculum",
     tags: ["school"],
@@ -1723,9 +1730,14 @@ export const HOMEPAGE_LINKS: Link[] = [
     icon: <FontAwesomeIcon className="text-sky-400" icon={faBluesky} />,
   },
   {
+    url: "https://discord.com/channels/@me",
+    note: "Discord",
+    tags: ["sns"],
+    icon: <FontAwesomeIcon className="text-sky-400" icon={faDiscord} />,
+  },
+  {
     url: "https://web.telegram.org/k/",
     note: "Telegram",
-    image: "",
     tags: ["sns"],
     weight: 10,
     icon: <FontAwesomeIcon className="text-sky-500" icon={faTelegram} />,
