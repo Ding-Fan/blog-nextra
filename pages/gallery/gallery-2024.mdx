@@ -3,8 +3,9 @@
 import GalleryImage from "components/GalleryImage";
 import { isUrl } from "scripts/utils";
 import { PHOTOS_2024 } from "data";
+import MobileGallery from "components/MobileGallery";
 
-<div className="flex flex-col gap-2">
+<div className="flex-col gap-2 flex">
   {PHOTOS_2024.map((photo, index) => {
     return (
       <GalleryImage
@@ -15,3 +16,12 @@ import { PHOTOS_2024 } from "data";
     );
   })}
 </div>
+
+```jsx
+// <div className="hidden md:flex-col md:gap-2 md:flex">
+// work in progress
+<MobileGallery
+  className="block md:hidden"
+  photos={PHOTOS_2024.map((i) => i.name)}
+/>
+```
