@@ -4,6 +4,7 @@ import { DataSetItem, Link, Post } from "./types";
 import {
   faBluesky,
   faDiscord,
+  faSpotify,
   faTelegram,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
@@ -1690,6 +1691,12 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://seocompanyjapan.com/#KantoDelivery",
     note: "House Shifting and Mini Moving",
+  },
+  {
+    url: "https://open.spotify.com",
+    note: "Spotify",
+    tags: ["media"],
+    icon: <FontAwesomeIcon className="text-rose-600" icon={faSpotify} />,
   },
   {
     url: "https://www.netflix.com/browse",
