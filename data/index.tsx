@@ -1696,7 +1696,7 @@ export const HOMEPAGE_LINKS: Link[] = [
     url: "https://open.spotify.com",
     note: "Spotify",
     tags: ["media"],
-    icon: <FontAwesomeIcon className="text-rose-600" icon={faSpotify} />,
+    icon: <FontAwesomeIcon className="text-lime-500" icon={faSpotify} />,
   },
   {
     url: "https://www.netflix.com/browse",
