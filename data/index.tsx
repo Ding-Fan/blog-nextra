@@ -1699,6 +1699,12 @@ export const HOMEPAGE_LINKS: Link[] = [
     icon: <FontAwesomeIcon className="text-lime-500" icon={faSpotify} />,
   },
   {
+    url: "https://open.spotify.com",
+    note: "Spotify",
+    tags: ["media"],
+    icon: <FontAwesomeIcon className="text-lime-500" icon={faSpotify} />,
+  },
+  {
     url: "https://www.netflix.com/browse",
     note: "Netflix",
     tags: ["media"],
@@ -1766,6 +1772,12 @@ export const HOMEPAGE_LINKS: Link[] = [
     tags: ["study", "network"],
     weight: 10,
     image: IMAGE_LINK.coursera,
+  },
+  {
+    url: "https://suno.com",
+    note: "Suno AI music",
+    image: "https://suno.com/logos/Logo-7.svg",
+    tags: ["bgm"],
   },
   {
     url: "https://youtu.be/BRZ_Jr3r9qE",
