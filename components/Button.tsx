@@ -1,8 +1,6 @@
 import React from 'react';
 import { ct } from '../scripts/utils';
 import BaseButton, { BaseButtonProps } from './BaseButton';
-// import { BaseButton, BaseButtonProps } from "./ui";
-// import { ct } from "../utils/utils";
 
 type ButtonNames = 'default' | 'secondary' | 'hero' | 'createList' | 'primary';
 

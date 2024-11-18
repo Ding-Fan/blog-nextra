@@ -1,0 +1,27 @@
+# git create tag and push
+
+```bash
+# check existing tags
+git tag
+
+# create a tag
+# The -a flag stands for annotated.
+# It tells Git to create an annotated tag instead of a lightweight tag.
+# Annotated tag: Includes metadata, useful for releases.
+# Lightweight tag: Just a pointer to a commit, with no extra information.
+git tag -a v1.0.0 -m "version 1.0.0"
+
+# push the tag to the remote repository
+git push origin v1.0.0
+```
+
+If you have ci pipeline like this:
+
+```yaml
+on:
+  push:
+    tags:
+      - 'v*' # Trigger workflow only on version tags (e.g., v1.0.0)
+```
+
+Then, when you push a tag, the ci pipeline will be triggered.

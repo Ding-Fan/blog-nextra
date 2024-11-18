@@ -2,35 +2,39 @@ import React, { useState, useEffect } from "react";
 import { ct } from "../scripts/utils";
 import { Link } from "../data/types";
 
-interface OGCardProps extends Link, React.HTMLAttributes<HTMLElement> {
-}
+interface OGCardProps extends Link, React.HTMLAttributes<HTMLElement> {}
 
-const OGCard = ({ needFetch, url, note, className, image, icon, description }: OGCardProps) => {
+const OGCard = ({
+  needFetch,
+  url,
+  note,
+  className,
+  image,
+  icon,
+  description,
+}: OGCardProps) => {
   const [ogData, setOgData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!needFetch) {
-      return
+      return;
     }
 
     const getOGTags = async (url) => {
-
-      let data = { q: url }
+      let data = { q: url };
       let key = process.env.NEXT_PUBLIC_LINKPREVIEW_API_KEY;
       let response;
 
       try {
-        response = await fetch('https://api.linkpreview.net', {
-          method: 'POST',
+        response = await fetch("https://api.linkpreview.net", {
+          method: "POST",
           headers: {
-            'X-Linkpreview-Api-Key': key,
+            "X-Linkpreview-Api-Key": key,
           },
-          mode: 'cors',
+          mode: "cors",
           body: JSON.stringify(data),
-        })
-          .then(res => res.json())
-
+        }).then((res) => res.json());
       } catch (error) {
         console.log("Error fetching OG data for URL:", url);
       }
@@ -55,54 +59,54 @@ const OGCard = ({ needFetch, url, note, className, image, icon, description }: O
   const imageSrc = image || ogData?.image;
   const imageAlt = note || ogData?.title || "Image";
   const titleText = ogData?.title || url;
-  const descriptionText = description || ogData?.description || (!loading ? url : '');
+  const descriptionText =
+    description || ogData?.description || (!loading ? url : "");
 
   return (
     <div
       className={ct(
-        "shadow-md cursor-pointer transition-all ease-out hover:shadow-lg duration-400 hover:scale-105",
+        "shadow-md cursor-pointer transition-all ease-out hover:shadow-lg duration-400 hover:scale-105 flex flex-col",
         className
       )}
       onClick={handleClick}
     >
-      <div className="flex flex-col justify-center flex-1 p-1">
+      <div className="flex flex-col justify-center p-1">
         {note && (
           <div
             className="text-sm font-bold line-clamp-2 break-all flex items-center"
             title={note}
           >
-            {icon && <span className="mr-1">{icon}</span>} {note}
+            {icon && imageSrc && <span className="mr-1">{icon}</span>}
+            {note}
           </div>
         )}
-        {
-          !(ogData?.image) && (
-            <>
+        {!ogData?.image && (
+          <>
+            <div
+              className="text-sm text-zinc-600 my-1 line-clamp-2 break-all"
+              title={titleText}
+            >
+              {titleText}
+            </div>
+            {descriptionText && (
               <div
-                className="text-sm text-zinc-600 my-1 line-clamp-2 break-all"
-                title={titleText}
+                className="text-xs text-gray-600 line-clamp-2 break-all"
+                title={descriptionText}
               >
-                {titleText}
+                {descriptionText}
               </div>
-              {descriptionText && (
-                <div
-                  className="text-xs text-gray-600 line-clamp-2 break-all"
-                  title={descriptionText}
-                >
-                  {descriptionText}
-                </div>
-              )}
-            </>
-          )
-        }
+            )}
+          </>
+        )}
       </div>
 
-      {imageSrc && (
+      {imageSrc ? (
         <div className="flex items-center justify-center">
-          <img
-            className="object-cover h-20"
-            src={imageSrc}
-            alt={imageAlt}
-          />
+          <img className="object-cover h-20" src={imageSrc} alt={imageAlt} />
+        </div>
+      ) : (
+        <div className="flex items-center justify-center text-5xl p-1 flex-1">
+          {icon}
         </div>
       )}
     </div>

@@ -4,6 +4,7 @@ import { DataSetItem, Link, Post } from "./types";
 import {
   faBluesky,
   faDiscord,
+  faGithub,
   faSpotify,
   faTelegram,
   faYoutube,
@@ -1751,13 +1752,7 @@ export const HOMEPAGE_LINKS: Link[] = [
     url: "https://open.spotify.com",
     note: "Spotify",
     tags: ["media"],
-    icon: <FontAwesomeIcon className="text-lime-500" icon={faSpotify} />,
-  },
-  {
-    url: "https://open.spotify.com",
-    note: "Spotify",
-    tags: ["media"],
-    icon: <FontAwesomeIcon className="text-lime-500" icon={faSpotify} />,
+    icon: <FontAwesomeIcon className="text-lime-800" icon={faSpotify} />,
   },
   {
     url: "https://www.netflix.com/browse",
@@ -1855,6 +1850,12 @@ export const HOMEPAGE_LINKS: Link[] = [
     icon: <FontAwesomeIcon className="" icon={faBookAtlas} />,
   },
   {
+    url: "https://github.com",
+    note: "Github",
+    tags: ["programming"],
+    icon: <FontAwesomeIcon className="" icon={faGithub} />,
+  },
+  {
     url: "https://bsky.app",
     note: "Bluesky",
     image: "https://bsky.app/static/social-card-default-gradient.png",
@@ -1897,38 +1898,6 @@ export const HOMEPAGE_LINKS: Link[] = [
     url: "https://classroom.google.com/u/1/h",
     note: "Google Classroom",
     tags: ["school"],
-  },
-  {
-    url: "/japanese",
-    note: "Japanese",
-  },
-  {
-    url: "/Archives/CCNA",
-    note: "CCNA",
-  },
-  {
-    url: "/Archives/input",
-    note: "input",
-  },
-  {
-    url: "/Archives/japan.link",
-    note: "japan link",
-  },
-  {
-    url: "/micro-blog",
-    note: "micro blog",
-  },
-  {
-    url: "/Archives/card-block",
-    note: "card block",
-  },
-  {
-    url: "/Archives/resource.information.idea.note",
-    note: "idea note",
-  },
-  {
-    url: "/Archives/dopamine-record",
-    note: "dopamine record",
   },
   {
     url: "https://www.youtube.com",
