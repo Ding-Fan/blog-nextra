@@ -8,7 +8,7 @@ const GalleryImage = ({ src, caption, loading = "lazy", className }: Props) => {
   return (
     <RichImage
       caption={caption}
-      className={className}
+      className={ct("md:max-h-[70vh]", className)}
       effect="framed"
       src={src}
       loading={loading}

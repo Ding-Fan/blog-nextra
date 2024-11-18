@@ -1819,7 +1819,14 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://www.coursera.org/learn/computer-networking/home/module/1",
     note: "The Bits and Bytes of Computer Networking - Coursera",
-    tags: ["study", "network"],
+    tags: ["coursera", "study", "network"],
+    weight: 10,
+    image: IMAGE_LINK.coursera,
+  },
+  {
+    url: "https://www.coursera.org/learn/machine-learning/home/week/1",
+    note: "Supervised Machine Learning: Regression and Classification",
+    tags: ["study", "coursera", "network"],
     weight: 10,
     image: IMAGE_LINK.coursera,
   },
