@@ -1,9 +1,5 @@
 # nix
 
-git config username email editor
-
-pnpm
-
 ## references
 
 I mainly followed ChatGPT for quick reference and
@@ -20,6 +16,8 @@ I mainly followed ChatGPT for quick reference and
   - nix-darwin Configuration Options
 - https://nix-community.github.io/home-manager/index.xhtml#ch-nix-flakes
   - Home Manager Manual
+- https://nix-community.github.io/home-manager/options.xhtml#opt-home.file
+  - Home Manager Configuration Options
 - https://nixcademy.com/cheatsheet/
   - Nix Cheatsheet
 
@@ -42,6 +40,7 @@ I mainly followed ChatGPT for quick reference and
 
 - https://github.com/malob/nixpkgs
   - This repo contains my Nix configs for macOS and Linux and by extension, configuration for most tools/programs I use, at least in the terminal.
+- https://github.com/kivikakk/vyxos
 
 ## install Nix:the package manager
 
@@ -174,4 +173,19 @@ in
     ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
   done
       '';
+```
+
+## install home-manager with flake
+
+- https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-nix-darwin-module
+
+### to make the vscode nix format work
+
+install pkgs.nixfmt-rfc-style
+
+
+add this to vscode config
+
+```json
+    "nix.formatterPath": "/run/current-system/sw/bin/nixfmt"
 ```
