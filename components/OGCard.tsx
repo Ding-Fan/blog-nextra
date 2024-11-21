@@ -1,8 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { ct } from "../scripts/utils";
 import { Link } from "../data/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 interface OGCardProps extends Link, React.HTMLAttributes<HTMLElement> {}
+
+const ShowImage = ({
+  imageSrc,
+  imageAlt,
+  image,
+}: {
+  imageSrc: string | null;
+  imageAlt: string;
+  image: React.ReactNode;
+}) => {
+  if (imageSrc) {
+    return (
+      <div className="flex items-center justify-center">
+        <img className="object-cover min-h-8 max-h-20" src={imageSrc} alt={imageAlt} />
+      </div>
+    );
+  } else {
+    return (
+      <div className="flex items-center justify-center text-5xl p-1 flex-1">
+        {image}
+      </div>
+    );
+  }
+};
 
 const OGCard = ({
   needFetch,
@@ -10,20 +36,20 @@ const OGCard = ({
   note,
   className,
   image,
-  icon,
   description,
 }: OGCardProps) => {
-  const [ogData, setOgData] = useState(null);
+  const [ogData, setOgData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!needFetch) {
+      setLoading(false);
       return;
     }
 
-    const getOGTags = async (url) => {
-      let data = { q: url };
-      let key = process.env.NEXT_PUBLIC_LINKPREVIEW_API_KEY;
+    const getOGTags = async (url: string) => {
+      const data = { q: url };
+      const key = process.env.NEXT_PUBLIC_LINKPREVIEW_API_KEY;
       let response;
 
       try {
@@ -56,7 +82,7 @@ const OGCard = ({
     window.open(ogData?.url || url, "_blank");
   };
 
-  const imageSrc = image || ogData?.image;
+  const imageSrc = typeof image === "string" ? image : ogData?.image || null;
   const imageAlt = note || ogData?.title || "Image";
   const titleText = ogData?.title || url;
   const descriptionText =
@@ -65,50 +91,26 @@ const OGCard = ({
   return (
     <div
       className={ct(
-        "shadow-md cursor-pointer transition-all ease-out hover:shadow-lg duration-400 hover:scale-105 flex flex-col",
+        "shadow-md cursor-pointer transition-all ease-out hover:shadow-lg duration-400 hover:scale-105 flex flex-col relative",
         className
       )}
       onClick={handleClick}
     >
-      <div className="flex flex-col justify-center p-1">
-        {note && (
+      {note && (
+        <div className="absolute w-full flex justify-center bg-zinc-800/70">
           <div
-            className="text-sm font-bold line-clamp-2 break-all flex items-center"
+            className="text-sm font-bold text-zinc-50 line-clamp-1 break-all"
             title={note}
           >
-            {icon && imageSrc && <span className="mr-1">{icon}</span>}
             {note}
           </div>
-        )}
-        {!ogData?.image && (
-          <>
-            <div
-              className="text-sm text-zinc-600 my-1 line-clamp-2 break-all"
-              title={titleText}
-            >
-              {titleText}
-            </div>
-            {descriptionText && (
-              <div
-                className="text-xs text-gray-600 line-clamp-2 break-all"
-                title={descriptionText}
-              >
-                {descriptionText}
-              </div>
-            )}
-          </>
-        )}
-      </div>
-
-      {imageSrc ? (
-        <div className="flex items-center justify-center">
-          <img className="object-cover h-20" src={imageSrc} alt={imageAlt} />
-        </div>
-      ) : (
-        <div className="flex items-center justify-center text-5xl p-1 flex-1">
-          {icon}
         </div>
       )}
+      <ShowImage
+        imageSrc={imageSrc}
+        imageAlt={imageAlt}
+        image={image || <FontAwesomeIcon icon={faLink} />}
+      />
     </div>
   );
 };
