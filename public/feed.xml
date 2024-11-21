@@ -4,37 +4,12 @@
         <description><![CDATA[又不是不能写博客]]></description>
         <link>https://dingfan.date</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 13 Nov 2024 14:35:01 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 21 Nov 2024 14:10:29 GMT</lastBuildDate>
         <atom:link href="https://dingfan.date/feed.xml" rel="self" type="application/rss+xml"/>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>CCNA.network</link>
-            <guid isPermaLink="true">CCNA.network</guid>
-        </item>
         <item>
             <title><![CDATA[No title]]></title>
             <link>about</link>
             <guid isPermaLink="true">about</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>astronvim</link>
-            <guid isPermaLink="true">astronvim</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>chatgpt.prompts.human-character</link>
-            <guid isPermaLink="true">chatgpt.prompts.human-character</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>chatgpt.prompts</link>
-            <guid isPermaLink="true">chatgpt.prompts</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>chatgpt.prompts.ゆかり</link>
-            <guid isPermaLink="true">chatgpt.prompts.ゆかり</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
@@ -43,23 +18,13 @@
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>gallery-2024</link>
-            <guid isPermaLink="true">gallery-2024</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>gallery</link>
-            <guid isPermaLink="true">gallery</guid>
+            <link>game.binary-hacker</link>
+            <guid isPermaLink="true">game.binary-hacker</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
             <link>genshin</link>
             <guid isPermaLink="true">genshin</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>git.remove-tracked-file</link>
-            <guid isPermaLink="true">git.remove-tracked-file</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
@@ -73,31 +38,6 @@
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>java.battle-game</link>
-            <guid isPermaLink="true">java.battle-game</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>java.diary</link>
-            <guid isPermaLink="true">java.diary</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>java.simple-calendar</link>
-            <guid isPermaLink="true">java.simple-calendar</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>java.subnetwork</link>
-            <guid isPermaLink="true">java.subnetwork</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>move-multiple-files-neo-tree</link>
-            <guid isPermaLink="true">move-multiple-files-neo-tree</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
             <link>mumbling.micro-blog</link>
             <guid isPermaLink="true">mumbling.micro-blog</guid>
         </item>
@@ -108,13 +48,13 @@
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>now</link>
-            <guid isPermaLink="true">now</guid>
+            <link>nix</link>
+            <guid isPermaLink="true">nix</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
-            <link>python</link>
-            <guid isPermaLink="true">python</guid>
+            <link>now</link>
+            <guid isPermaLink="true">now</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
@@ -125,21 +65,6 @@
             <title><![CDATA[No title]]></title>
             <link>read-integral-of-happiness</link>
             <guid isPermaLink="true">read-integral-of-happiness</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>swap-esc-capslock-ubuntu</link>
-            <guid isPermaLink="true">swap-esc-capslock-ubuntu</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>threejs</link>
-            <guid isPermaLink="true">threejs</guid>
-        </item>
-        <item>
-            <title><![CDATA[No title]]></title>
-            <link>ui</link>
-            <guid isPermaLink="true">ui</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>
