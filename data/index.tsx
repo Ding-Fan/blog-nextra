@@ -1826,6 +1826,11 @@ export const HOMEPAGE_LINKS: Link[] = [
     image: IMAGE_LINK.coursera,
   },
   {
+    url: "https://search.nixos.org/packages",
+    note: "NixOS Packages",
+    tags: ["nix"],
+  },
+  {
     url: "https://vercel.com",
     tags: ["tool"],
     image: "https://vercel.com/mktng/_next/static/media/vercel-logotype-dark.e8c0a742.svg",
