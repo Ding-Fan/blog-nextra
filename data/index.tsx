@@ -1826,6 +1826,11 @@ export const HOMEPAGE_LINKS: Link[] = [
     image: IMAGE_LINK.coursera,
   },
   {
+    url: "https://speed.cloudflare.com/",
+    note: "Cloudflare Speed Test",
+    tags: ["tool"],
+  },
+  {
     url: "https://search.nixos.org/packages",
     note: "NixOS Packages",
     tags: ["nix"],
@@ -1833,7 +1838,8 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://vercel.com",
     tags: ["tool"],
-    image: "https://vercel.com/mktng/_next/static/media/vercel-logotype-dark.e8c0a742.svg",
+    image:
+      "https://vercel.com/mktng/_next/static/media/vercel-logotype-dark.e8c0a742.svg",
   },
   {
     url: "https://suno.com",
