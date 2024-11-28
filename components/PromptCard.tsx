@@ -5,6 +5,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy, faLink } from "@fortawesome/free-solid-svg-icons";
 import ShowImage from "./ShowImage";
+import Button from "./Button";
 
 type PromptCardProps = {
   prompt: Prompt;
@@ -21,9 +22,8 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
   const imageSrc = typeof prompt.image === "string" && prompt.image;
 
   return (
-    <div className="border rounded-lg p-4 shadow-sm bg-white">
-      <h2 className="text-xl font-semibold mb-2">{prompt.title}</h2>
-
+    <div className="bg-zinc-200 p-1 ">
+      <div className="font-semibold py-1">{prompt.title}</div>
       <ShowImage
         imageSrc={imageSrc}
         imageAlt={prompt.title}
@@ -35,19 +35,21 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
             href={prompt.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:text-blue-700"
+            className=""
           >
-            <FontAwesomeIcon icon={faLink} size="lg" />
+            <Button name="primary" className="text-sm">
+              <FontAwesomeIcon icon={faLink} className="w-4" />
+            </Button>
           </a>
         )}
         <CopyToClipboard text={prompt.content} onCopy={handleCopy}>
-          <button className="text-green-500 hover:text-green-700 focus:outline-none">
+          <Button name="primary" className="text-sm">
             {copied ? (
-              <FontAwesomeIcon icon={faCheck} size="lg" />
+              <FontAwesomeIcon icon={faCheck} className="w-4" />
             ) : (
-              <FontAwesomeIcon icon={faCopy} size="lg" />
+              <FontAwesomeIcon icon={faCopy} className="w-4" />
             )}
-          </button>
+          </Button>
         </CopyToClipboard>
       </div>
     </div>
