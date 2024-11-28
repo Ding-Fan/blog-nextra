@@ -1,5 +1,13 @@
 import { ReactNode } from "react";
 
+export interface Prompt {
+  title: string;
+  content: string;
+  link?: string;
+  tags: string[];
+  image?: string | ReactNode;
+}
+
 export interface Link {
   url: string;
   note?: string;

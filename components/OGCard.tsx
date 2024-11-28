@@ -1,34 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { ct } from "../scripts/utils";
 import { Link } from "../data/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
+import ShowImage from "./ShowImage";
+import { ct } from "../scripts/utils";
 
 interface OGCardProps extends Link, React.HTMLAttributes<HTMLElement> {}
-
-const ShowImage = ({
-  imageSrc,
-  imageAlt,
-  image,
-}: {
-  imageSrc: string | null;
-  imageAlt: string;
-  image: React.ReactNode;
-}) => {
-  if (imageSrc) {
-    return (
-      <div className="flex items-center justify-center">
-        <img className="object-cover min-h-8 max-h-20" src={imageSrc} alt={imageAlt} />
-      </div>
-    );
-  } else {
-    return (
-      <div className="flex items-center justify-center text-5xl p-1 flex-1">
-        {image}
-      </div>
-    );
-  }
-};
 
 const OGCard = ({
   needFetch,
@@ -84,9 +61,6 @@ const OGCard = ({
 
   const imageSrc = typeof image === "string" ? image : ogData?.image || null;
   const imageAlt = note || ogData?.title || "Image";
-  const titleText = ogData?.title || url;
-  const descriptionText =
-    description || ogData?.description || (!loading ? url : "");
 
   return (
     <div

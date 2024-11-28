@@ -2,9 +2,9 @@
 import React from "react";
 import OGCard from "./OGCard";
 import { HOMEPAGE_LINKS, TAG_ORDER_MAP } from "../data";
-import { groupLinksByTag } from "../scripts/utils";
 import CardPost from "./CardPost";
 import { Link } from "../data/types";
+import { groupLinksByTag } from "../scripts/utils";
 
 const ShowLinks: React.FC = () => {
   const groupedLinks = groupLinksByTag(HOMEPAGE_LINKS);
