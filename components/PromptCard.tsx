@@ -29,7 +29,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
         imageAlt={prompt.title}
         image={prompt.image}
       />
-      <div className="flex items-center justify-between ">
+      <div className="flex items-center justify-between gap-2 ">
         {prompt.link && (
           <a
             href={prompt.link}
