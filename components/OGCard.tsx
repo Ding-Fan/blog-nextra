@@ -65,13 +65,19 @@ const OGCard = ({
   return (
     <div
       className={ct(
-        "shadow-md cursor-pointer transition-all ease-out hover:shadow-lg duration-400 hover:scale-105 flex flex-col relative",
+        "shadow-md cursor-pointer transition-all ease-out hover:shadow-lg duration-400 hover:scale-105 flex items-center justify-start gap-2 relative ",
         className
       )}
       onClick={handleClick}
     >
+      <ShowImage
+        className="h-10 p-1"
+        imageSrc={imageSrc}
+        imageAlt={imageAlt}
+        image={image || <FontAwesomeIcon icon={faLink} />}
+      />
       {note && (
-        <div className="absolute w-full flex justify-center bg-zinc-800/70">
+        <div className="flex-1 flex justify-center items-center bg-zinc-800/70 self-stretch">
           <div
             className="text-sm font-bold text-zinc-50 line-clamp-1 break-all"
             title={note}
@@ -80,11 +86,6 @@ const OGCard = ({
           </div>
         </div>
       )}
-      <ShowImage
-        imageSrc={imageSrc}
-        imageAlt={imageAlt}
-        image={image || <FontAwesomeIcon icon={faLink} />}
-      />
     </div>
   );
 };

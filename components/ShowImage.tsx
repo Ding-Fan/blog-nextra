@@ -15,18 +15,20 @@ const ShowImage = ({
   if (imageSrc) {
     return (
       <div className={ct("flex items-center justify-center", className)}>
-        <img
-          className="object-cover min-h-8 max-h-20"
-          src={imageSrc}
-          alt={imageAlt}
-        />
+        <div className="h-full aspect-square">
+          <img
+            className="object-contain w-full h-full "
+            src={imageSrc}
+            alt={imageAlt}
+          />
+        </div>
       </div>
     );
   } else {
     return (
       <div
         className={ct(
-          "flex items-center justify-center text-5xl flex-1",
+          "flex items-center justify-center text-3xl",
           className
         )}
       >
