@@ -1,25 +1,37 @@
-const ShowImage = ({
-  imageSrc,
-  imageAlt,
-  image,
-}: {
+import { ct } from "../scripts/utils";
+
+interface ShowImageProps extends React.HTMLAttributes<HTMLDivElement> {
   imageSrc: string | null;
   imageAlt: string;
   image: React.ReactNode;
-}) => {
+}
+
+const ShowImage = ({
+  className,
+  imageSrc,
+  imageAlt,
+  image,
+}: ShowImageProps) => {
   if (imageSrc) {
     return (
-      <div className="flex items-center justify-center">
-        <img
-          className="object-cover min-h-8 max-h-20"
-          src={imageSrc}
-          alt={imageAlt}
-        />
+      <div className={ct("flex items-center justify-center", className)}>
+        <div className="h-full aspect-square">
+          <img
+            className="object-contain w-full h-full "
+            src={imageSrc}
+            alt={imageAlt}
+          />
+        </div>
       </div>
     );
   } else {
     return (
-      <div className="flex items-center justify-center text-5xl p-1 flex-1">
+      <div
+        className={ct(
+          "flex items-center justify-center text-3xl",
+          className
+        )}
+      >
         {image}
       </div>
     );

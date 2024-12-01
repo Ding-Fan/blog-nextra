@@ -191,3 +191,26 @@ add this to vscode config
 ```json
     "nix.formatterPath": "/run/current-system/sw/bin/nixfmt"
 ```
+
+### set default shell to fish
+
+To use iterm2 set command to fish [might lost the PATH environment](https://github.com/LnL7/nix-darwin/issues/122). Now use [this workaround](https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell).
+
+```bash
+# in home-manager configuration
+              programs.fish.enable = true;
+```
+
+```bash
+in nix-darwin flake.nix
+          programs.zsh = {
+            enable = true;
+            interactiveShellInit = ''
+              if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+              then
+                shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+                exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+              fi
+            '';
+          };
+```

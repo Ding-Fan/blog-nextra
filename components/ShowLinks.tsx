@@ -34,7 +34,7 @@ const ShowLinks: React.FC = () => {
                 {groupedLinks[tag].map((link: Link) => (
                   <OGCard
                     key={link.url}
-                    className="mb-2 bg-zinc-200"
+                    className="mb-2 bg-pink-900/80"
                     {...link}
                   />
                 ))}

@@ -1,14 +1,28 @@
 // components/ShowPrompts.tsx
-import React from 'react';
-import { PROMPTS } from '../data';
-import PromptCard from './PromptCard';
+import React from "react";
+import { PROMPTS } from "../data";
+import PromptCard from "./PromptCard";
+import CardPost from "./CardPost";
 
 const ShowPrompts: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {PROMPTS.map((prompt) => (
-        <PromptCard key={prompt.title} prompt={prompt} />
-      ))}
+    <div className="">
+      <CardPost
+        className="mb-2 "
+        post={{
+          title: "AI Prompt",
+          content: (
+            <div>
+              Usage: Copy and paste in a new ChatGPT chat.
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 my-1">
+                {PROMPTS.map((prompt, index) => {
+                  return <PromptCard key={index} prompt={prompt} />;
+                })}
+              </div>
+            </div>
+          ),
+        }}
+      />
     </div>
   );
 };
