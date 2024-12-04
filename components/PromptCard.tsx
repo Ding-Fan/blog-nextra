@@ -29,28 +29,32 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
         imageAlt={prompt.title}
         image={prompt.image}
       />
-      <div className="flex items-center justify-between gap-2 ">
+      <div className="flex items-center gap-2 ">
         {prompt.link && (
-          <a
-            href={prompt.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className=""
-          >
-            <Button name="primary" className="text-sm">
-              <FontAwesomeIcon icon={faLink} className="w-4" />
-            </Button>
-          </a>
+          <div className="flex-1">
+            <a
+              href={prompt.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className=""
+            >
+              <Button name="primary" className="text-sm">
+                <FontAwesomeIcon icon={faLink} />
+              </Button>
+            </a>
+          </div>
         )}
-        <CopyToClipboard text={prompt.content} onCopy={handleCopy}>
-          <Button name="primary" className="text-sm">
-            {copied ? (
-              <FontAwesomeIcon icon={faCheck} className="w-4" />
-            ) : (
-              <FontAwesomeIcon icon={faCopy} className="w-4" />
-            )}
-          </Button>
-        </CopyToClipboard>
+        <div className=" flex-1">
+          <CopyToClipboard text={prompt.content} onCopy={handleCopy}>
+            <Button name="primary" className="text-sm">
+              {copied ? (
+                <FontAwesomeIcon icon={faCheck} />
+              ) : (
+                <FontAwesomeIcon icon={faCopy} />
+              )}
+            </Button>
+          </CopyToClipboard>
+        </div>
       </div>
     </div>
   );

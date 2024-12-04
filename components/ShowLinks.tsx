@@ -5,6 +5,7 @@ import { HOMEPAGE_LINKS, TAG_ORDER_MAP } from "../data";
 import CardPost from "./CardPost";
 import { Link } from "../data/types";
 import { groupLinksByTag } from "../scripts/utils";
+import ShowImage from "./ShowImage";
 
 const ShowLinks: React.FC = () => {
   const groupedLinks = groupLinksByTag(HOMEPAGE_LINKS);
@@ -23,6 +24,27 @@ const ShowLinks: React.FC = () => {
 
   return (
     <div>
+      {
+        <CardPost
+          className="mb-2"
+          post={{
+            title: "home",
+            content: (
+              <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
+                {groupedLinks["home"].map((link: Link) => (
+                  <ShowImage
+                    className="p-1 text-5xl md:text-6xl cursor-pointer transition-all ease-out duration-400 hover:scale-105 "
+                    imageSrc=""
+                    imageAlt=""
+                    image={link.image}
+                  />
+                ))}
+              </div>
+            ),
+          }}
+        />
+      }
+
       {sortedTags.map((tag) => (
         <CardPost
           className="mb-2"
@@ -34,7 +56,7 @@ const ShowLinks: React.FC = () => {
                 {groupedLinks[tag].map((link: Link) => (
                   <OGCard
                     key={link.url}
-                    className="mb-2 bg-pink-900/80"
+                    className="mb-2 bg-zinc-800/80"
                     {...link}
                   />
                 ))}

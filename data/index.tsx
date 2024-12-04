@@ -1749,7 +1749,7 @@ export const HOMEPAGE_LINKS: Link[] = [
   },
   {
     url: "https://open.spotify.com",
-    tags: ["media"],
+    tags: ["media", "home"],
     image: <FontAwesomeIcon className="text-green-500" icon={faSpotify} />,
   },
   {
@@ -1868,22 +1868,22 @@ export const HOMEPAGE_LINKS: Link[] = [
   },
   {
     url: "https://github.com",
-    tags: ["programming"],
+    tags: ["programming", "home"],
     image: <FontAwesomeIcon className="" icon={faGithub} />,
   },
   {
     url: "https://bsky.app",
-    tags: ["sns"],
+    tags: ["sns", "home"],
     image: <FontAwesomeIcon className="text-sky-400" icon={faBluesky} />,
   },
   {
     url: "https://discord.com/channels/@me",
-    tags: ["sns"],
+    tags: ["sns", "home"],
     image: <FontAwesomeIcon className="text-sky-400" icon={faDiscord} />,
   },
   {
     url: "https://web.telegram.org/k/",
-    tags: ["sns"],
+    tags: ["sns", "home"],
     weight: 10,
     image: <FontAwesomeIcon className="text-sky-500" icon={faTelegram} />,
   },
@@ -1914,7 +1914,7 @@ export const HOMEPAGE_LINKS: Link[] = [
   },
   {
     url: "https://www.youtube.com",
-    tags: ["media"],
+    tags: ["media", "home"],
     image: <FontAwesomeIcon className="text-rose-600" icon={faYoutube} />,
   },
   {

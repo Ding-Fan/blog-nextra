@@ -13,7 +13,7 @@ const Button = ({ className, name = 'default', ...props }: ButtonProps) => {
     default: {},
     primary: {
       className:
-        'flex justify-center items-center py-2 px-8 text-[18px] transition-all duration-250 ease-in-out w-full bg-teal-800 text-white',
+        'flex justify-center items-center py-2 px-4 md:px-8 text-[18px] transition-all duration-250 ease-in-out w-full bg-teal-800 text-white',
       hover: 'highlight',
     },
     hero: {
