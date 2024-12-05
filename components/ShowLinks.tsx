@@ -22,6 +22,10 @@ const ShowLinks: React.FC = () => {
     }
   });
 
+  const handleClick = (url) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <div>
       {
@@ -33,6 +37,7 @@ const ShowLinks: React.FC = () => {
               <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
                 {groupedLinks["home"].map((link: Link) => (
                   <ShowImage
+                    onClick={() => handleClick(link.url)}
                     className="p-1 text-5xl md:text-6xl cursor-pointer transition-all ease-out duration-400 hover:scale-105 "
                     imageSrc=""
                     imageAlt=""
