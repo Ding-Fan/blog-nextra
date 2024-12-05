@@ -11,10 +11,14 @@ const ShowImage = ({
   imageSrc,
   imageAlt,
   image,
+  ...props
 }: ShowImageProps) => {
   if (imageSrc) {
     return (
-      <div className={ct("flex items-center justify-center", className)}>
+      <div
+        className={ct("flex items-center justify-center", className)}
+        {...props}
+      >
         <div className="h-full aspect-square">
           <img
             className="object-contain w-full h-full "
@@ -27,10 +31,8 @@ const ShowImage = ({
   } else {
     return (
       <div
-        className={ct(
-          "flex items-center justify-center text-3xl",
-          className
-        )}
+        className={ct("flex items-center justify-center text-3xl", className)}
+        {...props}
       >
         {image}
       </div>
