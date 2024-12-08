@@ -19,11 +19,13 @@ const RichImage = ({
   classNameImg,
   ...props
 }: RichImageProps) => {
-  let theImage = <BaseImage className={ct(classNameImg)} {...props} />;
+
+
+  let theImage = <BaseImage className={ct(styles.baseImage, classNameImg)} {...props} />;
 
   if (effect === "blur") {
     theImage = (
-      <BaseImage {...props} className={ct(styles.blur, classNameImg)} />
+      <BaseImage {...props} className={ct(styles.baseImage, styles.blur, classNameImg)} />
     );
   } else if (effect === "hoverClear") {
     theImage = (
@@ -35,6 +37,7 @@ const RichImage = ({
         {...props}
         className={ct(
           "p-1 shadow-[1px_1px_3px_rgba(0,0,0,0.2)] border-1 border-black border-solid bg-stone-50",
+          styles.baseImage,
           classNameImg
         )}
       />

@@ -12,3 +12,7 @@
   filter: none;
   cursor: help;
 }
+
+.baseImage {
+  @apply h-full;
+}
