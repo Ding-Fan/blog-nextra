@@ -1764,6 +1764,11 @@ export const HOMEPAGE_LINKS: Link[] = [
     tags: ["web3", "blockchain", "japan", "job"],
   },
   {
+    url: "https://www.careermap.jp",
+    note: "Career Map",
+    tags: ["job"]
+  },
+  {
     url: "https://github.com/kjk/edna",
     note: "Note taking for developers and power users",
     tags: ["tool"],
