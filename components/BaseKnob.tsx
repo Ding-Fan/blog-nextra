@@ -6,26 +6,24 @@ const BaseKnob = (props: Props) => {
   const [value, setValue] = useState(0);
   const knobRef = useRef<HTMLDivElement>(null);
 
-
-
-
-
-  // We'll store the Y position at mouse down, plus the knob's value at that time.
-  const [startY, setStartY] = useState<number | null>(null);
-  const [startValue, setStartValue] = useState<number | null>(null);
+  // This ref will store information about the current drag
+  // or null if the user isn't dragging.
+  const dragInfoRef = useRef<{
+    startY: number;      // initial mouse Y position
+    startValue: number;  // knob value when drag started
+  } | null>(null);
 
   // ============== MOUSE EVENT HANDLERS ==============
-
   // 1) Mouse down on the knob => record initial positions and add global listeners
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log("Mouse down");
-    console.log(e.button);
-    
-    
-    if (e.button !== 0) return; // Only left-click
+    // Only left-click
+    if (e.button !== 0) return;
 
-    setStartY(e.clientY);
-    setStartValue(value);
+    // Store drag data in ref
+    dragInfoRef.current = {
+      startY: e.clientY,
+      startValue: value,
+    };
 
     // Add global listeners (on the entire document)
     document.addEventListener("mousemove", handleGlobalMouseMove);
@@ -34,25 +32,25 @@ const BaseKnob = (props: Props) => {
 
   // 2) Global mouse move => update the knob value
   const handleGlobalMouseMove = (e: MouseEvent) => {
+    // If dragInfoRef.current is null, the user isn’t dragging
+    if (!dragInfoRef.current) return;
 
-    console.log("Mouse move");
-    console.log(startY, startValue);
-    
-    if (startY === null || startValue === null) return;
+    // Extract the starting Y and knob value from the ref
+    const { startY, startValue } = dragInfoRef.current;
 
-    
-
+    // How many pixels the mouse has moved vertically
     const deltaY = e.clientY - startY;
+
+    // Adjust the sensitivity by dividing deltaY
     let newValue = startValue - Math.round(deltaY / 20);
-    if (newValue < 0) newValue = 0;
-    if (newValue > 100) newValue = 100;
+    newValue = Math.max(0, Math.min(100, newValue));
     setValue(newValue);
   };
 
   // 3) Global mouse up => remove global listeners
   const handleGlobalMouseUp = () => {
-    setStartY(null);
-    setStartValue(null);
+    // Clear the ref to indicate we’re no longer dragging
+    dragInfoRef.current = null;
 
     document.removeEventListener("mousemove", handleGlobalMouseMove);
     document.removeEventListener("mouseup", handleGlobalMouseUp);
@@ -64,15 +62,14 @@ const BaseKnob = (props: Props) => {
     if (!knobElement) return;
 
     const handleWheel = (e: WheelEvent) => {
-      e.preventDefault(); // ensure we can do preventDefault even in modern browsers
+      e.preventDefault(); // ensure we can do preventDefault
       setValue((prevValue) => {
         let newValue = prevValue + (e.deltaY < 0 ? 1 : -1);
         return Math.max(0, Math.min(100, newValue));
       });
     };
 
-
-    // note:
+    // “passive: false” fix:
     // https://github.com/microsoft/TypeScript/issues/32912#issuecomment-522142969
     const options: AddEventListenerOptions & EventListenerOptions = {
       passive: false,
@@ -98,14 +95,14 @@ const BaseKnob = (props: Props) => {
     if (val === 0) {
       // Full-circle dark red glow
       return {
-        background: "rgba(139, 0, 0, 0.8)",
-        filter: "blur(10px)",
+        background: "rgba(80, 0, 82, .7)",
+        filter: "blur(1px)",
       };
     } else {
       // Normal arc glow
       return {
         background: calculateGradient(val),
-        filter: "blur(10px)",
+        filter: "blur(7px)",
       };
     }
   };
@@ -122,7 +119,7 @@ const BaseKnob = (props: Props) => {
         style={getGlowStyle(value)}
       />
       {/* Knob Face */}
-      <div className="relative w-full h-full rounded-full bg-black">
+      <div className="relative w-full h-full rounded-full bg-black border-solid border-zinc-900 border">
         {/* Filled portion */}
         <div
           className="absolute inset-0 rounded-full"
