@@ -5,7 +5,7 @@ type Props = {};
 const BaseKnob = (props: Props) => {
   const [value, setValue] = useState(0);
   const knobRef = useRef<HTMLDivElement>(null);
-
+  
   // Scroll Handler
   const handleScroll = useCallback((event: WheelEvent) => {
     event.preventDefault();
@@ -24,7 +24,7 @@ const BaseKnob = (props: Props) => {
     const deltaY = event.clientY - centerY;
 
     setValue((prevValue) => {
-      let newValue = prevValue - Math.round(deltaY / 5);
+      let newValue = prevValue - Math.round(deltaY / 20);
       if (newValue < 0) newValue = 0;
       if (newValue > 100) newValue = 100;
       return newValue;
@@ -46,15 +46,34 @@ const BaseKnob = (props: Props) => {
     };
   }, [handleScroll]);
 
-  // Conic gradient (0 -> value degrees)
-  // Change rgba(...) to your preferred glow/fill color
+  /**
+   * Conic gradient for the "filled" portion: 0 -> value degrees.
+   * Adjust RGBA color to control brightness or color of the fill.
+   */
   const calculateGradient = (val: number) => {
     const fraction = val / 100;
     const degrees = fraction * 360;
     return `conic-gradient(
-      rgba(0, 255, 0, 0.8) ${degrees}deg,   /* glowing fill color */
+      rgba(255, 255, 255, 1) ${degrees}deg,
       transparent ${degrees}deg
     )`;
+  };
+
+  // Decide whether to display a full red glow or the normal gradient glow
+  const getGlowStyle = (val: number) => {
+    if (val === 0) {
+      // Full-circle dark red glow
+      return {
+        background: "rgba(139, 0, 0, 0.8)", // or "darkred"
+        filter: "blur(10px)",
+      };
+    } else {
+      // Normal arc glow
+      return {
+        background: calculateGradient(val),
+        filter: "blur(10px)",
+      };
+    }
   };
 
   return (
@@ -63,16 +82,14 @@ const BaseKnob = (props: Props) => {
       className="relative w-20 h-20 rounded-full"
       onMouseMove={(e) => e.buttons === 1 && handleDrag(e)}
     >
-      {/* 
+      {/*
         1) Blurred glow layer behind the knob.
-        Uses the same gradient, but blurred to create a glow
+           - If value=0, use a full dark-red circle
+           - Else use the normal conic gradient
       */}
       <div
         className="absolute inset-0 pointer-events-none rounded-full"
-        style={{
-          background: calculateGradient(value),
-          filter: "blur(10px)", // Adjust to make glow softer/harder
-        }}
+        style={getGlowStyle(value)}
       />
 
       {/* 2) Knob Face */}
@@ -81,13 +98,13 @@ const BaseKnob = (props: Props) => {
         <div
           className="absolute inset-0 rounded-full"
           style={{
-            background: calculateGradient(value),
+            background: value === 0 ? "transparent" : calculateGradient(value),
           }}
         />
 
         {/* 3) Value Label */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white">
-          <div className="bg-black w-16 h-16 rounded-full flex items-center justify-center select-none">
+          <div className="bg-black w-[4.7rem] h-[4.7rem] rounded-full flex items-center justify-center select-none text-3xl">
             {value}
           </div>
         </div>
