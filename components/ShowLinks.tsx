@@ -37,6 +37,7 @@ const ShowLinks: React.FC = () => {
               <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
                 {groupedLinks["home"].map((link: Link) => (
                   <ShowImage
+                    key={link.url}
                     onClick={() => handleClick(link.url)}
                     className="p-1 text-5xl md:text-6xl cursor-pointer transition-all ease-out duration-400 hover:scale-105 "
                     imageSrc=""

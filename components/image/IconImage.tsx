@@ -12,7 +12,7 @@ const IconImage = ({
 }: IconImageProps) => {
   let modifiedClassName = className;
   if (iconStyle === "contained") {
-    modifiedClassName = "max-h-full max-w-full object-contain";
+    modifiedClassName = `${modifiedClassName} max-h-full max-w-full object-contain`;
   }
 
   return <BaseImage className={modifiedClassName} {...props} />;
