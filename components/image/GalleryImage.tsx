@@ -1,8 +1,8 @@
 import React from "react";
 import RichImage, { RichImageProps } from "./RichImage";
-import { ct } from "../scripts/utils";
+import { ct } from "../../scripts/utils";
 
-interface Props extends RichImageProps { }
+interface Props extends RichImageProps {}
 
 const GalleryImage = ({ src, caption, loading = "lazy", className }: Props) => {
   return (

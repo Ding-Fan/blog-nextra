@@ -5,7 +5,7 @@ import { HOMEPAGE_LINKS, TAG_ORDER_MAP } from "../data";
 import CardPost from "./CardPost";
 import { Link } from "../data/types";
 import { groupLinksByTag } from "../scripts/utils";
-import ShowImage from "./ShowImage";
+import ShowImage from "./image/ShowImage";
 
 const ShowLinks: React.FC = () => {
   const groupedLinks = groupLinksByTag(HOMEPAGE_LINKS);
@@ -60,7 +60,7 @@ const ShowLinks: React.FC = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {groupedLinks[tag].map((link: Link) => (
                   <OGCard
-                    key={link.url}
+                    key={link.url + tag}
                     className="mb-2 bg-zinc-800/80"
                     {...link}
                   />

@@ -1,4 +1,4 @@
-import { ct } from "../scripts/utils";
+import { ct } from "../../scripts/utils";
 
 interface ShowImageProps extends React.HTMLAttributes<HTMLDivElement> {
   imageSrc: string | null;

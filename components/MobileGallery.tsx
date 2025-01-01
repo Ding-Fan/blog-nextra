@@ -1,8 +1,8 @@
 //! work in progress
-import React, { useState, useEffect } from 'react';
-import { useSwipeable } from 'react-swipeable';
-import { motion } from 'framer-motion';
-import GalleryImage from './GalleryImage';
+import React, { useState, useEffect } from "react";
+import { useSwipeable } from "react-swipeable";
+import { motion } from "framer-motion";
+import GalleryImage from "./image/GalleryImage";
 
 interface MobileGalleryProps extends React.HTMLAttributes<HTMLElement> {
   photos: string[];
@@ -10,20 +10,20 @@ interface MobileGalleryProps extends React.HTMLAttributes<HTMLElement> {
 
 const variants = {
   initial: {
-    y: '0%',
+    y: "0%",
     opacity: 1,
-    position: 'absolute' as const,
+    position: "absolute" as const,
   },
   animate: (direction: number) => ({
-    y: direction > 0 ? '100%' : '-100%',
+    y: direction > 0 ? "100%" : "-100%",
     opacity: 1,
-    position: 'absolute' as const,
+    position: "absolute" as const,
   }),
 
   exit: (direction: number) => ({
-    y: direction > 0 ? '-100%' : '100%',
+    y: direction > 0 ? "-100%" : "100%",
     opacity: 1,
-    position: 'absolute' as const,
+    position: "absolute" as const,
   }),
 };
 
@@ -49,8 +49,12 @@ const MobileGallery: React.FC<MobileGalleryProps> = ({ photos }) => {
   };
 
   const handlers = useSwipeable({
-    onSwiping: ({ deltaY }) => { setDeltaY(deltaY) },
-    onSwiped: ({ absY }) => { paginate(absY > 0 ? 1 : -1) },
+    onSwiping: ({ deltaY }) => {
+      setDeltaY(deltaY);
+    },
+    onSwiped: ({ absY }) => {
+      paginate(absY > 0 ? 1 : -1);
+    },
     preventScrollOnSwipe: true,
     delta: 50,
     trackTouch: true,
@@ -60,27 +64,28 @@ const MobileGallery: React.FC<MobileGalleryProps> = ({ photos }) => {
   // Prevent body scroll when in fullscreen mode
   useEffect(() => {
     if (isFullscreen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isFullscreen]);
 
   return (
     <div
-      className={`${isFullscreen ? 'fixed inset-0 z-50 bg-black' : 'relative h-96'
-        } transition-all duration-200 overflow-hidden`}
+      className={`${
+        isFullscreen ? "fixed inset-0 z-50 bg-black" : "relative h-96"
+      } transition-all duration-200 overflow-hidden`}
     >
       {/* Floating Button */}
       <button
         onClick={toggleFullscreen}
-        aria-label={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
+        aria-label={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
         className="absolute top-4 right-4 z-50 bg-gray-800 text-white p-2 rounded-full"
       >
-        {isFullscreen ? 'Close' : 'Fullscreen'}
+        {isFullscreen ? "Close" : "Fullscreen"}
       </button>
 
       {/* Image Display */}
@@ -92,11 +97,11 @@ const MobileGallery: React.FC<MobileGalleryProps> = ({ photos }) => {
             variants={variants}
             initial={{ y: "-100%" }}
             style={{
-              position: 'absolute',
+              position: "absolute",
             }}
             className="w-full h-full object-cover"
           >
-            <GalleryImage loading='eager' src={photos[prevIndex]} />
+            <GalleryImage loading="eager" src={photos[prevIndex]} />
           </motion.div>
         )}
         {/* Current Image */}
@@ -106,10 +111,10 @@ const MobileGallery: React.FC<MobileGalleryProps> = ({ photos }) => {
           drag
           className="w-full h-full object-cover"
         >
-          <GalleryImage loading='eager' src={photos[currentIndex]} />
+          <GalleryImage loading="eager" src={photos[currentIndex]} />
         </motion.div>
       </div>
-    </div >
+    </div>
   );
 };
 

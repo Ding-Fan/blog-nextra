@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "../data/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
-import ShowImage from "./ShowImage";
+import ShowImage from "./image/ShowImage";
 import { ct } from "../scripts/utils";
 
 interface OGCardProps extends Link, React.HTMLAttributes<HTMLElement> {}
