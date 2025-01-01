@@ -18,6 +18,8 @@ import {
   faHouseCrack,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
+import BaseImage from "../components/image/BaseImage";
+import IconImage from "../components/image/IconImage";
 
 export const IMAGE_LINK = {
   coursera:
@@ -1766,7 +1768,7 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://www.careermap.jp",
     note: "Career Map",
-    tags: ["job"]
+    tags: ["job"],
   },
   {
     url: "https://github.com/kjk/edna",
@@ -1895,8 +1897,13 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://app.fastmail.com",
     note: "Fastmail",
-    image: "https://app.fastmail.com/static/images/og-header-image.png",
-    tags: ["sns"],
+    image: (
+      <IconImage
+        iconStyle="contained"
+        src="https://app.fastmail.com/static/images/og-header-image.png"
+      />
+    ),
+    tags: ["sns", "home"],
     weight: 10,
   },
   {

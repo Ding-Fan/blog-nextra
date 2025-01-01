@@ -4,7 +4,7 @@ import { Prompt } from "../data/types";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faCopy, faLink } from "@fortawesome/free-solid-svg-icons";
-import ShowImage from "./ShowImage";
+import ShowImage from "./image/ShowImage";
 import Button from "./Button";
 
 type PromptCardProps = {

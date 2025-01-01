@@ -1,5 +1,5 @@
 import React, { ImgHTMLAttributes } from "react";
-import { getOssUrl } from "../scripts/utils";
+import { getOssUrl } from "../../scripts/utils";
 
 export interface BaseImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   isOss?: boolean;

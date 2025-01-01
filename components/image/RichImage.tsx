@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import BaseImage, { BaseImageProps } from "./BaseImage";
 import styles from "./RichImage.module.css";
-import Caption from "./Caption";
-import { ct } from "../scripts/utils";
+import Caption from "../Caption";
+import { ct } from "../../scripts/utils";
 
 export interface RichImageProps extends BaseImageProps {
   effect?: "blur" | "hoverClear" | "framed";
@@ -19,13 +19,16 @@ const RichImage = ({
   classNameImg,
   ...props
 }: RichImageProps) => {
-
-
-  let theImage = <BaseImage className={ct(styles.baseImage, classNameImg)} {...props} />;
+  let theImage = (
+    <BaseImage className={ct(styles.baseImage, classNameImg)} {...props} />
+  );
 
   if (effect === "blur") {
     theImage = (
-      <BaseImage {...props} className={ct(styles.baseImage, styles.blur, classNameImg)} />
+      <BaseImage
+        {...props}
+        className={ct(styles.baseImage, styles.blur, classNameImg)}
+      />
     );
   } else if (effect === "hoverClear") {
     theImage = (
