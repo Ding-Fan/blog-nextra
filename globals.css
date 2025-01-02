@@ -43,19 +43,20 @@
 
 :root {
   /* https://stephango.com/flexoki */
-  --bg: #fffcf0;
-  --tx: #100f0f;
+  /* --bg: #fffcf0; 255, 252, 240 */
+  /* --tx: #100f0f; 16 15 15 */
+  --tx: 16 15 15;
+  --nextra-bg: 255, 252, 240 !important;
 }
 
 body {
   font-family: "Inconsolata Regular Nerd Font Complete", "FZBIAOYSK",
     "Klee One Regular", serif;
   @apply text-xl md:text-base;
-  background-color: var(--bg) !important;
 }
 
 .nextra-content {
-  color: var(--tx) !important;
+  color: rgb(var(--tx)/var(--tw-text-opacity,1));
 }
 
 h1 {
