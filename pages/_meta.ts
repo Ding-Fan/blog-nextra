@@ -1,8 +1,6 @@
 export default {
   index: "又不是不能写博客",
-  input: {
-    "input.chinese": "当代中文内容推荐",
-  },
+  input: {},
   about: {
     title: "About",
     type: "page",
