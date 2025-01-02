@@ -1,23 +1,26 @@
 export default {
-  "index": "又不是不能写博客",
-  "about": {
-    "title": "About",
-    "type": "page"
+  index: "又不是不能写博客",
+  input: {
+    "input.chinese": "当代中文内容推荐",
   },
-  "now": {
-    "title": "Now",
-    "type": "page"
+  about: {
+    title: "About",
+    type: "page",
   },
-  "contact": {
-    "title": "📧 Send Email",
-    "type": "page",
-    "href": "mailto:ouud@fastmail.com",
-    "newWindow": true
+  now: {
+    title: "Now",
+    type: "page",
   },
-  "rss": {
-    "title": "Minimum RSS",
-    "type": "page",
-    "href": "feed.xml",
-    "newWindow": true
+  contact: {
+    title: "📧 Send Email",
+    type: "page",
+    href: "mailto:ouud@fastmail.com",
+    newWindow: true,
   },
-}
+  rss: {
+    title: "Minimum RSS",
+    type: "page",
+    href: "feed.xml",
+    newWindow: true,
+  },
+};
