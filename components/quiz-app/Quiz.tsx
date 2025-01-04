@@ -7,6 +7,7 @@ const Quiz: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
+  const [showNote, setShowNote] = useState<boolean>(false); // New state for note visibility
   const [score, setScore] = useState<number>(0);
 
   const handleOptionSelect = (optionIndex: number) => {
@@ -14,7 +15,7 @@ const Quiz: React.FC = () => {
 
     setSelectedOption(optionIndex);
     setShowAnswer(true);
-
+    // Removed automatic showNote to allow manual toggle
     if (optionIndex === currentQuestion.correctAnswer) {
       setScore(prevScore => prevScore + 1);
     }
@@ -23,6 +24,7 @@ const Quiz: React.FC = () => {
   const handleNextQuestion = () => {
     setSelectedOption(null);
     setShowAnswer(false);
+    setShowNote(false); // Reset note visibility
     setCurrentQuestionIndex(prevIndex => prevIndex + 1);
   };
 
@@ -70,6 +72,26 @@ const Quiz: React.FC = () => {
                   Incorrect! The correct answer is "{currentQuestion.options[currentQuestion.correctAnswer]}".
                 </p>
               )}
+              {/* Toggle Button for Explanation */}
+              <button
+                className="mt-2 text-blue-500 underline focus:outline-none"
+                onClick={() => setShowNote(prev => !prev)}
+                aria-expanded={showNote}
+                aria-controls={`explanation-${currentQuestion.id}`}
+              >
+                {showNote ? 'Hide Explanation' : 'Show Explanation'}
+              </button>
+              {/* Explanation Note */}
+              {showNote && (
+                <div
+                  id={`explanation-${currentQuestion.id}`}
+                  className="mt-4 text-left bg-gray-100 p-4 rounded-md shadow-inner animate-fadeIn"
+                >
+                  <h3 className="font-semibold mb-2 text-lg">Explanation:</h3>
+                  <p className="text-gray-700 text-base">{currentQuestion.note}</p>
+                </div>
+              )}
+              {/* Next Question Button */}
               <button
                 className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300"
                 onClick={handleNextQuestion}
