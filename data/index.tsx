@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getOssUrl } from "../scripts/utils";
 import { DataSetItem, Link, Post, Prompt } from "./types";
 import {
+  faAmazon,
   faBluesky,
   faDiscord,
   faGithub,
@@ -1744,6 +1745,12 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://seocompanyjapan.com/#KantoDelivery",
     note: "House Shifting and Mini Moving",
+  },
+  {
+    url: "https://www.amazon.co.jp/",
+    note: "Amazon",
+    image: <FontAwesomeIcon className="text-yellow-500" icon={faAmazon} />,
+    tags: ["home"],
   },
   {
     url: "https://open.spotify.com",
