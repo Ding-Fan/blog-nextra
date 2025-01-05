@@ -21,4 +21,14 @@ export default {
     href: "feed.xml",
     newWindow: true,
   },
+  particle: {
+    theme: {
+      breadcrumb: false,
+      footer: false,
+      sidebar: false,
+      toc: false,
+      pagination: false,
+      navbar: false
+    },
+  },
 };
