@@ -97,7 +97,7 @@ export const questions: Question[] = [
     note: "",
   },
   {
-    id: 4,
+    id: 12,
     question:
       "貧困（）、たくましく生きる子供達の姿を追ったドキュメンタリー映画が公開される。",
     options: ["をものともせず", "に限らず", "のきわみに", "に至って"],
@@ -105,7 +105,7 @@ export const questions: Question[] = [
     note: "",
   },
   {
-    id: 5,
+    id: 13,
     question:
       "ここまで騒ぎが大きくなってしまっては、貴任者のあなたがこの問題について（）すまされないでしょう。",
     options: [
@@ -118,21 +118,21 @@ export const questions: Question[] = [
     note: "",
   },
   {
-    id: 6,
+    id: 14,
     question: "特に用事があったわけではなく、ひまだったから来てみた（）。",
     options: ["までのことです", "かぎりです", "ばかりです", "ほどのことです"],
     correctAnswer: 0,
     note: "",
   },
   {
-    id: 7,
+    id: 15,
     question: "幼稚園の庭から子ども達のいかにも（）声が聞こえてきた。",
     options: ["楽しんでいる", "楽しげな", "楽しまんとする", "楽しそう"],
     correctAnswer: 1,
     note: "",
   },
   {
-    id: 8,
+    id: 16,
     question: "「絶対に10キロやせる」と宣言した手前、ダイエットを（）",
     options: [
       "成功させることができた",
