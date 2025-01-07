@@ -12,7 +12,7 @@ export const questions: Question[] = [
   {
     id: 1,
     question:
-      "最近の映画には、映画館に足を運んで鑑質する（ ）ものがないと父は嘆く",
+      "最近の映画には、映画館に足を運んで鑑賞する（ ）ものがないと父は嘆く",
     options: ["とする", "にたえる", "にたえない", "としない"],
     correctAnswer: 1,
     note: "",
