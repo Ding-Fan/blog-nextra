@@ -58,7 +58,7 @@ const Quiz: React.FC = () => {
                   onClick={() => handleOptionSelect(index)}
                   disabled={showAnswer}
                 >
-                  {option}
+                  {index + 1}. {option}
                 </button>
               );
             })}
@@ -74,7 +74,7 @@ const Quiz: React.FC = () => {
               )}
               {/* Toggle Button for Explanation */}
               <button
-                className="mt-2 text-blue-500 underline focus:outline-none"
+                className="mt-2 text-blue-500 underline focus:outline-none block"
                 onClick={() => setShowNote(prev => !prev)}
                 aria-expanded={showNote}
                 aria-controls={`explanation-${currentQuestion.id}`}

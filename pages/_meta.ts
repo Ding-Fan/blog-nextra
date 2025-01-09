@@ -1,6 +1,7 @@
 export default {
   index: "又不是不能写博客",
   input: {},
+  "quiz-app": "Quiz APP",
   about: {
     title: "About",
     type: "page",

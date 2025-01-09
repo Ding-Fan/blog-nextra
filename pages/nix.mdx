@@ -214,3 +214,27 @@ in nix-darwin flake.nix
             '';
           };
 ```
+
+### install app with homebrew
+
+find the app name in homebrew formulae, add it to here
+
+```bash
+# ~/.config/nix-darwin/flake.nix
+            casks = [
+              "folx"
+              "tailscale"
+              "calibre"
+              "the-unarchiver"
+              "android-studio"
+              "upscayl"
+              "arc"
+              # add to here
+            ];
+```
+
+then run
+
+```bash
+darwin-rebuild switch --flake ~/.config/nix-darwin
+```
