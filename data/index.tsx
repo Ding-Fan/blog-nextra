@@ -1747,6 +1747,12 @@ export const HOMEPAGE_LINKS: Link[] = [
     note: "House Shifting and Mini Moving",
   },
   {
+    url: "https://jp.mercari.com/",
+    note: "メルカリ",
+    image: ICONS.mercari,
+    tags: ["home"],
+  },
+  {
     url: "https://www.amazon.co.jp/",
     note: "Amazon",
     image: <FontAwesomeIcon className="text-yellow-500" icon={faAmazon} />,

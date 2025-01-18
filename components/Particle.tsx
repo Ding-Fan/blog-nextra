@@ -76,7 +76,7 @@ const Particle = () => {
             opacity: {
               animation: {
                 enable: true,
-                speed: 1,
+                speed: 1.2,
                 sync: false,
               },
               value: { min: 0, max: 1 },
@@ -128,7 +128,7 @@ const Particle = () => {
             opacity: {
               animation: {
                 enable: true,
-                speed: 1,
+                speed: 1.2,
                 sync: false,
               },
               value: { min: 0, max: 1 },
