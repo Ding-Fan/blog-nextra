@@ -4,7 +4,7 @@ export interface Question {
   id: number;
   question: string;
   options: string[];
-  correctAnswer: number; // Index of the correct option (0-3)
+  correctAnswers: number[]; // Changed from "number" to "number[]"
   note: string; // Explanation for the question
 }
 
@@ -14,7 +14,7 @@ export const questions: Question[] = [
     question:
       "最近の映画には、映画館に足を運んで鑑賞する（ ）ものがないと父は嘆く",
     options: ["とする", "にたえる", "にたえない", "としない"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
@@ -22,21 +22,21 @@ export const questions: Question[] = [
     question:
       "このレストランの料理は、おいしいのはもちろんのこと、盛り付けも美しくて、芸術的（）",
     options: ["というところだ", "といったらない", "ですらある", "極まりない"],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
     id: 3,
     question: "けんちゃん、これおいしいから食べて（）",
     options: ["ごらん", "あげて", "もらいなさい", "いただいて"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
     id: 4,
     question: "商品の送料は（）が負担いたします。",
     options: ["同社", "御社", "弊社", "わが社"],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
@@ -44,7 +44,7 @@ export const questions: Question[] = [
     question: "彼はとても冷静なのだが、人には消極的に見られる（）",
     options: ["きらいがある", "までもなく", "を禁じえない", "にかたくない"],
     // 「きらいがある」は配列の index=0
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -57,35 +57,35 @@ export const questions: Question[] = [
       "なり／なり",
       "といい／といい",
     ],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
     id: 7,
     question: "私たちが多少（）地域の皆様のお役に立てば、幸いに思います。",
     options: ["いえども", "なりとも", "たりとも", "ながら"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
     id: 8,
     question: "この報告書は、長年にわたる入念な調査（）書かれたものである。",
     options: ["をふまえて", "から見ると", "をもって", "にあって"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
     id: 9,
     question: "副社長は社長に（）地位の高い役職である。",
     options: ["次で", "次なる", "次いて", "次の"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
     id: 10,
     question: "毎日300万人（）人が新宿駅を利用するという。",
     options: ["からの", "さえある", "まである", "ほどある"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -93,7 +93,7 @@ export const questions: Question[] = [
     question:
       "「ごめんね」と言うつもりだった。でも、彼が帰ってしまったので（）しまった。",
     options: ["言いのがして", "言いそびれて", "言いはずして", "言いそれて"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
@@ -101,7 +101,7 @@ export const questions: Question[] = [
     question:
       "貧困（）、たくましく生きる子供達の姿を追ったドキュメンタリー映画が公開される。",
     options: ["をものともせず", "に限らず", "のきわみに", "に至って"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -114,21 +114,21 @@ export const questions: Question[] = [
       "「知らない」と言って",
       "「知らない」では",
     ],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
     id: 14,
     question: "特に用事があったわけではなく、ひまだったから来てみた（）。",
     options: ["までのことです", "かぎりです", "ばかりです", "ほどのことです"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
     id: 15,
     question: "幼稚園の庭から子ども達のいかにも（）声が聞こえてきた。",
     options: ["楽しんでいる", "楽しげな", "楽しまんとする", "楽しそう"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
@@ -140,35 +140,35 @@ export const questions: Question[] = [
       "成功させないわけにはいかない",
       "成功させることができるだろうか",
     ],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
     id: 17,
     question: "出席者の意見はまだ出尽くしていない。今後も議論を続ける（）",
     options: ["にはあたらない", "余地がある", "にはおよばない", "に向ける"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
     id: 18,
     question: "英語の勉強を（ ）、大好きなビートルズの歌の歌詞を覚えた。",
     options: ["もとに", "かねて", "もって", "あいまって"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
     id: 19,
     question: "私は人の名前を覚えるのが苦手で、聞いた（ ）忘れてしまう。",
     options: ["や否や", "といえども", "そばから", "が最後"],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
     id: 20,
     question: "スタッフ全員の協力（ ）この大事業を成功させることは難しい。",
     options: ["なしに", "ないで", "ぬきに", "をよそに"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -176,7 +176,7 @@ export const questions: Question[] = [
     question:
       "彼らの優れた能力を（ ）しても、このプロジェクトを実現させることは難しいだろう。",
     options: ["とって", "もって", "おいて", "あって"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
@@ -188,14 +188,14 @@ export const questions: Question[] = [
       "やってみよう",
       "やらざるをえない",
     ],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
     id: 23,
     question: "新しい機能付きの便利な携帯電話も、電池が切れてしまえば（ ）。",
     options: ["それかぎりだ", "それほどだ", "それまでだ", "それまでもない"],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
@@ -207,7 +207,7 @@ export const questions: Question[] = [
       "問わない",
       "禁じえない",
     ],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -215,14 +215,14 @@ export const questions: Question[] = [
     question:
       "子どもたちにクラシック音楽を聞かせたいという演奏家の熱意がこの町の人の文化活動を楽しむ気持ちと（ ）、「森の音楽会」は大成功を収めた。",
     options: ["あれば", "相まって", "いえども", "きたら"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
     id: 26,
     question: "うちの会社の重役たちは、視察に（）、海外によく出かけて行く。",
     options: ["いいかげんに", "いいわけして", "かっこをつけて", "かこつけて"],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
@@ -230,7 +230,7 @@ export const questions: Question[] = [
     question:
       "この不況の中、デパートなどの小売業の経営がいかに厳しいかは想像（）。",
     options: ["にかたくない", "に至る", "にあたらない", "の余地はない"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -238,7 +238,7 @@ export const questions: Question[] = [
     question:
       "駅を中心（）半径500メートルの地域では、土地の価格がどんどん上がっている。",
     options: ["になる", "となる", "にある", "とする"],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
@@ -251,28 +251,28 @@ export const questions: Question[] = [
       "というところだ",
       "としか言いようがない",
     ],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
     id: 30,
     question: "先生、お見舞い（）、帰国のごあいさつに参りました。",
     options: ["をもって", "とあれば", "のついでに", "かたがた"],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
     id: 31,
     question: "このすばらしい記録はオリンピック選手（ ）はじめて出せるものだ。",
     options: ["ときたら", "ですら", "にして", "あっての"],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
     id: 32,
     question: "台風が接近しているというのに、海へ行こうなんて危険（）。",
     options: ["極まりない", "相違ない", "まみれだ", "きりがない"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -280,7 +280,7 @@ export const questions: Question[] = [
     question:
       "あの店（）、値段ばかり高くてさっぱりおいしくないし、サービスも最悪だ。",
     options: ["とはいえ", "ときたら", "については", "としたところで"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
@@ -288,7 +288,7 @@ export const questions: Question[] = [
     question:
       "いくら忙しくても、メールを送る（ ）、電話をする（ ）、連絡できたでしょう？",
     options: ["につけ／につけ", "とも／とも", "なり／なり", "といい／といい"],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
@@ -301,21 +301,21 @@ export const questions: Question[] = [
       "どちらともなく",
       "どちらかといえば",
     ],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
     id: 36,
     question: "昨夜黒（ ）の強盗がコンビニを襲った。店員は無事だった。",
     options: ["だらけ", "ばかり", "ずくめ", "まみれ"],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
     id: 37,
     question: "医者から許可がおりたので、これからは（ ）酒が飲める。",
     options: ["恐れながら", "心おきなく", "心ならずも", "心なしか"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
@@ -327,7 +327,7 @@ export const questions: Question[] = [
       "させるにはおよばない",
       "させるにはあたらない",
     ],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -339,21 +339,21 @@ export const questions: Question[] = [
       "ゆるしてくれる",
       "ゆるせない",
     ],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: "",
   },
   {
     id: 40,
     question: "暦の上では秋（ ）、まだまだ暑い日が続いている。",
     options: ["とはいえ", "になく", "くせして", "にしても"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
     id: 41,
     question: "最近仕事があまりに忙しくて、日曜日（）休めない。",
     options: ["だけ", "なり", "たる", "すら"],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
@@ -361,28 +361,28 @@ export const questions: Question[] = [
     question:
       "このチャンネルでは、今夜の「スーパーマン」を（）、毎週海外のアニメ映画が放送される。",
     options: ["皮切りに", "もって", "限りに", "おいて"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
     id: 43,
     question: "どんな仕事（）、責任を持ってやることが大切だ。",
     options: ["とあって", "であれ", "ですら", "とあれば"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
     id: 44,
     question: "今回の勝利は、A選手の活躍（）、達成はできなかっただろう。",
     options: ["なしとは", "ないでは", "なくても", "なしに"],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
     id: 45,
     question: "サッカーは、11人の選手（）2つのチームが闘うスポーツである。",
     options: ["から成る", "をもって", "による", "をたよりに"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -394,7 +394,7 @@ export const questions: Question[] = [
       "目でみたところ",
       "目に見えて",
     ],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
@@ -406,21 +406,21 @@ export const questions: Question[] = [
       "ならないこともある",
       "なることもある",
     ],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
   {
     id: 48,
     question: "彼女は子育て（ ）、自宅で料理教室を開いている。",
     options: ["にあたって", "がてら", "かたがた", "のかたわら"],
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: "",
   },
   {
     id: 49,
     question: "新製品の広告が出る（ ）、テレビ局に多数の問い合わせが寄せられ。",
     options: ["や否や", "とたん", "とあれば", "ばかりで"],
-    correctAnswer: 0,
+    correctAnswers: [0],
     note: "",
   },
   {
@@ -428,7 +428,7 @@ export const questions: Question[] = [
     question:
       "この教室には、「授業中、私語をする（ ）」と書いた紙が貼ってある。",
     options: ["べきではない", "べからず", "わけにはいかない", "わけがない"],
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: "",
   },
 ];
@@ -444,7 +444,7 @@ export const questionsJapaneseBusinessBasic: Question[] = [
       "スマートフォンにメモを取りながら聞く",
       "相手の目を見ながら聞く",
     ],
-    correctAnswer: 4,
+    correctAnswers: [4],
     note: `
 (1)「首を横に振る」は否定や不賛成のジェスチャーであり、相手に失礼となる場合があります。
 (2)「うん」はカジュアルすぎる表現で、ビジネスシーンでは不適切です。
@@ -462,7 +462,7 @@ export const questionsJapaneseBusinessBasic: Question[] = [
       "存じ上げません",
       "存じ下げません",
     ],
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: `
 1)「ご存じありません」は、本来「（相手が）ご存じですか」というときに使う言葉なので、自分の行為には使いません。
 2)「存じません」は謙譲語ですが、ビジネスなどフォーマルな場では「存じ上げません」のほうがより丁寧です。
@@ -476,7 +476,7 @@ export const questionsJapaneseBusinessBasic: Question[] = [
       "(ア) 仲間のチームが優勝したと思ったが、確認したら（ ）だと分かった。",
     options: ["から元気", "うそ泣き", "ぬか喜び", "やせ我慢"],
     // "ぬか喜び" is the 3rd option, so zero-based index is 2
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: `
 「ぬか喜び」は、確定していないのに早合点して喜んだ結果、
 実は違っていて落胆すること。
@@ -495,7 +495,7 @@ export const questionsJapaneseBusinessBasic: Question[] = [
       "日刊紙（毎日）",
     ],
     // "週刊紙" is the 3rd option, so zero-based index is 2
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: `
 「7日に1回」の配達は「週刊紙」にあたります。
 `,
@@ -506,7 +506,7 @@ export const questionsJapaneseBusinessBasic: Question[] = [
       "(問2-1) レース中盤、4位と5位の選手を追い抜きました。いま何位ですか？",
     options: ["3位", "4位", "5位", "6位"],
     // "4位" is the 2nd option, so zero-based index is 1
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: `
 4位の選手を追い抜くと自分が4位になります。
 3位を抜いたわけではないので、最終的には4位です。
@@ -518,7 +518,7 @@ export const questionsJapaneseBusinessBasic: Question[] = [
       "(問2-2) ゴール直前に2位の選手に追い抜かれました。何位になりましたか？",
     options: ["1位", "2位", "3位", "4位"],
     // "2位" is the 2nd option, so zero-based index is 1
-    correctAnswer: 1,
+    correctAnswers: [1],
     note: `
 もともと自分が1位だった状況で、
 2位の選手に抜かれたので、結果として自分は2位になります。
@@ -535,7 +535,7 @@ export const questionsJapaneseBusinessBasic: Question[] = [
       "すみません。反省しています。", // 4
     ],
     // Correct answer is「手伝ってもらって すみません」 → zero-based index = 3
-    correctAnswer: 3,
+    correctAnswers: [3],
     note: `
 相手の好意に対して恐縮・感謝の気持ちを
 「申し訳ない」と表しているケースです。
@@ -554,7 +554,7 @@ export const questionsJapaneseBusinessBasic: Question[] = [
       "急用で仕事を休む", // 3
     ],
     // Correct answer is「コンビニでおにぎりを買う」 → zero-based index = 2
-    correctAnswer: 2,
+    correctAnswers: [2],
     note: `
 「コンビニでおにぎりを買う」の「で」は、
 「コンビニ」という場所を表す格助詞です。
