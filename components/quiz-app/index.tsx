@@ -1,11 +1,13 @@
 import React from 'react'
 import Quiz from './Quiz'
 
-type Props = {}
+type Props = {
+  questions: Question[]
+}
 
-const QuizApp = (props: Props) => {
+const QuizApp = ({questions}: Props) => {
   return (
-    <Quiz />  
+    <Quiz questions={questions} />  
   )
 }
 
