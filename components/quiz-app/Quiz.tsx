@@ -12,7 +12,16 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
   const [showNote, setShowNote] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
+
+  /**
+   * questionResults array:
+   *   - null means "no result yet" for that question
+   *   - true means "that question was correct"
+   *   - false means "that question was wrong"
+   */
+  const [questionResults, setQuestionResults] = useState<(boolean | null)[]>(
+    Array(questions.length).fill(null)
+  );
 
   const currentQuestion: Question = questions[currentQuestionIndex];
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
@@ -35,24 +44,27 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
   };
 
   /**
-   * When the user is done selecting, show the answer
+   * Check whether the selected options match the correct answers for this question.
    */
   const handleCheckAnswer = () => {
     setShowAnswer(true);
 
-    // Check if selectedOptions fully matches correctAnswers (all or nothing).
     // Sort them, then compare arrays for equality
     const correctAnswersSorted = [...currentQuestion.correctAnswers].sort();
     const selectedOptionsSorted = [...selectedOptions].sort();
 
-    if (
+    const isCorrect =
       correctAnswersSorted.length === selectedOptionsSorted.length &&
       correctAnswersSorted.every(
         (val, index) => val === selectedOptionsSorted[index]
-      )
-    ) {
-      setScore((prevScore) => prevScore + 1);
-    }
+      );
+
+    // Update our per-question correctness
+    setQuestionResults((prev) => {
+      const updated = [...prev];
+      updated[currentQuestionIndex] = isCorrect;
+      return updated;
+    });
   };
 
   /**
@@ -64,6 +76,9 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
     setShowNote(false);
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
+
+  // At the end of the quiz, compute the total score.
+  const totalScore = questionResults.filter((res) => res === true).length;
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
@@ -103,7 +118,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
               return (
                 <button
                   key={index}
-                  className={`w-full text-left px-4 py-2 rounded-md border border-gray-300
+                  className={`w-full text-left px-4 py-2 rounded-md border border-gray-300 
                               focus:outline-none transition-colors duration-300 ${buttonColor}`}
                   onClick={() => handleOptionToggle(index)}
                   disabled={showAnswer}
@@ -114,15 +129,13 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
             })}
           </div>
 
+          {/* If we've shown the answer, display correctness feedback + note + next btn */}
           {showAnswer ? (
             <div className="mt-6 text-center">
-              {/* Correctness message */}
-              {selectedOptions.length > 0 && (
+              {/* Show correctness message only if the user clicked "Check Answer" */}
+              {questionResults[currentQuestionIndex] !== null && (
                 <>
-                  {/* If you want a single message "Correct!" or "Incorrect!",
-                      you can keep the logic from handleCheckAnswer, or do partial scoring, etc. */}
-                  {/* Example: We already updated the score if it's correct, so just show a quick message */}
-                  {score > 0 && currentQuestionIndex + 1 === score ? (
+                  {questionResults[currentQuestionIndex] ? (
                     <p className="text-green-600 font-semibold">Correct!</p>
                   ) : (
                     <p className="text-red-600 font-semibold">
@@ -149,7 +162,9 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
                   className="mt-4 text-left bg-gray-100 p-4 rounded-md shadow-inner animate-fadeIn"
                 >
                   <h3 className="font-semibold mb-2 text-lg">Explanation:</h3>
-                  <p className="text-gray-700 text-base">{currentQuestion.note}</p>
+                  <p className="text-gray-700 text-base">
+                    {currentQuestion.note}
+                  </p>
                 </div>
               )}
 
@@ -162,8 +177,8 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
               </button>
             </div>
           ) : (
+            // If we haven't shown the answer yet, allow user to check
             <div className="mt-6 text-center">
-              {/* Check Answer button */}
               <button
                 className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300"
                 onClick={handleCheckAnswer}
@@ -178,7 +193,7 @@ const Quiz: React.FC<QuizProps> = ({ questions }) => {
         <div className="text-center">
           <h2 className="text-2xl font-semibold mb-4">Quiz Completed!</h2>
           <p className="text-lg mb-6">
-            Your Score: {score} out of {questions.length}
+            Your Score: {totalScore} out of {questions.length}
           </p>
           <button
             className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-300"
