@@ -8,23 +8,7 @@ export interface Question {
   note: string; // Explanation for the question
 }
 
-export const questions: Question[] = [
-  {
-    id: 1,
-    question:
-      "最近の映画には、映画館に足を運んで鑑賞する（ ）ものがないと父は嘆く",
-    options: ["とする", "にたえる", "にたえない", "としない"],
-    correctAnswers: [1],
-    note: "",
-  },
-  {
-    id: 2,
-    question:
-      "このレストランの料理は、おいしいのはもちろんのこと、盛り付けも美しくて、芸術的（）",
-    options: ["というところだ", "といったらない", "ですらある", "極まりない"],
-    correctAnswers: [2],
-    note: "",
-  },
+export const questionsOld: Question[] = [
   {
     id: 3,
     question: "けんちゃん、これおいしいから食べて（）",
@@ -33,75 +17,10 @@ export const questions: Question[] = [
     note: "",
   },
   {
-    id: 4,
-    question: "商品の送料は（）が負担いたします。",
-    options: ["同社", "御社", "弊社", "わが社"],
-    correctAnswers: [2],
-    note: "",
-  },
-  {
-    id: 5,
-    question: "彼はとても冷静なのだが、人には消極的に見られる（）",
-    options: ["きらいがある", "までもなく", "を禁じえない", "にかたくない"],
-    // 「きらいがある」は配列の index=0
-    correctAnswers: [0],
-    note: "",
-  },
-  {
-    id: 6,
-    question:
-      "山田さんは、判断力（）、行動力（）、リーダーにふさわしい人物だ。",
-    options: [
-      "であれ／であれ",
-      "としても／としても",
-      "なり／なり",
-      "といい／といい",
-    ],
-    correctAnswers: [3],
-    note: "",
-  },
-  {
-    id: 7,
-    question: "私たちが多少（）地域の皆様のお役に立てば、幸いに思います。",
-    options: ["いえども", "なりとも", "たりとも", "ながら"],
-    correctAnswers: [1],
-    note: "",
-  },
-  {
-    id: 8,
-    question: "この報告書は、長年にわたる入念な調査（）書かれたものである。",
-    options: ["をふまえて", "から見ると", "をもって", "にあって"],
-    correctAnswers: [0],
-    note: "",
-  },
-  {
     id: 9,
     question: "副社長は社長に（）地位の高い役職である。",
     options: ["次で", "次なる", "次いて", "次の"],
     correctAnswers: [1],
-    note: "",
-  },
-  {
-    id: 10,
-    question: "毎日300万人（）人が新宿駅を利用するという。",
-    options: ["からの", "さえある", "まである", "ほどある"],
-    correctAnswers: [0],
-    note: "",
-  },
-  {
-    id: 11,
-    question:
-      "「ごめんね」と言うつもりだった。でも、彼が帰ってしまったので（）しまった。",
-    options: ["言いのがして", "言いそびれて", "言いはずして", "言いそれて"],
-    correctAnswers: [1],
-    note: "",
-  },
-  {
-    id: 12,
-    question:
-      "貧困（）、たくましく生きる子供達の姿を追ったドキュメンタリー映画が公開される。",
-    options: ["をものともせず", "に限らず", "のきわみに", "に至って"],
-    correctAnswers: [0],
     note: "",
   },
   {
@@ -118,64 +37,17 @@ export const questions: Question[] = [
     note: "",
   },
   {
-    id: 14,
-    question: "特に用事があったわけではなく、ひまだったから来てみた（）。",
-    options: ["までのことです", "かぎりです", "ばかりです", "ほどのことです"],
-    correctAnswers: [0],
-    note: "",
-  },
-  {
     id: 15,
     question: "幼稚園の庭から子ども達のいかにも（）声が聞こえてきた。",
     options: ["楽しんでいる", "楽しげな", "楽しまんとする", "楽しそう"],
     correctAnswers: [1],
     note: "",
   },
-  {
-    id: 16,
-    question: "「絶対に10キロやせる」と宣言した手前、ダイエットを（）",
-    options: [
-      "成功させることができた",
-      "成功させるのは難しい",
-      "成功させないわけにはいかない",
-      "成功させることができるだろうか",
-    ],
-    correctAnswers: [2],
-    note: "",
-  },
+
   {
     id: 17,
     question: "出席者の意見はまだ出尽くしていない。今後も議論を続ける（）",
     options: ["にはあたらない", "余地がある", "にはおよばない", "に向ける"],
-    correctAnswers: [1],
-    note: "",
-  },
-  {
-    id: 18,
-    question: "英語の勉強を（ ）、大好きなビートルズの歌の歌詞を覚えた。",
-    options: ["もとに", "かねて", "もって", "あいまって"],
-    correctAnswers: [1],
-    note: "",
-  },
-  {
-    id: 19,
-    question: "私は人の名前を覚えるのが苦手で、聞いた（ ）忘れてしまう。",
-    options: ["や否や", "といえども", "そばから", "が最後"],
-    correctAnswers: [2],
-    note: "",
-  },
-  {
-    id: 20,
-    question: "スタッフ全員の協力（ ）この大事業を成功させることは難しい。",
-    options: ["なしに", "ないで", "ぬきに", "をよそに"],
-    correctAnswers: [0],
-    note: "",
-  },
-  {
-    id: 21,
-    question:
-      "彼らの優れた能力を（ ）しても、このプロジェクトを実現させることは難しいだろう。",
-    options: ["とって", "もって", "おいて", "あって"],
     correctAnswers: [1],
     note: "",
   },
@@ -199,48 +71,13 @@ export const questions: Question[] = [
     note: "",
   },
   {
-    id: 24,
-    question: "地震後1か月たった今も、人々はテントでの生活を（ ）。",
-    options: [
-      "余儀なくされている",
-      "おいてほかにない",
-      "問わない",
-      "禁じえない",
-    ],
-    correctAnswers: [0],
-    note: "",
-  },
-  {
-    id: 25,
-    question:
-      "子どもたちにクラシック音楽を聞かせたいという演奏家の熱意がこの町の人の文化活動を楽しむ気持ちと（ ）、「森の音楽会」は大成功を収めた。",
-    options: ["あれば", "相まって", "いえども", "きたら"],
-    correctAnswers: [1],
-    note: "",
-  },
-  {
     id: 26,
     question: "うちの会社の重役たちは、視察に（）、海外によく出かけて行く。",
     options: ["いいかげんに", "いいわけして", "かっこをつけて", "かこつけて"],
     correctAnswers: [3],
     note: "",
   },
-  {
-    id: 27,
-    question:
-      "この不況の中、デパートなどの小売業の経営がいかに厳しいかは想像（）。",
-    options: ["にかたくない", "に至る", "にあたらない", "の余地はない"],
-    correctAnswers: [0],
-    note: "",
-  },
-  {
-    id: 28,
-    question:
-      "駅を中心（）半径500メートルの地域では、土地の価格がどんどん上がっている。",
-    options: ["になる", "となる", "にある", "とする"],
-    correctAnswers: [3],
-    note: "",
-  },
+
   {
     id: 29,
     question:
@@ -254,27 +91,7 @@ export const questions: Question[] = [
     correctAnswers: [3],
     note: "",
   },
-  {
-    id: 30,
-    question: "先生、お見舞い（）、帰国のごあいさつに参りました。",
-    options: ["をもって", "とあれば", "のついでに", "かたがた"],
-    correctAnswers: [3],
-    note: "",
-  },
-  {
-    id: 31,
-    question: "このすばらしい記録はオリンピック選手（ ）はじめて出せるものだ。",
-    options: ["ときたら", "ですら", "にして", "あっての"],
-    correctAnswers: [2],
-    note: "",
-  },
-  {
-    id: 32,
-    question: "台風が接近しているというのに、海へ行こうなんて危険（）。",
-    options: ["極まりない", "相違ない", "まみれだ", "きりがない"],
-    correctAnswers: [0],
-    note: "",
-  },
+
   {
     id: 33,
     question:
@@ -302,13 +119,6 @@ export const questions: Question[] = [
       "どちらかといえば",
     ],
     correctAnswers: [1],
-    note: "",
-  },
-  {
-    id: 36,
-    question: "昨夜黒（ ）の強盗がコンビニを襲った。店員は無事だった。",
-    options: ["だらけ", "ばかり", "ずくめ", "まみれ"],
-    correctAnswers: [2],
     note: "",
   },
   {
@@ -342,13 +152,7 @@ export const questions: Question[] = [
     correctAnswers: [2],
     note: "",
   },
-  {
-    id: 40,
-    question: "暦の上では秋（ ）、まだまだ暑い日が続いている。",
-    options: ["とはいえ", "になく", "くせして", "にしても"],
-    correctAnswers: [0],
-    note: "",
-  },
+
   {
     id: 41,
     question: "最近仕事があまりに忙しくて、日曜日（）休めない。",
@@ -356,21 +160,7 @@ export const questions: Question[] = [
     correctAnswers: [3],
     note: "",
   },
-  {
-    id: 42,
-    question:
-      "このチャンネルでは、今夜の「スーパーマン」を（）、毎週海外のアニメ映画が放送される。",
-    options: ["皮切りに", "もって", "限りに", "おいて"],
-    correctAnswers: [0],
-    note: "",
-  },
-  {
-    id: 43,
-    question: "どんな仕事（）、責任を持ってやることが大切だ。",
-    options: ["とあって", "であれ", "ですら", "とあれば"],
-    correctAnswers: [1],
-    note: "",
-  },
+
   {
     id: 44,
     question: "今回の勝利は、A選手の活躍（）、達成はできなかっただろう。",
@@ -409,22 +199,512 @@ export const questions: Question[] = [
     correctAnswers: [1],
     note: "",
   },
+
+];
+
+export const questionsSawadaJapanese = [
+  {
+    id: 1,
+    question:
+      "体 を （鍛える） た め に 水 泳 教 室 に 通 う こ と に し た 。",
+    options: ["きたえる", "さかえる", "こころえる", "こたえる"],
+    correctAnswers: [0], // 'きたえる' is the natural reading/meaning for 鍛える
+    note: "",
+  },
+  {
+    id: 2,
+    question:
+      "だ れ か ら も （指図） さ れ ず に で き る 仕 事 が し た い 。",
+    options: ["しず", "ゆびず", "さしず", "しと"],
+    correctAnswers: [2], // 指図 → さしず
+    note: "",
+  },
+  {
+    id: 3,
+    question: "こ の 島 の （唯一） の 交 通 手 段 は バ ス で あ る 。",
+    options: ["た だ ひ と", "た だ い ち", "ゆ い い ち", "ゆ い い つ"],
+    correctAnswers: [3], // 唯一 → ゆいいつ
+    note: "",
+  },
+  {
+    id: 4,
+    question: "（体裁） は ど う あ れ 、 大 切 な の は 内 容 だ 。",
+    options: ["た い さ い", "て い さ い", "だ い さ い", "て い ざ い"],
+    correctAnswers: [1], //  → ていさい
+    note: "",
+  },
+  {
+    id: 5,
+    question:
+      "業 績 悪 化 が 続 き 、 事 業 の （規模） を 縮 小 せ ざ る を 得 な い 。",
+    options: ["き も", "ぎ も", "ぎ ぼ", "きぼ"],
+    correctAnswers: [3], //  →
+    note: "",
+  },
+  {
+    id: 6,
+    question:
+      "ラ ッ シ ュ ア ワ ー に は 、 車 は 3 分 （間隔） で 運 行 さ れ る 。",
+    options: ["か ん か く", "か ん け つ", "か ん ま ん", "か ん ゆ う"],
+    correctAnswers: [0], //  → かんかく
+    note: "",
+  },
+  {
+    id: 7,
+    question:
+      "(焦って) も よ い 結 果 は 出 な い 。 深 呼 吸 し て 落 ち 着 い て か ら 始 め よ う 。",
+    options: ["さ と っ て", "と ど ま っ て", "あ せ っ て", "ね ば っ て"],
+    correctAnswers: [2], //  → あせって
+    note: "",
+  },
+  {
+    id: 8,
+    question:
+      "彼 は 何 度 大 金 を 失 っ て も パ チ ン コ に 出 か け る 。 （懲りない） 人 だ 。",
+    options: ["こ り な い", "お り な い", "た り な い", "か り な い"],
+    correctAnswers: [0], //  → こりない
+    note: "",
+  },
+  {
+    id: 9,
+    question: "父 は 頑 固 で 、 （融通） が き か な い 。",
+    options: ["ゆ う つ う", "ゆ つ う", "ゆうずう", "ゆ づ う"],
+    correctAnswers: [2], //  →
+    note: "",
+  },
+  {
+    id: 10,
+    question:
+      "彼 は 4 0 歳 を 過 ぎ た 今 で も （現役） の 選 手 と し て 活 躍 し て い る 。",
+    options: ["げ ん や く", "け ん や く", "け ん え き", "げ ん え き"],
+    correctAnswers: [3], //  → げんえき
+    note: "",
+  },
+  {
+    id: 11,
+    question:
+      "振り込め詐欺の被害が増えているため、警察は注意を（促して）いる。",
+    options: ["うながして", "うがなして", "こころざして", "そくして"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 12,
+    question: "兄は、私の仕事のために、いろいろと（便宜）を図ってくれた。",
+    options: ["べんせん", "べんぎ", "びんせん", "びんぎ"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 13,
+    question: "最先端の技術を（駆使した）ロボットが開発されている。",
+    options: ["かしした", "くしした", "きしした", "くっしした"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 14,
+    question: "働きすぎて健康を（損なう）サラリーマンが増えている。",
+    options: ["そんなう", "こそなう", "そこなう", "そなう"],
+    correctAnswers: [2],
+    note: "",
+  },
+  {
+    id: 15,
+    question: "彼女は私が（本音）を言える唯一の友達だ。",
+    options: ["もとね", "ほんおと", "もとおと", "ほんね"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 16,
+    question: "この大会の決勝戦はテレビで（中継）される。",
+    options: ["ちゅうだん", "ちゅうけい", "なかけい", "なかつぎ"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 17,
+    question: "毎日毎日残業で、（愚痴）のひとつも言いたくなる。",
+    options: ["ぐち", "くじ", "ぐっち", "ぐうち"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 18,
+    question:
+      "10連休に多くの客を集めようというホテルの（目論見）は大きくはずれた。",
+    options: ["めろんみ", "もくろんけん", "めろんけん", "もくろみ"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 19,
+    question: "農薬の過剰な使用は食の安全を（脅かす）。",
+    options: ["ちらかす", "おどろかす", "ひやかす", "おびやかす"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 20,
+    question: "彼女は（抜群）の記憶力の持ち主だ。",
+    options: ["ばつぐん", "ゆうよう", "ゆうぐん", "ばつよう"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 21,
+    question: "わが社の資金は(ふんだんに)ある。",
+    options: ["若干", "多少", "おおまかに", "たっぷり"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 22,
+    question:
+      "旅行のお土産は(かさばらない)ものがいい。",
+    options: ["場所をとらない", "持ちやすい", "壊れにくい", "重くない"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 23,
+    question:
+      "2人は家族にお互いを紹介し合った(間柄)だ。",
+    options: ["間隔", "関連", "関係", "縁"],
+    correctAnswers: [2],
+    note: "",
+  },
+  {
+    id: 24,
+    question:
+      "あの子は(引っ込み思案)で、なかなか友だちができない。",
+    options: ["いじわる", "乱暴", "消極的", "勝気"],
+    correctAnswers: [2],
+    note: "",
+  },
+  {
+    id: 25,
+    question:
+      "この絵は、色の(コントラスト)が印象的だ。",
+    options: ["使い方", "美しさ", "工夫", "対比"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 26,
+    question:
+      "うちの社長は(目先)の利益しか考えない人だ。",
+    options: ["将来", "自分", "取引", "当座"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 27,
+    question:
+      "冷夏の影響で秋野菜が(軒並み)値上がりした。",
+    options: ["急激に", "一様に", "異常に", "大幅に"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 28,
+    question:
+      "若さを保つ(秘訣)はどんなことですか？",
+    options: ["特別な価値", "一番の問題点", "一番の長所", "特別な方法"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 29,
+    question: "彼は仕事の(段取り)がいい。",
+    options: ["手順の整え方", "見通しのつけ方", "成果の出し方", "手段の選び方"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 30,
+    question:
+      "彼女はこのごろいつも私に(そっけない)態度を見せる。",
+    options: ["冷淡な", "あやふやな", "いいかげんな", "生意気な"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 31,
+    question: "今年は車の修理の費用が(かさんだ)。",
+    options: ["減った", "節約できた", "支払われた", "増えた"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 32,
+    question: "その船が(消息)を絶って1週間になる。",
+    options: ["連絡", "通報", "航海", "運行"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 33,
+    question: "彼は時間に(ルーズ)な人だ。",
+    options: ["細かい", "だらしない", "厳しい", "鈍い"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 34,
+    question:
+      "私が出した案は会議で(すんなりと)決まった。",
+    options: ["ようやく", "問題なく", "かろうじて", "なんとか"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 35,
+    question: "事件解決の(手掛かり)は全くない。",
+    options: ["正解", "糸口", "手段", "方法"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 36,
+    question:
+      "これだけの貯金があれば、(当面)は困らないだろう。",
+    options: ["さしあたり", "将来", "近頃", "直ちに"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 37,
+    question:
+      "最近の映画には、映画館に足を運んで鑑賞する（ ）ものがないと父は嘆く",
+    options: ["とする", "にたえる", "にたえない", "としない"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 38,
+    question:
+      "このレストランの料理は、おいしいのはもちろんのこと、盛り付けも美しくて、芸術的（）",
+    options: ["というところだ", "といったらない", "ですらある", "極まりない"],
+    correctAnswers: [2],
+    note: "",
+  },
+  {
+    id: 39,
+    question: "商品の送料は（）が負担いたします。",
+    options: ["同社", "御社", "弊社", "わが社"],
+    correctAnswers: [2],
+    note: "",
+  },
+  {
+    id: 40,
+    question: "彼はとても冷静なのだが、人には消極的に見られる（）",
+    options: ["きらいがある", "までもなく", "を禁じえない", "にかたくない"],
+    // 「きらいがある」は配列の index=0
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 41,
+    question:
+      "山田さんは、判断力（）、行動力（）、リーダーにふさわしい人物だ。",
+    options: [
+      "であれ／であれ",
+      "としても／としても",
+      "なり／なり",
+      "といい／といい",
+    ],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 42,
+    question: "私たちが多少（）地域の皆様のお役に立てば、幸いに思います。",
+    options: ["いえども", "なりとも", "たりとも", "ながら"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 43,
+    question: "この報告書は、長年にわたる入念な調査（）書かれたものである。",
+    options: ["をふまえて", "から見ると", "をもって", "にあって"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 44,
+    question: "毎日300万人（）人が新宿駅を利用するという。",
+    options: ["からの", "さえある", "まである", "ほどある"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 45,
+    question:
+      "「ごめんね」と言うつもりだった。でも、彼が帰ってしまったので（）しまった。",
+    options: ["言いのがして", "言いそびれて", "言いはずして", "言いそれて"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 46,
+    question:
+      "貧困（）、たくましく生きる子供達の姿を追ったドキュメンタリー映画が公開される。",
+    options: ["をものともせず", "に限らず", "のきわみに", "に至って"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 47,
+    question: "特に用事があったわけではなく、ひまだったから来てみた（）。",
+    options: ["までのことです", "かぎりです", "ばかりです", "ほどのことです"],
+    correctAnswers: [0],
+    note: "",
+  },
   {
     id: 48,
+    question: "「絶対に10キロやせる」と宣言した手前、ダイエットを（）",
+    options: [
+      "成功させることができた",
+      "成功させるのは難しい",
+      "成功させないわけにはいかない",
+      "成功させることができるだろうか",
+    ],
+    correctAnswers: [2],
+    note: "",
+  },
+  {
+    id: 49,
+    question: "英語の勉強を（ ）、大好きなビートルズの歌の歌詞を覚えた。",
+    options: ["もとに", "かねて", "もって", "あいまって"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 50,
+    question: "私は人の名前を覚えるのが苦手で、聞いた（ ）忘れてしまう。",
+    options: ["や否や", "といえども", "そばから", "が最後"],
+    correctAnswers: [2],
+    note: "",
+  },
+  {
+    id: 51,
+    question: "スタッフ全員の協力（ ）この大事業を成功させることは難しい。",
+    options: ["なしに", "ないで", "ぬきに", "をよそに"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 52,
+    question:
+      "彼らの優れた能力を（ ）しても、このプロジェクトを実現させることは難しいだろう。",
+    options: ["とって", "もって", "おいて", "あって"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 53,
+    question: "地震後1か月たった今も、人々はテントでの生活を（ ）。",
+    options: [
+      "余儀なくされている",
+      "おいてほかにない",
+      "問わない",
+      "禁じえない",
+    ],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 54,
+    question:
+      "子どもたちにクラシック音楽を聞かせたいという演奏家の熱意がこの町の人の文化活動を楽しむ気持ちと（ ）、「森の音楽会」は大成功を収めた。",
+    options: ["あれば", "相まって", "いえども", "きたら"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 55,
+    question:
+      "この不況の中、デパートなどの小売業の経営がいかに厳しいかは想像（）。",
+    options: ["にかたくない", "に至る", "にあたらない", "の余地はない"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 56,
+    question:
+      "駅を中心（）半径500メートルの地域では、土地の価格がどんどん上がっている。",
+    options: ["になる", "となる", "にある", "とする"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 57,
+    question: "先生、お見舞い（）、帰国のごあいさつに参りました。",
+    options: ["をもって", "とあれば", "のついでに", "かたがた"],
+    correctAnswers: [3],
+    note: "",
+  },
+  {
+    id: 58,
+    question: "このすばらしい記録はオリンピック選手（ ）はじめて出せるものだ。",
+    options: ["ときたら", "ですら", "にして", "あっての"],
+    correctAnswers: [2],
+    note: "",
+  },
+  {
+    id: 59,
+    question: "台風が接近しているというのに、海へ行こうなんて危険（）。",
+    options: ["極まりない", "相違ない", "まみれだ", "きりがない"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 60,
+    question: "昨夜黒（ ）の強盗がコンビニを襲った。店員は無事だった。",
+    options: ["だらけ", "ばかり", "ずくめ", "まみれ"],
+    correctAnswers: [2],
+    note: "",
+  },
+  {
+    id: 61,
+    question: "暦の上では秋（ ）、まだまだ暑い日が続いている。",
+    options: ["とはいえ", "になく", "くせして", "にしても"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 62,
+    question:
+      "このチャンネルでは、今夜の「スーパーマン」を（）、毎週海外のアニメ映画が放送される。",
+    options: ["皮切りに", "もって", "限りに", "おいて"],
+    correctAnswers: [0],
+    note: "",
+  },
+  {
+    id: 63,
+    question: "どんな仕事（）、責任を持ってやることが大切だ。",
+    options: ["とあって", "であれ", "ですら", "とあれば"],
+    correctAnswers: [1],
+    note: "",
+  },
+  {
+    id: 64,
     question: "彼女は子育て（ ）、自宅で料理教室を開いている。",
     options: ["にあたって", "がてら", "かたがた", "のかたわら"],
     correctAnswers: [3],
     note: "",
   },
   {
-    id: 49,
+    id: 65,
     question: "新製品の広告が出る（ ）、テレビ局に多数の問い合わせが寄せられ。",
     options: ["や否や", "とたん", "とあれば", "ばかりで"],
     correctAnswers: [0],
     note: "",
   },
   {
-    id: 50,
+    id: 66,
     question:
       "この教室には、「授業中、私語をする（ ）」と書いた紙が貼ってある。",
     options: ["べきではない", "べからず", "わけにはいかない", "わけがない"],
