@@ -38,7 +38,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
               rel="noopener noreferrer"
               className=""
             >
-              <Button name="primary" className="text-sm">
+              <Button name="primary" shape="square" className="text-sm">
                 <FontAwesomeIcon icon={faLink} />
               </Button>
             </a>
@@ -46,7 +46,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
         )}
         <div className=" flex-1">
           <CopyToClipboard text={prompt.content} onCopy={handleCopy}>
-            <Button name="primary" className="text-sm">
+            <Button name="primary" shape="square" className="text-sm">
               {copied ? (
                 <FontAwesomeIcon icon={faCheck} />
               ) : (
