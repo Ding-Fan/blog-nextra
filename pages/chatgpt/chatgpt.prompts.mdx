@@ -2,6 +2,67 @@
 
 import { PROMPT_DATA } from "data";
 
+## format data for quiz
+
+```txt copy
+**Context:**
+I have some question data (including question text, answer options, the correct answer(s), and any notes/explanations). I want to format each question into the following JavaScript/TypeScript object scheme:
+
+{
+  id: number,
+  question: string,
+  options: string[],
+  correctAnswers: number[], // zero-based indices (e.g., [0, 2] if there are two correct answers)
+  note: string
+}
+
+**My Requirements:**
+1. Each question must become one object in an array.
+2. `id` should be a unique integer, incrementing from the last used ID (I'll specify the starting ID if needed).
+3. `question` should be the full text of the question or prompt.
+4. `options` is an array of the possible answers (strings). 
+5. `correctAnswers` is an array of zero-based indices indicating the correct choice(s). If only one answer is correct, include it as a single-element array (e.g., `[1]`).
+6. `note` contains any explanation or commentary.
+
+---
+
+**Instructions:**
+1. I will now provide raw questions and answers in plain text or bullet points.
+2. Please parse them carefully.
+3. Output a JavaScript array of objects, each matching the scheme above.
+4. Use zero-based indexing in `correctAnswers`.
+5. Include my notes/explanations in the `note` field if present.
+
+---
+
+**Example of the Desired Output Format:**
+
+[
+  {
+    id: 1,
+    question: "最近の映画には、映画館に足を運んで鑑賞する（ ）ものがないと父は嘆く",
+    options: ["とする", "にたえる", "にたえない", "としない"],
+    correctAnswers: [1],
+    note: ""
+  },
+  {
+    id: 2,
+    question: "このレストランの料理は、おいしいのはもちろんのこと、盛り付けも美しくて、芸術的（）",
+    options: ["というところだ", "といったらない", "ですらある", "極まりない"],
+    correctAnswers: [2],
+    note: ""
+  },
+  {
+    id: 3,
+    question: "けんちゃん、これおいしいから食べて（）",
+    options: ["ごらん", "あげて", "もらいなさい", "いただいて"],
+    correctAnswers: [0],
+    note: ""
+  }
+]
+
+```
+
 ## word usage
 
 explain the word and show how to use it in examples with context, in detail
