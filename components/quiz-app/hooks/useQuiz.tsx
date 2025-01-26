@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Question } from "../data/questions";
 
-export function useQuiz(questions: Question[]) {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+export function useQuiz(initialQuestions: Question[]) {
+  const [questions, setQuestions] = useState<Question[]>(initialQuestions);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
-  const [showAnswer, setShowAnswer] = useState<boolean>(false);
-  const [showNote, setShowNote] = useState<boolean>(false);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [showNote, setShowNote] = useState(false);
   const [questionResults, setQuestionResults] = useState<(boolean | null)[]>(
     Array(questions.length).fill(null)
   );
@@ -41,27 +42,42 @@ export function useQuiz(questions: Question[]) {
   };
 
   const handleNextQuestion = () => {
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     setSelectedOptions([]);
     setShowAnswer(false);
     setShowNote(false);
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
 
+  // Helper to reset everything, optionally with a new question list
+  function resetQuiz(newQuestions: Question[] = questions) {
+    setQuestions(newQuestions);
+    setCurrentQuestionIndex(0);
+    setSelectedOptions([]);
+    setShowAnswer(false);
+    setShowNote(false);
+    setQuestionResults(Array(newQuestions.length).fill(null));
+  }
+
+  // Derived data
   const totalScore = questionResults.filter((res) => res === true).length;
 
+  // Return everything your component needs
   return {
     questions,
     currentQuestionIndex,
-    currentQuestion,
+    currentQuestion: questions[currentQuestionIndex],
     questionResults,
     selectedOptions,
     showAnswer,
     showNote,
-    isLastQuestion,
     totalScore,
+    isLastQuestion: currentQuestionIndex === questions.length - 1,
+
     setShowNote,
     handleOptionToggle,
     handleCheckAnswer,
     handleNextQuestion,
+    // Expose resetQuiz
+    resetQuiz,
   };
 }
