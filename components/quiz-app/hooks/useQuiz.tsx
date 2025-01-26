@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Question } from "./data/questions";
+import { Question } from "../data/questions";
 
 export function useQuiz(questions: Question[]) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
