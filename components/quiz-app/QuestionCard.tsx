@@ -74,6 +74,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
       {showAnswer ? (
         <div className="mt-6 text-center">
+          <button
+            className="px-4 mb-2 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300"
+            onClick={onNextQuestion}
+          >
+            {isLastQuestion ? "See Results" : "Next Question"}
+          </button>
+
           {questionResult !== null && (
             <>
               {questionResult ? (
@@ -104,13 +111,6 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               <p className="text-gray-700 text-base">{question.note}</p>
             </div>
           )}
-
-          <button
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-300"
-            onClick={onNextQuestion}
-          >
-            {isLastQuestion ? "See Results" : "Next Question"}
-          </button>
         </div>
       ) : (
         <div className="mt-6 text-center">
