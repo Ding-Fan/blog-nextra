@@ -1,0 +1,19 @@
+.baseVideo {
+  /* Common styles for the base video, e.g., 100% width, auto height */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.blur {
+  filter: blur(4px);
+}
+
+.hoverClear {
+  filter: blur(4px);
+  transition: filter 0.3s ease;
+}
+
+.hoverClear:hover {
+  filter: none;
+}

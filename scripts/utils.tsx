@@ -1,5 +1,4 @@
 import clsx, { ClassValue } from "clsx";
-import next from "next";
 import { twMerge } from "tailwind-merge";
 import { Link } from "../data/types";
 
