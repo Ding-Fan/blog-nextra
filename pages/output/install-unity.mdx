@@ -1,0 +1,61 @@
+# trying to install unity on mac mini m4
+
+tldr: install unity on external drive failed, install unity on internal drive succeed
+
+It shows error
+
+editor application install failed installation failed
+
+trying to look at the log file at 
+
+Mac: ~/Library/Application\ Support/UnityHub/logs
+
+https://docs.unity3d.com/hub/manual/Help.html
+
+Where can I find the Unity Hub logs?
+To find Hub logs, do one of the following:
+
+Go to Account > Troubleshooting > Open log folder.
+
+On the Hub Tray Menu, go to Troubleshooting > Open Log Folder.
+
+Alternatively:
+
+Windows: %UserProfile%\AppData\Roaming\UnityHub\logs
+
+Mac: ~/Library/Application\ Support/UnityHub/logs
+
+Linux: ~/.config/UnityHub/logs
+
+```json
+{"timestamp":"2025-02-01T02:26:36.395Z","level":"info","moduleName":"EditorInstallerWorkflow (6000.0.36f1-arm64)","pid":62006,"message":"Starting the editor installation..."}
+{"timestamp":"2025-02-01T02:26:56.264Z","level":"error","moduleName":"Installer: 6000.0.36f1-arm64","pid":62006,"message":"Installation failed. Reason: Error: Error while installing the editor 6000.0.36f1-arm64 : 1"}
+{"timestamp":"2025-02-01T02:26:56.265Z","level":"info","moduleName":"Installer: 6000.0.36f1-arm64","pid":62006,"message":"Exiting from State: Installation. Event: ERROR"}
+{"timestamp":"2025-02-01T02:26:56.265Z","level":"info","moduleName":"Installer: 6000.0.36f1-arm64","pid":62006,"message":"Transition to state \"install_failed\" on event \"ERROR\""}
+{"timestamp":"2025-02-01T02:26:56.265Z","level":"info","moduleName":"Installation Manager","pid":62006,"message":"Update: install_failed"}
+{"timestamp":"2025-02-01T02:26:56.265Z","level":"info","moduleName":"Installer: 6000.0.36f1-arm64","pid":62006,"message":"Entered State: install_failed"}
+```
+
+it doesn't show any useful information
+
+asked GPT 4o, try to fix
+
+	2.	Run Unity Hub with Administrative Privileges:
+	•	Close Unity Hub completely.
+	•	Open Terminal and run the following command to launch Unity Hub with administrative privileges:
+
+sudo /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub
+
+failed again
+
+trying to reboot
+
+failed again
+
+lastly, I tried to install it to internal drive
+
+succeed
+
+
+
+
