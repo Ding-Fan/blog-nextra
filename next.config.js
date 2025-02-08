@@ -7,4 +7,5 @@ const withNextra = nextra({
   defaultShowCopyCode: true,
 });
 
-export default withNextra();
+export default withNextra({
+});

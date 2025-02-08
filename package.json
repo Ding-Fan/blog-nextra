@@ -5,7 +5,7 @@
   "description": "Nextra docs template",
   "scripts": {
     "dev": "next dev --experimental-https",
-    "build": "node ./scripts/gen-rss.js && next build",
+    "build": "node --max-old-space-size=8192 ./scripts/gen-rss.js && next build",
     "start": "next start"
   },
   "repository": {
@@ -24,7 +24,10 @@
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@headlessui/react": "^2.2.0",
+    "@radix-ui/react-progress": "^1.1.2",
     "@radix-ui/react-tabs": "^1.0.4",
+    "@radix-ui/react-tooltip": "^1.1.8",
     "@react-three/drei": "^9.114.6",
     "@react-three/fiber": "^8.17.10",
     "@tailwindcss/line-clamp": "^0.4.4",
@@ -36,10 +39,14 @@
     "cheerio": "^1.0.0-rc.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.13",
+    "ethers": "^6.13.5",
     "framer-motion": "^11.11.9",
+    "jotai": "^2.11.3",
     "lodash": "^4.17.21",
     "next": "^13.0.6",
+    "next-export-i18n": "^2.4.3",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
@@ -52,6 +59,8 @@
     "three": "^0.169.0",
     "ua-parser-js": "^1.0.37",
     "uuid": "^10.0.0",
+    "viem": "^2.22.23",
+    "wagmi": "^2.14.11",
     "zustand": "^5.0.1"
   },
   "devDependencies": {
@@ -63,6 +72,6 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "tailwindcss-3d": "^1.0.7",
-    "typescript": "^4.9.3"
+    "typescript": "^5.0.0"
   }
 }
