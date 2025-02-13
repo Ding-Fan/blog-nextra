@@ -17,6 +17,8 @@ import {
   faCloudRain,
   faCloudSun,
   faHouseCrack,
+  faLaptopCode,
+  faRobot,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import BaseImage from "../components/image/BaseImage";
@@ -1753,6 +1755,18 @@ export const HOMEPAGE_LINKS: Link[] = [
     tags: ["home"],
   },
   {
+    url: "https://learning.edx.org/course/course-v1:HarvardX+CS50+X/block-v1:HarvardX+CS50+X+type@sequential+block@41335074798c4a65ac8d3fbdd31f5a49/block-v1:HarvardX+CS50+X+type@vertical+block@7ec2936f501e4943b62ba8be835bdc67",
+    note: "CS50 edx",
+    image: <FontAwesomeIcon className="text-purple-700" icon={faLaptopCode} />,
+    tags: ["home"],
+  },
+  {
+    url: "https://chat.bilipili.eu/",
+    note: "Open WebUI",
+    image: <FontAwesomeIcon className="" icon={faRobot} />,
+    tags: ["home"],
+  },
+  {
     url: "https://www.amazon.co.jp/",
     note: "Amazon",
     image: <FontAwesomeIcon className="text-yellow-500" icon={faAmazon} />,
@@ -1766,7 +1780,7 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://www.netflix.com/browse",
     note: "Netflix",
-    tags: ["media"],
+    tags: ["home"],
     image: <FontAwesomeIcon className="text-rose-600" icon={faVideo} />,
   },
   {
