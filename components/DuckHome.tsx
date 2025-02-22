@@ -1,6 +1,6 @@
-import { Button } from "nextra/components";
 import React from "react";
 import DuckIcon from "./DuckIcon";
+import Button from "./Button";
 
 type Props = {};
 

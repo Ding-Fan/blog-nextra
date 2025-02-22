@@ -1,5 +1,4 @@
-import { Layout, Navbar } from 'nextra-theme-docs'
-import Footer from "../components/Footer";
+import { Layout, Navbar, Footer } from 'nextra-theme-docs'
 import { Banner, Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 // Required for theme styles, previously was imported under the hood
@@ -22,12 +21,17 @@ export const metadata = {
 
  
 // const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>
+const footer = (
+  <Footer className="flex-col items-center md:items-start">
+    MIT {new Date().getFullYear()} © Nextra.
+  </Footer>
+)
 const navbar = (
     <Navbar
         logo={<span>又不是不能写博客</span>} 
         // projectLink="https://github.com/shuding/nextra"
     >
-        <Search />
+        {/* <Search /> */}
     </Navbar>
 )
 export default async function RootLayout({ children }) {
@@ -60,7 +64,8 @@ export default async function RootLayout({ children }) {
         //   docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
         //   editLink="Edit this page on GitHub"
           sidebar={{ defaultMenuCollapseLevel: 1 }}
-          footer={Footer}
+          footer={footer}
+
           // ...Your additional theme config options
         >
           {children}

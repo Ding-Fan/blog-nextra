@@ -1,8 +1,5 @@
-import React from "react";
-import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
-  logo: ,
 
   head: function useHead() {
     const config = useConfig()
