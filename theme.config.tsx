@@ -1,16 +1,12 @@
 import React from "react";
-import Footer from "./components/Footer";
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
-  logo: <span>又不是不能写博客</span>,
+  logo: ,
 
   head: function useHead() {
     const config = useConfig()
-    const title = `${config.title} - 又不是不能写博客`
-    const description =
-      config.frontMatter.description || '又不是不能写博客'
-    const image = config.frontMatter.image || 'https://nextra.site/og.jpeg'
+
     return (
       <>
         <title>{title}</title>
@@ -65,6 +61,11 @@ const config: DocsThemeConfig = {
   //   link: 'https://discord.com',
   // },
   // docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+
+
+
+
+
   darkMode: false,
   nextThemes: {
     forcedTheme: "light",
@@ -78,9 +79,6 @@ const config: DocsThemeConfig = {
   },
   feedback: {
     content: null,
-  },
-  footer: {
-    component: <Footer />,
   },
 };
 

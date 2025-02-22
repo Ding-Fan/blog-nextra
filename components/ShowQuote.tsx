@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 import { POSTS_DATA } from "../data";
 import CardPost from "./CardPost";

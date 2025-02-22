@@ -1,3 +1,7 @@
+// not working after upgrade to nextra 4
+// need to add this to package.json build command
+// node --max-old-space-size=8192 ./scripts/gen-rss.js && 
+
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";

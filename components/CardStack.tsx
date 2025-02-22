@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Card from "./Card"; // Adjust the import path according to your project structure
 import { ct } from "../scripts/utils";

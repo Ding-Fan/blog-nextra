@@ -4,8 +4,8 @@
   "type": "module",
   "description": "Nextra docs template",
   "scripts": {
-    "dev": "next dev --experimental-https",
-    "build": "node --max-old-space-size=8192 ./scripts/gen-rss.js && next build",
+    "dev": "next dev --turbopack --experimental-https",
+    "build": "next build",
     "start": "next start"
   },
   "repository": {

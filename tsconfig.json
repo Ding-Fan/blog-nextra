@@ -24,8 +24,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/gallery.mdx"
-, "pages/ui.mdx"  ],
+    "content/gallery.mdx"
+, "content/ui.mdx"  ],
   "exclude": [
     "node_modules"
   ]

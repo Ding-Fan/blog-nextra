@@ -1,3 +1,4 @@
+"use client";
 // ShowCards.tsx
 import { useEffect, useState } from "react";
 import ShowCard from "./ShowCard";

@@ -4,7 +4,7 @@
         <description><![CDATA[又不是不能写博客]]></description>
         <link>https://dingfan.date</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 08 Feb 2025 11:48:21 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 22 Feb 2025 13:59:25 GMT</lastBuildDate>
         <atom:link href="https://dingfan.date/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[No title]]></title>
@@ -85,6 +85,11 @@
             <title><![CDATA[No title]]></title>
             <link>study-in-japan</link>
             <guid isPermaLink="true">study-in-japan</guid>
+        </item>
+        <item>
+            <title><![CDATA[No title]]></title>
+            <link>todo</link>
+            <guid isPermaLink="true">todo</guid>
         </item>
         <item>
             <title><![CDATA[No title]]></title>

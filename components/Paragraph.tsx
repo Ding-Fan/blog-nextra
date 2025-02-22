@@ -1,3 +1,4 @@
+"use client";
 import React, { HTMLAttributes, ReactNode, useState } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import "./Paragraph.module.css";

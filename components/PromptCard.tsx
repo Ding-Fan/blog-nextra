@@ -1,3 +1,4 @@
+"use client";
 // components/PromptCard.tsx
 import React, { useState } from "react";
 import { Prompt } from "../data/types";

@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef } from "react";
 import { stagger, useInView } from "framer-motion";
 

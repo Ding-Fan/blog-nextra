@@ -1,3 +1,5 @@
+"use client";
+
 import React, { HTMLAttributes, useEffect, useState } from "react";
 import { ct } from "../scripts/utils";
 import { setTimeout } from "timers";

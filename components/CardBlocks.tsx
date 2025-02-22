@@ -1,3 +1,5 @@
+"use client";
+
 // CardBlocks.tsx
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import dayjs from "dayjs"; // Import dayjs
