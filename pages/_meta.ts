@@ -1,5 +1,6 @@
 export default {
   index: "又不是不能写博客",
+  write: {},
   input: {},
   "quiz-app": "Quiz APP",
   about: {
