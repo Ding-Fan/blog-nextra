@@ -1,3 +1,5 @@
+"use client";
+
 // CardPost.tsx
 import React from 'react';
 import { ct } from '../scripts/utils';

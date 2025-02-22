@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ReactNode } from "react";
 import BaseImage, { BaseImageProps } from "./BaseImage";
 import styles from "./RichImage.module.css";

@@ -1,3 +1,4 @@
+"use client";
 // ShowLinks.tsx
 import React from "react";
 import OGCard from "./OGCard";

@@ -1,3 +1,4 @@
+"use client";
 // components/ShowPrompts.tsx
 import React from "react";
 import { PROMPTS } from "../data";

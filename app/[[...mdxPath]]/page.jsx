@@ -14,12 +14,12 @@ export async function generateMetadata(props) {
 export default async function Page(props) {
   const params = await props.params
   const result = await importPage(params.mdxPath)
-  const { default: MDXContent, useTOC, metadata, title } = result
+  const { default: MDXContent, toc, metadata, title } = result
 
   const Wrapper = useMDXComponents().wrapper
 
   return (
-    <Wrapper toc={useTOC()} metadata={metadata} title={title}>
+    <Wrapper toc={toc} metadata={metadata} title={title}>
       <MDXContent {...props} params={params} />
     </Wrapper>
   )
