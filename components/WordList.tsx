@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import Ruby from './Ruby';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';

@@ -1,5 +1,5 @@
 import { ct } from "../scripts/utils";
-import dayjs from "dayjs";
+import dayjs from "dayjs-setup";
 import CardBlock from "./CardBlock";
 
 const DayBox = ({ day }: { day: number }) => {

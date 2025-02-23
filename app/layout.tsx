@@ -5,6 +5,12 @@ import { getPageMap } from "nextra/page-map";
 // Required for theme styles, previously was imported under the hood
 import "nextra-theme-docs/style.css";
 
+import "../globals.css";
+
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
+
 export const metadata = {
   // ... your metadata API
   // https://nextjs.org/docs/app/building-your-application/optimizing/metadata

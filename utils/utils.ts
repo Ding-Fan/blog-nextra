@@ -64,7 +64,7 @@
 
 import { FixedNumber, type BigNumberish } from "ethers";
 import _ from "lodash";
-import dayjs from "dayjs";
+import dayjs from "dayjs-setup";
 import { Address } from "viem";
 
 export const globalValue: { [key: string]: any } = {

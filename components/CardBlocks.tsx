@@ -2,7 +2,7 @@
 
 // CardBlocks.tsx
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import dayjs from "dayjs"; // Import dayjs
+import dayjs from "dayjs-setup"; // Import dayjs
 import { v4 as uuidv4 } from "uuid"; // Import the UUID generator
 import CardBlockAndMenu from "./CardBlockAndMenu";
 import { useMenuState } from "../hooks";

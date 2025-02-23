@@ -1,7 +1,8 @@
+"use client";
 // TaskPillPart.tsx
 import React from 'react';
 import CardBlock from './CardBlock';
-import dayjs from 'dayjs';
+import dayjs from 'dayjs-setup';
 
 const TaskPillPart: React.FC = () => {
   const CARD_DATA = [

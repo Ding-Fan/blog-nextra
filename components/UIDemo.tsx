@@ -1,5 +1,6 @@
+"use client";
 import Card from "./Card";
-import dayjs from "dayjs";
+import dayjs from "dayjs-setup";
 import CardBlock from "./CardBlock";
 import CardStack from "./CardStack";
 import DayBox from "./DayBox";
