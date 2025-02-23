@@ -1,0 +1,59 @@
+# haolema bot
+
+## Prompt
+
+1. Command to Start a Round
+
+    - Trigger: A message in a group chat starts with the keyword 好了吗 and contains one or more user mentions using @username (Telegram text_mention format).
+    - Behavior: 
+        - The bot creates a new “round” and stores all mentioned users as participants. Each participant’s status is initially set to “坏了” (not ready).
+        - this feature seems not working, because user mentions might not have user id
+            - The bot immediately replies once in the group with the original message text, but remove duplicated or unrecognized @username. (e.g. "好了吗 @alice @bob @tom") plus one inline button labeled “我好了”
+
+2. Participant States and Toggling
+
+    - Participants: Each user who was mentioned in the “好了吗” message belongs to that new round. Participants identified by user id, if no user id use user name.
+    - Default State: Every participant starts as “坏了” (false).
+    - State Toggling: Whenever any participant clicks the inline button labeled “我好了” or “我坏了,” 
+        - the bot: 
+            - Identifies who clicked (via ctx.from.id).  
+            - Checks if they are a participant in the round.  
+            - Flips their state from bad→good (“坏了”→“好了”) or good→bad (“好了”→“坏了”).  
+            - Posts a brand-new message in the group chat of the form: “@User 好了” (if their new state is good), or “@User 坏了” (if their new state is bad), along with a new single inline button: Labeled “我坏了” if the user just switched to good, or Labeled “我好了” if the user just switched to bad.  
+            - The bot ensures only participants themselves can toggle their own state. Anyone else who clicks gets denied.
+
+3. Text-Based Toggle ("ok" or "1")
+
+    - Trigger: If a user who is part of a round sends a message with the text "ok" or "1".
+    - Behavior:
+        - The bot treats that as the user switching themselves to “好了” (good).
+        - The bot posts a new message “@User 好了” with a single button labeled “我坏了”
+
+4. Round Completion
+
+    - Condition: If all mentioned participants in a round have switched to 好了 (true).
+    - Behavior:
+        - The bot immediately posts “大家真的好了” and at all the users, and removes that round from internal memory.
+        - No further toggles apply for that completed round.
+
+5. Reset Command
+
+    - Command: /reset
+    - Behavior:
+        - The bot clears all currently active rounds from memory.
+        - Posts a message “所有轮次已重置。” to confirm.
+
+6. Multiple Rounds
+    - The bot can handle multiple rounds in the same group (or across groups). Each round is identified by a timestamp or unique ID.
+    - Participants in one round do not affect other rounds.
+
+Summary
+
+- Start: A single “好了吗 @mentions” message triggers the round creation, and the bot replies once with the same text plus one “我好了” button.
+- Toggle: Any participant clicks the button (or types “ok”/“1”) to flip their state. The bot posts “@Name 好了/坏了” plus one button for the new state.
+- Done: If everyone is “好了,” the bot says “大家真的好了” and ends that round.
+- /reset: Clears everything.
+
+- Exactly one initial “start round” message with a single “我好了” button.
+- Each toggle yields a fresh “XX 好了”/“XX 坏了” message with the opposite-state button.
+- The bot checks membership by who clicked.

@@ -44,7 +44,7 @@
   /* --bg: #fffcf0; 255, 252, 240 */
   /* --tx: #100f0f; 16 15 15 */
   --tx: 16 15 15;
-  --nextra-bg: 255, 252, 240 !important;
+  /* --nextra-bg: 255, 252, 240 !important; */
 }
 
 body {
