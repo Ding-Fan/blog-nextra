@@ -2024,6 +2024,11 @@ export const HOMEPAGE_LINKS: Link[] = [
 
 export const PROMPTS: Prompt[] = [
   {
+    title: "refine",
+    content: "Refine my content, maintain tone, make minimal changes.",
+    tags: ["writing"],
+  },
+  {
     title: "summarize",
     content: `
 Act as a tool to assist in processing content provided by the user, such as text, articles, code repositories, videos, or other links. Your task is to:

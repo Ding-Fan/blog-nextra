@@ -41,7 +41,7 @@ const RichImage = ({
       <BaseImage
         {...props}
         className={ct(
-          "p-1 shadow-[1px_1px_3px_rgba(0,0,0,0.2)] border-1 border-black border-solid bg-stone-50",
+          "p-1 shadow-[1px_1px_3px_rgba(0,0,0,0.2)]  bg-stone-50",
           styles.baseImage,
           classNameImg
         )}
