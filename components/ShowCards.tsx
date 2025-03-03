@@ -37,7 +37,7 @@ const ShowCards: React.FC<ShowCardsProps> = ({ dataSets = WORDS_DATA }) => {
       <div className="grid grid-cols-3 gap-2 my-4">
         {dataSets.map((dataSet, index) => (
           <Button
-            name={activeIndex === index ? "primary" : "secondary"}
+            variant={activeIndex === index ? "primary" : "secondary"}
             key={index}
             onClick={() => handleButtonClick(index)}
             className={`p-1`}

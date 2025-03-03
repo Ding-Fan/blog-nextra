@@ -2,55 +2,131 @@ import React from "react";
 import { ct } from "../scripts/utils";
 import BaseButton, { BaseButtonProps } from "./BaseButton";
 
-type ButtonNames = "default" | "secondary" | "hero" | "createList" | "primary";
+type ButtonVariant =
+  | "default"
+  | "primary"
+  | "secondary"
+  | "ghost"
+  | "hero"
+  | "createList";
 
 interface ButtonProps extends BaseButtonProps {
-  name?: ButtonNames;
+  /**
+   * The visual variant of the button
+   * @default "default"
+   */
+  variant?: ButtonVariant;
+  /**
+   * Optional color theme for the button
+   * @default "stone"
+   */
+  color?: "stone" | "blue" | "green";
 }
-
-const Button = ({ className, name = "default", ...props }: ButtonProps) => {
-  // const themeColor = "stone-800"; // this will not be recognized because tree shaking
-  const themeColor = {
-    stone: {
-      bg: "bg-stone-800",
-      text: "text-stone-800",
-      border: "border-stone-800",
+// const themeColor = "stone-800"; // this will not be recognized because
+// tree shaking
+const themeColors = {
+  stone: {
+    bg: "bg-stone-800",
+    text: "text-stone-800",
+    border: "border-stone-800",
+    hover: {
+      primary: "hover:bg-stone-700",
+      secondary: "hover:bg-stone-100",
+      ghost: "hover:bg-stone-800 hover:text-white",
     },
-  };
-  const buttonProps: Record<ButtonNames, BaseButtonProps> = {
-    default: {},
+  },
+  blue: {
+    bg: "bg-blue-600",
+    text: "text-blue-600",
+    border: "border-blue-600",
+    hover: {
+      primary: "hover:bg-blue-700",
+      secondary: "hover:bg-blue-50",
+      ghost: "hover:bg-blue-600 hover:text-white",
+    },
+  },
+  green: {
+    bg: "bg-green-600",
+    text: "text-green-600",
+    border: "border-green-600",
+    hover: {
+      primary: "hover:bg-green-700",
+      secondary: "hover:bg-green-50",
+      ghost: "hover:bg-green-600 hover:text-white",
+    },
+  },
+} as const;
+
+const baseStyles = {
+  all: "flex justify-center items-center py-2 px-4 md:px-8 text-[18px] transition-all duration-250 ease-in-out",
+  focus: "focus:outline-none focus:ring-2 focus:ring-offset-2",
+} as const;
+
+const Button = ({
+  className,
+  variant = "default",
+  color = "stone",
+  ...props
+}: ButtonProps) => {
+  const buttonStyles: Record<ButtonVariant, BaseButtonProps> = {
+    default: {
+      className: ct(baseStyles.all, baseStyles.focus),
+    },
     primary: {
       className: ct(
-        `flex justify-center items-center py-2 px-4 md:px-8 text-[18px] transition-all duration-250 ease-in-out w-full text-white `,
-        themeColor.stone.bg
+        baseStyles.all,
+        baseStyles.focus,
+        "w-full text-white",
+        themeColors[color].bg,
+        themeColors[color].hover.primary
       ),
-      hover: "highlight",
+    },
+    ghost: {
+      className: ct(
+        baseStyles.all,
+        baseStyles.focus,
+        "bg-transparent",
+        "border",
+        themeColors[color].text,
+        themeColors[color].border,
+        themeColors[color].hover.ghost,
+        "hover:border-transparent"
+      ),
     },
     hero: {
-      className:
-        "flex md:justify-center items-center py-2 px-8 h-12 text-[18px] transition-all duration-250 ease-in-out",
+      className: ct(
+        baseStyles.all,
+        baseStyles.focus,
+        "h-12 md:justify-center",
+        themeColors[color].bg,
+        themeColors[color].hover.primary
+      ),
     },
     createList: {
-      className:
-        "bg-[#12b886] font-main-text text-[18px] mb-2 md:mb-5 mt-5 flex justify-center",
-      hover: "highlight",
+      className: ct(
+        baseStyles.all,
+        baseStyles.focus,
+        "bg-[#12b886] font-main-text mb-2 md:mb-5 mt-5 text-white",
+        "hover:bg-[#0ca678]"
+      ),
     },
     secondary: {
       className: ct(
-        `flex justify-center items-center py-2 px-8 text-[18px] transition-all duration-250 ease-in-out w-full border border-solid `,
-        themeColor.stone.text,
-        themeColor.stone.border
+        baseStyles.all,
+        baseStyles.focus,
+        "w-full border border-solid",
+        themeColors[color].text,
+        themeColors[color].border,
+        themeColors[color].hover.secondary
       ),
-      hover: "highlight",
     },
   };
 
   return (
     <BaseButton
-      {...buttonProps[name]}
+      {...buttonStyles[variant]}
       {...props}
-      // to override className above
-      className={ct(buttonProps[name].className, className)}
+      className={ct(buttonStyles[variant].className, className)}
     />
   );
 };

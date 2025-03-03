@@ -14,7 +14,7 @@ import { ListItem } from "../data/types";
 
 interface Props<T>
   extends HTMLAttributes<HTMLElement>,
-  Pick<CardProps, "flippable" | "id"> {
+    Pick<CardProps, "flippable" | "id"> {
   list: T[];
   frontRender: (item: T) => ReactNode;
 }
@@ -82,7 +82,11 @@ const ShowCard = ({
         id={`${itemIndex + 1}`}
       />
       <div className="grid grid-cols-3 mt-2 gap-2">
-        <Button name="primary" className="bg-rose-200" onClick={() => search(showItem.content)}>
+        <Button
+          variant="primary"
+          className="bg-rose-200"
+          onClick={() => search(showItem.content)}
+        >
           <div>
             <FontAwesomeIcon
               icon={faSearch}
@@ -91,7 +95,7 @@ const ShowCard = ({
           </div>
         </Button>
         <Button
-          name="primary"
+          variant="primary"
           className="bg-teal-100"
           onClick={handleRandomize}
         >
@@ -102,7 +106,11 @@ const ShowCard = ({
             />
           </div>
         </Button>
-        <Button name="primary" className="bg-orange-300" onClick={handleNext}>
+        <Button
+          variant="primary"
+          className="bg-orange-300"
+          onClick={handleNext}
+        >
           <div>
             <FontAwesomeIcon
               icon={faArrowRight}
