@@ -21,6 +21,7 @@ import ShowQuote from "./components/ShowQuote";
 import UIDemo from "./components/UIDemo";
 import WordList from "./components/WordList";
 import YouTubeLatest from "./components/YouTubeLatest";
+import HomeIcons from "./components/HomeIcons";
 
 const docsComponents = getDocsMDXComponents();
 
@@ -52,5 +53,6 @@ export function useMDXComponents(components) {
     ShowPrompts,
     ShowQuote,
     UIDemo,
+    HomeIcons,
   };
 }
