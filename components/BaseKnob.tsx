@@ -2,17 +2,43 @@
 
 import React, { useState, useRef, useEffect } from "react";
 
-type Props = {};
+interface KnobProps {
+  value?: number;
+  onChange?: (value: number) => void;
+  min?: number;
+  max?: number;
+  step?: number;
+  size?: number;
+  label?: string;
+  className?: string;
+}
 
-const BaseKnob = (props: Props) => {
-  const [value, setValue] = useState(0);
+const BaseKnob: React.FC<KnobProps> = ({
+  value: controlledValue,
+  onChange,
+  min = 0,
+  max = 100,
+  step = 1,
+  size = 60,
+  label = "Knob",
+  className,
+}) => {
+  // Use controlled or uncontrolled value
+  const [internalValue, setInternalValue] = useState(0);
+  const value = controlledValue ?? internalValue;
+  const setValue = (newValue: number) => {
+    const clampedValue = Math.max(min, Math.min(max, newValue));
+    if (onChange) {
+      onChange(clampedValue);
+    } else {
+      setInternalValue(clampedValue);
+    }
+  };
+
   const knobRef = useRef<HTMLDivElement>(null);
-
-  // This ref will store information about the current drag
-  // or null if the user isn't dragging.
   const dragInfoRef = useRef<{
-    startY: number;      // initial mouse Y position
-    startValue: number;  // knob value when drag started
+    startY: number;
+    startValue: number;
   } | null>(null);
 
   // ============== MOUSE EVENT HANDLERS ==============
@@ -34,7 +60,7 @@ const BaseKnob = (props: Props) => {
 
   // 2) Global mouse move => update the knob value
   const handleGlobalMouseMove = (e: MouseEvent) => {
-    // If dragInfoRef.current is null, the user isn’t dragging
+    // If dragInfoRef.current is null, the user isn't dragging
     if (!dragInfoRef.current) return;
 
     // Extract the starting Y and knob value from the ref
@@ -42,21 +68,43 @@ const BaseKnob = (props: Props) => {
 
     // How many pixels the mouse has moved vertically
     const deltaY = e.clientY - startY;
-
-    // Adjust the sensitivity by dividing deltaY
-    let newValue = startValue - Math.round(deltaY / 20);
-    newValue = Math.max(0, Math.min(100, newValue));
+    const newValue = startValue - Math.round(deltaY / 20) * step;
     setValue(newValue);
   };
 
-  // 3) Global mouse up => remove global listeners
   const handleGlobalMouseUp = () => {
-    // Clear the ref to indicate we’re no longer dragging
     dragInfoRef.current = null;
-
     document.removeEventListener("mousemove", handleGlobalMouseMove);
     document.removeEventListener("mouseup", handleGlobalMouseUp);
   };
+
+  // ============== KEYBOARD CONTROLS ==============
+  useEffect(() => {
+    const knobElement = knobRef.current;
+    if (!knobElement) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Only handle keyboard events if this knob is focused
+      if (document.activeElement !== knobElement) return;
+
+      // Only handle arrow keys
+      if (!["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key))
+        return;
+
+      e.preventDefault();
+
+      if (e.key === "ArrowUp" || e.key === "ArrowRight") {
+        setValue(value + step);
+      } else if (e.key === "ArrowDown" || e.key === "ArrowLeft") {
+        setValue(value - step);
+      }
+    };
+
+    // Use capture phase to ensure our handler runs before other handlers
+    knobElement.addEventListener("keydown", handleKeyDown, true);
+    return () =>
+      knobElement.removeEventListener("keydown", handleKeyDown, true);
+  }, [value, step]);
 
   // ============== SCROLL (WHEEL) HANDLERS ==============
   useEffect(() => {
@@ -64,28 +112,34 @@ const BaseKnob = (props: Props) => {
     if (!knobElement) return;
 
     const handleWheel = (e: WheelEvent) => {
-      e.preventDefault(); // ensure we can do preventDefault
-      setValue((prevValue) => {
-        let newValue = prevValue + (e.deltaY < 0 ? 1 : -1);
-        return Math.max(0, Math.min(100, newValue));
-      });
+      // Only handle wheel events if this knob is focused or hovered
+      if (
+        document.activeElement !== knobElement &&
+        !knobElement.contains(e.target as Node)
+      )
+        return;
+
+      e.preventDefault();
+
+      // Use similar sensitivity to mouse move (20 pixels per step)
+      const deltaY = e.deltaY;
+      const newValue = value - Math.round(deltaY / 20) * step;
+      setValue(newValue);
     };
 
-    // “passive: false” fix:
+    // "passive: false" fix:
     // https://github.com/microsoft/TypeScript/issues/32912#issuecomment-522142969
     const options: AddEventListenerOptions & EventListenerOptions = {
       passive: false,
     };
 
     knobElement.addEventListener("wheel", handleWheel, options);
-    return () => {
-      knobElement.removeEventListener("wheel", handleWheel, options);
-    };
-  }, []);
+    return () => knobElement.removeEventListener("wheel", handleWheel, options);
+  }, [value, step]);
 
   // ============== VISUAL STYLING ==============
   const calculateGradient = (val: number) => {
-    const fraction = val / 100;
+    const fraction = (val - min) / (max - min);
     const degrees = fraction * 360;
     return `conic-gradient(
       rgba(255, 255, 255, 1) ${degrees}deg,
@@ -94,25 +148,32 @@ const BaseKnob = (props: Props) => {
   };
 
   const getGlowStyle = (val: number) => {
-    if (val === 0) {
-      // Full-circle dark red glow
+    if (val === min) {
       return {
         background: "rgba(80, 0, 82, .7)",
         filter: "blur(1px)",
       };
-    } else {
-      // Normal arc glow
-      return {
-        background: calculateGradient(val),
-        filter: "blur(7px)",
-      };
     }
+    return {
+      background: calculateGradient(val),
+      filter: "blur(7px)",
+    };
   };
+
+  const knobSize = `${size}px`;
+  const innerSize = `${size * 0.92}px`;
 
   return (
     <div
       ref={knobRef}
-      className="relative w-20 h-20 rounded-full"
+      role="slider"
+      aria-label={label}
+      aria-valuemin={min}
+      aria-valuemax={max}
+      aria-valuenow={value}
+      tabIndex={0}
+      className="relative rounded-full focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black focus:animate-pulse focus:ring-opacity-75"
+      style={{ width: knobSize, height: knobSize }}
       onMouseDown={handleMouseDown}
     >
       {/* Glow layer behind the knob */}
@@ -126,12 +187,16 @@ const BaseKnob = (props: Props) => {
         <div
           className="absolute inset-0 rounded-full"
           style={{
-            background: value === 0 ? "transparent" : calculateGradient(value),
+            background:
+              value === min ? "transparent" : calculateGradient(value),
           }}
         />
         {/* Value Label */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white">
-          <div className="bg-black w-[4.7rem] h-[4.7rem] rounded-full flex items-center justify-center select-none text-3xl">
+          <div
+            className="bg-black rounded-full flex items-center justify-center select-none text-3xl"
+            style={{ width: innerSize, height: innerSize }}
+          >
             {value}
           </div>
         </div>
