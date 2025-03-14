@@ -2025,7 +2025,7 @@ export const HOMEPAGE_LINKS: Link[] = [
 export const PROMPTS: Prompt[] = [
   {
     title: "refine",
-    content: "Refine my content, maintain tone, make minimal changes.",
+    content: "Please refine my content by making only minimal changes, preserving the original tone and language, and avoiding the use of em dashes. Additionally, provide an explanation that describes both the emotional response the refined content is intended to evoke and the message viewers are likely to understand. Make sure the explanation is written in the same language as the original content. Content start: ",
     tags: ["writing"],
   },
   {
