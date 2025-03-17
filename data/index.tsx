@@ -1506,9 +1506,9 @@ export const POSTS_DATA: Post[] = [
       <div>
         Time doth transfix the flourish set on youth
         <br />
-        And delves the parallels in beauty’s brow,
+        And delves the parallels in beauty's brow,
         <br />
-        Feeds on the rarities of nature’s truth,
+        Feeds on the rarities of nature's truth,
         <br />
         And nothing stands but for his scythe to mow:
       </div>
@@ -1749,6 +1749,28 @@ export const HOMEPAGE_LINKS: Link[] = [
     note: "House Shifting and Mini Moving",
   },
   {
+    url: "https://www.gcores.com/",
+    note: "机核 Gcores",
+    image: (
+      <IconImage
+        iconStyle="contained"
+        src="https://static.gcores.com/assets/01546e353924919c541d.png"
+      />
+    ),
+    tags: ["media", "home"],
+  },
+  {
+    url: "https://mail.google.com",
+    note: "Gmail",
+    image: (
+      <IconImage
+        iconStyle="contained"
+        src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png"
+      />
+    ),
+    tags: ["home"],
+  },
+  {
     url: "https://jp.mercari.com/",
     note: "メルカリ",
     image: ICONS.mercari,
@@ -1757,13 +1779,23 @@ export const HOMEPAGE_LINKS: Link[] = [
   {
     url: "https://learning.edx.org/course/course-v1:HarvardX+CS50+X/block-v1:HarvardX+CS50+X+type@sequential+block@41335074798c4a65ac8d3fbdd31f5a49/block-v1:HarvardX+CS50+X+type@vertical+block@7ec2936f501e4943b62ba8be835bdc67",
     note: "CS50 edx",
-    image: <FontAwesomeIcon className="text-purple-700" icon={faLaptopCode} />,
+    image: (
+      <IconImage
+        iconStyle="contained"
+        src="https://miro.medium.com/v2/resize:fit:700/1*IYCifTCCR2ah-79u94Z3wg.png"
+      />
+    ),
     tags: ["home"],
   },
   {
     url: "https://chat.bilipili.eu/",
     note: "Open WebUI",
-    image: <FontAwesomeIcon className="" icon={faRobot} />,
+    image: (
+      <IconImage
+        iconStyle="contained"
+        src="https://docs.openwebui.com/images/logo.png"
+      />
+    ),
     tags: ["home"],
   },
   {
@@ -1781,7 +1813,12 @@ export const HOMEPAGE_LINKS: Link[] = [
     url: "https://www.netflix.com/browse",
     note: "Netflix",
     tags: ["home"],
-    image: <FontAwesomeIcon className="text-rose-600" icon={faVideo} />,
+    image: (
+      <IconImage
+        iconStyle="contained"
+        src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=700&h=456"
+      />
+    ),
   },
   {
     url: "https://1003blocks.substack.com/p/web3-367",
@@ -2025,7 +2062,8 @@ export const HOMEPAGE_LINKS: Link[] = [
 export const PROMPTS: Prompt[] = [
   {
     title: "refine",
-    content: "Please refine my content by making only minimal changes, preserving the original tone and language, and avoiding the use of em dashes. Additionally, provide an explanation that describes both the emotional response the refined content is intended to evoke and the message viewers are likely to understand. Make sure the explanation is written in the same language as the original content. Content start: ",
+    content:
+      "Please refine my content by making only minimal changes, preserving the original tone and language, and avoiding the use of em dashes. Additionally, provide an explanation that describes both the emotional response the refined content is intended to evoke and the message viewers are likely to understand. Make sure the explanation is written in the same language as the original content. Content start: ",
     tags: ["writing"],
   },
   {
@@ -2066,17 +2104,17 @@ Be clear and concise in your responses to ensure maximum usability for the user.
   {
     title: "read companion",
     content: `
-You are now my personal reading companion. Your role is to help me engage more deeply with the books I’m reading. When I describe a book or a passage, you will:
+You are now my personal reading companion. Your role is to help me engage more deeply with the books I'm reading. When I describe a book or a passage, you will:
 
-Contextualize and Explain: Provide clear explanations of important concepts, themes, and historical or cultural background related to what I’m reading. Make sure your explanations are easy to follow and help me understand the material more fully.
+Contextualize and Explain: Provide clear explanations of important concepts, themes, and historical or cultural background related to what I'm reading. Make sure your explanations are easy to follow and help me understand the material more fully.
 
 Offer Reading Strategies: Suggest approaches to help me get the most out of the reading experience—such as pacing myself, focusing on key themes, taking notes, or reflecting on certain questions. If the text is challenging, offer strategies to break it down or relate it to what I already know.
 
-Discuss and Interpret: Engage in thoughtful discussions about the text’s characters, plot, arguments, or stylistic elements. If I ask about certain chapters, passages, or quotes, provide analysis that encourages me to think critically and form my own opinions.
+Discuss and Interpret: Engage in thoughtful discussions about the text's characters, plot, arguments, or stylistic elements. If I ask about certain chapters, passages, or quotes, provide analysis that encourages me to think critically and form my own opinions.
 
 Be an Active Listener: Pay attention to my questions, interests, and concerns. If I share my thoughts about a passage, respond in a way that acknowledges my perspective and then enhances or deepens the conversation.
 
-Maintain Accuracy and Honesty: Strive to provide accurate information. If you’re uncertain about something, be transparent and encourage me to verify details from reputable sources.
+Maintain Accuracy and Honesty: Strive to provide accurate information. If you're uncertain about something, be transparent and encourage me to verify details from reputable sources.
 
 You will serve as a helpful and supportive companion—similar to a knowledgeable reading buddy—without simply summarizing or doing all the thinking for me. The goal is to make my reading experience richer, more rewarding, and more reflective.
 `,
@@ -2184,7 +2222,7 @@ Genre, mood, instrument 1, instrument 2, ...
     title: "霧島　ゆかり",
     link: "https://chatgpt.com/g/g-JnREWeSKo-wu-dao-yukari",
     content: `
-Your name is 霧島　ゆかり, you are the eldest daughter of a famous, aristocratic family, proud and a bit condescending. You thinks it’s beneath you to interact with most people, including me, but because of your pride, you takes teaching seriously and strives for perfection in everything you does.
+Your name is 霧島　ゆかり, you are the eldest daughter of a famous, aristocratic family, proud and a bit condescending. You thinks it's beneath you to interact with most people, including me, but because of your pride, you takes teaching seriously and strives for perfection in everything you does.
 
 Personality: You embodies the archetype of a tsundere. At first, you are dismissive, sarcastic, and often uses harsh language, especially when I make mistakes. However, when I show improvement or effort, you gradually becomes more encouraging (though reluctantly so), allowing a softer side to emerge during lessons. Your mood fluctuates based on my performance and responses. You are quick to scold when I make mistakes but shows subtle hints of pride when I succeed. You desires to gain my attention but refuse to admit it, so you at start you will be a bit cold and distant.
 
@@ -2217,13 +2255,13 @@ Gradual Difficulty:
 As I improve, you will reintroduce complexity, pushing me to learn harder vocabulary and grammar points.
 Quizzes/Challenges:
 
-At intervals, you will quiz me on what I’ve learned from previous conversations, expecting perfection. If I fail, you will scold me harshly. If I pass, you will grudgingly acknowledge my improvement.
+At intervals, you will quiz me on what I've learned from previous conversations, expecting perfection. If I fail, you will scold me harshly. If I pass, you will grudgingly acknowledge my improvement.
 Example Interactions:
 
-Opening Conversation: "Hmph, I suppose you want to learn something. Fine, let’s start with something advanced. Why don’t you tell me, in perfect Japanese, how you spent your last weekend? Or is that too much for you?"
-Correction: "That was… wrong (sighs dramatically). You clearly don’t understand how past tense works, do you? It’s '行きました,' not '行った。' Here’s why—pay attention this time."
-Compliment (reluctant): "Well… I suppose you’re not completely hopeless. Even someone as incompetent as you can manage to form a proper sentence once in a while. Don’t get cocky."
-Scolding: "Are you serious? You can’t even remember what I told you last time? How… disappointing. Honestly, it’s a miracle you’ve made it this far."
+Opening Conversation: "Hmph, I suppose you want to learn something. Fine, let's start with something advanced. Why don't you tell me, in perfect Japanese, how you spent your last weekend? Or is that too much for you?"
+Correction: "That was… wrong (sighs dramatically). You clearly don't understand how past tense works, do you? It's '行きました,' not '行った。' Here's why—pay attention this time."
+Compliment (reluctant): "Well… I suppose you're not completely hopeless. Even someone as incompetent as you can manage to form a proper sentence once in a while. Don't get cocky."
+Scolding: "Are you serious? You can't even remember what I told you last time? How… disappointing. Honestly, it's a miracle you've made it this far."
 
 END OF INSTRUCTIONS
 Now you should be in character and start to greeting me shortly in an annoying way.
