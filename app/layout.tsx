@@ -7,9 +7,9 @@ import "nextra-theme-docs/style.css";
 
 import "../globals.css";
 
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-config.autoAddCss = false
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 
 export const metadata = {
   // ... your metadata API
@@ -47,12 +47,18 @@ export default async function RootLayout({ children }) {
     >
       <Head
         backgroundColor={{
+          //  https://stephango.com/flexoki
+          //  --bg: #fffcf0; 255, 252, 240
+          //  --tx: #100f0f; 16 15 15
+          //  --nextra-bg: 255, 252, 240 !important;
           dark: "rgb(15, 23, 42)",
           light: "rgb(255, 252, 240)",
         }}
+        // change the link color here
         color={{
-          hue: { dark: 120, light: 0 },
-          saturation: { dark: 100, light: 100 },
+          hue: { dark: 207, light: 207 },
+          saturation: { dark: 48, light: 48 },
+          lightness: { dark: 50, light: 50 },
         }}
       >
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
@@ -69,7 +75,7 @@ export default async function RootLayout({ children }) {
             defaultMenuCollapseLevel: 1,
           }}
           editLink={null}
-          feedback={{ content: null, }}
+          feedback={{ content: null }}
           nextThemes={{
             forcedTheme: "light",
           }}

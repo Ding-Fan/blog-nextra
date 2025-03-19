@@ -1,66 +1,82 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Klee One Regular";
-  src: url("/fonts/KleeOne-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Klee One Regular";
+    src: url("/fonts/KleeOne-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "LinBiolinum_R";
-  src: url("/fonts/LinBiolinum_R.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "AtkinsonHyperlegibleNext-Regular";
+    src: url("/fonts/AtkinsonHyperlegibleNext-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "FZBIAOYSK";
-  src: url("/fonts/FZBIAOYSK.TTF") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "AtkinsonHyperlegibleNext-Light";
+    src: url("/fonts/AtkinsonHyperlegibleNext-Light.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "LinBiolinum_R";
+    src: url("/fonts/LinBiolinum_R.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "FZBIAOYSK";
+    src: url("/fonts/FZBIAOYSK.TTF") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "LXGW WenKai Regular";
-  src: url("/fonts/LXGWWenKai-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "LXGW WenKai Regular";
+    src: url("/fonts/LXGWWenKai-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Inconsolata Regular Nerd Font Complete";
-  src: url("/fonts/Inconsolata Regular Nerd Font Complete.ttf")
-    format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Inconsolata Regular Nerd Font Complete";
+    src: url("/fonts/Inconsolata Regular Nerd Font Complete.ttf")
+        format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 :root {
-  /* https://stephango.com/flexoki */
-  /* --bg: #fffcf0; 255, 252, 240 */
-  /* --tx: #100f0f; 16 15 15 */
-  --tx: 16 15 15;
-  /* --nextra-bg: 255, 252, 240 !important; */
+    /* https://stephango.com/flexoki */
+    /* --bg: #fffcf0; 255, 252, 240 */
+    /* --tx: #100f0f; 16 15 15 */
+    /* --nextra-bg: 255, 252, 240 !important; */
+    --tx: 16 15 15;
 }
 
 body {
-  font-family: "Inconsolata Regular Nerd Font Complete", "FZBIAOYSK",
-    "Klee One Regular", serif;
-  @apply text-xl md:text-base;
+    font-family:
+        "Inconsolata Regular Nerd Font Complete", "FZBIAOYSK",
+        "Klee One Regular", serif;
+    @apply text-2xl md:text-lg;
 }
 
-.nextra-content {
-  color: rgb(var(--tx)/var(--tw-text-opacity,1));
+article {
+    color: rgb(var(--tx) / var(--tw-text-opacity, 1));
+    font-family: "AtkinsonHyperlegibleNext-Light", "FZBIAOYSK";
 }
 
 h1 {
-  margin-top: 1.5rem !important;
+    margin-top: 1.5rem !important;
 }
 
 h2 {
-  line-height: 1.2;
+    line-height: 1.2;
 }
