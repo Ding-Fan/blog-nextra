@@ -1,0 +1,35 @@
+# Trying to make Plasmic work
+
+I'm trying to use Plasmic to build a table page.
+
+I've logged in, tried some of the Play Plasmic Levels tutorial. It allows me to do horizontal and vertical center layout, and the margin/padding is easy to adjust.
+
+And I started to search for tutorial on table component, found nothing useful.
+
+- [Creating a table using stacks](https://docs.plasmic.app/learn/tables-using-stacks/)
+  - Only official tutorial about table, a table-like layout, no table header, table body, table row
+- [Announcing react-table for Plasmic](https://forum.plasmic.app/t/announcing-react-table-for-plasmic/685/9)
+  - Latest comment is from 2025, Jan 2, 6:35 PM, it said
+    - Did someone finally manage to integrate a decent table component into plasmic ? There was this post from last year Seeking advice on integrating React Table with Plasmic 7 but no real useful information except “it’s tricky” -_-
+    - another post from same user [Antd table component not working ?](https://forum.plasmic.app/t/antd-table-component-not-working/9636)
+- [Ant Table component](https://plasmic.substack.com/p/new-insert-panel-simpler-dragdrop)
+  - found a newsletter about antd table, but don't know how to do it
+- tried to search "table" in [their slack](https://app.slack.com/client/T0128PVP932/C0128PVPESU),
+  - Messages and files on the free version of Slack are hidden after 90 days. Upgrade to a paid plan to see more of your message and file history in search results.
+  - What a business model ツ
+- [ Visual Page Building With Plasmic ](https://youtu.be/YMh25LhvsL0?t=4487)
+  - mentioned table, I still didn't know how to do it
+
+Finally, I found antd pro component table [is working, demo here](https://studio.plasmic.app/projects/jzk6ZXsk8sdHLEuMKoVGhH/preview-full/products), but how to add an "action column" with buttons? No documentation, no tutorial online.
+
+I asked Claude 3.5 Sonnet:
+
+> If you need help with this specific implementation, you might want to:
+> 1. Check the Plasmic official documentation
+> 2. Post a question in their forum
+> 3. Try reaching out to Plasmic support directly
+> 4. Look into antd Pro's documentation for table customization and see if those approaches can be adapted to Plasmic
+
+## Conclusion
+
+It might be quick to build prototype with Plasmic, but if you need customization or a little bit complex logic, no documentation, no tutorial, no community support, you're on your own. (Even Cursor can't help you)
