@@ -1749,6 +1749,18 @@ export const HOMEPAGE_LINKS: Link[] = [
     note: "House Shifting and Mini Moving",
   },
   {
+    url: "https://app.clockify.me/tracker",
+    note: "Clockify",
+    image: (
+      <IconImage
+        iconStyle="contained"
+        src="https://clockify.me/assets/images/clockify-logo.png"
+      />
+    ),
+    tags: ["tool", "home"],
+    weight: 10,
+  },
+  {
     url: "https://www.gcores.com/",
     note: "机核 Gcores",
     image: (
