@@ -14,3 +14,6 @@ devenv.local.nix
 
 # pre-commit
 .pre-commit-config.yaml
+
+# You don’t need to commit _pagefind/ directory to your Git repository, as it is always newly generated.
+_pagefind/
