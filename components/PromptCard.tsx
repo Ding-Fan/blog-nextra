@@ -32,22 +32,22 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
       />
       <div className="flex items-center gap-2 ">
         {prompt.link && (
-          <div className="flex-1">
+          <div className="basis-1/2">
             <a
               href={prompt.link}
               target="_blank"
               rel="noopener noreferrer"
               className=""
             >
-              <Button variant="ghost" shape="square" className="text-sm">
+              <Button variant="ghost" shape="square" className="text-sm w-full">
                 <FontAwesomeIcon icon={faLink} />
               </Button>
             </a>
           </div>
         )}
-        <div className=" flex-1">
+        <div className="basis-1/2">
           <CopyToClipboard text={prompt.content} onCopy={handleCopy}>
-            <Button variant="ghost" shape="square" className="text-sm">
+            <Button variant="ghost" shape="square" className="text-sm w-full">
               {copied ? (
                 <FontAwesomeIcon icon={faCheck} />
               ) : (

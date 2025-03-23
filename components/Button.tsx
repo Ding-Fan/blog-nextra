@@ -58,7 +58,7 @@ const themeColors = {
 } as const;
 
 const baseStyles = {
-  all: "flex justify-center items-center py-2 px-4 md:px-8 text-[18px] transition-all duration-250 ease-in-out",
+  all: "flex justify-center items-center py-2 px-2 lg:px-6 text-[18px] transition-all duration-250 ease-in-out",
   focus: "focus:outline-none focus:ring-2 focus:ring-offset-2",
 } as const;
 
