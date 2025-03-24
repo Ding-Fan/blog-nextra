@@ -34,7 +34,7 @@ const HomeIcons: React.FC<HomeIconsProps> = () => {
                 <div className="w-full h-full flex items-center justify-center">
                   <ShowImage
                     onClick={() => handleClick(link.url)}
-                    className="w-full h-full p-1 lg:p-2 text-5xl lg:text-6xl cursor-pointer transition-all duration-300 hover:scale-110 hover:rotate-3"
+                    className="w-full h-full xl:p-2 text-5xl lg:text-6xl cursor-pointer transition-all duration-300 hover:scale-110 hover:rotate-3"
                     imageSrc=""
                     imageAlt=""
                     image={link.image}
