@@ -7,9 +7,9 @@ import CardPost from "./CardPost";
 
 const ShowPrompts: React.FC = () => {
   return (
-    <div className="">
+    
       <CardPost
-        className="mb-2 "
+        className="mb-2"
         post={{
           title: "AI Prompt",
           content: (
@@ -24,7 +24,7 @@ const ShowPrompts: React.FC = () => {
           ),
         }}
       />
-    </div>
+    
   );
 };
 

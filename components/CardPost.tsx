@@ -38,7 +38,7 @@ const CardPost: React.FC<CardPostProps> = ({
   };
 
   return (
-    <div className={ct("relative", getVariantStyles(), className)} {...props}>
+    <div className={ct("relative w-full", getVariantStyles(), className)} {...props}>
       <div className="font-quote-content pt-6">{post.content}</div>
       {/* learn from this */}
       {/* https://mui.com/material-ui/react-text-field/ */}
