@@ -23,14 +23,14 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
   const imageSrc = typeof prompt.image === "string" && prompt.image;
 
   return (
-    <div className="bg-zinc-200 p-1 ">
+    <div className="bg-zinc-200 p-1 flex flex-col">
       <div className="font-semibold py-1">{prompt.title}</div>
       <ShowImage
         imageSrc={imageSrc}
         imageAlt={prompt.title}
         image={prompt.image}
       />
-      <div className="flex items-center gap-2 ">
+      <div className="flex items-center gap-2 mt-auto">
         {prompt.link && (
           <div className="basis-1/2">
             <a
