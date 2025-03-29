@@ -1,0 +1,24 @@
+# Use vial macro to change input method
+
+My combo to change input method is <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>space</kbd>
+
+Use Macro set `M0`
+
+```ts
+[["down", "KC_LCTRL", "KC_LSHIFT"], ["tap", "KC_SPACE"], ["up", "KC_LCTRL", "KC_LSHIFT"]]
+```
+
+set `M1`
+
+```ts
+[["down", "KC_LCTRL", "KC_LSHIFT"], ["tap", "KC_SPACE"], ["delay", 320], ["tap", "KC_SPACE"], ["up", "KC_LCTRL", "KC_LSHIFT"]]
+```
+
+Use Tap Dance set `T0`
+
+- On tap: M0
+- On hold: M1
+- Tapping term(ms): 300
+
+And then, set `T0` to a key, I use <kbd>z</kbd> in layer 1
+
