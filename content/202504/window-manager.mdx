@@ -1,12 +1,25 @@
 # window manager
 
-- Paper WM Spoon Mac
+## Paper WM Spoon Mac
+
   - https://github.com/mogenson/PaperWM.spoon
   - Give up on it. Has bugs when drag application window to different workspaces.
-- amethyst
+
+## amethyst
+
   - A tiling window manager for macOS
   - https://ianyh.com/amethyst/
   - don't know how to switch between workspaces
-- AeroSpace
+## AeroSpace
+
   - AeroSpace is an i3-like tiling window manager for macOS
+    - no need to use native workspace anymore
   - https://github.com/nikitabobko/AeroSpace?tab=readme-ov-file
+  - difficult to indicate the current active window
+    - https://github.com/nikitabobko/AeroSpace/issues/85
+      - Even the darkest macOS hackers (in a good sense 😄 ) decided to drop this functionality in yabai, because it's impossible to maintain
+    - maybe use https://github.com/FelixKratz/JankyBorders as a workaround
+      - might have bugs https://github.com/FelixKratz/JankyBorders/issues/154
+    - using [5.2. 'on-focus-changed' callbacks](https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks) to track window focus
+  - In "Desktop & Dock", turn on the "Group windows by application" to make mission control show windows in a pleasant way
+
