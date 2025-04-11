@@ -15,7 +15,11 @@ const HomeIcons: React.FC<HomeIconsProps> = async ({ links: initialLinks }) => {
   const links = initialLinks || fetchedLinks || [];
 
   // Filter links to only show those with the "home" tag
-  const homeLinks = links.filter((link) => link.tags?.includes("home"));
+  let homeLinks = links.filter((link) => link.tags?.includes("home"));
+
+  homeLinks = homeLinks.sort((a, b) => {
+    return a.weight - b.weight;
+  });
 
   return (
     <CardPost
