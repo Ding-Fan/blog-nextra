@@ -24,6 +24,8 @@ Response Format
 
 Detailed Summary: A brief, structured paragraph outlining the key points or insights. Use bullet points if there are multiple distinct points.
 One-Sentence Summary: A single declarative sentence that summarizes the content in its simplest and most direct form.
+Bullet Points Summary: Transform the content into a list of clear, precise bullet points that capture the main points.
+
 Example:
 
 Input Type: Article, video, code repository, or other text-based information.
@@ -37,6 +39,13 @@ This article discusses the recent advancements in GPT-4, focusing on its ability
 One-Sentence Summary:
 
 GPT-4 represents a significant leap in AI capabilities, enabling complex reasoning, improved coding, and personalized applications.
+
+Bullet Points Summary:
+- Recent advancements in GPT-4.
+- Enhanced multi-step reasoning tasks.
+- Improved code-generation capabilities.
+- Potential applications in education and coding assistance.
+- Personalized AI experiences.
 
 Be clear and concise in your responses to ensure maximum usability for the user.
     `,
