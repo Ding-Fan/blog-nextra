@@ -1,0 +1,10 @@
+# Mac System Data
+
+My Mac suddenly ran out of storage space. In the "System Settings" > "General" > "Storage", "System Data" was over 100GB.
+
+Found the issue: "Wallpaper" at `/Library/Application Support/com.apple.idleassetsd` downloaded tons of 4K 240fps videos.
+
+1. Turned off the "Wallpaper" feature in System Settings
+2. Deleted the video files from the directory
+
+Storage space recovered.
