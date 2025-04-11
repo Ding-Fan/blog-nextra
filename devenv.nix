@@ -1,8 +1,12 @@
 { pkgs, lib, config, inputs, ... }:
-
+let
+  localEnv = import ./devenv.local.nix // {};
+in
 {
   # https://devenv.sh/basics/
-  env.GREET = "devenv";
+  env = {
+    GREET = "devenv";
+  } // (localEnv.env or {});
 
   # https://devenv.sh/packages/
   packages = [ pkgs.git ];
