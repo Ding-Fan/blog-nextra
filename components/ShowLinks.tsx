@@ -1,6 +1,6 @@
 // ShowLinks.tsx
 import React from "react";
-import { HOMEPAGE_LINKS, TAG_ORDER_MAP } from "../data";
+import { TAG_ORDER_MAP } from "../data";
 import { HomePageLinksFromDb } from "../data/linksFromDb";
 import { groupLinksByTag } from "../scripts/utils";
 import GroupedLinks from "./GroupedLinks";
