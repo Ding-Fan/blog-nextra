@@ -18,7 +18,7 @@ const HomeIcons: React.FC<HomeIconsProps> = async ({ links: initialLinks }) => {
   let homeLinks = links.filter((link) => link.tags?.includes("home"));
 
   homeLinks = homeLinks.sort((a, b) => {
-    return a.weight - b.weight;
+    return b.weight - a.weight;
   });
 
   return (
