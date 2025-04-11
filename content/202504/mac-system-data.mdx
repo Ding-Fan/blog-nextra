@@ -4,7 +4,15 @@ My Mac suddenly ran out of storage space. In the "System Settings" > "General" >
 
 Found the issue: "Wallpaper" at `/Library/Application Support/com.apple.idleassetsd` downloaded tons of 4K 240fps videos.
 
-1. Turned off the "Wallpaper" feature in System Settings
-2. Deleted the video files from the directory
+1. Turn off the "Wallpaper" feature in System Settings, I set the pure black color as the wallpaper.
+2. Delete these files
+
+```sh
+/Library/Application Support/com.apple.idleassetsd/
+/Library/Application Support/com.apple.TVIdleScreen/
+${HOME}/Library/Application Support/com.apple.wallpaper/Store/Index.plist
+```
+
+3. Restart the Mac.
 
 Storage space recovered.
