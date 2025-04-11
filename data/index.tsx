@@ -1945,7 +1945,7 @@ export const HOMEPAGE_LINKS: Link[] = [
     image: <FontAwesomeIcon className="text-rose-600" icon={faYoutube} />,
   },
   {
-    url: "https://cool-matan.vercel.app",
+    url: "https://curriculum-rust-one.vercel.app/",
     note: "curriculum",
     tags: ["school", "home"],
     weight: 10,

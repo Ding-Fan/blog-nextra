@@ -220,4 +220,13 @@ interface IProgram {
 interface IProgramV extends IProgram {
   timestamp: number
 }
+
 interface IProgramDetail {}
+
+interface Link {
+  url: string;
+  note?: string;
+  image?: any;
+  tags?: string[];
+  weight?: number;
+}
