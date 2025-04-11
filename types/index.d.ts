@@ -229,4 +229,5 @@ interface Link {
   image?: any;
   tags?: string[];
   weight?: number;
+  description?: string;
 }
