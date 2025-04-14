@@ -1,11 +1,34 @@
 # Plasmic
 
+### Error fetching loader data, a redirect was expected: Project with ID undefined not found
+
+To find your project’s ID and public API token: open the project in Plasmic Studio.
+
+The project ID is in the URL, like: https://studio.plasmic.app/projects/PROJECTID.
+
+The public API token can be found by clicking the Code toolbar button.
+
+Remember to publish your project. Otherwise: `Error fetching loader data, a redirect was expected: Project xxx has not been published yet.`
+
+- https://docs.plasmic.app/learn/nextjs-quickstart/#initialization
+
+###
+
+https://docs.plasmic.app/learn/registering-code-components/#component-registration
+
+take a look at http://localhost:3000/plasmic-host
+
+configure the host app (plasmic studio)
+
+##
+
 - summary page
   - overview of section A with table of 5 rows of data
     - have "view all" link button, navigate to page /section-a
   - B
   - C
 - section A page
+
   - is a dynamic page
   - table for all the data
   - has pagination, use url query
@@ -29,4 +52,3 @@ loop item and pagination
   - "Community marketplace is the next feature"
 - https://forum.plasmic.app/t/pagination-functionality-in-plasmic/4369
   - "If you are using the data queries feature, then it lets you specify offset/limit, where you can feed it your URL query parameters like ?page=…"
-
