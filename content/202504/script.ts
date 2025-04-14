@@ -1,3 +1,6 @@
+// this script can convert the time to JST in google calendar time schedule
+
+
 // document.addEventListener('DOMContentLoaded', () => {
 // Select all buttons in the container that have a data-date-time attribute
 const timeButtons = document.querySelectorAll(".xYUUDc button[data-date-time]");
