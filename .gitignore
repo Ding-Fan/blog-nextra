@@ -17,3 +17,6 @@ devenv.local.nix
 
 # You don’t need to commit _pagefind/ directory to your Git repository, as it is always newly generated.
 _pagefind/
+
+# roo code config
+.roo/
