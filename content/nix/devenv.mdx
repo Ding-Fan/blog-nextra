@@ -1,0 +1,38 @@
+# devenv
+
+Use devenv to manage package version in repository. And manage environment variables.
+
+```sh
+# https://devenv.sh/getting-started/#1-install-nix
+devenv init
+```
+
+change `devenv.nix` to look like this
+
+```nix
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
+let
+  localEnv = import ./devenv.local.nix // {};
+in
+{
+  # https://devenv.sh/basics/
+  env = {
+    GREET = "devenv";
+  } // (localEnv.env or { });
+```
+
+create `devenv.local.nix`
+
+```nix
+{
+  env = {
+    SUPABASE_ACCESS_TOKEN = "your token here";
+  };
+}
+```
