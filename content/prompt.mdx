@@ -1,0 +1,35 @@
+# Prompt
+
+**Task:** Extract structured data from the provided source and format it as CSV.
+
+**Source:** [URL or describe PDF content], and do your research online to verify the status and supplement details (like salary or location specifics) for the jobs found at the source.
+
+Proposed CSV Schema (Columns/data fields):
+company_name: The name of the company offering the job. (This will be repeated for each opening from the same company).
+job_title: The specific title of the position (e.g., "Software Engineer", "Marketing Manager", "Data Analyst").
+job_id (Optional but Recommended): If the website provides a unique ID for the opening, capture it. This helps differentiate similar titles.
+location: The location(s) where the job is based (e.g., "Tokyo, Japan", "Osaka or Remote", "Remote (US)"). You might consider splitting this further later if needed (e.g., city, state, country, remote_status).
+employment_type: Full-time, Part-time, Contract, Internship, etc.
+department (Optional): The department or team the role belongs to (e.g., "Engineering", "Sales", "Cloud Division").
+salary_min: The minimum salary offered (numeric value, if specified). Leave blank or use N/A if only a range or non-numeric value is given.
+salary_max: The maximum salary offered (numeric value, if specified). If a single salary is given, you could put the same value in salary_min and salary_max. Leave blank or use N/A otherwise.
+salary_currency: The currency of the salary (e.g., JPY, USD, EUR).
+salary_period: The period the salary covers (e.g., Annual, Monthly, Hourly).
+salary_notes: A text field to capture salary details that don't fit the numeric columns (e.g., "Competitive", "Based on experience", "Plus bonus", the original text range like "$70,000 - $90,000").
+job_description_summary (Optional): A brief summary or key responsibilities/requirements.
+job_url: The direct URL to the specific job posting page.
+date_posted (Optional): If the posting date is available.
+
+**Output Requirements:**
+1.  First, provide a textual summary of the findings.
+2.  Then, create the CSV.
+3.  Use nothing for fields where information could not be found.
+
+**Example Final CSV:**
+```csv
+"company_name","job_title","job_id","location","employment_type","department","salary_min","salary_max","salary_currency","salary_period","salary_notes","job_description_summary","job_url","date_posted"
+"SAKURA internet Inc.","Cloud Engineer","ENG-001","Osaka, Japan","Full-time","Infrastructure","6000000","8000000","JPY","Annual","Based on skills and experience","Manage and develop cloud platform...","https://www.sakura.ad.jp/recruit/graduates/job/eng001","2025-04-15"
+"SAKURA internet Inc.","Web Developer (Frontend)","WD-005","Tokyo or Remote","Full-time","Web Services","5500000","7500000","JPY","Annual","","Develop user interfaces for web services...","https://www.sakura.ad.jp/recruit/graduates/job/wd005","2025-04-10"
+"SAKURA internet Inc.","Sales Associate","SAL-002","Fukuoka, Japan","Full-time","Sales","","","JPY","Annual","Competitive + Commission","Generate leads and manage client accounts...","https://www.sakura.ad.jp/recruit/graduates/job/sal002","2025-04-16"
+"SAKURA internet Inc.","Part-time Support Staff","SUP-PT-01","Ishikari, Hokkaido","Part-time","Customer Support","1500","1800","JPY","Hourly","Shift work required","Provide technical support via email/phone...","https://www.sakura.ad.jp/recruit/graduates/job/suppt01","2025-04-01"
+```
