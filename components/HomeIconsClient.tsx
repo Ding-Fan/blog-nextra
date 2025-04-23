@@ -20,7 +20,7 @@ const HomeIconsClient: React.FC<HomeIconsClientProps> = ({ links }) => {
           key={link.url}
           className="group relative flex items-center justify-center w-full aspect-square"
         >
-          <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center ">
             <ShowImage
               onClick={() => handleClick(link.url)}
               className="w-full h-full xl:p-2 text-5xl lg:text-6xl cursor-pointer transition-all duration-300 hover:scale-110 hover:rotate-3"

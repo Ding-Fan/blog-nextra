@@ -23,7 +23,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
   const imageSrc = typeof prompt.image === "string" && prompt.image;
 
   return (
-    <div className="bg-zinc-200 p-1 flex flex-col">
+    <div className="p-1 flex flex-col bg-zinc/[.23] rounded-2xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[4.9px] border border-white/[.52]">
       <div className="font-semibold py-1">{prompt.title}</div>
       <ShowImage
         imageSrc={imageSrc}
@@ -39,7 +39,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
               rel="noopener noreferrer"
               className=""
             >
-              <Button variant="ghost" shape="square" className="text-sm w-full">
+              <Button variant="ghost" shape="round" className="text-sm w-full">
                 <FontAwesomeIcon icon={faLink} />
               </Button>
             </a>
@@ -47,7 +47,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt }) => {
         )}
         <div className="basis-1/2">
           <CopyToClipboard text={prompt.content} onCopy={handleCopy}>
-            <Button variant="ghost" shape="square" className="text-sm w-full">
+            <Button variant="ghost" shape="round" className="text-sm w-full">
               {copied ? (
                 <FontAwesomeIcon icon={faCheck} />
               ) : (
