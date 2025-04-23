@@ -1,31 +1,34 @@
 # Prompt
 
-**Task:** Extract structured data from the provided source and format it as CSV.
+**Task:** Extract structured data regarding job openings from the provided source and format it as CSV.
 
-**Source:** [URL or describe PDF content], and do your research online to verify the status and supplement details (like salary or location specifics) for the jobs found at the source.
+**Source:** URL or file provided. Also, use online research to verify the status and supplement details (like salary ranges, specific locations, or posting dates) for the jobs found at the primary source, using the most current publicly available information.
 
-Proposed CSV Schema (Columns/data fields):
-company_name: The name of the company offering the job. (This will be repeated for each opening from the same company).
-job_title: The specific title of the position (e.g., "Software Engineer", "Marketing Manager", "Data Analyst").
-job_id (Optional but Recommended): If the website provides a unique ID for the opening, capture it. This helps differentiate similar titles.
-location: The location(s) where the job is based (e.g., "Tokyo, Japan", "Osaka or Remote", "Remote (US)"). You might consider splitting this further later if needed (e.g., city, state, country, remote_status).
-employment_type: Full-time, Part-time, Contract, Internship, etc.
-department (Optional): The department or team the role belongs to (e.g., "Engineering", "Sales", "Cloud Division").
-salary_min: The minimum salary offered (numeric value, if specified). Leave blank or use N/A if only a range or non-numeric value is given.
-salary_max: The maximum salary offered (numeric value, if specified). If a single salary is given, you could put the same value in salary_min and salary_max. Leave blank or use N/A otherwise.
-salary_currency: The currency of the salary (e.g., JPY, USD, EUR).
-salary_period: The period the salary covers (e.g., Annual, Monthly, Hourly).
-salary_notes: A text field to capture salary details that don't fit the numeric columns (e.g., "Competitive", "Based on experience", "Plus bonus", the original text range like "$70,000 - $90,000").
-job_description_summary (Optional): A brief summary or key responsibilities/requirements.
-job_url: The direct URL to the specific job posting page.
-date_posted (Optional): If the posting date is available.
+**Proposed CSV Schema (Columns/data fields):**
+*   company_name: The name of the company offering the job.
+*   job_title: The specific title of the position.
+*   job_id: Unique ID for the opening, if available.
+*   location: Location(s) where the job is based.
+*   employment_type: Full-time, Part-time, Contract, Internship, etc.
+*   department: Department or team, if specified.
+*   salary_min: Minimum salary (numeric), if specified.
+*   salary_max: Maximum salary (numeric), if specified.
+*   salary_currency: Currency of the salary (e.g., JPY, USD).
+*   salary_period: Period the salary covers (e.g., Annual, Monthly).
+*   salary_notes: Text field for non-numeric salary details (e.g., "Competitive", range text).
+*   job_description_summary: Brief summary or key responsibilities.
+*   job_url: Direct URL to the specific job posting, if available.
+*   date_posted: Posting date, if available.
 
 **Output Requirements:**
-1.  First, provide a textual summary of the findings.
-2.  Then, create the CSV.
-3.  Use nothing for fields where information could not be found.
+1. First, provide a textual description of the overall findings using a bullet list. Include important summary points such as: the company name, the total number of openings processed, a general overview of the types of roles found, general location trends (e.g., main cities, remote options mentioned), and a note on salary information availability (e.g., if ranges are commonly provided or not). Avoid listing specifics like individual salaries or URLs for every job in this summary section.
+2.  Then, create the CSV data representing the extracted job openings.
+3.  Format the CSV with a header row exactly matching the field names listed above.
+4.  Ensure each field in the CSV is enclosed in double quotes (`"`).
+5.  Use `""` (an empty quoted string) for fields where information could not be found.
+6. Output the result in Japanese.
 
-**Example Final CSV:**
+**Example Final CSV Block:**
 ```csv
 "company_name","job_title","job_id","location","employment_type","department","salary_min","salary_max","salary_currency","salary_period","salary_notes","job_description_summary","job_url","date_posted"
 "SAKURA internet Inc.","Cloud Engineer","ENG-001","Osaka, Japan","Full-time","Infrastructure","6000000","8000000","JPY","Annual","Based on skills and experience","Manage and develop cloud platform...","https://www.sakura.ad.jp/recruit/graduates/job/eng001","2025-04-15"
