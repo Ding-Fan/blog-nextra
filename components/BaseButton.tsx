@@ -38,7 +38,7 @@ const button = cva("cursor-pointer w-fit flex items-center leading-[1]", {
     },
     shape: {
       square: ["rounded-none"],
-      round: ["rounded-lg"],
+      round: ["rounded-xl"],
       circle: ["rounded-full"],
     },
   },
@@ -62,7 +62,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
   ) => {
     return (
       <button
-      ref={ref}
+        ref={ref}
         className={ct(
           button({
             visual,
@@ -82,6 +82,6 @@ const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
   }
 );
 
-BaseButton.displayName = 'BaseButton';
+BaseButton.displayName = "BaseButton";
 
 export default BaseButton;
