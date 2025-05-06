@@ -1,0 +1,66 @@
+# install fedora on xps 13
+
+will go into grub shell, have to exit and start the login
+
+update: `sudo dnf update`
+
+install fish
+
+install bitwarden from flathub
+
+install telegram from flathub
+
+install brave browser beta from official website source
+
+install vscode insider from official website rpm package
+
+> ```bash
+> # this not working: fix the screen flickering
+> rpm-ostree kargs --append=i915.enable_psr=0
+> # shows error
+> error: This system was not booted via libostree.
+> ```
+
+```bash
+# try this
+sudo vi /etc/default/grub
+
+# Find the line with GRUB_CMDLINE_LINUX and add i915.enable_psr=0
+# It should look something like:
+# GRUB_CMDLINE_LINUX="rhgb quiet i915.enable_psr=0"
+
+# After saving, update GRUB configuration
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
+install niri
+
+```bash
+dnf copr enable yalter/niri
+
+sudo dnf install niri
+```
+
+## Input Method(fcitx5)
+
+install fcitx5 with Japanese and Chinese input method
+
+```bash
+sudo dnf install fcitx5 fcitx5-autostart fcitx5-gtk fcitx5-qt fcitx5-chinese-addons fcitx5-mozc
+```
+
+install kimpanel for input method
+
+reboot
+
+### in fcitx configuration
+
+add `Pinyin` and `Mozc`
+
+in Global Options, set Trigger Input Method to Control+Shift+Space .
+
+in addons, set Pinyin with Shuangpin Profile Xiaohe
+
+apply 
+
+according to arch wiki about fcitx5, for xwayland(niri might use it), seems need set enviroments variables like `GTK_IM_MODULE=fcitx` per applicaiton(usually in .desktop file)
