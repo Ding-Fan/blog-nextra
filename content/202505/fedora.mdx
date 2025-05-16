@@ -1,16 +1,70 @@
 # install fedora on xps 13
 
-will go into grub shell, have to exit and start the login
+after start, it will go into grub shell, have to exit and start the login
 
 update: `sudo dnf update`
 
 install fish
 
+install telnet
+
+install mysql-server `sudo dnf install mysql-server`
+if only install mysql, can not log in
+
+install tldr `sudo dnf install tldr`
+install 7zip `sudo dnf install 7z`
+
+install [font manager](https://github.com/FontManager/font-manager)
+
+install [Custom UserAgent String](https://chromewebstore.google.com/detail/custom-useragent-string/lejiafennghcpgmbpiodgofeklkpahoe) for Brave browser, this is to fix local font for [figma on linux](https://forum.figma.com/report-a-problem-6/requests-to-font-helper-on-linux-stopped-working-16569/index2.html)
+set `https://www.figma.com/` to use Chrome Windows agent
+
+install [figma-agent-linux](https://github.com/neetly/figma-agent-linux)
+do not install [figma-linux-font-helper](https://github.com/Figma-Linux/figma-linux-font-helper), or [uninstall it](https://github.com/Figma-Linux/figma-linux-font-helper/issues/37#issuecomment-1916730486) 
+
+install gnome-tweaks `sudo dnf install gnome-tweaks`
+
+> This might not work in AppImage Cursor
+> Keyboard - Additional Layout Options - Caps Lock Behavior - Swap Esc and Caps Lock
+
+install unar `sudo dnf install unar`
+
+install syncthingy from [flathub](https://github.com/zocker-160/SyncThingy?tab=readme-ov-file)
+the tray icon might not showing
+go to http://127.0.0.1:8384/ to config
+
+install calibre `sudo dnf install calibre`
+
+install strawberry music player `sudo dnf install strawberry`
+
+install xeyes
+With xeyes, if it's an X11 window, the "eyes" will move with mouse, otherwise it's wayland. 
+
+Install cursor theme might fix the cursor scale bug
+browse cursors theme [here](https://www.gnome-look.org/browse?cat=107&ord=latest)
+install Fluent cursor theme from [github](https://github.com/vinceliuice/Fluent-icon-theme) via `sudo ./install.sh`
+install Polarnight cursor theme from [github](https://github.com/yeyushengfan258/Polarnight-Cursors) via `sudo ./install.sh`
+but I don't know how to change the cursor theme in gnome-tweaks
+the scale bug is fixed by set `XCURSOR_SIZE=48`
+
+```bash
+# in ~/.bashrc
+export XCURSOR_SIZE=48
+```
+
 install bitwarden from flathub
 
 install telegram from flathub
+install Extensions(gnome) [from flathub](https://flathub.org/apps/org.gnome.Extensions)
+
+install java jdk `sudo dnf install java-21-openjdk-devel`
+
+install [AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher)
+it might generate .desktop file at ~/.local/share/applications
 
 install brave browser beta from official website source
+
+new tab customize, don't show sponsor images
 
 ### git
 
@@ -19,6 +73,8 @@ install brave browser beta from official website source
 git config --global user.name "<your name>"
 git config --global user.email "<your email>"
 ```
+
+maybe also git push use merge not rebase
 
 
 ### install vscode insider from official website rpm package
@@ -33,7 +89,7 @@ gitlens
 markdown all in one
 gruvbox theme
 
-#### settings
+### settings
 
 remove keyboard shortcut ctrl + p in vim mode to enable default shortcut
 turn on auto save on focus change
@@ -41,6 +97,7 @@ turn on auto format on save
 increase editor font size to 18
 configure markdown language mode for .mdx file
 for vim: enable foldfix, enable system clipboard
+set editor word wrap: wordWrapColumn
 
 
 > ```bash
@@ -92,7 +149,45 @@ in addons, set Pinyin with Shuangpin Profile Xiaohe
 
 it seems my xiaohe is not working, trying to remove Pinyin and add it again, still not working
 
+双拼没有生效
+原来是添加输入法时，选择了 Pinyin 而不是 Shuangpin 。重新添加 Shuangpin 就好了。
+
 
 apply 
 
 according to arch wiki about fcitx5, for xwayland(niri might use it), seems need set enviroments variables like `GTK_IM_MODULE=fcitx` per applicaiton(usually in .desktop file)
+
+```bash
+# maybe need set this to .desktop to make fcitx5 work on electron
+# for example, to fix Japanese Kanji input
+# https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
+Exec=/home/ding/Applications/Cursor-0.49.6-x86_64_f9ef81815b1862f6cabd16604f9a5be6.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3 %F
+```
+
+
+
+to make AppImage work as command
+
+```bash
+# create this directory if it doesn't exist
+mkdir -p ~/.local/bin
+# make sure it is in PATH
+```
+
+add this script to `~/.local/bin/cursor`
+
+```bash
+#!/bin/bash
+# Wrapper script for Cursor AppImage with Wayland flags
+
+APPIMAGE_PATH="/home/ding/Applications/Cursor-0.49.6-x86_64_f9ef81815b1862f6cabd16604f9a5be6.AppImage"
+WAYLAND_FLAGS="--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3"
+
+# Execute the AppImage with the Wayland flags and pass all script arguments (like file/directory paths)
+exec "$APPIMAGE_PATH" $WAYLAND_FLAGS "$@"
+# explain @ symbol in shell
+# https://unix.stackexchange.com/a/660125
+
+```
+
+make it exectuable `chmod +x ~/.local/bin/cursor`
