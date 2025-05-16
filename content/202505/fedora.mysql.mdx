@@ -1,0 +1,15 @@
+# Install mysql on fedora
+
+```bash
+# install mysql-server
+# if only install mysql, can not log in
+# https://stackoverflow.com/questions/11657829/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run
+sudo dnf install mysql-server
+
+# start the service
+sudo systemctl start mysqld
+sudo systemctl enable mysqld 
+
+# log in 
+mysql -u root
+``` 

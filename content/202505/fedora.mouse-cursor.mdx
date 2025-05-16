@@ -1,0 +1,18 @@
+# Fix mouse cursor size on fedora
+
+
+to fix the scale bug, try this, and reboot to see if it works
+
+```bash
+# in ~/.bashrc
+export XCURSOR_SIZE=48
+```
+
+install xeyes
+With xeyes, if it's an X11 window, the "eyes" will move with mouse, otherwise it's wayland. 
+
+Install cursor theme might fix the cursor scale bug
+browse cursors theme [here](https://www.gnome-look.org/browse?cat=107&ord=latest)
+install Fluent cursor theme from [github](https://github.com/vinceliuice/Fluent-icon-theme) via `sudo ./install.sh`
+install Polarnight cursor theme from [github](https://github.com/yeyushengfan258/Polarnight-Cursors) via `sudo ./install.sh`
+but I don't know how to change the cursor theme in gnome-tweaks
