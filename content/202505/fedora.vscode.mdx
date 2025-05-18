@@ -1,0 +1,31 @@
+# Install VSCode on Fedora
+
+install vscode insider from official website rpm package
+
+## extensions
+
+vim
+github copilot
+gitignore
+git graph
+gitlens
+markdown all in one
+gruvbox theme
+
+## settings
+
+remove keyboard shortcut ctrl + p in vim mode to enable default shortcut
+turn on auto save on focus change
+turn on auto format on save
+increase editor font size to 18
+configure markdown language mode for .mdx file
+for vim: enable foldfix, enable system clipboard
+set editor word wrap: wordWrapColumn
+
+```json
+    "markdownlint.config": {
+        "MD012": false, // Multiple consecutive blank lines
+        "MD030": false, // Spaces after list markers
+        "MD007": false  // Unordered list indentation
+    },
+```
