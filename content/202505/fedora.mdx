@@ -80,43 +80,6 @@ dnf copr enable yalter/niri
 sudo dnf install niri
 ```
 
-## Input Method(fcitx5)
-
-install fcitx5 with Japanese and Chinese input method
-
-```bash
-sudo dnf install fcitx5 fcitx5-autostart fcitx5-gtk fcitx5-qt fcitx5-chinese-addons fcitx5-mozc
-```
-
-install kimpanel for input method
-
-reboot
-
-### in fcitx configuration
-
-add `Pinyin` and `Mozc`
-
-in Global Options, set Trigger Input Method to Control+Shift+Space .
-
-in addons, set Pinyin with Shuangpin Profile Xiaohe
-
-it seems my xiaohe is not working, trying to remove Pinyin and add it again, still not working
-
-双拼没有生效
-原来是添加输入法时，选择了 Pinyin 而不是 Shuangpin 。重新添加 Shuangpin 就好了。
-
-
-apply 
-
-according to arch wiki about fcitx5, for xwayland(niri might use it), seems need set enviroments variables like `GTK_IM_MODULE=fcitx` per applicaiton(usually in .desktop file)
-
-```bash
-# maybe need set this to .desktop to make fcitx5 work on electron
-# for example, to fix Japanese Kanji input
-# https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
-Exec=/home/ding/Applications/Cursor-0.49.6-x86_64_f9ef81815b1862f6cabd16604f9a5be6.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3 %F
-```
-
 
 
 to make AppImage work as command
