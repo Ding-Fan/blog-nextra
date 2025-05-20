@@ -1,0 +1,39 @@
+# Fedora Keyboard
+
+install [keyd](https://github.com/rvaiya/keyd)
+
+```bash
+# install
+sudo dnf copr enable meeuw/keyd
+sudo dnf install keyd
+
+# start
+sudo systemctl enable keyd --now
+```
+
+create `/etc/keyd/default.conf`
+
+```conf copy
+[ids]
+
+*
+
+[main]
+
+# Maps capslock to escape when pressed and control when held.
+# capslock = overload(control, esc)
+capslock = esc
+
+# Remaps the escape key to capslock
+esc = capslock
+```
+
+reload config `sudo keyd reload`
+
+
+## Alternative but might not work
+
+install gnome-tweaks `sudo dnf install gnome-tweaks`
+
+> This might not work in AppImage Cursor
+> Keyboard - Additional Layout Options - Caps Lock Behavior - Swap Esc and Caps Lock
