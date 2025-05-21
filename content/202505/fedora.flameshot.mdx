@@ -1,0 +1,16 @@
+# Fedora Flameshot
+
+
+```bash
+# install flameshot
+sudo dnf install flameshot
+
+# https://flameshot.org/docs/guide/wayland-help/#gnome-shortcut-does-not-trigger-flameshot
+# install script
+sudo dnf install script
+
+# in settings remove default prt sc and
+# set this as the customize shortcut of the key prtsc
+script --command "flameshot gui" /dev/null
+```
+
