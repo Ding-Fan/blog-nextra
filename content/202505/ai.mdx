@@ -1,5 +1,13 @@
 # AI
 
+<https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file>
+
+- <https://uxdesign.cc/the-perverse-incentives-of-vibe-coding-23efbaf75aee>
+    - Plan first
+    - write code with specific explict permission
+    - do it step by step, save with git commit
+    - use cheaper AI models(not work for me though)
+
 Trying to work with AI to create a ruby on rails comment system.
 
 1. Use google ai studio, gemini 2.5 pro, turn on grounding. Discuss about the project, generate a PRD(Product Requirement Document).
@@ -11,26 +19,28 @@ rails new comment-system-api --api --database=postgresql
 cd comment-system-api
 ```
 
-Search online, find the ruby on rails documentation [The Rails Command Line](https://guides.rubyonrails.org/command_line.html). 
+Search online, find the ruby on rails documentation [The Rails Command Line](https://guides.rubyonrails.org/command_line.html).
 
 Install ruby on rails via nix-darwin. Seems not good. Read some resources:
 
-- https://actually.fyi/posts/rails-on-nix/
+- <https://actually.fyi/posts/rails-on-nix/>
 
 > Attempt #1
+>
 > ```bash
 > gem install rails
 > ```
+>
 > Don't worry, that's a joke.
 
-- https://kristianfreeman.com/running-a-ruby-on-rails-application-in-nix
-- https://nixos.org/manual/nixpkgs/stable/#developing-with-ruby
+- <https://kristianfreeman.com/running-a-ruby-on-rails-application-in-nix>
+- <https://nixos.org/manual/nixpkgs/stable/#developing-with-ruby>
 
 I've spent one month on NixOS and didn't get the input method/xwayland/niri/waybar work as I expected. Maybe it is not wise to dig in "how to install rails use Nix" instead of creating the product I need right now. I should focus on build.
 
 Let's just `gem install rails`.
 
-Nah, it doesn't work. Follow the official [install_ruby_on_rails](https://guides.rubyonrails.org/install_ruby_on_rails.html#install-ruby-on-macos), we could use... 
+Nah, it doesn't work. Follow the official [install_ruby_on_rails](https://guides.rubyonrails.org/install_ruby_on_rails.html#install-ruby-on-macos), we could use...
 
 [mise](https://mise.jdx.dev/demo.html)
 
@@ -44,20 +54,21 @@ Searched on Github, trying to follow [example by skyblue-jpn](https://github.com
 
 Add `mise-flake.url = "github:jdx/mise";` to flake.nix inputs and outputs=inputs@.
 
-It works! Wait... mise is just for install ruby, not rails. It also [use bundle](https://mise.jdx.dev/mise-cookbook/ruby.html#a-ruby-on-rails-project) to handle rails. 
+It works! Wait... mise is just for install ruby, not rails. It also [use bundle](https://mise.jdx.dev/mise-cookbook/ruby.html#a-ruby-on-rails-project) to handle rails.
 
-Back to start. 
+Back to start.
 
 I have devenv installed. Maybe try to use it.
 
-- https://upsun.com/blog/how-to-start-a-ruby-on-rails-project-with-devenv.sh/
-- https://github.com/cachix/devenv/blob/main/examples/ruby/devenv.nix
-- https://github.com/cachix/devenv/blob/main/examples/rubyonrails/devenv.nix
-- https://discourse.nixos.org/t/issue-running-tailwind-css-with-rails-on-nixos-devenv-sh-setup/63261
+- <https://upsun.com/blog/how-to-start-a-ruby-on-rails-project-with-devenv.sh/>
+- <https://github.com/cachix/devenv/blob/main/examples/ruby/devenv.nix>
+- <https://github.com/cachix/devenv/blob/main/examples/rubyonrails/devenv.nix>
+- <https://discourse.nixos.org/t/issue-running-tailwind-css-with-rails-on-nixos-devenv-sh-setup/63261>
 
 Maybe this is not a good idea, the scaffold is too complex. Docker might be better.
 
 Decide to use nix-shell to install temporary rails, and create the project with docker. Then use that docker to work on the project.
+
 ```bash
 # start the nix-shell
 nix-shell -p git curl openssl_3 libyaml postgresql bundler ruby_3_4.withPackages'(ps: [ps.rails])'
