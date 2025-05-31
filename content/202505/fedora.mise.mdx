@@ -1,0 +1,28 @@
+# Fedora mise
+
+I'm usign `fish`, so I need add this to `~/.config/fish/config.fish`:
+
+```fish
+# ~/.config/fish/config.fish
+
+# (other configurations)
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+# https://mise.jdx.dev/cli/activate.html
+mise activate fish | source
+
+# (other configurations potentially)
+```
+
+## python
+
+```fish
+mise use --global python@3.12
+
+# check it
+python --version
+```
+
