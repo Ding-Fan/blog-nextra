@@ -1,0 +1,25 @@
+# airi
+
+Try to run airi on my little laptop, again.
+
+```bash
+# clone it
+git clone git@github.com:moeru-ai/airi.git
+
+# install dependencies
+cd airi
+pnpm i
+
+# maybe need: build to fix jiti
+pnpm packages:build
+
+# run it
+pnpm apps:web:dev
+# this is not recommended
+# pnpm dev
+
+```
+
+Set API_KEY in Settings - Providers. I use Google Gemini.
+
+In Modules - Consciousness, set Gemini and models/gemini-2.0-flash
