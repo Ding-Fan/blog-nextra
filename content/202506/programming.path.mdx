@@ -1,0 +1,166 @@
+# Path
+
+## absolute path, relative path
+
+ひろ：
+
+What are absolute paths and relative paths?
+
+
+そら：
+
+Relative is focusing on two things, like you and me.
+
+For example:
+
+We are in **Building-A**
+
+If you are in **Floor-3 Room-301**, I'm at **Floor-3**.
+
+I would say "I'm **heading to** the **Room-301** to find you".
+
+
+ひろ：
+
+I know the command `cd` in terminal means "*c*hange *d*irectory". It is like **heading to** . So you are saying `cd Room-301` .  
+
+
+そら：
+
+Yes, exactly!
+
+If you are at **Floor-3**, I'm in **Floor-3 Room-301**.
+
+I would say "I'm **heading out** to find you".
+
+We use `..`(double dots) to point to the "out" of the current place, so **heading out** is like `cd ..` in terminal.
+
+
+ひろ：
+
+What if I'm in **Floor-5 Room-502** and you're in **Floor-3 Room-301** ?
+
+
+そら：
+
+In that case, I would say "I'm **heading out** and **heading out** and **heading to Floor-5 Room-502** to find you."
+
+
+ひろ：
+
+Why do you say **heading out** twice?
+
+そら：
+
+- I'm in **Floor-3 Room-301**
+- I'm **heading out**, I'm at **Floor-3**.
+- I'm **heading out**, I'm at **Building-A**
+- then I'm **heading to** the **Floor-5 Room-502** to find you.
+
+
+ひろ：
+
+Let me convert this to terminal command.
+
+```bash
+# You are in `Floor-3/Room-301`
+
+cd ..
+# now you are in `Floor-3`
+
+cd ..
+# now you are in `Building-A`
+
+cd Floor-5/Room-502
+# now you are in `Floor-5/Room-502`
+```
+
+
+そら：
+
+Correct! Now you see me!
+
+
+Follow the relative path from where I am to where you are, the command can be merged into one line:
+
+```bash
+# I'm in Floor-3/Room-301
+# I heading out, heading out, heading to Floor-5/Room-502
+cd ../../Floor-5/Room-502
+```
+
+As you know, in this case, `/` is used to separate the places.
+
+
+ひろ：
+
+But I've learned that `/` means the **root directory** .
+
+
+そら：
+
+When nothing is before the `/`, it means the **root directory** .
+
+Since you mentioned the **root directory**, let's talk about **absolute path** .
+
+In the example above, both of us are in **Building-A**. I can follow relative path to find you quickly.
+
+But what if we are in different buildings, different cities, or even different countries?
+
+Let's say you are in **Japan Tokyo Street-A Building-A Floor-1 Room-101**.
+
+I'm in **France Paris Street-B Building-B Floor-2 Room-202**.
+
+- I'm **heading out**, I'm at **France Paris Street-B Building-B Floor-2**.
+- I'm **heading out**, I'm at **France Paris Street-B Building-B**.
+- I'm **heading out**, I'm at **France Paris Street-B**.
+- I...
+
+
+ひろ：
+
+
+You will get lost if you keep going like that.
+
+
+そら：
+
+That's where absolute path comes in handy. I'll just teleport to you by `cd /Japan/Tokyo/Street-A/Building-A/Floor-1/Room-101` .
+
+
+ひろ：
+
+Can you bring me a Croissant?
+
+
+そら：
+
+Do you remember what you learned today? Can you recap it?
+
+
+ひろ：
+
+Nope.
+
+
+そら：
+
+Nope.
+
+
+はる：
+
+Let's recap!
+
+- Relative paths are from where you are to where you want to go. It's easy when you want to go to nearby places, like from one room to another in the same building.
+- Absolute paths always start from the root. It's like having a complete address to find a place, no matter where you are.
+- `cd` is change directory, `..` is "out", and `/` is used to separate places in paths. 
+- Oh, when nothing is before the `/`, it means the root directory. Absolute paths always start with `/`.
+
+Want more? Well, well, well.
+
+- `pwd` is print working directory, it shows your current location.
+- `.` means the current directory, like saying "here I am".
+- `~` means your home directory, like saying "my home".
+- What do you have in your `~/Downloads` folder?
+- the word "path", "directory", "folder" are often used interchangeably in computing, but they can have slightly different meanings depending on the context.
