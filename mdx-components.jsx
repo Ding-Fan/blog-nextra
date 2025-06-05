@@ -4,6 +4,7 @@ import BaseLink from "./components/BaseLink";
 import Caption from "./components/Caption";
 import CardBlocks from "./components/CardBlocks";
 import CardPost from "./components/CardPost";
+import Character from "./components/programming/Character";
 import CSSEffect from "./components/CSSEffect";
 import DuckHome from "./components/DuckHome";
 import GalleryImage from "./components/image/GalleryImage";
@@ -33,6 +34,7 @@ export function useMDXComponents(components) {
     // ... your additional components
     Caption,
     CardBlocks,
+    Character,
     CSSEffect,
     CSSEffect,
     DuckHome,

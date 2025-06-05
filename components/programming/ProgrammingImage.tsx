@@ -23,7 +23,7 @@ const ProgrammingImage = ({
       caption={caption}
       align={align}
       effect={effect}
-      className={ct("w-full md:w-4/5 lg:w-3/4 xl:w-2/3 max-w-screen-md", className)}
+      className={ct("w-full md:w-4/5 lg:w-3/4 xl:w-2/3 max-w-screen-md my-4", className)}
       {...props}
     />
   );

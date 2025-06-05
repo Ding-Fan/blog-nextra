@@ -17,6 +17,7 @@ module.exports = {
       },
       fontFamily: {
         "quote-content": ["LinBiolinum_R", "FZBIAOYSK"],
+        dotgothic16: ["DotGothic16", "monospace"],
       },
     },
   },
