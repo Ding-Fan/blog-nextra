@@ -12,6 +12,7 @@ import OGCard from "./components/OGCard.tsx";
 import Paragraph from "./components/Paragraph.tsx";
 import Particle from "./components/Particle";
 import QuizApp from "./components/quiz-app";
+import ProgrammingImage from "./components/programming/ProgrammingImage";
 import RichImage from "./components/image/RichImage";
 import RichVideo from "./components/video/RichVideo";
 import ShowCards from "./components/ShowCards";
@@ -40,6 +41,7 @@ export function useMDXComponents(components) {
     OGCard,
     Paragraph,
     Particle,
+    ProgrammingImage,
     RichImage,
     RichVideo,
     WordList,
