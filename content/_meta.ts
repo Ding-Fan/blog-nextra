@@ -1,7 +1,7 @@
 export default {
   index: "又不是不能写博客",
-  write: {},
-  input: {},
+  // write: {},
+  // input: {},
   about: {
     title: "About",
     type: "page",

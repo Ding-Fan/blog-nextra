@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ct } from "../../scripts/utils";
+import { DotGothic16 } from "next/font/google";
 
 export type CharacterName = 'hiro' | 'sora' | 'haru';
 export type Language = 'en' | 'jp';
@@ -12,16 +13,22 @@ export interface CharacterProps {
   className?: string;
 }
 
+const dotGothic16 = DotGothic16({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+})
+
 const characterNames = {
-  hiro: { en: 'Hiro', jp: 'ひろ' },
-  sora: { en: 'Sora', jp: 'そら' },
-  haru: { en: 'Haru', jp: 'はる' }
+  hiro: { en: 'Hiro:', jp: 'ひろ：' },
+  sora: { en: 'Sora:', jp: 'そら：' },
+  haru: { en: 'Haru:', jp: 'はる：' }
 } as const;
 
 const characterStyles = {
-  hiro: 'bg-red-100 text-red-800 border-red-200',
-  sora: 'bg-sky-100 text-sky-800 border-sky-200',
-  haru: 'bg-purple-100 text-purple-800 border-purple-200'
+  hiro: 'bg-red-100 text-red-800',
+  sora: 'bg-sky-100 text-sky-800',
+  haru: 'bg-purple-100 text-purple-800'
 } as const;
 
 const Character = ({
@@ -34,9 +41,11 @@ const Character = ({
 
   return (
     <div className={ct(
-      'inline-flex items-center px-5 py-1 rounded-full rounded-tl-none border text-2xl md:text-3xl font-bold mt-8 mb-2',
-      'font-dotgothic16',
+      'inline-flex items-center pl-2 pr-3 rounded-full rounded-tl-none text-xl font-bold mt-8 mb-2',
       styles,
+      // '!font-dotgothic16',
+      // 'dot-gothic16',
+      dotGothic16.className,
       className
     )}>
       {displayName}
