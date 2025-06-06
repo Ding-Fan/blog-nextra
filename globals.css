@@ -67,7 +67,7 @@
 body {
   font-family: "Inconsolata Regular Nerd Font Complete", "FZBIAOYSK",
     "Klee One Regular", serif;
-  @apply text-2xl md:text-lg;
+  @apply text-xl md:text-base;
 }
 
 article {
