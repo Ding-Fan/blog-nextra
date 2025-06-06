@@ -11,6 +11,15 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 
+import { DotGothic16 } from 'next/font/google';
+
+const dotGothic16 = DotGothic16({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dotgothic16',
+});
+
 export const metadata = {
   // ... your metadata API
   // https://nextjs.org/docs/app/building-your-application/optimizing/metadata
@@ -62,7 +71,7 @@ export default async function RootLayout({ children }) {
       >
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
       </Head>
-      <body>
+      <body className={dotGothic16.variable}>
         <Layout
           //   banner={banner}
           navbar={navbar}

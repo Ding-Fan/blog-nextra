@@ -34,7 +34,7 @@ const Character = ({
 
   return (
     <div className={ct(
-      'inline-flex items-center px-5 py-1 rounded-full rounded-tl-none border text-2xl md:text-3xl font-bold mt-8 mb-2',
+      'inline-flex items-center px-5 py-1 rounded-full rounded-tl-none border text-2xl font-bold mt-8 mb-2',
       'font-dotgothic16',
       styles,
       className
