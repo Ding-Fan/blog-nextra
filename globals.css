@@ -72,7 +72,7 @@ body {
 
 article {
   color: rgb(var(--tx) / var(--tw-text-opacity, 1));
-  font-family: "AtkinsonHyperlegibleNext-Light", "FZBIAOYSK";
+  font-family: var(--font-yukyokasho), "AtkinsonHyperlegibleNext-Light", "FZBIAOYSK";
 }
 
 h1 {
