@@ -11,14 +11,23 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 
-import { DotGothic16 } from 'next/font/google';
+import localFont from 'next/font/local'
 
-const dotGothic16 = DotGothic16({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-dotgothic16',
-});
+export const YuKyokasho = localFont({
+  src: [
+    {
+      path: '../public/fonts/YuKyokasho/YuKyokasho_b.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/YuKyokasho/YuKyokasho_Bold_b.ttf',
+      weight: '700',
+      style: 'normal',
+    }
+  ],
+  variable: '--font-yukyokasho',
+})
 
 export const metadata = {
   // ... your metadata API
@@ -39,7 +48,7 @@ export const metadata = {
 const navbar = (
   <Navbar
     logo={<span>又不是不能写博客</span>}
-    // projectLink="https://github.com/shuding/nextra"
+  // projectLink="https://github.com/shuding/nextra"
   >
   </Navbar>
 );
@@ -70,7 +79,7 @@ export default async function RootLayout({ children }) {
         }}
       >
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
-        
+
         {/* Favicon and App Icons */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -85,9 +94,9 @@ export default async function RootLayout({ children }) {
         {/* Theme Color - matches your light background */}
         <meta name="theme-color" content="#fffcf0" />
         <meta name="msapplication-TileColor" content="#fffcf0" />
-        
+
       </Head>
-      <body className={dotGothic16.variable}>
+      <body className={YuKyokasho.variable}>
         <Layout
           //   banner={banner}
           navbar={navbar}
@@ -106,7 +115,7 @@ export default async function RootLayout({ children }) {
           darkMode={false}
           footer={<Footer />}
 
-          // ...Your additional theme config options
+        // ...Your additional theme config options
         >
           {children}
         </Layout>

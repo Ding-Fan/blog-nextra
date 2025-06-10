@@ -14,12 +14,29 @@ const dotGothic16 = DotGothic16({
   display: 'swap',
 })
 
-export default function Component() {
-  return (
-    <div className={dotGothic16.className}>
-      <h1>Hello, world!</h1>
-      <p>This is a paragraph using the DotGothic16 font.</p>
-    </div>
-  )
-}
+// use dotGothic16.className in className
+
+// and use local font
+
+import localFont from 'next/font/local'
+
+export const YuKyokasho = localFont({
+  src: [
+    {
+      path: '../public/fonts/YuKyokasho/YuKyokasho_b.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/YuKyokasho/YuKyokasho_Bold_b.ttf',
+      weight: '700',
+      style: 'normal',
+    }
+  ],
+  variable: '--font-yukyokasho',
+})
+
+// in layout.tsx, use YuKyokasho.variable in className
+// in css, use var(--font-yukyokasho)
+
 ```
