@@ -1,0 +1,113 @@
+# Programming Basics (Java)
+
+### Integer: 整数　せいすう
+
+- A whole number that can be positive, negative, or zero, without any fractional or decimal parts.
+- Example: `42`, `-15`, `0`, `1000`
+
+### Decimal: 小数　しょうすう
+
+- Any numeral value that consists of a decimal point is a decimal number.
+- Example: `3.14`, `2.5`, `0.001`, `10.0`
+
+- https://www.shinko-keirin.co.jp/keirinkan/sansu/WebHelp/03/page3_24.html
+- https://www.geeksforgeeks.org/are-decimals-whole-numbers/
+
+### Integer Types: 整数型　せいすうがた 
+
+- Integer types are `byte`, `short`, `int`, and `long`.
+
+### Floating Point Types(Decimal): 浮動小数点　ふどうしょうすうてん 小数　しょうすう
+
+- Floating point (Decimal) types are `float` and `double`.
+
+### Primitive Type
+
+- A data type that is not composed of other data types.
+- All the primitive types in Java are:
+
+  - `byte` - 8-bit signed integer (-128 to 127)
+  - `short` - 16-bit signed integer (-32,768 to 32,767)
+  - `int` - 32-bit signed integer (-2³¹ to 2³¹-1)
+  - `long` - 64-bit signed integer (-2⁶³ to 2⁶³-1)
+  - `float` - 32-bit IEEE 754 floating point
+  - `double` - 64-bit IEEE 754 floating point
+  - `boolean` - `true` or `false`
+  - `char` - 16-bit Unicode character ('\u0000' to '\uffff')
+
+  - https://www.ascii-code.com/
+
+
+- https://en.wikipedia.org/wiki/Floating-point_arithmetic
+- https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
+
+### Reference Type
+
+- A data type that refers to an object or an instance of a class.
+- Example: `String`, `ArrayList`, `HashMap`, `Integer`
+
+- https://docs.oracle.com/javase//8/docs/api/java/lang/Integer.html
+- https://www.masaischool.com/blog/java-data-types/
+
+
+### Operator
+
+- A symbol that performs operations on variables and values.
+
+#### Arithmetic Operators: 算術演算子　さんじゅつえんざんし
+
+- `+` - Addition (加算　かさん): `5 + 3 = 8`
+- `-` - Subtraction (減算　げんざん): `5 - 3 = 2`
+- `*` - Multiplication (乗算　じょうざん): `5 * 3 = 15`
+- `/` - Division (除算　じょざん): `15 / 3 = 5`
+- `%` - Modulo (剰余　じょうよ): `15 % 4 = 3`
+
+#### Comparison Operators: 比較演算子　ひかくえんざんし
+
+- `==` - Equal to (等しい　ひとしい): `5 == 5` returns `true`
+- `!=` - Not equal to (等しくない　ひとしくない): `5 != 3` returns `true`
+- `<` - Less than (より小さい　よりちいさい): `3 < 5` returns `true`
+- `>` - Greater than (より大きい　よりおおきい): `5 > 3` returns `true`
+- `<=` - Less than or equal to: `3 <= 5` returns `true`
+- `>=` - Greater than or equal to: `5 >= 5` returns `true`
+
+#### Logical Operators: 論理演算子　ろんりえんざんし
+
+- `&&` - AND (論理積　ろんりせき): `true && false` returns `false`
+- `||` - OR (論理和　ろんりわ): `true || false` returns `true`
+- `!` - NOT (否定　ひてい): `!true` returns `false`
+
+#### Assignment Operators: 代入演算子　だいにゅうえんざんし
+
+- `=` - Assignment (代入　だいにゅう): `int x = 5;`
+- `+=` - Add and assign: `x += 3` (same as `x = x + 3`)
+- `-=` - Subtract and assign: `x -= 2` (same as `x = x - 2`)
+- `*=` - Multiply and assign: `x *= 4` (same as `x = x * 4`)
+- `/=` - Divide and assign: `x /= 2` (same as `x = x / 2`)
+
+#### Increment/Decrement: 増減演算子　ぞうげんえんざんし
+
+- `++` - Increment (増加　ぞうか): `x++` or `++x` (adds 1)
+- `--` - Decrement (減少　げんしょう): `x--` or `--x` (subtracts 1)
+
+
+What is the difference between `++i` and `i++`?
+
+The key insight is that **both always increment the variable** , but they differ in **what value they return to be used** in the surrounding expression.
+
+- `++i`: "Increment i, then give me the result"
+- `i++`: "Give me i's current value, then increment i"
+
+Try this example:
+
+```java copy
+int i = 5;
+System.out.println(++i);  // Prints: 6 (i is now 6)
+
+int j = 5;
+System.out.println(j++);  // Prints: 5 (j becomes 6 after printing)
+```
+
+### reference
+
+
