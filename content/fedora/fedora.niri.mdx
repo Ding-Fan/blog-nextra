@@ -65,4 +65,19 @@ install nmtui, for network configure when no gnome(in niri)
 
 install blueman, for bluetooth manager
 
+config flameshot for niri
+
+add these to ~/.config/niri/config.kdl
+
+```kdl
+    Print { 
+        spawn 
+        "script" "--command" 
+        "XDG_CURRENT_DESKTOP=sway" 
+        "flameshot" "gui" "/dev/null";
+    }
+```
+
+- If flameshot window already opened, press <kbd>print</kbd> will feel nothing changed
+- If press <kbd>print</kbd> in a fullscreen window, the flameshot window might created beside current window 
 

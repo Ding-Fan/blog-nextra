@@ -13,6 +13,72 @@
 - https://www.shinko-keirin.co.jp/keirinkan/sansu/WebHelp/03/page3_24.html
 - https://www.geeksforgeeks.org/are-decimals-whole-numbers/
 
+### Create a Variable
+
+```java showLineNumbers
+int apple;
+```
+
+- `int` means "this is an integer"
+- `apple` is the name of the variable
+- `;` is the end of the statement, indicating that this line of code is complete
+- `int apple;` creates a variable named `apple` of type `int` (integer).
+
+### Assign a Value to a Variable
+
+```java showLineNumbers {3}
+int apple;
+
+apple = 2;
+```
+
+- `apple` is the variable we created earlier.
+- `=` is the assignment operator, "put the right side value into the left side"
+- `2` is the value being assigned to the variable `apple`.
+- `;` is the end of the statement, indicating that this line of code is complete
+
+### Use a Variable
+
+```java showLineNumbers {5}
+int apple;
+
+apple = 2;
+
+System.out.println( apple );
+```
+
+- `System.out.println(apple);` prints the value of the variable `apple` to the console
+- this time we use `apple` without `int` because we are using the variable, not creating it
+- actually, when we assign `2` to `apple` at line 3, we are also using it
+- To sum up
+  - Line 1: we create a variable named `apple` of type `int`
+  - Line 3: we assign the value `2` to the variable `apple`
+  - Line 5: we use the variable `apple` to print its value to the console
+
+Try to create a variable named `orange` and assign it the value `5`, then print it to the console.
+
+### Create a Variable and Assign a Value to It in One Line
+
+```java showLineNumbers
+int banana = 2;
+```
+
+This is an important pattern.
+
+```bash
+[data type] [variable name] [assignment operator] [value] [semicolon]
+```
+
+- Create an **integer** variable
+- **named** banana
+- **assign** it the
+- **value** 2
+- end
+
+Try to use this pattern, then print it to the console.
+
+- ` ` can you see the space? It makes the code more readable.
+
 ### Integer Types: 整数型　せいすうがた 
 
 - Integer types are `byte`, `short`, `int`, and `long`.
@@ -35,9 +101,6 @@
   - `boolean` - `true` or `false`
   - `char` - 16-bit Unicode character ('\u0000' to '\uffff')
 
-  - https://www.ascii-code.com/
-
-
 - https://en.wikipedia.org/wiki/Floating-point_arithmetic
 - https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
 
@@ -48,7 +111,6 @@
 
 - https://docs.oracle.com/javase//8/docs/api/java/lang/Integer.html
 - https://www.masaischool.com/blog/java-data-types/
-
 
 ### Operator
 
@@ -108,6 +170,85 @@ int j = 5;
 System.out.println(j++);  // Prints: 5 (j becomes 6 after printing)
 ```
 
-### reference
+### ASCII code
+
+- ASCII (American Standard Code for Information Interchange) is a character encoding standard that uses numbers to represent characters.
+
+- https://en.wikipedia.org/wiki/ASCII
+
+In the old days, computers can only display characters, like the command line(terminal) in your computer. That is CLI(Command Line Interface).
+
+- https://youtu.be/VStscvYLYLs?t=11
+
+Computer only understand 0 and 1, so people create a table, use a number to represent a character
+
+Find the character of these: `76 48 86 101`
+
+In this ascii table
+
+- https://www.ascii-code.com/
+
+The answer is `L 0 V e`
+
+What if I want a red heart? ❤️
+
+It is in the unicode `U+2764`
+
+- https://symbl.cc/en/2764-red-heart-emoji/
+
+Unicode is a superset of ASCII . You can see in this unicode table
+
+- https://symbl.cc/en/unicode-table/#basic-latin
+
+`76 48 86 101` is also `L 0 V e`
+
+### ASCII Art
+
+In CLI, People do things like this:
+
+```bash
+# User type this
+echo "Hello!"
+
+# Computer displays this
+Hello!
+```
+
+It's boring! Then some programmer created a program called `cowsay`
+
+```bash
+# User type this
+cowsay "Hello!"
+
+# Computer displays this
+ ________
+< Hello! >
+ --------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+- https://ja.wikipedia.org/wiki/Cowsay
+
+
+### ASCII Game
+
+Are you a gamer? Do you want to play game in CLI with full screen of ASCII characters?
+
+A classic:
+
+- https://store.steampowered.com/app/837200/NetHack_Legacy
+
+A modern:
+
+- https://store.steampowered.com/app/1113220/ASCIIDENT/
+
+A dream:
+
+- https://store.steampowered.com/app/3302080/Effulgence_RPG/
+
 
 
