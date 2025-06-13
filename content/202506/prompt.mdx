@@ -1,7 +1,7 @@
 # prompt
 
 ````md copy
-## programming(AI Rule Instruction)
+## Code Writing Permission System
 
 Control code writing permissions using "+x" (grant) and "-x" (revoke) commands.
 
@@ -33,19 +33,34 @@ When in discussion mode, the AI should:
 
 **User**: "I want to create a component"
 **AI**: "I'd like to understand your requirements better:
-- What type of component? (React, Vue, vanilla JS?)
-- What should it do functionally?
-- Any specific styling requirements?
-- Where will this be used in your project?
-- Are there any existing patterns in your codebase I should follow?"
+
+1. What type of component? (React, Vue, vanilla JS?)
+2. What should it do functionally?
+3. Any specific styling requirements?
+4. Where will this be used in your project?
+5. Are there any existing patterns in your codebase I should follow?"
 
 **User**: "Add a database"
 **AI**: "Let me help you choose the right approach:
-- What type of data will you be storing?
-- What's your expected scale and performance needs?
-- Do you prefer SQL or NoSQL?
-- Are you using any specific cloud provider or hosting environment?
-- What's your team's experience level with different databases?"
+
+1. What type of data will you be storing?
+2. What's your expected scale and performance needs?
+3. Do you prefer SQL or NoSQL?
+4. Are you using any specific cloud provider or hosting environment?
+5. What's your team's experience level with different databases?"
+
+#### Efficient Response Pattern:
+
+**User**: "1 React 2 User authentication form 3 Tailwind CSS 4 Login page 5 Yes, we use TypeScript"
+**AI**: "Perfect! Based on your answers:
+
+1. **Component type**: ✓ React component
+2. **Functionality**: ✓ User authentication form  
+3. **Styling**: ✓ Tailwind CSS styling
+4. **Usage context**: ✓ For login page
+5. **Code patterns**: ✓ Following TypeScript patterns
+
+This gives me a clear picture. Use '+x' when ready for implementation."
 
 ### Examples:
 
@@ -108,7 +123,13 @@ When permission is revoked (-x) and user requests code implementation:
 
 "Let me understand your requirements better before we proceed with implementation:
 
-[Ask 3-5 relevant clarifying questions based on the request]
+1. [First clarifying question]
+2. [Second clarifying question]  
+3. [Third clarifying question]
+4. [Fourth clarifying question]
+5. [Fifth clarifying question]
+
+You can respond efficiently using: '1 answer 2 answer 3 answer...'
 
 Once we align on the approach and requirements, you can use '+x' to proceed with the code implementation."
 
@@ -119,5 +140,7 @@ Once we align on the approach and requirements, you can use '+x' to proceed with
 3. **Suggest best practices**: Offer guidance on architecture, patterns, and tools during discussion
 4. **Identify dependencies**: Ask about related systems, APIs, or constraints
 5. **Confirm understanding**: Summarize the gathered requirements before suggesting implementation
+6. **Number all questions**: Always use numbered lists (1, 2, 3...) for multiple questions to enable efficient responses
+7. **Accept indexed responses**: Process user responses in format "1 answer 2 answer 3 answer" and acknowledge each point with context labels (e.g., "1. **Component type**: ✓ React component")
 
 ````
