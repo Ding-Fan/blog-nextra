@@ -14,3 +14,17 @@ sudo dnf install script
 script --command "flameshot gui" /dev/null
 ```
 
+
+## config flameshot for niri
+
+add these to ~/.config/niri/config.kdl
+
+```kdl
+    Print { 
+        spawn "script" "--command" "XDG_CURRENT_DESKTOP=sway flameshot gui" "/dev/null";
+    }
+```
+
+- `"XDG_CURRENT_DESKTOP=sway flameshot gui"` is important for script to receive correct number of arguments
+- If flameshot window already opened, press <kbd>print</kbd> will feel nothing changed
+- If press <kbd>print</kbd> in a fullscreen window, the flameshot window might created beside current window 

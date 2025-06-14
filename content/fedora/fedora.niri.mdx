@@ -65,19 +65,25 @@ install nmtui, for network configure when no gnome(in niri)
 
 install blueman, for bluetooth manager
 
-config flameshot for niri
-
-add these to ~/.config/niri/config.kdl
-
-```kdl
-    Print { 
-        spawn 
-        "script" "--command" 
-        "XDG_CURRENT_DESKTOP=sway" 
-        "flameshot" "gui" "/dev/null";
-    }
+install niriswitcher
+```sh
+# https://github.com/isaksamsten/niriswitcher?tab=readme-ov-file#fedora
+dnf copr enable isaksamsten/niriswitcher
+dnf install niriswitcher
 ```
 
-- If flameshot window already opened, press <kbd>print</kbd> will feel nothing changed
-- If press <kbd>print</kbd> in a fullscreen window, the flameshot window might created beside current window 
+set `spawn-at-startup "niriswitcher"` to config
+- https://github.com/isaksamsten/niriswitcher?tab=readme-ov-file#configuration
 
+add this to niri config
+
+```kdl
+// in the binds
+    // niri switch
+    Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    // Grave is the ` key
+    Alt+Grave repeat=false { spawn "niriswitcherctl" "show" "--workspace"; }
+    Alt+Shift+Grave repeat=false { spawn "niriswitcherctl" "show" "--workspace"; }
+
+```
