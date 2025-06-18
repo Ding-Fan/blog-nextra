@@ -5,20 +5,51 @@ Telegram and Bitwarden (Flatpak) showing missing/broken Chinese characters, whil
 **Problem**: Flatpak apps use bad default CJK fonts and can't access system fonts.
 
 **Fix**:
-```bash
-# Check if they're Flatpak
-flatpak list | grep -E "(telegram|bitwarden)"
 
-# Grant font access
-flatpak override --user --filesystem=xdg-data/fonts org.telegram.desktop
-flatpak override --user --filesystem=/usr/share/fonts org.telegram.desktop
+Wait for Flatpak to support global font overrides, or manually set font conf for each app.
 
-flatpak override --user --filesystem=xdg-data/fonts com.bitwarden.desktop  
-flatpak override --user --filesystem=/usr/share/fonts com.bitwarden.desktop
+## for each app
+
+Use `flatpak list | grep -E "(telegram|bitwarden)"` to know the name of the Flatpak app.
+
+[As an example](https://github.com/flathub/org.chromium.Chromium/issues/238#issuecomment-1198639352) , create `~/.var/app/org.telegram.desktop/config/fontconfig/fonts.conf` with the following content:
+
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>serif</string>
+    </test>
+    <edit name="family" mode="prepend" binding="strong">
+      <string>Heisei Mincho Std</string>
+      <string>Noto Serif CJK JP</string>
+      <string>Noto Serif CJK SC</string>
+    </edit>
+  </match>
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>sans-serif</string>
+    </test>
+    <edit name="family" mode="prepend" binding="strong">
+      <string>Noto Sans CJK JP</string>
+      <string>Noto Sans CJK SC</string>
+    </edit>
+  </match>
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>monospace</string>
+    </test>
+    <edit name="family" mode="prepend" binding="strong">
+      <string>Noto Sans Mono CJK JP</string>
+      <string>Noto Sans Mono CJK SC</string>
+    </edit>
+  </match>
+</fontconfig>
 ```
 
-Restart apps. Chinese characters should now display properly with better fonts.
 
-The issue was Flatpak using poor default CJK fonts instead of system Noto CJK fonts - not just fontconfig.
-
-Still not fixed.
+- https://github.com/flatpak/flatpak/issues/6186
+- https://github.com/flatpak/flatpak/issues/1563
+- https://github.com/fedora-silverblue/issue-tracker/issues/534
