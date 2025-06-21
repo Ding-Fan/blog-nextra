@@ -31,6 +31,24 @@ spawn-at-startup "waybar"
 
 environment {
     DISPLAY ":0"
+
+    // https://github.com/YaLTeR/niri/blob/e0b0b04b445f7044f383e50104f861e632e1c905/wiki/Application-Issues.md?plain=1#L14
+    // seems not working
+    // ELECTRON_OZONE_PLATFORM_HINT "auto"
+    // for brave, go to brave://flags/
+    // set "Preferred Ozone platform" to Wayland and relaunch
+    // https://discussion.fedoraproject.org/t/fix-ui-scale-bug-electron-apps-too-small/142940/3
+    // set the following in the .desktop EXEC
+    // for example, the file is /usr/share/applications/code.desktop
+    // --enable-features=UseOzonePlatform --ozone-platform-hint=auto
+    // The result looks like 
+    // Exec=/usr/share/code/code --enable-features=UseOzonePlatform --ozone-platform=wayland %F
+}
+
+// disable middle click paste
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous
+clipboard {
+    disable-primary
 }
 ```
 
