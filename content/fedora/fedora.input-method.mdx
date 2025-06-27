@@ -26,13 +26,32 @@ it seems my xiaohe is not working, trying to remove Pinyin and add it again, sti
 原来是添加输入法时，选择了 Pinyin 而不是 Shuangpin 。重新添加 Shuangpin 就好了。
 
 
-apply 
+## Fix Input Method for Electron Apps (VS Code)
 
-according to arch wiki about fcitx5, for xwayland(niri might use it), seems need set enviroments variables like `GTK_IM_MODULE=fcitx` per applicaiton(usually in .desktop file)
+According to Arch wiki, Electron apps like VS Code need special configuration to work with fcitx5 input method.
 
-```bash
-# maybe need set this to .desktop to make fcitx5 work on electron
-# for example, to fix Japanese Kanji input
-# https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
-Exec=/home/ding/Applications/Cursor-0.49.6-x86_64_f9ef81815b1862f6cabd16604f9a5be6.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3 %F
-```
+### Steps to fix VS Code input method:
+
+1. **Copy the desktop file to user directory:**
+   ```bash
+   cp /usr/share/applications/code.desktop ~/.local/share/applications/
+   ```
+
+2. **Edit the copied desktop file:**
+   ```bash
+   nano ~/.local/share/applications/code.desktop
+   ```
+
+3. **Replace the Exec line with Wayland flags:**
+   ```bash
+   Exec=/usr/share/code/code --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3 %F
+   ```
+
+4. **Save and restart**
+
+This enables native Wayland mode and proper input method support for Japanese/Chinese typing.
+
+**Attention**: this fix only applies when you open VS Code from the application menu or desktop icon, not from terminal like `code some-file`.
+
+Reference: https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
+
