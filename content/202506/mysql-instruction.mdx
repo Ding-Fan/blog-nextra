@@ -4,8 +4,9 @@
 
 ### 1. Clear Input/Output Separation
 - Use distinct code blocks for commands and outputs
-- Label commands with appropriate language tags (`bash`, `sql`)
-- Mark outputs with **"Output:"** label followed by plain code blocks
+- Label commands with **"Input:"** followed by appropriate language tags (`bash`, `sql`)
+- Label outputs with **"Output:"** followed by plain code blocks
+- Both labels should be bold for visual clarity
 
 ### 2. WYSIWYG Output Format
 - Show exact terminal output as it appears
@@ -26,16 +27,19 @@
 - **Data Operations**: Insert, update, delete, select data
 
 ### 5. Code Block Standards
+**Input:**
 ```bash
 # For shell commands
 sudo mysql -u root -p
 ```
 
+**Input:**
 ```sql
 -- For SQL commands
 SHOW DATABASES;
 ```
 
+**Output:**
 ```
 # For exact output (no language tag)
 +--------------------+
@@ -60,8 +64,8 @@ SHOW DATABASES;
 - Avoid redundant information
 
 ### 8. Visual Clarity
-- Use **bold** for output labels
-- Separate input and output visually
+- Use **bold** for both "Input:" and "Output:" labels
+- Separate input and output visually with clear labeling
 - Maintain consistent spacing between sections
 - Use descriptive but concise section titles
 
@@ -70,6 +74,7 @@ SHOW DATABASES;
 ```markdown
 ## [Operation Name]
 
+**Input:**
 ```[language]
 [COMMAND]
 ```
@@ -82,11 +87,12 @@ SHOW DATABASES;
 
 ## Quality Checklist
 
-- [ ] Commands use correct language tags
-- [ ] Outputs show exact terminal formatting
+- [ ] Commands use **"Input:"** labels with correct language tags
+- [ ] Outputs use **"Output:"** labels and show exact terminal formatting
 - [ ] Sections flow logically
 - [ ] Content is concise without losing clarity
 - [ ] Each section focuses on one concept
 - [ ] WYSIWYG principle maintained throughout
 - [ ] Subheaders clearly separate operations
 - [ ] No unnecessary explanatory text
+- [ ] Both Input and Output labels are bold for visual clarity
