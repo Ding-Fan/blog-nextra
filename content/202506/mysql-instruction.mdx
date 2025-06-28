@@ -3,10 +3,10 @@
 ## Formatting Guidelines
 
 ### 1. Clear Input/Output Separation
-- Use distinct code blocks for commands and outputs
-- Label commands with **"Input:"** followed by appropriate language tags (`bash`, `sql`)
-- Label outputs with **"Output:"** followed by plain code blocks
-- Both labels should be bold for visual clarity
+- Use `### Input` subheaders for commands with appropriate language tags (`bash`, `sql`)
+- Use `### Output` subheaders for terminal outputs with plain code blocks
+- Use `### Explanation` subheaders for educational content
+- All subheaders provide clear visual hierarchy and structure
 
 ### 2. WYSIWYG Output Format
 - Show exact terminal output as it appears
@@ -27,19 +27,19 @@
 - **Data Operations**: Insert, update, delete, select data
 
 ### 5. Code Block Standards
-**Input:**
+### Input
 ```bash
 # For shell commands
 sudo mysql -u root -p
 ```
 
-**Input:**
+### Input
 ```sql
 -- For SQL commands
 SHOW DATABASES;
 ```
 
-**Output:**
+### Output
 ```
 # For exact output (no language tag)
 +--------------------+
@@ -56,43 +56,75 @@ SHOW DATABASES;
 - Progress logically through operations
 - Show verification steps after each major operation
 - Include expected responses for each command
+- Add explanations after examples to reinforce learning
 
-### 7. Conciseness Guidelines
-- Remove unnecessary explanatory text
-- Focus on commands and their outputs
+### 7. Section Explanations
+- Add one-line summary after each output block
+- Follow with beginner-friendly bullet points
+- Include syntax details and key concepts
+- Explain atomic concepts that build up to the result
+- Keep explanations concise but educational
+
+### 8. Explanation Format
+```markdown
+### Explanation
+One-line summary of what the section demonstrates.
+- First concept explanation with syntax details
+- Second concept building on the first
+- Third concept showing the complete result
+- Key takeaway or best practice note
+```
+
+### 9. Conciseness Guidelines
+- Remove unnecessary explanatory text from examples
+- Focus on commands and their outputs in examples
 - Use brief, descriptive section headers
-- Avoid redundant information
+- Avoid redundant information in examples
+- Add educational value through post-example explanations
 
-### 8. Visual Clarity
-- Use **bold** for both "Input:" and "Output:" labels
-- Separate input and output visually with clear labeling
+### 10. Visual Clarity
+- Use `### Input`, `### Output`, and `### Explanation` subheaders for structure
+- Separate input, output, and explanations visually with clear hierarchy
 - Maintain consistent spacing between sections
-- Use descriptive but concise section titles
+- Use descriptive but concise main section titles (##)
 
 ## Example Template
 
 ```markdown
 ## [Operation Name]
 
-**Input:**
+### Input
 ```[language]
 [COMMAND]
 ```
 
-**Output:**
+### Output
 ```
 [EXACT_OUTPUT_AS_SHOWN_IN_TERMINAL]
 ```
+
+### Explanation
+One-line summary of what this section demonstrates.
+- First key concept with syntax explanation
+- Second concept building on the first
+- Third concept showing the complete result
+- Important takeaway or best practice
 ```
 
 ## Quality Checklist
 
-- [ ] Commands use **"Input:"** labels with correct language tags
-- [ ] Outputs use **"Output:"** labels and show exact terminal formatting
-- [ ] Sections flow logically
-- [ ] Content is concise without losing clarity
+- [ ] Commands use `### Input` subheaders with correct language tags
+- [ ] Outputs use `### Output` subheaders and show exact terminal formatting
+- [ ] Explanations use `### Explanation` subheaders with structured content
+- [ ] Sections flow logically from basic to advanced concepts
+- [ ] Content is concise without losing clarity in examples
 - [ ] Each section focuses on one concept
 - [ ] WYSIWYG principle maintained throughout
-- [ ] Subheaders clearly separate operations
-- [ ] No unnecessary explanatory text
-- [ ] Both Input and Output labels are bold for visual clarity
+- [ ] Main section headers (##) clearly separate operations
+- [ ] No unnecessary explanatory text in examples
+- [ ] Clear visual hierarchy with ### subheaders
+- [ ] Each section includes structured explanations
+- [ ] Explanations start with one-line summary
+- [ ] Bullet points explain concepts in building order
+- [ ] Syntax details and key concepts are included
+- [ ] Explanations are beginner-friendly but educational

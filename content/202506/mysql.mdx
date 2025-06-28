@@ -2,7 +2,7 @@
 
 ## Login to MySQL
 
-**Input:**
+### Input
 ```bash
 sudo mysql -u root -p
 # Press Enter because no password
@@ -15,12 +15,12 @@ mysql>
 
 ## Show Databases
 
-**Input:**
+### Input
 ```sql
 SHOW DATABASES;
 ```
 
-**Output:**
+### Output
 ```
 +--------------------+
 | Database           |
@@ -33,26 +33,38 @@ SHOW DATABASES;
 4 rows in set (0.02 sec)
 ```
 
+### Explanation
+Shows all available databases on the MySQL server.
+- `SHOW DATABASES` lists all database schemas
+- Default system databases: `information_schema`, `mysql`, `performance_schema`, `sys`
+- Each database acts as a container for tables and data
+
 ## Create Database
 
-**Input:**
+### Input
 ```sql
 CREATE DATABASE study;
 ```
 
-**Output:**
+### Output
 ```
 Query OK, 1 row affected (0.04 sec)
 ```
 
+### Explanation
+Creates a new database named "study" for storing tables and data.
+- `CREATE DATABASE` syntax creates a new database schema
+- Database name must be unique on the server
+- Success message shows "1 row affected" meaning one database was created
+
 ## Verify Database Created
 
-**Input:**
+### Input
 ```sql
 SHOW DATABASES;
 ```
 
-**Output:**
+### Output
 ```
 +--------------------+
 | Database           |
@@ -66,26 +78,38 @@ SHOW DATABASES;
 5 rows in set (0.00 sec)
 ```
 
+### Explanation
+Confirms the new database "study" appears in the database list.
+- Previous result had 4 databases, now shows 5
+- The "study" database now appears in alphabetical order
+- Verification step ensures the CREATE command succeeded
+
 ## Use Database
 
-**Input:**
+### Input
 ```sql
 USE study;
 ```
 
-**Output:**
+### Output
 ```
 Database changed
 ```
 
+### Explanation
+Switches the active database context to "study" for subsequent operations.
+- `USE` command sets the default database for queries
+- All table operations will now target the "study" database
+- Required before creating tables or querying data
+
 ## Basic SELECT
 
-**Input:**
+### Input
 ```sql
 SELECT prod_name FROM Products;
 ```
 
-**Output:**
+### Output
 ```
 +---------------------+
 | prod_name           |
@@ -103,14 +127,21 @@ SELECT prod_name FROM Products;
 9 rows in set (0.01 sec)
 ```
 
+### Explanation
+Retrieves data from a single column of the Products table.
+- `SELECT` is the fundamental command for querying data
+- `column_name` specifies which field to retrieve
+- `FROM table_name` specifies the source table
+- Results show data in insertion order (no sorting applied)
+
 ## Select Multiple Columns
 
-**Input:**
+### Input
 ```sql
 SELECT prod_id, prod_name, prod_price FROM Products;
 ```
 
-**Output:**
+### Output
 ```
 +---------+---------------------+------------+
 | prod_id | prod_name           | prod_price |
@@ -128,14 +159,21 @@ SELECT prod_id, prod_name, prod_price FROM Products;
 9 rows in set (0.00 sec)
 ```
 
+### Explanation
+Retrieves multiple specific columns from the table.
+- Comma-separated column names specify which fields to return
+- Column order in SELECT determines display order
+- More efficient than SELECT * when you only need specific data
+- Results show related data across multiple columns
+
 ## Select All Columns
 
-**Input:**
+### Input
 ```sql
 SELECT * FROM Products;
 ```
 
-**Output:**
+### Output
 ```
 +---------+---------+---------------------+------------+-----------------------------------------------------------------------+
 | prod_id | vend_id | prod_name           | prod_price | prod_desc                                                             |
@@ -153,14 +191,21 @@ SELECT * FROM Products;
 9 rows in set (0.02 sec)
 ```
 
+### Explanation
+Retrieves all columns from the table using the wildcard selector.
+- `*` wildcard represents all columns in the table
+- Displays complete table structure: prod_id, vend_id, prod_name, prod_price, prod_desc
+- Useful for exploration but can be inefficient for large tables
+- Column order matches the table definition order
+
 ## Select Distinct Values
 
-**Input:**
+### Input
 ```sql
 SELECT vend_id FROM Products;
 ```
 
-**Output:**
+### Output
 ```
 +---------+
 | vend_id |
@@ -178,12 +223,12 @@ SELECT vend_id FROM Products;
 9 rows in set (0.00 sec)
 ```
 
-**Input:**
+### Input
 ```sql
 SELECT DISTINCT vend_id FROM Products;
 ```
 
-**Output:**
+### Output
 ```
 +---------+
 | vend_id |
@@ -195,14 +240,21 @@ SELECT DISTINCT vend_id FROM Products;
 3 rows in set (0.01 sec)
 ```
 
+### Explanation
+Demonstrates how DISTINCT eliminates duplicate values from results.
+- First query shows all vend_id values including duplicates (9 rows)
+- `DISTINCT` keyword filters out duplicate values
+- Second query returns only unique vend_id values (3 rows)
+- Useful for finding unique values in columns with repeated data
+
 ## Limit Results
 
-**Input:**
+### Input
 ```sql
 SELECT prod_name FROM Products;
 ```
 
-**Output:**
+### Output
 ```
 +---------------------+
 | prod_name           |
@@ -220,12 +272,12 @@ SELECT prod_name FROM Products;
 9 rows in set (0.01 sec)
 ```
 
-**Input:**
+### Input
 ```sql
 SELECT prod_name FROM Products LIMIT 5;
 ```
 
-**Output:**
+### Output
 ```
 +---------------------+
 | prod_name           |
@@ -239,14 +291,21 @@ SELECT prod_name FROM Products LIMIT 5;
 5 rows in set (0.00 sec)
 ```
 
+### Explanation
+Controls the number of rows returned from a query.
+- Full query returns all 9 rows from the table
+- `LIMIT 5` restricts results to only the first 5 rows
+- Useful for testing queries or paginating large result sets
+- Returns rows in their natural table order (insertion order)
+
 ## Limit with Offset
 
-**Input:**
+### Input
 ```sql
 SELECT prod_name FROM Products LIMIT 5 OFFSET 5;
 ```
 
-**Output:**
+### Output
 ```
 +--------------------+
 | prod_name          |
@@ -259,22 +318,29 @@ SELECT prod_name FROM Products LIMIT 5 OFFSET 5;
 4 rows in set (0.00 sec)
 ```
 
+### Explanation
+Combines LIMIT with OFFSET to skip rows and implement pagination.
+- `OFFSET 5` skips the first 5 rows
+- `LIMIT 5` then takes up to 5 rows from the remaining data
+- Results in rows 6-9 (only 4 rows remain after skipping first 5)
+- Essential for implementing pagination in applications
+
 ## Comments in SQL
 
-**Input:**
+### Input
 ```sql
 SELECT prod_name   -- this is a comment
 FROM Products;
 ```
 
-**Input:**
+### Input
 ```sql
 # This is a comment
 SELECT prod_name
 FROM Products;
 ```
 
-**Input:**
+### Input
 ```sql
 /* SELECT prod_name, vend_id
 FROM Products; */
@@ -282,7 +348,7 @@ SELECT prod_name
 FROM Products;
 ```
 
-**Output:**
+### Output
 ```
 +---------------------+
 | prod_name           |
@@ -300,14 +366,21 @@ FROM Products;
 9 rows in set (0.00 sec)
 ```
 
+### Explanation
+Shows three different ways to add comments to SQL code.
+- `--` creates single-line comments (everything after -- is ignored)
+- `#` also creates single-line comments (MySQL extension)
+- `/* */` creates multi-line block comments (can span multiple lines)
+- Comments help document code and temporarily disable statements
+
 ## Sort Data
 
-**Input:**
+### Input
 ```sql
 SELECT prod_name FROM Products;
 ```
 
-**Output:**
+### Output
 ```
 +---------------------+
 | prod_name           |
@@ -325,12 +398,12 @@ SELECT prod_name FROM Products;
 9 rows in set (0.00 sec)
 ```
 
-**Input:**
+### Input
 ```sql
 SELECT prod_name FROM Products ORDER BY prod_name;
 ```
 
-**Output:**
+### Output
 ```
 +---------------------+
 | prod_name           |
@@ -348,14 +421,21 @@ SELECT prod_name FROM Products ORDER BY prod_name;
 9 rows in set (0.00 sec)
 ```
 
+### Explanation
+Demonstrates sorting data using ORDER BY clause.
+- First query shows data in natural table order (insertion order)
+- `ORDER BY prod_name` sorts results alphabetically by product name
+- Default sort order is ascending (A-Z for text, low-high for numbers)
+- Compare the two outputs to see how ORDER BY changes row sequence
+
 ## Sort Multiple Columns
 
-**Input:**
+### Input
 ```sql
 SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price, prod_name;
 ```
 
-**Output:**
+### Output
 ```
 +---------+------------+---------------------+
 | prod_id | prod_price | prod_name           |
@@ -373,14 +453,21 @@ SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price, prod_na
 9 rows in set (0.00 sec)
 ```
 
+### Explanation
+Sorts data by multiple columns in priority order.
+- First sorts by `prod_price` (ascending, lowest to highest)
+- Then sorts by `prod_name` (ascending, A-Z) for rows with same price
+- Notice products with price 3.49 are sub-sorted alphabetically
+- Multiple column sorting creates hierarchical ordering
+
 ## Sort by Column Position
 
-**Input:**
+### Input
 ```sql
 SELECT prod_id, prod_price, prod_name FROM Products ORDER BY 2, 3;
 ```
 
-**Output:**
+### Output
 ```
 +---------+------------+---------------------+
 | prod_id | prod_price | prod_name           |
@@ -398,14 +485,21 @@ SELECT prod_id, prod_price, prod_name FROM Products ORDER BY 2, 3;
 9 rows in set (0.00 sec)
 ```
 
+### Explanation
+Uses column position numbers instead of column names for sorting.
+- `ORDER BY 2, 3` means sort by 2nd column (prod_price), then 3rd column (prod_name)
+- Column positions are numbered from left to right starting at 1
+- Results are identical to the previous query
+- Useful shorthand but less readable than column names
+
 ## Sort Descending
 
-**Input:**
+### Input
 ```sql
 SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price DESC;
 ```
 
-**Output:**
+### Output
 ```
 +---------+------------+---------------------+
 | prod_id | prod_price | prod_name           |
@@ -423,14 +517,21 @@ SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price DESC;
 9 rows in set (0.00 sec)
 ```
 
+### Explanation
+Reverses sort order using DESC keyword.
+- `DESC` changes default ascending order to descending
+- Products now sorted from highest price (11.99) to lowest (3.49)
+- Products with same price maintain their natural table order
+- Default is `ASC` (ascending) when no direction specified
+
 ## Sort Mixed Direction
 
-**Input:**
+### Input
 ```sql
 SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price DESC, prod_name;
 ```
 
-**Output:**
+### Output
 ```
 +---------+------------+---------------------+
 | prod_id | prod_price | prod_name           |
@@ -447,6 +548,13 @@ SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price DESC, pr
 +---------+------------+---------------------+
 9 rows in set (0.01 sec)
 ```
+
+### Explanation
+Combines different sort directions for multiple columns.
+- `prod_price DESC` sorts price from high to low
+- `prod_name` (no DESC) sorts name A-Z within same price groups
+- Notice 3.49 price products are now sorted alphabetically: Bird, Fish, Rabbit
+- Each column can have independent sort direction (ASC or DESC)
 
 
 
