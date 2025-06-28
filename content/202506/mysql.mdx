@@ -1,0 +1,74 @@
+# MySQL
+
+## Login to MySQL
+
+```bash
+sudo mysql -u root -p
+# Press Enter because no password
+```
+
+You will see the MySQL prompt:
+```
+mysql>
+```
+
+## Show Databases
+
+```sql
+SHOW DATABASES;
+```
+
+**Output:**
+```
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.02 sec)
+```
+
+## Create Database
+
+```sql
+CREATE DATABASE study;
+```
+
+**Output:**
+```
+Query OK, 1 row affected (0.04 sec)
+```
+
+## Verify Database Created
+
+```sql
+SHOW DATABASES;
+```
+
+**Output:**
+```
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| study              |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+```
+
+## Select Database
+
+```sql
+USE study;
+```
+
+**Output:**
+```
+Database changed
+```

@@ -1,0 +1,92 @@
+# MySQL Tutorial Content Instructions
+
+## Formatting Guidelines
+
+### 1. Clear Input/Output Separation
+- Use distinct code blocks for commands and outputs
+- Label commands with appropriate language tags (`bash`, `sql`)
+- Mark outputs with **"Output:"** label followed by plain code blocks
+
+### 2. WYSIWYG Output Format
+- Show exact terminal output as it appears
+- Preserve all formatting, spacing, and special characters
+- Include timing information (e.g., "4 rows in set (0.02 sec)")
+- Maintain ASCII table formatting with proper alignment
+
+### 3. Content Structure
+- Break content into logical sections with subheaders (`##`)
+- Keep sections concise and focused
+- Maintain natural tutorial flow from basic to advanced
+- Each section should have one primary concept
+
+### 4. Section Organization
+- **Login Process**: Authentication and initial setup
+- **Database Operations**: Show, create, select databases
+- **Table Operations**: Create, modify, query tables
+- **Data Operations**: Insert, update, delete, select data
+
+### 5. Code Block Standards
+```bash
+# For shell commands
+sudo mysql -u root -p
+```
+
+```sql
+-- For SQL commands
+SHOW DATABASES;
+```
+
+```
+# For exact output (no language tag)
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
++--------------------+
+4 rows in set (0.02 sec)
+```
+
+### 6. Content Flow Rules
+- Start with connection/login
+- Progress logically through operations
+- Show verification steps after each major operation
+- Include expected responses for each command
+
+### 7. Conciseness Guidelines
+- Remove unnecessary explanatory text
+- Focus on commands and their outputs
+- Use brief, descriptive section headers
+- Avoid redundant information
+
+### 8. Visual Clarity
+- Use **bold** for output labels
+- Separate input and output visually
+- Maintain consistent spacing between sections
+- Use descriptive but concise section titles
+
+## Example Template
+
+```markdown
+## [Operation Name]
+
+```[language]
+[COMMAND]
+```
+
+**Output:**
+```
+[EXACT_OUTPUT_AS_SHOWN_IN_TERMINAL]
+```
+```
+
+## Quality Checklist
+
+- [ ] Commands use correct language tags
+- [ ] Outputs show exact terminal formatting
+- [ ] Sections flow logically
+- [ ] Content is concise without losing clarity
+- [ ] Each section focuses on one concept
+- [ ] WYSIWYG principle maintained throughout
+- [ ] Subheaders clearly separate operations
+- [ ] No unnecessary explanatory text
