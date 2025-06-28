@@ -62,7 +62,7 @@ SHOW DATABASES;
 5 rows in set (0.00 sec)
 ```
 
-## Select Database
+## Use Database
 
 ```sql
 USE study;
@@ -72,3 +72,179 @@ USE study;
 ```
 Database changed
 ```
+
+## Basic SELECT
+
+```sql
+SELECT prod_name FROM Products;
+```
+
+**Output:**
+```
++---------------------+
+| prod_name           |
++---------------------+
+| Fish bean bag toy   |
+| Bird bean bag toy   |
+| Rabbit bean bag toy |
+| 8 inch teddy bear   |
+| 12 inch teddy bear  |
+| 18 inch teddy bear  |
+| Raggedy Ann         |
+| King doll           |
+| Queen doll          |
++---------------------+
+9 rows in set (0.01 sec)
+```
+
+## Select Multiple Columns
+
+```sql
+SELECT prod_id, prod_name, prod_price FROM Products;
+```
+
+**Output:**
+```
++---------+---------------------+------------+
+| prod_id | prod_name           | prod_price |
++---------+---------------------+------------+
+| BNBG01  | Fish bean bag toy   |       3.49 |
+| BNBG02  | Bird bean bag toy   |       3.49 |
+| BNBG03  | Rabbit bean bag toy |       3.49 |
+| BR01    | 8 inch teddy bear   |       5.99 |
+| BR02    | 12 inch teddy bear  |       8.99 |
+| BR03    | 18 inch teddy bear  |      11.99 |
+| RGAN01  | Raggedy Ann         |       4.99 |
+| RYL01   | King doll           |       9.49 |
+| RYL02   | Queen doll          |       9.49 |
++---------+---------------------+------------+
+9 rows in set (0.00 sec)
+```
+
+## Select All Columns
+
+```sql
+SELECT * FROM Products;
+```
+
+**Output:**
+```
++---------+---------+---------------------+------------+-----------------------------------------------------------------------+
+| prod_id | vend_id | prod_name           | prod_price | prod_desc                                                             |
++---------+---------+---------------------+------------+-----------------------------------------------------------------------+
+| BNBG01  | DLL01   | Fish bean bag toy   |       3.49 | Fish bean bag toy, complete with bean bag worms with which to feed it |
+| BNBG02  | DLL01   | Bird bean bag toy   |       3.49 | Bird bean bag toy, eggs are not included                              |
+| BNBG03  | DLL01   | Rabbit bean bag toy |       3.49 | Rabbit bean bag toy, comes with bean bag carrots                      |
+| BR01    | BRS01   | 8 inch teddy bear   |       5.99 | 8 inch teddy bear, comes with cap and jacket                          |
+| BR02    | BRS01   | 12 inch teddy bear  |       8.99 | 12 inch teddy bear, comes with cap and jacket                         |
+| BR03    | BRS01   | 18 inch teddy bear  |      11.99 | 18 inch teddy bear, comes with cap and jacket                         |
+| RGAN01  | DLL01   | Raggedy Ann         |       4.99 | 18 inch Raggedy Ann doll                                              |
+| RYL01   | FNG01   | King doll           |       9.49 | 12 inch king doll with royal garments and crown                       |
+| RYL02   | FNG01   | Queen doll          |       9.49 | 12 inch queen doll with royal garments and crown                      |
++---------+---------+---------------------+------------+-----------------------------------------------------------------------+
+9 rows in set (0.02 sec)
+```
+
+## Select Distinct Values
+
+```sql
+SELECT vend_id FROM Products;
+```
+
+**Output:**
+```
++---------+
+| vend_id |
++---------+
+| BRS01   |
+| BRS01   |
+| BRS01   |
+| DLL01   |
+| DLL01   |
+| DLL01   |
+| DLL01   |
+| FNG01   |
+| FNG01   |
++---------+
+9 rows in set (0.00 sec)
+```
+
+```sql
+SELECT DISTINCT vend_id FROM Products;
+```
+
+**Output:**
+```
++---------+
+| vend_id |
++---------+
+| BRS01   |
+| DLL01   |
+| FNG01   |
++---------+
+3 rows in set (0.01 sec)
+```
+
+## Limit Results
+
+```sql
+SELECT prod_name FROM Products;
+```
+
+**Output:**
+```
++---------------------+
+| prod_name           |
++---------------------+
+| Fish bean bag toy   |
+| Bird bean bag toy   |
+| Rabbit bean bag toy |
+| 8 inch teddy bear   |
+| 12 inch teddy bear  |
+| 18 inch teddy bear  |
+| Raggedy Ann         |
+| King doll           |
+| Queen doll          |
++---------------------+
+9 rows in set (0.01 sec)
+```
+
+```sql
+SELECT prod_name FROM Products LIMIT 5;
+```
+
+**Output:**
+```
++---------------------+
+| prod_name           |
++---------------------+
+| Fish bean bag toy   |
+| Bird bean bag toy   |
+| Rabbit bean bag toy |
+| 8 inch teddy bear   |
+| 12 inch teddy bear  |
++---------------------+
+5 rows in set (0.00 sec)
+```
+
+## Limit with Offset
+
+```sql
+SELECT prod_name FROM Products LIMIT 5 OFFSET 5;
+```
+
+**Output:**
+```
++--------------------+
+| prod_name          |
++--------------------+
+| 18 inch teddy bear |
+| Raggedy Ann        |
+| King doll          |
+| Queen doll         |
++--------------------+
+4 rows in set (0.00 sec)
+```
+
+
+
