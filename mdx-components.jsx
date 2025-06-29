@@ -25,6 +25,14 @@ import WordList from "./components/WordList";
 import YouTubeLatest from "./components/YouTubeLatest";
 import HomeIcons from "./components/HomeIcons";
 
+// Drama components
+import {
+  Character as DramaCharacter,
+  Scene,
+  Narrator,
+  Action
+} from "./components/drama";
+
 const docsComponents = getDocsMDXComponents();
 
 export function useMDXComponents(components) {
@@ -58,5 +66,10 @@ export function useMDXComponents(components) {
     ShowQuote,
     UIDemo,
     HomeIcons,
+    // Drama components
+    DramaCharacter,
+    Scene,
+    Narrator,
+    Action,
   };
 }

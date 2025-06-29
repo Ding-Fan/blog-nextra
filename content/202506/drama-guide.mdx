@@ -1,0 +1,157 @@
+# Drama Components Usage Guide
+
+This guide explains how to use the drama components to create interactive Japanese learning stories.
+
+## Available Components
+
+### Character Component
+Creates dialogue boxes for characters with their avatars and styling.
+
+```jsx
+import { Character } from '../components/drama';
+
+<Character name="tenchou" emotion="angry">
+いらっしゃいませ！
+</Character>
+```
+
+**Available Characters:**
+- `tenchou` (店長) - Old otaku manager with cap and glasses
+- `watashi` (私) - Young blonde girl learning Japanese
+- `customer` (お客さん) - Store customer
+
+**Available Emotions:**
+- `normal` - Default state
+- `angry` - Red shadow effect
+- `happy` - Yellow shadow with warmth
+- `confused` - Gray shadow
+- `tired` - Purple shadow
+- `excited` - Green shadow with bounce animation
+
+### Scene Component
+Creates scene containers with location and time information.
+
+```jsx
+import { Scene } from '../components/drama';
+
+<Scene 
+  title="第一幕: 初日のバイト" 
+  location="秋葉原のメイドカフェ" 
+  time="朝 9:00"
+>
+  // Your dialogue here
+</Scene>
+```
+
+### Narrator Component
+Adds narrative text between dialogues.
+
+```jsx
+import { Narrator } from '../components/drama';
+
+<Narrator>
+私は緊張しながらカフェに入った。初めてのバイトの日だった。
+</Narrator>
+```
+
+### Action Component
+Describes character actions and movements with language support.
+
+```jsx
+import { Action } from '../components/drama';
+
+<Action character="watashi" language="en">
+nervously adjusts her cap and takes a deep breath
+</Action>
+
+<Action character="tenchou" language="jp">
+スマホを見ながら頷く
+</Action>
+```
+
+**Character Names:**
+- Use predefined character names: `tenchou`, `watashi`, `customer`
+- Or use custom character names as strings
+- Language support: `en` (English) or `jp` (Japanese) for character names
+
+## Complete Example
+
+```jsx
+import { Character, Scene, Narrator, Action } from '../components/drama';
+
+<Scene 
+  title="第一幕: 初日のバイト" 
+  location="秋葉原のメイドカフェ" 
+  time="朝 9:00"
+>
+
+<Narrator>
+今日は私の初めてのバイトの日。秋葉原のメイドカフェで働くことになった。
+</Narrator>
+
+<Character name="watashi" emotion="nervous">
+おはようございます！今日からお世話になります！
+</Character>
+
+<Action character="店長">
+looks up from his manga, adjusting his thick glasses
+</Action>
+
+<Character name="tenchou" emotion="normal">
+ああ、新人ちゃんか。まずはユニフォームに着替えて。
+</Character>
+
+<Character name="watashi" emotion="confused">
+あの...すみません、「ユニフォーム」って何ですか？
+</Character>
+
+<Character name="tenchou" emotion="tired">
+制服だよ、制服。日本語まだまだだな...
+</Character>
+
+</Scene>
+```
+
+## Language Support
+
+You can switch between Japanese and English for character names:
+
+```jsx
+<Character name="tenchou" language="en">
+Welcome to the store!
+</Character>
+
+<Character name="tenchou" language="jp">
+いらっしゃいませ！
+</Character>
+```
+
+## Character Profiles
+
+### 店長 (Tenchou)
+- **Appearance**: Old, fat otaku with cap and glasses
+- **Personality**: Similar to aged Daru from Steins;Gate
+- **Traits**: Otaku interests, slightly impatient with newbies
+- **Speech style**: Casual, sometimes uses otaku slang
+
+### 私 (Watashi)
+- **Appearance**: Young girl with blonde ponytail, wears required cap uniform
+- **Personality**: Eager to learn Japanese, makes innocent mistakes
+- **Goals**: Wants to live in Japan and spend time in Akihabara
+- **Speech style**: Polite but sometimes confused, mixes languages
+
+### お客さん (Customer)
+- **Variable character**: Different customers with different personalities
+- **Use for**: Creating various interaction scenarios
+- **Speech style**: Depends on the customer type you're portraying
+
+## Tips for Creating Drama Scenes
+
+1. **Start with Scene setup**: Always begin with location and time
+2. **Use Narrator for context**: Explain situations between dialogues
+3. **Show emotions**: Use the emotion props to convey character feelings
+4. **Add actions**: Use Action component for physical movements
+5. **Mix languages**: Show the learning process by mixing Japanese and English
+6. **Create mistakes**: Show authentic learning moments with errors
+
+This system lets you create engaging Japanese learning content while practicing dialogue and vocabulary!
