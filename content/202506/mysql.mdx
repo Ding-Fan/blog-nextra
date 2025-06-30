@@ -561,6 +561,213 @@ Combines different sort directions for multiple columns.
 - Notice 3.49 price products are now sorted alphabetically: Bird, Fish, Rabbit
 - Each column can have independent sort direction (ASC or DESC)
 
+## Filter Data with WHERE
+
+### Input
+```sql
+SELECT prod_name, prod_price
+FROM Products
+WHERE prod_price = 3.49;
+```
+
+### Output
+```
++---------------------+------------+
+| prod_name           | prod_price |
++---------------------+------------+
+| Fish bean bag toy   |       3.49 |
+| Bird bean bag toy   |       3.49 |
+| Rabbit bean bag toy |       3.49 |
++---------------------+------------+
+3 rows in set (0.00 sec)
+```
+
+### Explanation
+Filters data using WHERE clause with equality condition.
+- `WHERE` clause filters rows based on specified conditions
+- `prod_price = 3.49` returns only rows where price equals exactly 3.49
+- Equality operator `=` performs exact match comparison
+- Results show only the 3 products with price 3.49
+
+## Comparison Operators
+
+### Input
+```sql
+SELECT prod_name, prod_price
+FROM Products
+WHERE prod_price < 10;
+```
+
+### Output
+```
++---------------------+------------+
+| prod_name           | prod_price |
++---------------------+------------+
+| Fish bean bag toy   |       3.49 |
+| Bird bean bag toy   |       3.49 |
+| Rabbit bean bag toy |       3.49 |
+| 8 inch teddy bear   |       5.99 |
+| 12 inch teddy bear  |       8.99 |
+| Raggedy Ann         |       4.99 |
+| King doll           |       9.49 |
+| Queen doll          |       9.49 |
++---------------------+------------+
+8 rows in set (0.00 sec)
+```
+
+### Input
+```sql
+SELECT prod_name, prod_price
+FROM Products
+WHERE prod_price <= 10;
+```
+
+### Output
+```
++---------------------+------------+
+| prod_name           | prod_price |
++---------------------+------------+
+| Fish bean bag toy   |       3.49 |
+| Bird bean bag toy   |       3.49 |
+| Rabbit bean bag toy |       3.49 |
+| 8 inch teddy bear   |       5.99 |
+| 12 inch teddy bear  |       8.99 |
+| Raggedy Ann         |       4.99 |
+| King doll           |       9.49 |
+| Queen doll          |       9.49 |
++---------------------+------------+
+8 rows in set (0.00 sec)
+```
+
+### Explanation
+Demonstrates less-than and less-than-or-equal comparison operators.
+- `<` operator finds values strictly less than the specified value
+- `<=` operator finds values less than or equal to the specified value
+- Both queries return 8 rows since no products cost exactly 10.00
+- Useful for finding products within price ranges
+
+## Not Equal Operators
+
+### Input
+```sql
+SELECT vend_id, prod_name
+FROM Products
+WHERE vend_id <> 'DLL01';
+```
+
+### Output
+```
++---------+--------------------+
+| vend_id | prod_name          |
++---------+--------------------+
+| BRS01   | 8 inch teddy bear  |
+| BRS01   | 12 inch teddy bear |
+| BRS01   | 18 inch teddy bear |
+| FNG01   | King doll          |
+| FNG01   | Queen doll         |
++---------+--------------------+
+5 rows in set (0.00 sec)
+```
+
+### Input
+```sql
+SELECT vend_id, prod_name
+FROM Products
+WHERE vend_id != 'DLL01';
+```
+
+### Output
+```
++---------+--------------------+
+| vend_id | prod_name          |
++---------+--------------------+
+| BRS01   | 8 inch teddy bear  |
+| BRS01   | 12 inch teddy bear |
+| BRS01   | 18 inch teddy bear |
+| FNG01   | King doll          |
+| FNG01   | Queen doll         |
++---------+--------------------+
+5 rows in set (0.00 sec)
+```
+
+### Explanation
+Shows two equivalent ways to express "not equal" conditions.
+- `<>` is the standard SQL not-equal operator
+- `!=` is an alternative not-equal operator (MySQL extension)
+- Both exclude products from vendor 'DLL01'
+- Results are identical - choose based on preference or standard
+
+## Range Filtering
+
+### Input
+```sql
+SELECT prod_name, prod_price
+FROM Products
+WHERE prod_price BETWEEN 5 AND 10;
+```
+
+### Output
+```
++--------------------+------------+
+| prod_name          | prod_price |
++--------------------+------------+
+| 8 inch teddy bear  |       5.99 |
+| 12 inch teddy bear |       8.99 |
+| King doll          |       9.49 |
+| Queen doll         |       9.49 |
++--------------------+------------+
+4 rows in set (0.00 sec)
+```
+
+### Explanation
+Uses BETWEEN operator for range filtering.
+- `BETWEEN 5 AND 10` finds values from 5 to 10 inclusive
+- More readable than `WHERE prod_price >= 5 AND prod_price <= 10`
+- Both boundary values (5 and 10) are included in results
+- Useful for finding products within specific price ranges
+
+## NULL Value Testing
+
+### Input
+```sql
+SELECT prod_name
+FROM Products
+WHERE prod_price IS NULL;
+```
+
+### Output
+```
+Empty set (0.00 sec)
+```
+
+### Input
+```sql
+SELECT cust_name
+FROM Customers
+WHERE cust_email IS NULL;
+```
+
+### Output
+```
++---------------+
+| cust_name     |
++---------------+
+| Kids Place    |
+| The Toy Store |
++---------------+
+2 rows in set (0.01 sec)
+```
+
+### Explanation
+Demonstrates testing for NULL values using IS NULL operator.
+- `IS NULL` finds rows where the column contains no value
+- Cannot use `= NULL` - must use `IS NULL` for NULL testing
+- First query shows no products have NULL prices
+- Second query finds customers without email addresses
+- Essential for handling missing or unknown data
+
+
+
 
 
 
