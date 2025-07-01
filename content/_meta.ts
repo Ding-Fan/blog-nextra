@@ -1,4 +1,7 @@
 export default {
+
+  index: "又不是不能写博客",
+
   // Date folders (auto-generated in descending order)
   "202507": {},
   "202506": {},
@@ -6,7 +9,6 @@ export default {
   "202504": {},
   "202503": {},
 
-  index: "又不是不能写博客",
   // write: {},
   // input: {},
   about: {

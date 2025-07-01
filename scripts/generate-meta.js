@@ -47,19 +47,33 @@ function generateMeta() {
     return existingContent; // No date folders to add
   }
 
-  // Find where to insert date folders (after the opening brace)
+  // Find where to insert date folders (after the index entry)
   const lines = existingContent.split("\n");
-  const insertIndex =
-    lines.findIndex((line) => line.includes("export default {")) + 1;
+  let insertIndex = -1;
+
+  // Look for the index entry and insert after it
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].includes("index:")) {
+      insertIndex = i + 1;
+      break;
+    }
+  }
+
+  // If index not found, fall back to after the opening brace
+  if (insertIndex === -1) {
+    insertIndex =
+      lines.findIndex((line) => line.includes("export default {")) + 1;
+  }
 
   // Build date folders section
   const dateFoldersSection = [
+    "",
     "  // Date folders (auto-generated in descending order)",
     ...dateFolders.map((folder) => `  "${folder}": {},`),
     "",
   ];
 
-  // Insert date folders at the beginning of the object
+  // Insert date folders after the index entry
   lines.splice(insertIndex, 0, ...dateFoldersSection);
 
   return lines.join("\n");
