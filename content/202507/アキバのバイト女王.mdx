@@ -3,7 +3,7 @@
 import { Character, Scene, Narrator, Action } from '../../components/drama';
 
 <Scene 
-  title="第一幕: 初日のバイト" 
+  title="第一幕: 初日の挨拶" 
   location="秋葉原のメイドカフェ" 
   time="朝 9:00"
 >
@@ -21,7 +21,47 @@ import { Character, Scene, Narrator, Action } from '../../components/drama';
 </Action>
 
 <Character name="tenchou" emotion="normal">
-ああ、新人ちゃんか。まずは制服に着替えて。あとキャップも忘れるな。
+ああ、新人ちゃんか。早速だが、ここは秋葉原のメイドカフェだ。お客さんは主にオタクが多いからな。
+</Character>
+
+<Character name="watashi" emotion="confused">
+はい...でも、青クマがひどいですね、店長。お疲れですか？
+</Character>
+
+<Character name="tenchou" emotion="tired">
+*苦笑いしながら* 青クマ？ああ、これか。夜遅くまでアニメ見てたからな...君もひどいじゃないか。
+</Character>
+
+<Character name="watashi" emotion="embarrassed">
+あ、これですか？昨夜遅くまで漢字の勉強をしていました！日本語、難しいです...
+</Character>
+
+<Narrator>
+私は目の下のクマを指差した。店長は少し笑った。お互い夜更かしの仲間だと気づいた瞬間だった。
+</Narrator>
+
+<Character name="tenchou" emotion="happy">
+まあ、頑張ってるんだな。でも仕事中は元気に接客しろよ。客が心配しちゃうからな。
+</Character>
+
+<Action character="watashi">
+金髪のポニーテールを整えながら、元気よく頷く
+</Action>
+
+</Scene>
+
+<Scene 
+  title="第二幕: ユニフォームの謎" 
+  location="秋葉原のメイドカフェ" 
+  time="朝 9:15"
+>
+
+<Narrator>
+環境の説明が終わり、いよいよ仕事の準備が始まる。店長の表情が少し真剣になった。
+</Narrator>
+
+<Character name="tenchou" emotion="normal">
+さて、時間がないから急ぐぞ。まずは制服に着替えろ。あとキャップも忘れるな。
 </Character>
 
 <Character name="watashi" emotion="confused">
@@ -29,7 +69,7 @@ import { Character, Scene, Narrator, Action } from '../../components/drama';
 </Character>
 
 <Character name="tenchou" emotion="tired">
-*大きくため息をつく* ユーニフォームだよ、制服。日本語の勉強、もっと頑張れよ。
+*大きくため息をつく* ユニフォームだよ、制服。日本語の勉強、もっと頑張れよ。
 </Character>
 
 <Character name="watashi" emotion="confused">
@@ -37,11 +77,15 @@ import { Character, Scene, Narrator, Action } from '../../components/drama';
 </Character>
 
 <Character name="tenchou" emotion="angry">
-だから「ユニフォーム」だって！何回言わせるんだ？
+だから「ユニフォーム」だって！わからないの？何回言わせるんだ？時間がないんだぞ！
 </Character>
 
+<Action character="tenchou">
+どこからとったレシートの裏側に「ユニフォーム」と書いて、私に見せる。
+</Action>
+
 <Character name="watashi" emotion="excited">
-あ！UNIFORM！ユニフォーム！*大声で笑う* なんて面白い発音！ユニフォーム！ユニフォーム！
+あ！UNIFORM！ユニフォーム！*突然笑い出す* なんて面白い発音！
 </Character>
 
 <Character name="tenchou" emotion="confused">
@@ -49,32 +93,60 @@ import { Character, Scene, Narrator, Action } from '../../components/drama';
 </Character>
 
 <Character name="watashi" emotion="happy">
-だって、英語の「uniform」が「ユニフォーム」になってる！すごく可愛い発音！でも、どうやって日本人はこれを覚えるんですか？
+だって、英語の「uniform」が「ユニフォーム」になってる！「uni」は「一つ」という意味で、「form」は「形」という意味です。だから「uniform」は「一つの形」、みんな同じ服ということですね！
+</Character>
+
+<Character name="tenchou" emotion="confused">
+え...？言ってもわからない。
+</Character>
+
+<Character name="watashi" emotion="happy">
+でも、語源を知らないで、日本人はどうやって覚えるんですか？
 </Character>
 
 <Character name="tenchou" emotion="normal">
-*少し恥ずかしそうに* それは...カタカナになったら、もう日本語だからな。普通に覚えるんだよ。
+*少し恥ずかしそうに* それは...カタカナになったら、もう日本語だからな。「ユニフォーム」は「ユニフォーム」。それだけだ。
+</Character>
+
+<Character name="watashi" emotion="thoughtful">
+ただ音だけで暗記するんですね...すごいです。
+</Character>
+
+<Narrator>
+私は日本人の言語習得能力に感心しつつ、自分の分析的な学習方法との違いを実感した。
+</Narrator>
+
+<Character name="tenchou" emotion="tired">
+まあ、とにかく制服はバックルームにある。急いで着替えてくれ。
 </Character>
 
 <Action character="watashi">
 金髪のポニーテールを整えながら、まだクスクス笑っている
 </Action>
 
-<Character name="watashi" emotion="happy">
-はい！頑張ります！あの...「制服」はどこですか？
-</Character>
-
-<Character name="tenchou" emotion="normal">
-バックルームにある。青クマがひどいな...ちゃんと寝てるか？
-</Character>
+<Narrator>
+私はバックルームに向かった。しばらくして、困った声が聞こえてきた。
+</Narrator>
 
 <Character name="watashi" emotion="confused">
-青クマ...？あ、これですか？昨夜遅くまで漢字の勉強をしていました！
+あの...店長！もう少し大きいサイズのuniform...あ、ユニフォームはありますか？
 </Character>
 
-<Narrator>
-私は目の下のクマを指差した。店長は少し笑った。
-</Narrator>
+<Character name="tenchou" emotion="angry">
+ない！それだけしかない！
+</Character>
+
+<Character name="watashi" emotion="embarrassed">
+でも、ちょっと...きつくて...
+</Character>
+
+<Character name="tenchou" emotion="embarrassed">
+それで我慢してくれ！予算の都合で...いろんなサイズは用意できないんだ！
+</Character>
+
+<Character name="watashi" emotion="normal">
+わかりました...頑張ります。
+</Character>
 
 </Scene>
 
@@ -82,10 +154,22 @@ import { Character, Scene, Narrator, Action } from '../../components/drama';
 
 ## 語彙リスト
 
+### 第一幕: 初日の挨拶
 - スマホ　モックアップ
+- スマートグラス
+- 青クマ
+- オタク
+- 秋葉原
+- メイドカフェ
+
+### 第二幕: ユニフォームの謎
 - ユニフォーム (uniform)
 - 制服
 - カタカナ
+- uni (一つ)
+- form (形)
+- 語源
+- バックルーム
 
 - 青クマ
 

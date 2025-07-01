@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ct } from "../../scripts/utils";
+import { Avatar } from "../Avatar";
 
 export type CharacterName = 'tenchou' | 'watashi' | 'customer';
 export type Language = 'en' | 'jp';
@@ -11,7 +12,8 @@ export interface CharacterProps {
     children: React.ReactNode;
     language?: Language;
     className?: string;
-    emotion?: 'normal' | 'angry' | 'happy' | 'confused' | 'tired' | 'excited';
+    emotion?: 'normal' | 'angry' | 'happy' | 'confused' | 'tired' | 'excited' | 'embarrassed' | 'thoughtful' | 'curious';
+    avatar?: string; // Optional avatar image path
 }
 
 const characterData = {
@@ -41,7 +43,10 @@ const emotionStyles = {
     happy: 'shadow-yellow-200 shadow-lg',
     confused: 'shadow-gray-200 shadow-lg',
     tired: 'shadow-purple-200 shadow-lg',
-    excited: 'shadow-green-200 shadow-md animate-pulse [animation-duration:2s]'
+    excited: 'shadow-green-200 shadow-md animate-pulse [animation-duration:2s]',
+    embarrassed: 'shadow-pink-200 shadow-lg',
+    thoughtful: 'shadow-blue-200 shadow-lg',
+    curious: 'shadow-orange-200 shadow-lg'
 } as const;
 
 const Character = ({
@@ -49,6 +54,7 @@ const Character = ({
     children,
     language = 'jp',
     emotion = 'normal',
+    avatar,
     className
 }: CharacterProps) => {
     const character = characterData[name];
@@ -62,7 +68,18 @@ const Character = ({
             className
         )}>
             <div className="flex items-center mb-2">
-                <span className="text-2xl mr-2">{character.avatar}</span>
+                {avatar ? (
+                    <div className="mr-3">
+                        <Avatar
+                            src={avatar}
+                            alt={`${displayName} avatar`}
+                            name={name}
+                            emotion={emotion}
+                        />
+                    </div>
+                ) : (
+                    <span className="text-2xl mr-2">{character.avatar}</span>
+                )}
                 <div>
                     <h4 className="font-bold text-lg">{displayName}</h4>
                     <p className="text-xs opacity-70">{character.description}</p>
