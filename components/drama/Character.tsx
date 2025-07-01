@@ -13,7 +13,8 @@ export interface CharacterProps {
     language?: Language;
     className?: string;
     emotion?: 'normal' | 'angry' | 'happy' | 'confused' | 'tired' | 'excited' | 'embarrassed' | 'thoughtful' | 'curious';
-    avatar?: string; // Optional avatar image path
+    avatar?: string; // Optional custom avatar image path
+    noAvatar?: boolean; // Set to true to disable avatar display
 }
 
 const characterData = {
@@ -21,19 +22,22 @@ const characterData = {
         names: { en: 'Manager', jp: '店長' },
         description: 'Old otaku manager with cap and glasses',
         colors: 'bg-orange-100 text-orange-800 border-orange-200',
-        avatar: '👨‍💼'
+        avatar: '👨‍💼',
+        avatarPath: '/images/characters/tenchou-avatar.png'
     },
     watashi: {
         names: { en: 'Me', jp: '私' },
         description: 'Young blonde girl learning Japanese',
         colors: 'bg-pink-100 text-pink-800 border-pink-200',
-        avatar: '👱‍♀️'
+        avatar: '👱‍♀️',
+        avatarPath: '/images/characters/watashi-avatar.png'
     },
     customer: {
         names: { en: 'Customer', jp: 'お客さん' },
         description: 'Store customer',
         colors: 'bg-blue-100 text-blue-800 border-blue-200',
-        avatar: '🧑‍💼'
+        avatar: '🧑‍💼',
+        avatarPath: '/images/characters/customer-avatar.png' // Fallback, may not exist
     }
 } as const;
 
@@ -55,10 +59,14 @@ const Character = ({
     language = 'jp',
     emotion = 'normal',
     avatar,
+    noAvatar = false,
     className
 }: CharacterProps) => {
     const character = characterData[name];
     const displayName = character.names[language];
+
+    // Determine which avatar to use
+    const avatarSrc = noAvatar ? null : (avatar || character.avatarPath);
 
     return (
         <div className={ct(
@@ -68,10 +76,10 @@ const Character = ({
             className
         )}>
             <div className="flex items-center mb-2">
-                {avatar ? (
+                {avatarSrc ? (
                     <div className="mr-3">
                         <Avatar
-                            src={avatar}
+                            src={avatarSrc}
                             alt={`${displayName} avatar`}
                             name={name}
                             emotion={emotion}

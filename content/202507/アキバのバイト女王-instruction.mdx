@@ -37,7 +37,7 @@ import { Character, Scene, Narrator, Action } from '../../components/drama';
 Creates dialogue boxes for characters with their avatars and styling.
 
 ```jsx
-<Character name="tenchou" emotion="angry" avatar="/images/characters/tenchou-avatar.png">
+<Character name="tenchou" emotion="angry">
 いらっしゃいませ！
 </Character>
 ```
@@ -48,10 +48,33 @@ Creates dialogue boxes for characters with their avatars and styling.
 - `customer` (お客さん) - Store customer
 
 **Avatar Support:**
-- **Optional avatar prop**: Add `avatar="/images/characters/[character]-avatar.png"` to display custom character images
-- **Available avatars**: `tenchou-avatar.png`, `watashi-avatar.png`
-- **Fallback**: If no avatar prop is provided, emoji avatars will be used
+- **Automatic avatars**: Character avatars are automatically loaded based on the `name` prop
+- **Default paths**: 
+  - `tenchou` → `/images/characters/tenchou-avatar.png`
+  - `watashi` → `/images/characters/watashi-avatar.png`
+  - `customer` → `/images/characters/customer-avatar.png`
+- **Custom override**: Use `avatar="/custom/path.png"` to override the default
+- **Disable avatars**: Use `noAvatar={true}` to show only emoji fallbacks
+- **Fallback**: If avatar image fails to load, emoji avatars will be displayed
 - **Game-like display**: Avatars appear alongside dialogue boxes for immersive experience
+
+**Usage Examples:**
+```jsx
+{/* Automatic avatar - recommended */}
+<Character name="tenchou" emotion="happy">
+こんにちは！
+</Character>
+
+{/* Custom avatar override */}
+<Character name="tenchou" avatar="/images/special-tenchou.png" emotion="happy">
+特別な場面です！
+</Character>
+
+{/* No avatar, emoji only */}
+<Character name="watashi" noAvatar={true} emotion="confused">
+内心の独白...
+</Character>
+```
 
 **Available Emotions:**
 - `normal` - Default state
