@@ -5,8 +5,9 @@
   "description": "Nextra docs template",
   "scripts": {
     "dev": "next dev --turbopack --experimental-https",
-    "build": "next build",
+    "build": "npm run generate-meta && next build",
     "start": "next start",
+    "generate-meta": "node scripts/generate-meta.js",
     "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind"
   },
   "repository": {
