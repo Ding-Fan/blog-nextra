@@ -8,6 +8,23 @@ This document provides comprehensive guidelines for the Japanese learning drama 
 
 The story follows a foreign student working at a maid café in Akihabara, providing language learning opportunities through workplace interactions and cultural contexts. The narrative focuses on authentic language learning experiences, workplace communication, and cultural immersion.
 
+### Plot Elements and Mysteries
+
+**Important**: The story contains plot mysteries that should be revealed gradually:
+- **店長's Smart Glasses**: He wears smart glasses hidden behind regular sunglasses and pretends to look at a smartphone mockup to conceal this technology. This should NOT be revealed by the narrator early - keep it as a discovery for later episodes.
+- **Character Development**: Each episode should focus on specific learning challenges while building long-term character relationships.
+
+### Episode Structure Guidelines
+
+**Two-Scene Format**:
+1. **First Scene**: Engaging hook with relatable content (e.g., shared experiences, workplace introduction)
+2. **Second Scene**: Deep educational focus (language learning challenges, cultural insights)
+
+**Pacing**:
+- Keep individual dialogue exchanges short and natural
+- Use multiple rounds of back-and-forth rather than long monologues
+- Balance educational content with character development
+
 ## Required Components Import
 
 ```mdx
@@ -20,7 +37,7 @@ import { Character, Scene, Narrator, Action } from '../../components/drama';
 Creates dialogue boxes for characters with their avatars and styling.
 
 ```jsx
-<Character name="tenchou" emotion="angry">
+<Character name="tenchou" emotion="angry" avatar="/images/characters/tenchou-avatar.png">
 いらっしゃいませ！
 </Character>
 ```
@@ -30,6 +47,12 @@ Creates dialogue boxes for characters with their avatars and styling.
 - `watashi` (私) - Young blonde girl learning Japanese
 - `customer` (お客さん) - Store customer
 
+**Avatar Support:**
+- **Optional avatar prop**: Add `avatar="/images/characters/[character]-avatar.png"` to display custom character images
+- **Available avatars**: `tenchou-avatar.png`, `watashi-avatar.png`
+- **Fallback**: If no avatar prop is provided, emoji avatars will be used
+- **Game-like display**: Avatars appear alongside dialogue boxes for immersive experience
+
 **Available Emotions:**
 - `normal` - Default state
 - `angry` - Red shadow effect
@@ -38,6 +61,9 @@ Creates dialogue boxes for characters with their avatars and styling.
 - `tired` - Purple shadow
 - `excited` - Green shadow with bounce animation
 - `nervous` - Light blue shadow for anxiety
+- `embarrassed` - Pink shadow for shy moments
+- `thoughtful` - Deep blue shadow for contemplation
+- `curious` - Orange shadow for inquisitive moments
 
 ### Scene Component
 Creates scene containers with location and time information.
@@ -90,6 +116,11 @@ nervously adjusts her cap and takes a deep breath
 - **Speech Style**: Casual, sometimes uses otaku slang, slightly impatient with newbies
 - **Role**: Provides both humor and guidance in the learning journey
 
+**Image Generation Prompt:**
+```
+A middle-aged Japanese otaku, a maid cafe owner, overweight and friendly-looking, wearing a baseball cap and dark sunglasses. He has a slightly tired but kind expression. He's wearing casual clothes. He's holding a smartphone while pretending to look at it. The setting is inside an Akihabara maid café with otaku decorations in the background. Anime/manga art style, warm lighting, character should look approachable but slightly mischievous about hiding his tech gadgets.
+```
+
 ### 私 (Watashi)
 - **Physical Description**: 金髪のポニーテールの若い女の子
 - **Uniform**: 制服の一部として店長に言われてキャップをかぶっている
@@ -98,6 +129,11 @@ nervously adjusts her cap and takes a deep breath
 - **Character Trait**: よくおかしなミスをする
 - **Speech Style**: Polite but sometimes confused, mixes languages
 - **Role**: The protagonist learner, allowing readers to identify with the language learning journey
+
+**Image Generation Prompt:**
+```
+A young western girl with blonde hair in a ponytail, wearing a maid café uniform with a required cap as part of the outfit. because she is tall, the outfit is quite tight. her face looks slightly mature.She has bright, curious eyes and an enthusiastic but slightly confused expression. Her pose should show her adjusting her ponytail while smiling. She appears energetic and determined despite being tired (slight dark circles under eyes from studying late). The setting is inside an Akihabara maid café. Anime/manga art style, bright and cheerful lighting, character should embody the spirit of a dedicated language learner with a mix of excitement and occasional bewilderment.
+```
 
 ### お客さん (Customer)
 - **Variety**: 様々なタイプの客が来店
@@ -135,26 +171,50 @@ nervously adjusts her cap and takes a deep breath
 import { Character, Scene, Narrator, Action } from '../../components/drama';
 
 <Scene 
-  title="[Scene Title]" 
+  title="第一幕: [Hook Scene Title]" 
   location="秋葉原のメイドカフェ" 
-  time="[Time]"
+  time="朝 9:00"
 >
 
 <Narrator>
-[Descriptive text setting the scene and cultural context]
+[Engaging setup - workplace situation, character introduction, shared experience]
 </Narrator>
 
-<Character name="watashi" emotion="[emotion]">
-[Dialogue in Japanese with learning moments]
+<Character name="watashi" emotion="excited" avatar="/images/characters/watashi-avatar.png">
+[Natural greeting or workplace interaction]
 </Character>
 
-<Action character="tenchou">
-[Action description showing character personality]
-</Action>
+<Character name="tenchou" emotion="normal" avatar="/images/characters/tenchou-avatar.png">
+[Response that establishes relationship/workplace dynamic]
+</Character>
+
+[Short back-and-forth exchanges that create rapport and engagement]
+
+</Scene>
+
+<Scene 
+  title="第二幕: [Learning Focus Title]" 
+  location="秋葉原のメイドカフェ" 
+  time="[Time + 15 minutes]"
+>
+
+<Narrator>
+[Transition to educational focus with work preparation context]
+</Narrator>
 
 <Character name="tenchou" emotion="[emotion]">
-[Response with guidance or humor]
+[Workplace instruction that introduces learning challenge]
 </Character>
+
+<Character name="watashi" emotion="confused">
+[Authentic confusion about Japanese language/culture]
+</Character>
+
+[Multiple short exchanges building to learning moment]
+
+<Narrator>
+[Reflection on learning differences or cultural insights]
+</Narrator>
 
 </Scene>
 
@@ -162,7 +222,11 @@ import { Character, Scene, Narrator, Action } from '../../components/drama';
 
 ## 語彙リスト
 
-[Workplace and cultural vocabulary items]
+### 第一幕: [Hook Scene Title]
+[Vocabulary from first scene]
+
+### 第二幕: [Learning Focus Title]  
+[Educational vocabulary with etymology or cultural context]
 ```
 
 ## Language Support Examples
@@ -192,25 +256,36 @@ nervously adjusts her blonde ponytail and the required cap
 ## Quality Checklist
 
 - [ ] All required components are imported
+- [ ] Two-scene structure: Hook scene + Educational scene
+- [ ] First scene engages audience with relatable content
+- [ ] Second scene provides deep language learning focus
+- [ ] Plot mysteries are preserved (e.g., smart glasses secret)
+- [ ] Narrator doesn't reveal character secrets prematurely
 - [ ] Scenes reflect authentic Akihabara maid café environment
 - [ ] Character interactions use appropriate emotion tags
 - [ ] Actions are descriptive and enhance character development
+- [ ] Dialogue exchanges are short and natural (avoid long monologues)
 - [ ] Language learning moments are natural and educational
-- [ ] Vocabulary is relevant to workplace and otaku culture
+- [ ] Vocabulary is organized by scene with cultural context
 - [ ] Japanese text is accurate and appropriate for learning level
 - [ ] Cultural context is woven naturally into the narrative
 - [ ] Character personalities remain consistent with profiles
 - [ ] Learning mistakes are shown authentically
+- [ ] Etymology explanations are broken into natural exchanges
 
 ## Tips for Creating Episodes
 
-1. **Start with Scene setup**: Always begin with location and specific time
-2. **Use Narrator for context**: Explain cultural situations and learning moments
-3. **Show emotions**: Use emotion props to convey learning anxiety, confusion, or success
-4. **Add realistic actions**: Use Action component for authentic café work movements
-5. **Mix languages naturally**: Show the learning process through code-switching
-6. **Create learning mistakes**: Show authentic moments of language confusion
-7. **Include otaku references**: Use 店長's character for cultural depth
-8. **Focus on workplace scenarios**: Customer service, training, daily operations
+1. **Start with engaging hook**: First scene should create immediate connection (shared experiences, workplace humor)
+2. **Use two-scene structure**: Hook + Educational focus for better pacing
+3. **Preserve plot mysteries**: Don't reveal character secrets in narrator text
+4. **Keep dialogue natural**: Short exchanges instead of long explanations
+5. **Show emotions progressively**: Use emotion props to show character development through scenes
+6. **Add realistic actions**: Use Action component for authentic café work movements and character habits
+7. **Mix languages naturally**: Show the learning process through authentic confusion and discovery
+8. **Create learning mistakes**: Show authentic moments of language confusion and breakthrough
+9. **Include cultural insights**: Show differences between analytical vs. natural learning approaches
+10. **Focus on workplace scenarios**: Customer service preparation, training, daily operations
+11. **Break up educational content**: Spread etymology and language lessons across multiple exchanges
+12. **End with reflection**: Use Narrator to highlight cultural or learning insights
 
 This comprehensive guide ensures consistent, educational, and engaging content for the アキバのバイト女王 series!
