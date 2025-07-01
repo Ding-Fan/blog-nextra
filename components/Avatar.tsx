@@ -1,80 +1,65 @@
 import React from 'react';
+import { ct } from '../scripts/utils';
 
 interface AvatarProps {
     src: string;
     alt: string;
     name: string;
     emotion?: string;
+    size?: 'sm' | 'md' | 'lg';
+    className?: string;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ src, alt, name, emotion }) => {
+const sizeClasses = {
+    sm: 'w-12 h-12',
+    md: 'w-20 h-20',
+    lg: 'w-32 h-32'
+};
+
+const characterBorderColors = {
+    watashi: 'border-pink-400',
+    tenchou: 'border-blue-500',
+    customer: 'border-gray-400'
+};
+
+const emotionEffects = {
+    excited: 'scale-110 shadow-lg shadow-green-300',
+    angry: 'shadow-lg shadow-red-300',
+    happy: 'shadow-lg shadow-yellow-300',
+    confused: 'shadow-lg shadow-gray-300',
+    tired: 'shadow-lg shadow-purple-300',
+    embarrassed: 'shadow-lg shadow-pink-300',
+    thoughtful: 'shadow-lg shadow-blue-300',
+    curious: 'shadow-lg shadow-orange-300',
+    normal: ''
+};
+
+export const Avatar: React.FC<AvatarProps> = ({
+    src,
+    alt,
+    name,
+    emotion = 'normal',
+    size = 'md',
+    className
+}) => {
+    const borderColor = characterBorderColors[name as keyof typeof characterBorderColors] || 'border-gray-400';
+    const emotionEffect = emotionEffects[emotion as keyof typeof emotionEffects] || '';
+    const sizeClass = sizeClasses[size];
+
     return (
-        <div className="avatar-container">
+        <div className={ct(
+            'rounded-full overflow-hidden border-4 transition-all duration-300 ease-in-out',
+            'shadow-md hover:shadow-lg',
+            sizeClass,
+            borderColor,
+            emotionEffect,
+            className
+        )}>
             <img
                 src={src}
                 alt={alt}
-                className={`character-avatar ${name}-avatar ${emotion ? `emotion-${emotion}` : ''}`}
+                className="w-full h-full object-cover transition-all duration-300 ease-in-out"
             />
-            <style jsx>{`
-        .avatar-container {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          overflow: hidden;
-          border: 3px solid #ddd;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-          transition: all 0.3s ease;
-        }
-        
-        .character-avatar {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: all 0.3s ease;
-        }
-        
-        .watashi-avatar {
-          border-color: #ff69b4;
-        }
-        
-        .tenchou-avatar {
-          border-color: #4169e1;
-        }
-        
-        .emotion-excited .avatar-container {
-          transform: scale(1.1);
-          box-shadow: 0 4px 16px rgba(0, 255, 0, 0.3);
-        }
-        
-        .emotion-angry .avatar-container {
-          box-shadow: 0 4px 16px rgba(255, 0, 0, 0.3);
-        }
-        
-        .emotion-happy .avatar-container {
-          box-shadow: 0 4px 16px rgba(255, 255, 0, 0.3);
-        }
-        
-        .emotion-confused .avatar-container {
-          opacity: 0.8;
-        }
-        
-        .emotion-tired .avatar-container {
-          opacity: 0.7;
-          filter: grayscale(20%);
-        }
-        
-        .emotion-embarrassed .avatar-container {
-          box-shadow: 0 4px 16px rgba(255, 192, 203, 0.3);
-        }
-        
-        .emotion-thoughtful .avatar-container {
-          box-shadow: 0 4px 16px rgba(0, 0, 255, 0.3);
-        }
-        
-        .emotion-curious .avatar-container {
-          box-shadow: 0 4px 16px rgba(255, 165, 0, 0.3);
-        }
-      `}</style>
         </div>
     );
 };

@@ -75,6 +75,7 @@ const Character = ({
                             alt={`${displayName} avatar`}
                             name={name}
                             emotion={emotion}
+                            size="md"
                         />
                     </div>
                 ) : (
