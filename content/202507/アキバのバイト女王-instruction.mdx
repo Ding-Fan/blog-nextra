@@ -1,0 +1,216 @@
+# アキバのバイト女王 - Complete Story Instruction Guide
+
+## Overview
+
+This document provides comprehensive guidelines for the Japanese learning drama "アキバのバイト女王" (Akiba Part-time Job Queen), including formatting guidelines, component usage, and character information.
+
+## Story Context
+
+The story follows a foreign student working at a maid café in Akihabara, providing language learning opportunities through workplace interactions and cultural contexts. The narrative focuses on authentic language learning experiences, workplace communication, and cultural immersion.
+
+## Required Components Import
+
+```mdx
+import { Character, Scene, Narrator, Action } from '../../components/drama';
+```
+
+## Available Drama Components
+
+### Character Component
+Creates dialogue boxes for characters with their avatars and styling.
+
+```jsx
+<Character name="tenchou" emotion="angry">
+いらっしゃいませ！
+</Character>
+```
+
+**Available Characters:**
+- `tenchou` (店長) - Old otaku manager with cap and glasses
+- `watashi` (私) - Young blonde girl learning Japanese
+- `customer` (お客さん) - Store customer
+
+**Available Emotions:**
+- `normal` - Default state
+- `angry` - Red shadow effect
+- `happy` - Yellow shadow with warmth
+- `confused` - Gray shadow
+- `tired` - Purple shadow
+- `excited` - Green shadow with bounce animation
+- `nervous` - Light blue shadow for anxiety
+
+### Scene Component
+Creates scene containers with location and time information.
+
+```jsx
+<Scene 
+  title="第一幕: 初日のバイト" 
+  location="秋葉原のメイドカフェ" 
+  time="朝 9:00"
+>
+  // Your dialogue here
+</Scene>
+```
+
+### Narrator Component
+Adds narrative text between dialogues.
+
+```jsx
+<Narrator>
+私は緊張しながらカフェに入った。初めてのバイトの日だった。
+</Narrator>
+```
+
+### Action Component
+Describes character actions and movements with language support.
+
+```jsx
+<Action character="watashi" language="en">
+nervously adjusts her cap and takes a deep breath
+</Action>
+
+<Action character="tenchou" language="jp">
+スマホを見ながら頷く
+</Action>
+```
+
+**Character Names:**
+- Use predefined character names: `tenchou`, `watashi`, `customer`
+- Or use custom character names as strings
+- Language support: `en` (English) or `jp` (Japanese) for action descriptions
+
+## Character Profiles
+
+### 店長 (Tenchou)
+- **Physical Description**: 太ったオタクのおじさん
+- **Appearance**: いつもキャップとサングラスをかけている
+- **Technology**: サングラスはスマートメガネです、それを隠すため、いつもスマホモックアップを見ている
+- **Personality Reference**: シュタインズ・ゲートの橋田至が年を取ったような感じ
+- **Character Traits**: 少し面倒くさがりだが、心は優しい
+- **Speech Style**: Casual, sometimes uses otaku slang, slightly impatient with newbies
+- **Role**: Provides both humor and guidance in the learning journey
+
+### 私 (Watashi)
+- **Physical Description**: 金髪のポニーテールの若い女の子
+- **Uniform**: 制服の一部として店長に言われてキャップをかぶっている
+- **Learning Goal**: 日本語を勉強中で、日本に住みたいと思っている
+- **Interests**: 秋葉原で時間を過ごすのが大好き
+- **Character Trait**: よくおかしなミスをする
+- **Speech Style**: Polite but sometimes confused, mixes languages
+- **Role**: The protagonist learner, allowing readers to identify with the language learning journey
+
+### お客さん (Customer)
+- **Variety**: 様々なタイプの客が来店
+- **Types**: オタク、サラリーマン、観光客など
+- **Usage**: Variable character for creating different interaction scenarios
+- **Role**: Reflects real Akihabara demographics and social situations
+
+## Structure Guidelines
+
+### 1. Scene Organization
+- Use `<Scene>` component with title, location, and time props
+- Each scene should have a clear setting and timeframe
+- Focus on workplace scenarios in Akihabara maid café context
+
+### 2. Character Interactions
+- Use `<Character>` component with name and emotion props
+- Include `<Narrator>` for descriptive text and cultural context
+- Use `<Action>` component for character actions and behaviors
+
+### 3. Language Learning Integration
+- Show authentic learning moments with mistakes
+- Mix Japanese and English to demonstrate learning process
+- Include vocabulary building through context
+
+### 4. Vocabulary Section
+- Include relevant Japanese vocabulary at the end
+- Group by theme (workplace, customer service, otaku culture)
+- Focus on practical expressions for service industry
+
+## Template Structure
+
+```mdx
+# アキバのバイト女王 - [Episode Title]
+
+import { Character, Scene, Narrator, Action } from '../../components/drama';
+
+<Scene 
+  title="[Scene Title]" 
+  location="秋葉原のメイドカフェ" 
+  time="[Time]"
+>
+
+<Narrator>
+[Descriptive text setting the scene and cultural context]
+</Narrator>
+
+<Character name="watashi" emotion="[emotion]">
+[Dialogue in Japanese with learning moments]
+</Character>
+
+<Action character="tenchou">
+[Action description showing character personality]
+</Action>
+
+<Character name="tenchou" emotion="[emotion]">
+[Response with guidance or humor]
+</Character>
+
+</Scene>
+
+---
+
+## 語彙リスト
+
+[Workplace and cultural vocabulary items]
+```
+
+## Language Support Examples
+
+### Mixing Languages for Learning Context
+```jsx
+<Character name="watashi" emotion="confused">
+あの...すみません、「ユニフォーム」って何ですか？
+</Character>
+
+<Character name="tenchou" emotion="tired">
+制服だよ、制服。日本語まだまだだな...
+</Character>
+```
+
+### Character Actions with Language Support
+```jsx
+<Action character="watashi" language="en">
+nervously adjusts her blonde ponytail and the required cap
+</Action>
+
+<Action character="tenchou" language="jp">
+スマートメガネを調整しながらスマホモックアップを見る
+</Action>
+```
+
+## Quality Checklist
+
+- [ ] All required components are imported
+- [ ] Scenes reflect authentic Akihabara maid café environment
+- [ ] Character interactions use appropriate emotion tags
+- [ ] Actions are descriptive and enhance character development
+- [ ] Language learning moments are natural and educational
+- [ ] Vocabulary is relevant to workplace and otaku culture
+- [ ] Japanese text is accurate and appropriate for learning level
+- [ ] Cultural context is woven naturally into the narrative
+- [ ] Character personalities remain consistent with profiles
+- [ ] Learning mistakes are shown authentically
+
+## Tips for Creating Episodes
+
+1. **Start with Scene setup**: Always begin with location and specific time
+2. **Use Narrator for context**: Explain cultural situations and learning moments
+3. **Show emotions**: Use emotion props to convey learning anxiety, confusion, or success
+4. **Add realistic actions**: Use Action component for authentic café work movements
+5. **Mix languages naturally**: Show the learning process through code-switching
+6. **Create learning mistakes**: Show authentic moments of language confusion
+7. **Include otaku references**: Use 店長's character for cultural depth
+8. **Focus on workplace scenarios**: Customer service, training, daily operations
+
+This comprehensive guide ensures consistent, educational, and engaging content for the アキバのバイト女王 series!
