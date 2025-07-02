@@ -17,7 +17,7 @@ const Narrator = ({
             'my-3 p-3 bg-gray-100 rounded-lg border-l-4 border-gray-400 italic text-gray-700',
             className
         )}>
-            <span className="text-sm font-medium text-gray-500 mr-2">📝 Narrator:</span>
+            <span className="text-sm font-medium text-gray-500 mr-2">📝 語り手:</span>
             {children}
         </div>
     );

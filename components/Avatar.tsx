@@ -11,15 +11,9 @@ interface AvatarProps {
 }
 
 const sizeClasses = {
-    sm: 'w-12 h-12',
-    md: 'w-20 h-20',
-    lg: 'w-32 h-32'
-};
-
-const characterBorderColors = {
-    watashi: 'border-pink-400',
-    tenchou: 'border-blue-500',
-    customer: 'border-gray-400'
+    sm: 'w-16 h-16',
+    md: 'w-24 h-24',
+    lg: 'w-36 h-36'
 };
 
 const emotionEffects = {
@@ -42,16 +36,13 @@ export const Avatar: React.FC<AvatarProps> = ({
     size = 'md',
     className
 }) => {
-    const borderColor = characterBorderColors[name as keyof typeof characterBorderColors] || 'border-gray-400';
     const emotionEffect = emotionEffects[emotion as keyof typeof emotionEffects] || '';
     const sizeClass = sizeClasses[size];
 
     return (
         <div className={ct(
-            'rounded-full overflow-hidden border-4 transition-all duration-300 ease-in-out',
-            'shadow-md hover:shadow-lg',
+            'rounded-lg overflow-hidden transition-all duration-300 ease-in-out',
             sizeClass,
-            borderColor,
             emotionEffect,
             className
         )}>

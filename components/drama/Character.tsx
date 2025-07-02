@@ -15,27 +15,28 @@ export interface CharacterProps {
     emotion?: 'normal' | 'angry' | 'happy' | 'confused' | 'tired' | 'excited' | 'embarrassed' | 'thoughtful' | 'curious';
     avatar?: string; // Optional custom avatar image path
     noAvatar?: boolean; // Set to true to disable avatar display
+    isAction?: boolean; // Set to true for action descriptions
 }
 
 const characterData = {
     tenchou: {
         names: { en: 'Manager', jp: '店長' },
-        description: 'Old otaku manager with cap and glasses',
         colors: 'bg-orange-100 text-orange-800 border-orange-200',
+        actionColors: 'bg-gray-50 text-gray-600 border-gray-300',
         avatar: '👨‍💼',
         avatarPath: '/images/characters/tenchou-avatar.png'
     },
     watashi: {
         names: { en: 'Me', jp: '私' },
-        description: 'Young blonde girl learning Japanese',
         colors: 'bg-pink-100 text-pink-800 border-pink-200',
+        actionColors: 'bg-gray-50 text-gray-600 border-gray-300',
         avatar: '👱‍♀️',
         avatarPath: '/images/characters/watashi-avatar.png'
     },
     customer: {
         names: { en: 'Customer', jp: 'お客さん' },
-        description: 'Store customer',
         colors: 'bg-blue-100 text-blue-800 border-blue-200',
+        actionColors: 'bg-gray-50 text-gray-600 border-gray-300',
         avatar: '🧑‍💼',
         avatarPath: '/images/characters/customer-avatar.png' // Fallback, may not exist
     }
@@ -60,6 +61,7 @@ const Character = ({
     emotion = 'normal',
     avatar,
     noAvatar = false,
+    isAction = false,
     className
 }: CharacterProps) => {
     const character = characterData[name];
@@ -68,36 +70,43 @@ const Character = ({
     // Determine which avatar to use
     const avatarSrc = noAvatar ? null : (avatar || character.avatarPath);
 
-    return (
-        <div className={ct(
-            'my-4 p-4 rounded-lg border-l-4 border-2',
-            character.colors,
-            emotionStyles[emotion],
-            className
-        )}>
-            <div className="flex items-center mb-2">
-                {avatarSrc ? (
-                    <div className="mr-3">
-                        <Avatar
-                            src={avatarSrc}
-                            alt={`${displayName} avatar`}
-                            name={name}
-                            emotion={emotion}
-                            size="md"
-                        />
-                    </div>
-                ) : (
-                    <span className="text-2xl mr-2">{character.avatar}</span>
-                )}
-                <div>
-                    <h4 className="font-bold text-lg">{displayName}</h4>
-                    <p className="text-xs opacity-70">{character.description}</p>
-                </div>
+    // Choose colors based on isAction
+    const colors = isAction ? character.actionColors : character.colors;
+
+    return (<div className={ct(
+        'my-3 rounded-lg border-l-4 border-2 flex',
+        colors,
+        !isAction && emotionStyles[emotion],
+        className
+    )}>
+        {/* Left side - Avatar */}
+        <div className="flex-shrink-0 border-r border-gray-300">
+            {avatarSrc ? (
+                <Avatar
+                    src={avatarSrc}
+                    alt={`${displayName} avatar`}
+                    name={name}
+                    emotion={emotion}
+                    size="md"
+                />
+            ) : (
+                <span className="text-2xl">{character.avatar}</span>
+            )}
+        </div>
+
+        {/* Right side - Content */}
+        <div className="flex-1 pl-3">
+            <div>
+                <h4 className="font-bold text-base">{displayName}</h4>
             </div>
-            <div className="text-base leading-relaxed">
+            <div className={ct(
+                "text-base leading-relaxed",
+                isAction && "italic text-gray-600"
+            )}>
                 {children}
             </div>
         </div>
+    </div>
     );
 };
 
