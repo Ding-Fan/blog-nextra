@@ -1,0 +1,137 @@
+# アキバのバイト女王 - キャラクター設定資料
+
+## 概要
+
+この資料は「アキバのバイト女王」に登場するキャラクターの詳細な設定情報を提供します。各キャラクターの外見、性格、話し方、役割について詳しく説明しています。
+
+## 利用可能なキャラクター
+
+### Character Component で使用できるキャラクター
+- `tenchou` (店長) - Old otaku manager with cap and glasses
+- `watashi` (私) - Young blonde girl learning Japanese
+- `customer` (お客さん) - Store customer
+
+### アバターシステム
+- **自動アバター**: Character の `name` prop に基づいて自動的に読み込まれます
+- **デフォルトパス**: 
+  - `tenchou` → `/images/characters/tenchou-avatar.png`
+  - `watashi` → `/images/characters/watashi-avatar.png`
+  - `customer` → `/images/characters/customer-avatar.png`
+- **カスタムオーバーライド**: `avatar="/custom/path.png"` でデフォルトを上書き可能
+- **アバター無効化**: `noAvatar={true}` で絵文字のみ表示
+- **フォールバック**: アバター画像の読み込みに失敗した場合、絵文字アバターが表示されます
+- **ゲームライクな表示**: アバターがダイアログボックスと一緒に表示され、没入感のある体験を提供
+
+## 詳細キャラクタープロファイル
+
+### 店長 (Tenchou)
+- **Physical Description**: 太ったオタクのおじさん
+- **Appearance**: いつもキャップとサングラスをかけている
+- **Technology**: サングラスはスマートメガネです、それを隠すため、いつもスマホモックアップを見ている
+- **Personality Reference**: シュタインズ・ゲートの橋田至が年を取ったような感じ
+- **Character Traits**: 少し面倒くさがりだが、心は優しい
+- **Speech Style**: Casual, sometimes uses otaku slang, slightly impatient with newbies
+- **Teaching Mode**: **重要** - 技術スキル（Excel、ソフトウェアなど）を教える時は、忍耐強く、親切で、ユーモラスな比喩を使って学習を助けます。普段のせっかちな性格とは全く違います。
+- **Role**: 学習の旅で笑いとガイダンスの両方を提供
+
+**画像生成プロンプト:**
+```
+A middle-aged Japanese otaku, a maid cafe owner, overweight and friendly-looking, wearing a baseball cap and dark sunglasses. He has a slightly tired but kind expression. He's wearing casual clothes. He's holding a smartphone while pretending to look at it. The setting is inside an Akihabara maid café with otaku decorations in the background. Anime/manga art style, warm lighting, character should look approachable but slightly mischievous about hiding his tech gadgets.
+```
+
+### 私 (Watashi)
+- **Physical Description**: 金髪のポニーテールの若い女の子
+- **Uniform**: 制服の一部として店長に言われてキャップをかぶっている
+- **Learning Goal**: 日本語を勉強中で、日本に住みたいと思っている
+- **Interests**: 秋葉原で時間を過ごすのが大好き
+- **Character Trait**: よくおかしなミスをする
+- **Speech Style**: Polite but sometimes confused, mixes languages
+- **Role**: 主人公として学習者の役割を果たし、読者が言語学習の旅に共感できるようにします
+
+**画像生成プロンプト:**
+```
+A young western girl with blonde hair in a ponytail, wearing a maid café uniform with a required cap as part of the outfit. because she is tall, the outfit is quite tight. her face looks slightly mature.She has bright, curious eyes and an enthusiastic but slightly confused expression. Her pose should show her adjusting her ponytail while smiling. She appears energetic and determined despite being tired (slight dark circles under eyes from studying late). The setting is inside an Akihabara maid café. Anime/manga art style, bright and cheerful lighting, character should embody the spirit of a dedicated language learner with a mix of excitement and occasional bewilderment.
+```
+
+### お客さん (Customer)
+- **Variety**: 様々なタイプの客が来店
+- **Types**: オタク、サラリーマン、観光客など
+- **Usage**: 異なる相互作用シナリオを作成するための可変キャラクター
+- **Role**: 実際の秋葉原の人口統計と社会的状況を反映
+
+## 感情表現システム
+
+キャラクターコンポーネントで利用可能な感情:
+- `normal` - デフォルト状態
+- `angry` - 赤い影効果
+- `happy` - 黄色い影で温かみを表現
+- `confused` - グレーの影
+- `tired` - 紫の影
+- `excited` - 緑の影とバウンスアニメーション
+- `nervous` - 不安を表現する水色の影
+- `embarrassed` - 恥ずかしがる瞬間のピンクの影
+- `thoughtful` - 熟考のための深い青の影
+- `curious` - 好奇心旺盛な瞬間のオレンジの影
+
+## キャラクター使用例
+
+### 基本的な使用方法
+```jsx
+{/* 自動アバター - 推奨 */}
+<Character name="tenchou" emotion="happy">
+こんにちは！
+</Character>
+
+{/* カスタムアバターオーバーライド */}
+<Character name="tenchou" avatar="/images/special-tenchou.png" emotion="happy">
+特別な場面です！
+</Character>
+
+{/* アバターなし、絵文字のみ */}
+<Character name="watashi" noAvatar={true} emotion="confused">
+内心の独白...
+</Character>
+```
+
+### アクションシーン
+```jsx
+<Character name="watashi" isAction>
+nervously adjusts her blonde ponytail and the required cap
+</Character>
+
+<Character name="tenchou" isAction>
+スマートメガネを調整しながらスマホモックアップを見る
+</Character>
+```
+
+### 言語学習コンテキスト
+```jsx
+<Character name="watashi" emotion="confused">
+あの...すみません、「ユニフォーム」って何ですか？
+</Character>
+
+<Character name="tenchou" emotion="tired">
+制服だよ、制服。日本語まだまだだな...
+</Character>
+```
+
+## キャラクター一貫性のガイドライン
+
+### 言語学習エピソード（メインシリーズ）
+キャラクターは典型的な性格を維持します:
+- **店長**: 少しせっかち、オタクの参照を使用、でも基本的に親切
+- **私**: 学習に熱心、言語的ミスをする、言語への分析的アプローチ
+
+### 技術学習エピソード（.excel、.software など）
+専門的なキャラクターダイナミクスに焦点を当てます:
+- **店長**: 忍耐強く、励ましてくれる教師になり、ユーモラスな比喩を使用
+- **私**: 概念の理解に集中、明確化の質問をする
+- **コンテンツ**: 言語学習よりもスキル習得を優先
+- **ユーモア**: エンゲージメントを維持し、記憶の定着を助けるために使用
+
+## プロット要素と秘密
+
+**重要**: ストーリーには段階的に明かされるべきプロット秘密が含まれています:
+- **店長のスマートグラス**: 普通のサングラスの後ろにスマートグラスを隠し、この技術を隠すためにスマホモックアップを見ているふりをしています。これは語り手によって早期に明かされるべきではありません - 後のエピソードでの発見として保持してください。
+
+この包括的なキャラクター資料により、「アキバのバイト女王」シリーズの一貫性があり、教育的で魅力的なコンテンツが保証されます！

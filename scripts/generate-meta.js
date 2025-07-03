@@ -18,23 +18,23 @@ function readExistingMeta() {
 
   const content = fs.readFileSync(metaFile, "utf8");
 
-  // Remove existing date folder entries (6-digit numbers)
+  // Remove existing date folder entries (z + 6-digit numbers)
   const withoutDateFolders = content
-    .replace(/^\s*"?\d{6}"?\s*:\s*\{\},?\s*$/gm, "")
+    .replace(/^\s*"?z\d{6}"?\s*:\s*\{[^}]*\},?\s*$/gm, "")
     .replace(/^\s*\/\/.*date.*folders.*$/gim, "")
     .replace(/\n\s*\n\s*\n/g, "\n\n");
 
   return withoutDateFolders;
 }
 
-// Get all date folders (6-digit format: YYYYMM)
+// Get all date folders (z + 6-digit format: zYYYYMM)
 function getDateFolders() {
   const items = fs.readdirSync(contentDir, { withFileTypes: true });
 
   return items
     .filter((item) => item.isDirectory())
     .map((item) => item.name)
-    .filter((name) => /^\d{6}$/.test(name)) // Match YYYYMM format
+    .filter((name) => /^z\d{6}$/.test(name)) // Match z + YYYYMM format
     .sort((a, b) => b.localeCompare(a)); // Sort descending (newest first)
 }
 
@@ -44,6 +44,7 @@ function generateMeta() {
   const dateFolders = getDateFolders();
 
   if (dateFolders.length === 0) {
+    console.log("ℹ️ No z-prefixed date folders found");
     return existingContent; // No date folders to add
   }
 
@@ -65,11 +66,17 @@ function generateMeta() {
       lines.findIndex((line) => line.includes("export default {")) + 1;
   }
 
-  // Build date folders section
+  // Build date folders section with custom titles
   const dateFoldersSection = [
     "",
     "  // Date folders (auto-generated in descending order)",
-    ...dateFolders.map((folder) => `  "${folder}": {},`),
+    ...dateFolders.map((folder) => {
+      // Extract YYYYMM from zYYYYMM and format as YYYY-MM
+      const dateStr = folder.substring(1); // Remove 'z' prefix
+      const year = dateStr.substring(0, 4);
+      const month = dateStr.substring(4, 6);
+      return `  "${folder}": { title: "${year}-${month}" },`;
+    }),
     "",
   ];
 
@@ -86,7 +93,12 @@ try {
   console.log("✅ Generated _meta.ts with date folders in descending order:");
 
   const dateFolders = getDateFolders();
-  dateFolders.forEach((folder) => console.log(`   📅 ${folder}`));
+  dateFolders.forEach((folder) => {
+    const dateStr = folder.substring(1);
+    const year = dateStr.substring(0, 4);
+    const month = dateStr.substring(4, 6);
+    console.log(`   📅 ${folder} → ${year}-${month}`);
+  });
 } catch (error) {
   console.error("❌ Error generating _meta.ts:", error.message);
   process.exit(1);

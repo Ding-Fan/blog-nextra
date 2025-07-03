@@ -1,6 +1,6 @@
 # アキバのバイト女王
 
-import { Character, Scene, Narrator, Action, Avatar } from '../../components/drama';
+import { Character, Scene, Narrator, Avatar } from '../../components/drama';
 
 <Scene 
   title="第一幕: 初日の挨拶" 
@@ -16,9 +16,9 @@ import { Character, Scene, Narrator, Action, Avatar } from '../../components/dra
 おはようございます！今日からお世話になります！
 </Character>
 
-<Action character="tenchou">
+<Character name="tenchou" isAction>
 スマホモックアップから顔を上げて、メガネとキャップを調整する
-</Action>
+</Character>
 
 <Character name="tenchou" emotion="normal">
 ああ、新人ちゃんか。早速だが、ここは秋葉原のメイドカフェだ。お客さんは主にオタクが多いからな。
@@ -44,9 +44,9 @@ import { Character, Scene, Narrator, Action, Avatar } from '../../components/dra
 まあ、頑張ってるんだな。でも仕事中は元気に接客しろよ。客が心配しちゃうからな。
 </Character>
 
-<Action character="watashi">
+<Character name="watashi" isAction>
 金髪のポニーテールを整えながら、元気よく頷く
-</Action>
+</Character>
 
 </Scene>
 
@@ -80,9 +80,9 @@ import { Character, Scene, Narrator, Action, Avatar } from '../../components/dra
 だから「ユニフォーム」だって！わからないの？何回言わせるんだ？時間がないんだぞ！
 </Character>
 
-<Action character="tenchou">
+<Character name="tenchou" isAction>
 どこからとったレシートの裏側に「ユニフォーム」と書いて、私に見せる。
-</Action>
+</Character>
 
 <Character name="watashi" emotion="excited">
 あ！UNIFORM！ユニフォーム！*突然笑い出す* なんて面白い発音！
@@ -120,9 +120,9 @@ import { Character, Scene, Narrator, Action, Avatar } from '../../components/dra
 まあ、とにかく制服はバックルームにある。急いで着替えてくれ。
 </Character>
 
-<Action character="watashi">
+<Character name="watashi" isAction>
 金髪のポニーテールを整えながら、まだクスクス笑っている
-</Action>
+</Character>
 
 <Narrator>
 私はバックルームに向かった。しばらくして、困った声が聞こえてきた。

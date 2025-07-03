@@ -3,11 +3,11 @@ export default {
   index: "又不是不能写博客",
 
   // Date folders (auto-generated in descending order)
-  "202507": {},
-  "202506": {},
-  "202505": {},
-  "202504": {},
-  "202503": {},
+  "z202507": { title: "2025-07" },
+  "z202506": { title: "2025-06" },
+  "z202505": { title: "2025-05" },
+  "z202504": { title: "2025-04" },
+  "z202503": { title: "2025-03" },
 
 
   // write: {},

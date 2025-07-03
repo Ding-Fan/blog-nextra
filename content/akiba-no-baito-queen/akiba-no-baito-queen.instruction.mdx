@@ -28,7 +28,7 @@ The story follows a foreign student working at a maid café in Akihabara, provid
 ## Required Components Import
 
 ```mdx
-import { Character, Scene, Narrator, Action } from '../../components/drama';
+import { Character, Scene, Narrator } from '../../components/drama';
 ```
 
 ## Available Drama Components
@@ -42,51 +42,14 @@ Creates dialogue boxes for characters with their avatars and styling.
 </Character>
 ```
 
-**Available Characters:**
-- `tenchou` (店長) - Old otaku manager with cap and glasses
-- `watashi` (私) - Young blonde girl learning Japanese
-- `customer` (お客さん) - Store customer
+**Available Characters:** See [キャラクター設定資料](./akiba-no-baito-queen.instruction.characters) for detailed character profiles, image generation prompts, and personality guidelines.
 
-**Avatar Support:**
-- **Automatic avatars**: Character avatars are automatically loaded based on the `name` prop
-- **Default paths**: 
-  - `tenchou` → `/images/characters/tenchou-avatar.png`
-  - `watashi` → `/images/characters/watashi-avatar.png`
-  - `customer` → `/images/characters/customer-avatar.png`
-- **Custom override**: Use `avatar="/custom/path.png"` to override the default
-- **Disable avatars**: Use `noAvatar={true}` to show only emoji fallbacks
-- **Fallback**: If avatar image fails to load, emoji avatars will be displayed
-- **Game-like display**: Avatars appear alongside dialogue boxes for immersive experience
+**Quick Reference:**
+- `tenchou` (店長) - Otaku café manager
+- `watashi` (私) - Japanese language learner  
+- `customer` (お客さん) - Various customer types
 
-**Usage Examples:**
-```jsx
-{/* Automatic avatar - recommended */}
-<Character name="tenchou" emotion="happy">
-こんにちは！
-</Character>
-
-{/* Custom avatar override */}
-<Character name="tenchou" avatar="/images/special-tenchou.png" emotion="happy">
-特別な場面です！
-</Character>
-
-{/* No avatar, emoji only */}
-<Character name="watashi" noAvatar={true} emotion="confused">
-内心の独白...
-</Character>
-```
-
-**Available Emotions:**
-- `normal` - Default state
-- `angry` - Red shadow effect
-- `happy` - Yellow shadow with warmth
-- `confused` - Gray shadow
-- `tired` - Purple shadow
-- `excited` - Green shadow with bounce animation
-- `nervous` - Light blue shadow for anxiety
-- `embarrassed` - Pink shadow for shy moments
-- `thoughtful` - Deep blue shadow for contemplation
-- `curious` - Orange shadow for inquisitive moments
+**Avatar & Emotions:** Full details in the character documentation above.
 
 ### Scene Component
 Creates scene containers with location and time information.
@@ -110,60 +73,35 @@ Adds narrative text between dialogues.
 </Narrator>
 ```
 
-### Action Component
-Describes character actions and movements with language support.
+### Action Support in Character Component
+Character components support action descriptions using the `isAction` prop.
 
 ```jsx
-<Action character="watashi" language="en">
+<Character name="watashi" isAction>
 nervously adjusts her cap and takes a deep breath
-</Action>
+</Character>
 
-<Action character="tenchou" language="jp">
+<Character name="tenchou" isAction>
 スマホを見ながら頷く
-</Action>
+</Character>
 ```
 
-**Character Names:**
-- Use predefined character names: `tenchou`, `watashi`, `customer`
-- Or use custom character names as strings
-- Language support: `en` (English) or `jp` (Japanese) for action descriptions
+**Action Styling:**
+- Uses muted gray colors for visual distinction
+- Italic text styling for action descriptions
+- Maintains character avatars and names
+- No emotion effects applied for cleaner appearance
 
 ## Character Profiles
 
-### 店長 (Tenchou)
-- **Physical Description**: 太ったオタクのおじさん
-- **Appearance**: いつもキャップとサングラスをかけている
-- **Technology**: サングラスはスマートメガネです、それを隠すため、いつもスマホモックアップを見ている
-- **Personality Reference**: シュタインズ・ゲートの橋田至が年を取ったような感じ
-- **Character Traits**: 少し面倒くさがりだが、心は優しい
-- **Speech Style**: Casual, sometimes uses otaku slang, slightly impatient with newbies
-- **Teaching Mode**: **Important** - When teaching technical skills (Excel, software, etc.), becomes patient, kind, and uses humorous analogies to help learning. Completely different from his usual impatient personality.
-- **Role**: Provides both humor and guidance in the learning journey
+📖 **Detailed character information has been moved to:** [キャラクター設定資料](./akiba-no-baito-queen.instruction.characters)
 
-**Image Generation Prompt:**
-```
-A middle-aged Japanese otaku, a maid cafe owner, overweight and friendly-looking, wearing a baseball cap and dark sunglasses. He has a slightly tired but kind expression. He's wearing casual clothes. He's holding a smartphone while pretending to look at it. The setting is inside an Akihabara maid café with otaku decorations in the background. Anime/manga art style, warm lighting, character should look approachable but slightly mischievous about hiding his tech gadgets.
-```
-
-### 私 (Watashi)
-- **Physical Description**: 金髪のポニーテールの若い女の子
-- **Uniform**: 制服の一部として店長に言われてキャップをかぶっている
-- **Learning Goal**: 日本語を勉強中で、日本に住みたいと思っている
-- **Interests**: 秋葉原で時間を過ごすのが大好き
-- **Character Trait**: よくおかしなミスをする
-- **Speech Style**: Polite but sometimes confused, mixes languages
-- **Role**: The protagonist learner, allowing readers to identify with the language learning journey
-
-**Image Generation Prompt:**
-```
-A young western girl with blonde hair in a ponytail, wearing a maid café uniform with a required cap as part of the outfit. because she is tall, the outfit is quite tight. her face looks slightly mature.She has bright, curious eyes and an enthusiastic but slightly confused expression. Her pose should show her adjusting her ponytail while smiling. She appears energetic and determined despite being tired (slight dark circles under eyes from studying late). The setting is inside an Akihabara maid café. Anime/manga art style, bright and cheerful lighting, character should embody the spirit of a dedicated language learner with a mix of excitement and occasional bewilderment.
-```
-
-### お客さん (Customer)
-- **Variety**: 様々なタイプの客が来店
-- **Types**: オタク、サラリーマン、観光客など
-- **Usage**: Variable character for creating different interaction scenarios
-- **Role**: Reflects real Akihabara demographics and social situations
+This dedicated document contains:
+- Complete character profiles with personality traits
+- Image generation prompts for all characters  
+- Speech patterns and role descriptions
+- Teaching mode behaviors and special characteristics
+- Plot mysteries and character development guidelines
 
 ## Structure Guidelines
 
@@ -175,7 +113,7 @@ A young western girl with blonde hair in a ponytail, wearing a maid café unifor
 ### 2. Character Interactions
 - Use `<Character>` component with name and emotion props
 - Include `<Narrator>` for descriptive text and cultural context
-- Use `<Action>` component for character actions and behaviors
+- Use realistic character interactions and body language through Character component with `isAction` prop
 
 ### 3. Language Learning Integration
 - Show authentic learning moments with mistakes
@@ -192,7 +130,7 @@ A young western girl with blonde hair in a ponytail, wearing a maid café unifor
 ```mdx
 # アキバのバイト女王 - [Episode Title]
 
-import { Character, Scene, Narrator, Action } from '../../components/drama';
+import { Character, Scene, Narrator } from '../../components/drama';
 
 <Scene 
   title="第一幕: [Hook Scene Title]" 
@@ -266,15 +204,15 @@ import { Character, Scene, Narrator, Action } from '../../components/drama';
 </Character>
 ```
 
-### Character Actions with Language Support
+### Character Actions with isAction Prop
 ```jsx
-<Action character="watashi" language="en">
+<Character name="watashi" isAction>
 nervously adjusts her blonde ponytail and the required cap
-</Action>
+</Character>
 
-<Action character="tenchou" language="jp">
+<Character name="tenchou" isAction>
 スマートメガネを調整しながらスマホモックアップを見る
-</Action>
+</Character>
 ```
 
 ## Quality Checklist
@@ -304,7 +242,7 @@ nervously adjusts her blonde ponytail and the required cap
 3. **Preserve plot mysteries**: Don't reveal character secrets in narrator text
 4. **Keep dialogue natural**: Short exchanges instead of long explanations
 5. **Show emotions progressively**: Use emotion props to show character development through scenes
-6. **Add realistic actions**: Use Action component for authentic café work movements and character habits
+6. **Add realistic actions**: Use Character component with `isAction` prop for authentic café work movements and character habits
 7. **Mix languages naturally**: Show the learning process through authentic confusion and discovery
 8. **Create learning mistakes**: Show authentic moments of language confusion and breakthrough
 9. **Include cultural insights**: Show differences between analytical vs. natural learning approaches
@@ -329,5 +267,5 @@ Focus on practical skills learning with specialized character dynamics:
 - **Humor**: Used to maintain engagement and aid memory retention
 
 ### Technical Episode Naming Convention
-- Add skill-specific suffix to filename: `アキバのバイト女王.excel.mdx`
+- Add skill-specific suffix to filename: `akiba-no-baito-queen.excel.mdx`
 - Other examples: `.powerpoint.mdx`, `.programming.mdx`, etc.
