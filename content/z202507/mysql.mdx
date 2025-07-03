@@ -766,12 +766,225 @@ Demonstrates testing for NULL values using IS NULL operator.
 - Second query finds customers without email addresses
 - Essential for handling missing or unknown data
 
+## AND Operator
 
+### Input
+```sql
+SELECT prod_id, prod_price, prod_name
+FROM Products
+WHERE vend_id = 'DLL01' AND prod_price <= 4;
+```
 
+### Output
+```
++---------+------------+---------------------+
+| prod_id | prod_price | prod_name           |
++---------+------------+---------------------+
+| BNBG01  |       3.49 | Fish bean bag toy   |
+| BNBG02  |       3.49 | Bird bean bag toy   |
+| BNBG03  |       3.49 | Rabbit bean bag toy |
++---------+------------+---------------------+
+3 rows in set (0.02 sec)
+```
 
+### Explanation
+Uses AND operator to combine multiple conditions.
+- Both conditions must be true: vendor must be 'DLL01' AND price must be &lt;= 4
+- Filters products from vendor DLL01 that cost $4 or less
+- Results show only 3 products that meet both criteria
+- AND creates more restrictive filtering than individual conditions
 
+## OR Operator
 
+### Input
+```sql
+SELECT prod_id, prod_price, prod_name
+FROM Products
+WHERE vend_id = 'DLL01' OR vend_id = 'BRS01';
+```
 
+### Output
+```
++---------+------------+---------------------+
+| prod_id | prod_price | prod_name           |
++---------+------------+---------------------+
+| BR01    |       5.99 | 8 inch teddy bear   |
+| BR02    |       8.99 | 12 inch teddy bear  |
+| BR03    |      11.99 | 18 inch teddy bear  |
+| BNBG01  |       3.49 | Fish bean bag toy   |
+| BNBG02  |       3.49 | Bird bean bag toy   |
+| BNBG03  |       3.49 | Rabbit bean bag toy |
+| RGAN01  |       4.99 | Raggedy Ann         |
++---------+------------+---------------------+
+7 rows in set (0.00 sec)
+```
+
+### Explanation
+Uses OR operator to match rows that satisfy either condition.
+- Either condition can be true: vendor 'DLL01' OR vendor 'BRS01'
+- Returns products from both vendor DLL01 and vendor BRS01
+- OR creates more inclusive filtering than AND operations
+- Results show 7 products from the two specified vendors
+
+## Operator Precedence
+
+### Input
+```sql
+SELECT prod_name, prod_price
+FROM Products
+WHERE vend_id = 'DLL01' OR vend_id = 'BRS01'
+      AND prod_price >= 10;
+```
+
+### Output
+```
++---------------------+------------+
+| prod_name           | prod_price |
++---------------------+------------+
+| 18 inch teddy bear  |      11.99 |
+| Fish bean bag toy   |       3.49 |
+| Bird bean bag toy   |       3.49 |
+| Rabbit bean bag toy |       3.49 |
+| Raggedy Ann         |       4.99 |
++---------------------+------------+
+5 rows in set (0.00 sec)
+```
+
+### Input
+```sql
+SELECT prod_name, prod_price
+FROM Products
+WHERE (vend_id = 'DLL01' OR vend_id = 'BRS01')
+      AND prod_price >= 10;
+```
+
+### Output
+```
++--------------------+------------+
+| prod_name          | prod_price |
++--------------------+------------+
+| 18 inch teddy bear |      11.99 |
++--------------------+------------+
+1 row in set (0.00 sec)
+```
+
+### Explanation
+Demonstrates how operator precedence affects query results.
+- First query: AND has higher precedence than OR, so it groups as `vend_id = 'DLL01' OR (vend_id = 'BRS01' AND prod_price >= 10)`
+- Second query: Parentheses force different grouping `(vend_id = 'DLL01' OR vend_id = 'BRS01') AND prod_price >= 10`
+- First returns all DLL01 products plus expensive BRS01 products
+- Second returns only expensive products from either vendor
+- Always use parentheses to improve readability and avoid unexpected results
+
+## IN Operator
+
+### Input
+```sql
+SELECT prod_name, prod_price
+FROM Products
+WHERE vend_id IN ('DLL01','BRS01')
+ORDER BY prod_name;
+```
+
+### Output
+```
++---------------------+------------+
+| prod_name           | prod_price |
++---------------------+------------+
+| 12 inch teddy bear  |       8.99 |
+| 18 inch teddy bear  |      11.99 |
+| 8 inch teddy bear   |       5.99 |
+| Bird bean bag toy   |       3.49 |
+| Fish bean bag toy   |       3.49 |
+| Rabbit bean bag toy |       3.49 |
+| Raggedy Ann         |       4.99 |
++---------------------+------------+
+7 rows in set (0.00 sec)
+```
+
+### Input
+```sql
+SELECT prod_name, prod_price
+FROM Products
+WHERE vend_id = 'DLL01' OR vend_id = 'BRS01'
+ORDER BY prod_name;
+```
+
+### Output
+```
++---------------------+------------+
+| prod_name           | prod_price |
++---------------------+------------+
+| 12 inch teddy bear  |       8.99 |
+| 18 inch teddy bear  |      11.99 |
+| 8 inch teddy bear   |       5.99 |
+| Bird bean bag toy   |       3.49 |
+| Fish bean bag toy   |       3.49 |
+| Rabbit bean bag toy |       3.49 |
+| Raggedy Ann         |       4.99 |
++---------------------+------------+
+7 rows in set (0.00 sec)
+```
+
+### Explanation
+Shows IN operator as a cleaner alternative to multiple OR conditions.
+- `IN ('DLL01','BRS01')` is equivalent to `= 'DLL01' OR = 'BRS01'`
+- More readable and concise when checking multiple values
+- Results are identical between IN and OR approaches
+- Particularly useful when checking against many possible values
+
+## NOT Operator
+
+### Input
+```sql
+SELECT prod_name
+FROM Products
+WHERE NOT vend_id = 'DLL01'
+ORDER BY prod_name;
+```
+
+### Output
+```
++--------------------+
+| prod_name          |
++--------------------+
+| 12 inch teddy bear |
+| 18 inch teddy bear |
+| 8 inch teddy bear  |
+| King doll          |
+| Queen doll         |
++--------------------+
+5 rows in set (0.00 sec)
+```
+
+### Input
+```sql
+SELECT prod_name
+FROM Products
+WHERE vend_id <> 'DLL01'
+ORDER BY prod_name;
+```
+
+### Output
+```
++--------------------+
+| prod_name          |
++--------------------+
+| 12 inch teddy bear |
+| 18 inch teddy bear |
+| 8 inch teddy bear  |
+| King doll          |
+| Queen doll         |
++--------------------+
+5 rows in set (0.00 sec)
+```
+
+### Explanation
+Compares NOT operator with not-equal operator for negation.
+- `NOT vend_id = 'DLL01'` negates the equality condition
+- `vend_id <> 'DLL01'` directly expresses not-equal condition
+- Both exclude products from vendor DLL01
+- Results are identical - choose based on readability preference
 
 
 

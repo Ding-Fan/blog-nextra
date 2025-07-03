@@ -69,10 +69,10 @@ SHOW DATABASES;
 ```markdown
 ### Explanation
 One-line summary of what the section demonstrates.
-- First concept explanation with syntax details
+- First key concept with syntax explanation
 - Second concept building on the first
 - Third concept showing the complete result
-- Key takeaway or best practice note
+- Important takeaway or best practice
 ```
 
 ### 9. Conciseness Guidelines
@@ -87,6 +87,93 @@ One-line summary of what the section demonstrates.
 - Separate input, output, and explanations visually with clear hierarchy
 - Maintain consistent spacing between sections
 - Use descriptive but concise main section titles (##)
+
+### 11. Handling Unformatted Content
+
+When encountering unformatted content mixed with properly formatted sections:
+
+#### Identification
+- Look for raw SQL commands without `### Input` headers
+- Find output blocks without `### Output` headers
+- Spot missing `### Explanation` sections
+- Notice inconsistent spacing or structure
+
+#### Reformatting Process
+1. **Group Related Commands**: Identify commands that demonstrate the same concept
+2. **Create Section Headers**: Use descriptive `##` headers for each concept group
+3. **Structure Each Example**: Apply the Input/Output/Explanation pattern
+4. **Maintain Output Fidelity**: Preserve exact terminal output formatting
+5. **Add Educational Content**: Create explanations that build understanding
+
+#### Common Unformatted Patterns
+```markdown
+# BEFORE (unformatted)
+SELECT prod_name FROM Products WHERE price > 10;
++----------+
+| prod_name|
++----------+
+| Product 1|
++----------+
+1 row in set (0.01 sec)
+
+# AFTER (formatted)
+## Filter by Price
+
+### Input
+```sql
+SELECT prod_name FROM Products WHERE price > 10;
+```
+
+### Output
+```
++----------+
+| prod_name|
++----------+
+| Product 1|
++----------+
+1 row in set (0.01 sec)
+```
+
+### Explanation
+Filters products by price using comparison operators.
+- WHERE clause restricts results to rows meeting specified conditions
+- Greater than operator (>) finds values above the threshold
+- Results show only products priced above $10
+```
+
+#### Multiple Related Examples
+When multiple commands demonstrate the same concept:
+- Group them under one section header
+- Use multiple Input/Output pairs within the same section
+- Provide one comprehensive Explanation covering all examples
+- Show progression from simple to complex usage
+
+#### Special Characters in Markdown
+- Escape HTML entities: `&lt;=` for `<=`, `&gt;=` for `>=`
+- Use proper code formatting to avoid MDX parsing issues
+- Test that all content renders correctly
+
+## Content Recovery Guidelines
+
+### 12. Working with Mixed Format Content
+
+#### Assessment Phase
+1. **Scan for Patterns**: Identify where formatting breaks down
+2. **Find Natural Breaks**: Look for logical concept boundaries
+3. **Preserve Learning Flow**: Maintain tutorial progression
+4. **Identify Missing Context**: Note gaps in explanations
+
+#### Restructuring Strategy
+1. **Start from Last Properly Formatted Section**: Continue from known good state
+2. **Process in Logical Groups**: Handle related commands together
+3. **Maintain Consistency**: Apply established formatting patterns
+4. **Cross-Reference Content**: Ensure examples align with explanations
+
+#### Content Organization
+- **Conceptual Grouping**: Commands teaching the same principle belong together
+- **Progressive Complexity**: Simple examples before complex ones
+- **Verification Steps**: Include commands that confirm operations worked
+- **Error Handling**: Show both successful and error cases when relevant
 
 ## Example Template
 
@@ -128,3 +215,16 @@ One-line summary of what this section demonstrates.
 - [ ] Bullet points explain concepts in building order
 - [ ] Syntax details and key concepts are included
 - [ ] Explanations are beginner-friendly but educational
+
+## Content Recovery Checklist
+
+- [ ] Identified all unformatted sections and command groups
+- [ ] Created appropriate section headers for each concept
+- [ ] Applied Input/Output/Explanation structure consistently
+- [ ] Preserved exact terminal output formatting
+- [ ] Grouped related commands under single section headers
+- [ ] Added educational explanations for all examples
+- [ ] Maintained logical tutorial progression
+- [ ] Fixed any special character encoding issues
+- [ ] Verified all sections follow established patterns
+- [ ] Cross-referenced content for consistency
