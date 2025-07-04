@@ -1,0 +1,441 @@
+
+
+# アキバのバイト女王 - Linux編
+
+import { Character, Scene, Narrator, Avatar } from '../../components/drama';
+
+<Scene 
+  title="第一幕: 迷子のお客さん" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:00"
+>
+
+<Narrator>
+常連さんが慌てた様子で入ってきた。眼鏡をかけたプログラマーっぽい人で、いつもLinuxの話をしている。今日は特に焦っているようだ。
+</Narrator>
+
+<Character name="customer" emotion="panicked">
+すみません！大変なことになってしまいました！自分のファイルがどこにあるか分からなくなってしまって...
+</Character>
+
+<Character name="watashi" emotion="confused">
+え、えーと...ファイルですか？どこに置いたか覚えていませんか？
+</Character>
+
+<Character name="customer" emotion="frustrated">
+場所は覚えているんですが...でも、どうやってそこに行くのかを忘れてしまって...あ、これです！
+</Character>
+
+<Character name="customer" isAction>
+ポケットから小さな紙を取り出す
+</Character>
+
+<Character name="customer" emotion="confused">
+この紙に「114514」って書いてあるんです。これが何かのヒントだったと思うんですが...
+</Character>
+
+<Character name="watashi" emotion="panicked">
+り、Linux？！すみません、私全然わからないんです！
+</Character>
+
+<Character name="watashi" isAction>
+慌てて店長を呼びに行く
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第二幕: 店長の救援" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:05"
+>
+
+<Narrator>
+店長がゆっくりとやってきた。いつものキャップとサングラスで、スマホを見ている。
+</Narrator>
+
+<Character name="tenchou" emotion="normal">
+これはこれは、浩三さんじゃないですか。
+</Character>
+
+<Character name="customer" emotion="embarrassed">
+店長さん、お恥ずかしいことに...自分のファイルに辿り着けないんです。
+</Character>
+
+<Character name="customer" isAction>
+例の紙を店長に見せる
+</Character>
+
+<Character name="customer" emotion="confused">
+この「114514」という数字がヒントだったと思うんですが...
+</Character>
+
+<Character name="tenchou" emotion="curious">
+114514...なるほど、懐かしい数字ですね。とりあえず、ターミナルを開いてみましょう。ラップトップを貸して。
+</Character>
+
+<Character name="tenchou" isAction>
+お客さんのラップトップを見ながら、ターミナルを開く
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第三幕: 現在地を知る - pwd コマンド" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:10"
+>
+
+<Character name="tenchou" emotion="normal">
+まずは現在地を確認しよう。`pwd`コマンド打ってみて。
+</Character>
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu
+```
+
+### Explanation
+現在のディレクトリの絶対パスを表示するコマンド。
+- `pwd` は "Print Working Directory" の略
+- 現在いる場所の完全なパスを表示
+- 迷子になった時の最初の確認手段
+- ユーザー名「hiromitsu」のホームディレクトリにいることが確認できる
+
+<Character name="customer" emotion="relieved">
+ああ、私のホームディレクトリですね！hiromitsuフォルダにいます！
+</Character>
+
+<Character name="watashi" emotion="amazed">
+浩三さんのユーザー名はhiromitsuなんですね！
+</Character>
+
+<Character name="watashi" emotion="curious">
+pwdって何の略ですか？
+</Character>
+
+<Character name="tenchou" emotion="happy">
+Print Working Directoryだ。今いる「作業ディレクトリ」を「印刷」する、つまり表示するという意味だな。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第四幕: 周りを見回す - ls コマンド" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:15"
+>
+
+<Character name="tenchou" emotion="normal">
+じゃあ次は周りを見てみよう。`ls`使うよ。
+</Character>
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+0  1  2  3  4  5  6  7  8  9
+```
+
+### Explanation
+現在のディレクトリの内容を一覧表示するコマンド。
+- `ls` は "list" の略
+- フォルダやファイルの名前を表示
+- 数字だけのフォルダが10個あることが確認できる
+- 隠しファイルは表示されない（-a オプションが必要）
+
+<Character name="customer" emotion="excited">
+あ！これです！0から9までのフォルダ！これが私の暗号化ディレクトリシステムです！
+</Character>
+
+<Character name="watashi" emotion="amazed">
+なるほど！lsで周りが見えるんですね！そして、114514の謎も解けました！
+</Character>
+
+<Character name="tenchou" emotion="happy">
+そうだ。lsは「list」の略で、現在のディレクトリの中身を一覧表示するんだ。君の巧妙な暗号システムの入り口が見つかったな。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第五幕: 目標への移動 - cd コマンド" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:20"
+>
+
+<Character name="tenchou" emotion="normal">
+よし、目標のディレクトリに移動してみよう。`cd`使うよ。まず「1」に入ってみて。
+</Character>
+
+### Input
+```bash
+cd 1
+```
+
+### Output
+```
+# コマンドプロンプトが変わる
+hiromitsu@hostname:~/1$ 
+```
+
+### Explanation
+ディレクトリを移動するコマンド。
+- `cd` は "Change Directory" の略
+- 指定したディレクトリに移動する
+- プロンプトが変わって現在地が表示される
+- ユーザー名「hiromitsu」がプロンプトに表示される
+
+<Character name="customer" emotion="happy">
+動きました！プロンプトが変わって、hiromitsuって表示されましたね！
+</Character>
+
+<Character name="tenchou" emotion="normal">
+いいね！cdは「Change Directory」の略。114514パズルの最初の「1」に入ったよ。じゃあ次、現在地確認してから、一気に進もう。
+</Character>
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/1
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+0  1  2  3  4  5  6  7  8  9
+```
+
+<Character name="watashi" emotion="surprised">
+また同じように0から9のフォルダがありますね！浩三さんの暗号システムすごいです！
+</Character>
+
+<Character name="tenchou" emotion="happy">
+そういうこと。浩三君の暗号化システムの仕組みだな。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第六幕: 連続移動の技" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:25"
+>
+
+<Character name="tenchou" emotion="normal">
+一つずつ移動するの面倒でしょ？114514パズルを一度に解いちゃおう。パスを繋げて指定できるんだよ。
+</Character>
+
+### Input
+```bash
+cd 1/4/5/1/4
+```
+
+### Output
+```
+hiromitsu@hostname:~/1/1/4/5/1/4$ 
+```
+
+### Explanation
+複数のディレクトリを一度に移動する方法。
+- パス区切り文字「/」で複数のディレクトリを指定
+- 114514パズルの答え「1/1/4/5/1/4」を一度に実行
+- 相対パスで現在地からの経路を指定
+- 一度のコマンドで深い階層まで移動可能
+
+<Character name="customer" emotion="excited">
+着きました！114514パズルが解けました！やっと目標のディレクトリに辿り着けました！
+</Character>
+
+<Character name="watashi" emotion="amazed">
+すごい！114514の数字が本当にパスだったんですね！一度にこんなに深く移動できるんですね！
+</Character>
+
+<Character name="tenchou" emotion="happy">
+効率的だろう？浩三君の暗号システムも見事に解読できたな。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第七幕: 隠しファイルの発見" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:30"
+>
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+田所さんの中華屋.mp4
+```
+
+<Character name="customer" emotion="relieved">
+あった！これです！やっと見つかりました！
+</Character>
+
+<Character name="watashi" emotion="curious">
+田所さんの中華屋...面白そうな動画ですね、浩三さん！どんな内容なんですか？
+</Character>
+
+<Character name="watashi" isAction>
+好奇心旺盛にファイルを開こうとする
+</Character>
+
+<Character name="customer" emotion="panicked">
+あ、いや、それは...！！開かないでください！！
+</Character>
+
+<Character name="customer" isAction>
+慌てて画面を隠そうとする
+</Character>
+
+<Character name="watashi" emotion="confused">
+え？でも、中華屋さんの動画でしょう？料理の動画ですか？
+</Character>
+
+<Character name="customer" emotion="embarrassed">
+そ、そうです！料理の動画です！でも、あの...個人的なメモも入っているので...
+</Character>
+
+<Character name="customer" isAction>
+急いでラップトップを閉じて、お金を置いて立ち上がる
+</Character>
+
+<Character name="customer" emotion="awkward">
+あ、ありがとうございました！114514パズルも解けて、おかげでファイルが見つかりました！それでは！
+</Character>
+
+<Narrator>
+お客さんは足早に店を出て行った。私は何が起こったのか分からず、きょとんとしていた。
+</Narrator>
+
+</Scene>
+
+<Scene 
+  title="第八幕: 店長の慰め" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:35"
+>
+
+<Character name="watashi" emotion="sad">
+店長...私、何か悪いことしましたか？浩三さんが急に...
+</Character>
+
+<Character name="tenchou" emotion="gentle">
+いや、君は何も悪くない。好奇心旺盛なのはいいことだ。
+</Character>
+
+<Character name="tenchou" isAction>
+優しく微笑みながら、サングラスを少し上げる
+</Character>
+
+<Character name="tenchou" emotion="wise">
+ただ、時には知らない方がいいこともあるんだ。特に...そういうファイル名の場合はな。
+</Character>
+
+<Character name="watashi" emotion="confused">
+そういうファイル名？田所さんの中華屋って、普通の名前じゃないですか？
+</Character>
+
+<Character name="tenchou" emotion="mysterious">
+*苦笑いしながら* そうだな...君にはまだ早いかも。インターネットの世界は深いんだよ。それは「ちゅうかや」じゃなくて「仲夏夜」だ。
+</Character>
+
+<Character name="watashi" emotion="curious">
+仲夏夜？
+</Character>
+
+<Character name="tenchou" emotion="protective">
+まあ、気にしなくていいよ。大事なのは、今日Linuxの基本を覚えたってことだ。pwd、ls、cd...これがあれば、どんな迷子でも、どんな暗号パズルでも解決できる。
+</Character>
+
+<Character name="watashi" emotion="happy">
+はい！Linuxのナビゲーションも学べたし、114514パズルも解けました！
+</Character>
+
+<Character name="tenchou" emotion="amused">
+そうだ。そして、時には踏み込まない方がいい領域もある...ということもな。
+</Character>
+
+<Narrator>
+この日、私はLinuxの基本コマンドを学んだ。そして、114514という数字がディレクトリパスの暗号だということも知った。でも、インターネットには知らない方がいい世界があるということも、なんとなく理解した。仲夏夜の意味は、きっといつか分かる日が来るだろう。
+</Narrator>
+
+</Scene>
+
+## 今日学んだLinuxコマンド
+
+### pwd (Print Working Directory)
+- **用途**: 現在いるディレクトリの場所を確認
+- **基本構文**: `pwd`
+- **重要性**: 迷子になった時の最初の確認手段
+
+### ls (List)
+- **用途**: 現在のディレクトリの内容を一覧表示
+- **基本構文**: `ls`
+- **重要性**: 周りにあるファイルやフォルダを把握
+
+### cd (Change Directory)
+- **用途**: ディレクトリを移動
+- **基本構文**: `cd ディレクトリ名`
+- **応用**: `cd path/to/directory` で複数階層を一度に移動
+- **重要性**: ファイルシステムの移動に必須
+
+### 今日のまとめ
+秋葉原のメイドカフェで、浩三さんの114514パズルを解きながら、Linuxの基本ナビゲーションを学びました。数字の暗号がディレクトリパスを表していることを知りました。時には、技術的な解決だけでなく、踏み込まない方がいい領域があることも学びました。次回は、もっと深いLinuxコマンドを学んでいきましょう！
+
+## 全コマンドリファレンス
+
+### ✅ 学習済みコマンド
+- **pwd** - 現在のディレクトリパスを表示
+- **ls** - ディレクトリの内容を一覧表示
+- **cd** - ディレクトリを移動
+
+### 📚 今後学習予定のコマンド
+
+#### ファイル・ディレクトリ操作
+- **mkdir** - ディレクトリを作成
+- **rmdir** - 空のディレクトリを削除
+- **touch** - 空のファイルを作成、タイムスタンプを更新
+- **mv** - ファイル・ディレクトリを移動・リネーム
+- **cp** - ファイル・ディレクトリをコピー
+- **rm** - ファイル・ディレクトリを削除
+
+#### テキスト表示・編集
+- **cat** - ファイルの内容を表示
+- **more** - ファイルの内容をページごとに表示
+- **less** - ファイルの内容をスクロール表示
+- **echo** - テキストを出力
+
+#### リダイレクト・パイプ
+- **>** - 出力をファイルに書き込み（上書き）
+- **>>** - 出力をファイルに追記
+- **|** - コマンドの出力を別のコマンドに渡す
+
+#### 検索・フィルタ
+- **grep** - テキストパターンを検索
+- **egrep** - 拡張正規表現でテキスト検索
+- **find** - ファイル・ディレクトリを検索
+
+**進捗**: 3/19 コマンド完了
+
