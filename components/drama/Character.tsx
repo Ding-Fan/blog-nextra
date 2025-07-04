@@ -4,7 +4,7 @@ import React from "react";
 import { ct } from "../../scripts/utils";
 import { Avatar } from "../Avatar";
 
-export type CharacterName = 'tenchou' | 'watashi' | 'customer';
+export type CharacterName = 'tenchou' | 'watashi' | 'customer' | 'hiromitsu';
 export type Language = 'en' | 'jp';
 
 export interface CharacterProps {
@@ -39,6 +39,13 @@ const characterData = {
         actionColors: 'bg-gray-50 text-gray-600 border-gray-300',
         avatar: '🧑‍💼',
         avatarPath: '/images/characters/customer-avatar.png' // Fallback, may not exist
+    },
+    hiromitsu: {
+        names: { en: 'Hiromitsu', jp: '浩三' },
+        colors: 'bg-green-100 text-green-800 border-green-200',
+        actionColors: 'bg-gray-50 text-gray-600 border-gray-300',
+        avatar: '👨‍💻',
+        avatarPath: '/images/characters/hiromitsu-avatar.png'
     }
 } as const;
 
