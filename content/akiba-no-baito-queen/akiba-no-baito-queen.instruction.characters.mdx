@@ -10,6 +10,7 @@
 - `tenchou` (店長) - Old otaku manager with cap and glasses
 - `watashi` (私) - Young blonde girl learning Japanese
 - `customer` (お客さん) - Store customer
+- `hiromitsu` (浩三) - Regular customer, programmer
 
 ### アバターシステム
 - **自動アバター**: Character の `name` prop に基づいて自動的に読み込まれます
@@ -17,6 +18,7 @@
   - `tenchou` → `/images/characters/tenchou-avatar.png`
   - `watashi` → `/images/characters/watashi-avatar.png`
   - `customer` → `/images/characters/customer-avatar.png`
+  - `hiromitsu` → `/images/characters/hiromitsu-avatar.png`
 - **カスタムオーバーライド**: `avatar="/custom/path.png"` でデフォルトを上書き可能
 - **アバター無効化**: `noAvatar={true}` で絵文字のみ表示
 - **フォールバック**: アバター画像の読み込みに失敗した場合、絵文字アバターが表示されます
@@ -58,6 +60,22 @@ A young western girl with blonde hair in a ponytail, wearing a maid café unifor
 - **Types**: オタク、サラリーマン、観光客など
 - **Usage**: 異なる相互作用シナリオを作成するための可変キャラクター
 - **Role**: 実際の秋葉原の人口統計と社会的状況を反映
+
+### 浩三 (Hiromitsu)
+- **Name**: 浩三 (Hiromitsu)
+- **Physical Description**: 眼鏡をかけたプログラマーっぽい人
+- **Character Type**: 常連客
+- **Profession**: プログラマー
+- **Technical Knowledge**: Linuxに詳しいが、時々基本的なことを忘れてしまう
+- **Personality**: 慌てやすいが、店長には馴染みがある
+- **Speech Style**: 丁寧語、技術的な話題を好む
+- **Relationship**: 店長とは親しい関係で、名前で呼ばれる
+- **Role**: 技術学習エピソードで学習者役、実際の技術者のリアルな悩みを表現
+
+**画像生成プロンプト:**
+```
+A Japanese programmer in his late 20s or early 30s, wearing glasses and casual clothes (hoodie or polo shirt). He has a slightly anxious but intelligent expression, holding a laptop or notebook. He looks approachable and friendly, with the appearance of someone who works in tech but is comfortable in casual settings. The setting is inside an Akihabara maid café. Anime/manga art style, soft lighting, character should look like a regular customer who is familiar with the place and staff.
+```
 
 ## 感情表現システム
 
