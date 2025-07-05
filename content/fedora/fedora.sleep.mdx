@@ -1,0 +1,36 @@
+### Keep Your Fedora Laptop Running with the Lid Closed
+
+By default, Fedora suspends your laptop when you close the lid to save power. To change this behavior—for instance, to keep music playing or downloads running—you should create a systemd configuration override.
+
+**Do not edit `/usr/lib/systemd/logind.conf`.**
+
+Instead, follow these steps:
+
+1.  **Create a configuration file.**:
+
+    ```bash
+    sudo mkdir -p /etc/systemd/logind.conf.d/
+    sudo vi /etc/systemd/logind.conf.d/lid.conf
+    ```
+
+2.  **Add your desired settings.** Paste the following into the file. You only need to specify the settings you wish to change.
+
+    ```ini
+    # This keeps the system running with the lid closed
+    # when plugged into AC power, but suspends on battery.
+    [Login]
+    HandleLidSwitchExternalPower=lock
+    HandleLidSwitch=suspend
+    ```
+
+      * `ignore`: Keeps the system running (screen off).
+      * `suspend`: Puts the system to sleep.
+      * `lock`: Locks the screen but keeps the system running.
+
+3.  **Save the file and apply changes.**:
+
+    ```bash
+    sudo systemctl restart systemd-logind.service
+    ```
+
+Your new lid settings are now active.
