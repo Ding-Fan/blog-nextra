@@ -1,6 +1,6 @@
 # Flatpak CJK Font Issue
 
-Telegram and Bitwarden (Flatpak) showing missing/broken Chinese characters, while VS Code and Brave display them fine.
+Telegram, Bitwarden, Discord (Flatpak) showing missing/broken CJK characters, while VS Code and Brave display them fine.
 
 **Problem**: Flatpak apps use bad default CJK fonts and can't access system fonts.
 
@@ -49,7 +49,10 @@ Use `flatpak list | grep -E "(telegram|bitwarden)"` to know the name of the Flat
 </fontconfig>
 ```
 
-also do it for com.bitwarden.desktop
+also do it for
+
+- com.bitwarden.desktop
+- com.discordapp.Discord
 
 
 - https://github.com/flatpak/flatpak/issues/6186
