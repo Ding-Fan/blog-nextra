@@ -1,0 +1,526 @@
+# アキバのバイト女王 - MySQL編
+
+import { Character, Scene, Narrator, Avatar } from '../../components/drama';
+
+<Scene 
+  title="第一幕: 店長の突然のクイズ" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:00"
+>
+
+<Narrator>
+暇な午後、店長が突然私にニヤリと笑いかけた。浩三さんも隣で困った顔をしている。
+</Narrator>
+
+<Character name="tenchou" emotion="mischievous">
+おい、君。データベースって知ってるか？
+</Character>
+
+<Character name="watashi" emotion="confused">
+え？データベース？あの...コンピューターの...？
+</Character>
+
+<Character name="tenchou" emotion="happy">
+そうだ！じゃあ、MySQLでテーブルを作る問題を出してやろう。テーブル名がtest、フィールドが数字のid、20文字のnameのテーブルを作成してみろ！
+</Character>
+
+<Character name="watashi" emotion="panicked">
+え？！え？！わからないです！
+</Character>
+
+<Character name="hiromitsu" emotion="nervous">
+あの、店長さん...
+</Character>
+
+<Character name="tenchou" emotion="normal">
+答えはこうだ！
+</Character>
+
+### Input
+```sql
+CREATE TABLE test (id INTEGER, name CHAR(20));
+```
+
+### Output
+```
+テーブル 'test' が正常に作成されました。
+- id: INTEGER型のフィールド
+- name: CHAR(20)型のフィールド
+```
+
+### Explanation
+テーブルを作成する基本的なSQL文。
+- `CREATE TABLE` でテーブル作成を宣言
+- `test` がテーブル名
+- `id INTEGER` で整数型のidフィールドを定義
+- `name CHAR(20)` で20文字固定長のnameフィールドを定義
+
+<Character name="hiromitsu" emotion="concerned">
+でも店長さん、実際の現場ではCHARよりもVARCHARを使うことが多いですし、PRIMARY KEYやAUTO_INCREMENTも...
+</Character>
+
+<Character name="tenchou" emotion="dismissive">
+細かいことはいいんだよ！基本を覚えるのが先だ！
+</Character>
+
+<Character name="watashi" emotion="overwhelmed">
+あの...全然わからないです...
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第二幕: 次々と出される問題" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:10"
+>
+
+<Character name="tenchou" emotion="excited">
+じゃあ次だ！テーブル名がlog、フィールドが日付のLD、時間のLT、100文字のlogのテーブルを作成しろ！
+</Character>
+
+<Character name="watashi" emotion="confused">
+え...えーと...
+</Character>
+
+### Input
+```sql
+CREATE TABLE log (LD DATE, LT TIME, log CHAR(100));
+```
+
+### Output
+```
+テーブル 'log' が正常に作成されました。
+- LD: DATE型のフィールド（日付）
+- LT: TIME型のフィールド（時間）
+- log: CHAR(100)型のフィールド（100文字）
+```
+
+### Explanation
+異なるデータ型を使用したテーブル作成。
+- `DATE` 型で日付を格納
+- `TIME` 型で時間を格納
+- `CHAR(100)` で100文字固定長のログメッセージを格納
+
+<Character name="hiromitsu" emotion="worried">
+あの、店長さん...実運用では、ログテーブルにはTIMESTAMPを使って、インデックスも設定しないと...
+</Character>
+
+<Character name="tenchou" emotion="annoyed">
+浩三、細かい話は後でいい！今は基本だ！
+</Character>
+
+<Character name="watashi" emotion="nervous">
+DATE型とTIME型って違うんですね...
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第三幕: テーブル変更の連続攻撃" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:20"
+>
+
+<Character name="tenchou" emotion="smug">
+よし！今度はテーブルを変更してみよう！testテーブルに日付のudでフィールドを追加する、場所はnameの後ろとする！
+</Character>
+
+<Character name="watashi" emotion="panicked">
+変更？！追加？！
+</Character>
+
+### Input
+```sql
+ALTER TABLE test ADD COLUMN ud DATE AFTER name;
+```
+
+### Output
+```
+テーブル 'test' が正常に変更されました。
+新しい構造:
+- id: INTEGER
+- name: CHAR(20)
+- ud: DATE （nameの後に追加）
+```
+
+### Explanation
+既存のテーブルにカラムを追加する操作。
+- `ALTER TABLE` でテーブル変更を宣言
+- `ADD COLUMN` で新しいカラムを追加
+- `AFTER name` で挿入位置を指定
+
+<Character name="hiromitsu" emotion="concerned">
+店長さん、本番環境でALTER TABLEを実行するときは、必ずバックアップを取って、メンテナンス時間を確保して...
+</Character>
+
+<Character name="tenchou" emotion="dismissive">
+浩三、うるさいな！
+</Character>
+
+<Character name="tenchou" emotion="excited">
+次！testテーブルのidのデータ型を8文字に変更する！
+</Character>
+
+### Input
+```sql
+ALTER TABLE test MODIFY COLUMN id CHAR(8);
+```
+
+### Output
+```
+テーブル 'test' が正常に変更されました。
+- id: CHAR(8) に変更 （INTEGER → CHAR(8)）
+```
+
+### Explanation
+既存カラムのデータ型を変更する操作。
+- `MODIFY COLUMN` で既存カラムの型を変更
+- `INTEGER` から `CHAR(8)` に変更
+- データの互換性に注意が必要
+
+<Character name="hiromitsu" emotion="alarmed">
+ちょっと待ってください！INTEGERからCHARに変更するなんて、既存のデータが...
+</Character>
+
+<Character name="tenchou" emotion="annoyed">
+浩三、黙ってろ！
+</Character>
+
+<Character name="watashi" emotion="confused">
+えーと、データが変わっちゃうんですか？
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第四幕: さらなる変更とプロの警告" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:30"
+>
+
+<Character name="tenchou" emotion="normal">
+次だ！usrテーブルのunameのフィールド名をusernameに変更する、データ型は15文字とする！
+</Character>
+
+### Input
+```sql
+ALTER TABLE usr CHANGE COLUMN uname username CHAR(15);
+```
+
+### Output
+```
+テーブル 'usr' が正常に変更されました。
+- uname → username に変更
+- データ型: CHAR(15)
+```
+
+### Explanation
+カラム名とデータ型を同時に変更する操作。
+- `CHANGE COLUMN` で既存カラムの名前と型を変更
+- `uname` から `username` に名前変更
+- 同時にデータ型も指定
+
+<Character name="hiromitsu" emotion="frustrated">
+店長さん！カラム名を変更するとアプリケーションのコードが全部エラーになります！
+</Character>
+
+<Character name="tenchou" emotion="dismissive">
+そんなの開発者の問題だ！
+</Character>
+
+<Character name="tenchou" emotion="excited">
+次！usrテーブルのfamilyのフィールドを削除する！
+</Character>
+
+### Input
+```sql
+ALTER TABLE usr DROP COLUMN family;
+```
+
+### Output
+```
+テーブル 'usr' が正常に変更されました。
+- family カラムが削除されました
+- データも完全に削除されました
+```
+
+### Explanation
+カラムを完全に削除する操作。
+- `DROP COLUMN` でカラムを削除
+- カラムに含まれていたデータも全て削除される
+- 復元は不可能
+
+<Character name="hiromitsu" emotion="panicked">
+待ってください！DROP COLUMNは取り返しがつかないです！バックアップなしでやったら...
+</Character>
+
+<Character name="tenchou" emotion="annoyed">
+浩三、もう黙ってろ！
+</Character>
+
+<Character name="watashi" emotion="scared">
+あの...データが消えちゃうんですか？
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第五幕: 恐怖のDROP TABLE" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:40"
+>
+
+<Character name="tenchou" emotion="mischievous">
+今度は究極の問題だ！crashテーブルを削除する！
+</Character>
+
+<Character name="watashi" emotion="terrified">
+削除？！
+</Character>
+
+### Input
+```sql
+DROP TABLE crash;
+```
+
+### Output
+```
+テーブル 'crash' が完全に削除されました。
+- テーブル構造とデータが全て削除
+- 復元は不可能
+```
+
+### Explanation
+テーブル全体を削除する操作。
+- `DROP TABLE` でテーブルを完全に削除
+- 構造もデータも全て削除される
+- 最も危険なSQL操作の一つ
+
+<Character name="hiromitsu" emotion="alarmed">
+店長さん！DROP TABLEは絶対に本番環境では使ってはいけません！
+</Character>
+
+<Character name="tenchou" emotion="dismissive">
+crashテーブルだから大丈夫だ！名前からして不要だろう！
+</Character>
+
+<Character name="hiromitsu" emotion="frustrated">
+そういう問題じゃないです！権限管理で普通はDROPできないようにしてるんです！
+</Character>
+
+<Character name="watashi" emotion="confused">
+あの...私にはよくわからないですが、浩三さんが心配そうです...
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第六幕: データを見るクエリ" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:50"
+>
+
+<Character name="tenchou" emotion="normal">
+じゃあ今度は見るだけだ！scheduleテーブルからpdate・uid・memoを表示する！
+</Character>
+
+<Character name="watashi" emotion="relieved">
+見るだけなら安全ですね...
+</Character>
+
+### Input
+```sql
+SELECT pdate, uid, memo FROM schedule;
+```
+
+### Output
+```
++------------+--------+------------------+
+| pdate      | uid    | memo            |
++------------+--------+------------------+
+| 2025-07-08 | alice  | Meeting with... |
+| 2025-07-09 | bob    | Project review  |
+| 2025-07-10 | carol  | Database backup |
++------------+--------+------------------+
+```
+
+### Explanation
+テーブルから特定のカラムを取得する操作。
+- `SELECT` で取得するカラムを指定
+- `FROM` でテーブルを指定
+- カンマ区切りで複数カラムを指定
+
+<Character name="hiromitsu" emotion="normal">
+これは安全ですね。SELECTは読み取り専用なので。
+</Character>
+
+<Character name="tenchou" emotion="happy">
+そうだ！じゃあ条件付きの検索だ！usrテーブルから、familyが2のuid・unameを表示する！
+</Character>
+
+### Input
+```sql
+SELECT uid, uname FROM usr WHERE family = 2;
+```
+
+### Output
+```
++--------+----------+
+| uid    | uname    |
++--------+----------+
+| tanaka | 田中     |
+| suzuki | 鈴木     |
++--------+----------+
+```
+
+### Explanation
+条件を指定してデータを絞り込む操作。
+- `WHERE` で条件を指定
+- `family = 2` で family カラムが2のレコードのみ抽出
+- 指定したカラムのみ表示
+
+<Character name="watashi" emotion="curious">
+WHEREで条件を決めるんですね！
+</Character>
+
+<Character name="hiromitsu" emotion="thoughtful">
+SELECTは安全ですが、大量のデータがあるテーブルでは、LIMITを使った方が...
+</Character>
+
+<Character name="tenchou" emotion="dismissive">
+また始まった...
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第七幕: データ追加で締めくくり" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:00"
+>
+
+<Character name="tenchou" emotion="excited">
+最後だ！usrテーブルにuidが「agatha」、unameが「christie」となるデータを追加する！
+</Character>
+
+### Input
+```sql
+INSERT INTO usr(uid, uname) VALUES("agatha", "christie");
+```
+
+### Output
+```
+1 row affected.
+usrテーブルに新しいレコードが追加されました：
+- uid: agatha
+- uname: christie
+```
+
+### Explanation
+テーブルに新しいデータを追加する操作。
+- `INSERT INTO` で挿入するテーブルを指定
+- `(uid, uname)` で挿入するカラムを指定
+- `VALUES` で実際の値を指定
+
+<Character name="hiromitsu" emotion="concerned">
+店長さん、INSERTする前に、重複チェックやバリデーションを...
+</Character>
+
+<Character name="tenchou" emotion="annoyed">
+浩三、もういい加減にしろ！
+</Character>
+
+<Character name="watashi" emotion="confused">
+あの...結局、浩三さんの言ってることは正しいんですか？
+</Character>
+
+<Character name="tenchou" emotion="embarrassed">
+あー...まあ...基本を覚えるのが先だから...
+</Character>
+
+<Character name="hiromitsu" emotion="gentle">
+私の言ってることは、実際の現場での経験ですから...勉強としては店長さんの教え方で十分ですよ。
+</Character>
+
+<Character name="watashi" emotion="thoughtful">
+なるほど...勉強用と実際の現場では違うんですね...
+</Character>
+
+</Scene>
+
+<Scene 
+  title="エピローグ: 学んだこと" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:10"
+>
+
+<Character name="watashi" emotion="tired">
+MySQLって...すごく複雑なんですね...
+</Character>
+
+<Character name="tenchou" emotion="normal">
+まあ、基本だけ覚えてれば十分だ。
+</Character>
+
+<Character name="hiromitsu" emotion="thoughtful">
+基本は確かに大切ですが、実際に使うときは、権限管理、バックアップ、パフォーマンス、セキュリティ...色々考慮することがあるんです。
+</Character>
+
+<Character name="watashi" emotion="curious">
+でも、今日教えてもらった基本があれば、その先も学べそうです！
+</Character>
+
+<Character name="tenchou" emotion="happy">
+そうだ！基本が一番重要だからな！
+</Character>
+
+<Character name="hiromitsu" emotion="gentle">
+そうですね。基本を理解してから、実践的な部分を学んでいけばいいと思います。
+</Character>
+
+<Narrator>
+こうして、私の初めてのMySQL体験は終わった。店長の基本的な教えと、浩三さんの実践的な警告。両方とも大切なことを学んだ気がする。
+</Narrator>
+
+</Scene>
+
+## MySQL コマンドリファレンス
+
+### 今回学んだコマンド
+
+#### テーブル作成
+- `CREATE TABLE` - 新しいテーブルを作成
+- データ型: `INTEGER`, `CHAR(n)`, `DATE`, `TIME`
+
+#### テーブル変更
+- `ALTER TABLE ... ADD COLUMN` - カラム追加
+- `ALTER TABLE ... MODIFY COLUMN` - カラム変更
+- `ALTER TABLE ... CHANGE COLUMN` - カラム名と型変更
+- `ALTER TABLE ... DROP COLUMN` - カラム削除
+
+#### テーブル削除
+- `DROP TABLE` - テーブル完全削除
+
+#### データ操作
+- `SELECT` - データ取得
+- `WHERE` - 条件指定
+- `INSERT INTO` - データ挿入
+
+### 実践での注意点（浩三さんより）
+
+1. **権限管理**: 本番環境では適切な権限設定が必要
+2. **バックアップ**: 変更前には必ずバックアップを取る
+3. **メンテナンス時間**: ALTER TABLEは適切な時間に実行
+4. **データ型選択**: CHARよりVARCHARが適している場合が多い
+5. **インデックス**: パフォーマンスのために適切なインデックスを設定
+6. **バリデーション**: データ挿入前の検証が重要
+
+### 今後学ぶべきトピック
+
+- JOIN操作
+- インデックス設計
+- トランザクション
+- ストアドプロシージャ
+- パフォーマンスチューニング
+- セキュリティ対策
