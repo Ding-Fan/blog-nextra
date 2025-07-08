@@ -2,6 +2,25 @@ import { Prompt } from "./types";
 
 export const PROMPTS: Prompt[] = [
   {
+    title: "JAVA 3級テスト",
+    content: `
+# 指示
+
+テーマ「**Javaプログラミング能力認定試験3級**」に関する、多肢選択式のクイズを**10問**作成してください。
+
+# クイズのルール
+
+各問題は、以下の要素を必ず含めてください。
+
+1.  **問題文**
+2.  **4つの選択肢**（正解は1つだけにする）
+3.  **ヒント**（正解を導くための簡単な手がかり）
+4.  **各選択肢の解説**（なぜその選択肢が正解、または不正解なのかを簡潔に説明する）
+5.  **難易度**: 問題は簡単なものから始め、徐々に難しくなるように構成してください。例えば、最初の数問は基本的な用語や構文の確認、中盤は概念の応用、最後の数問は複数の知識を組み合わせるような複雑な問題、といった形です。
+    `,
+    tags: ["programming", "java"],
+  },
+  {
     title: "refine",
     content:
       "Please refine my content by making only minimal changes, preserving the original tone and language, and avoiding the use of em dashes. Additionally, provide an explanation that describes both the emotional response the refined content is intended to evoke and the message viewers are likely to understand. Make sure the explanation is written in the same language as the original content. Content start: ",
