@@ -132,7 +132,7 @@ DATE型とTIME型って違うんですね...
 
 ### Input
 ```sql
-ALTER TABLE test ADD COLUMN ud DATE AFTER name;
+ALTER TABLE test ADD ud DATE AFTER name;
 ```
 
 ### Output
@@ -147,7 +147,7 @@ ALTER TABLE test ADD COLUMN ud DATE AFTER name;
 ### Explanation
 既存のテーブルにカラムを追加する操作。
 - `ALTER TABLE` でテーブル変更を宣言
-- `ADD COLUMN` で新しいカラムを追加
+- `ADD` で新しいカラムを追加
 - `AFTER name` で挿入位置を指定
 
 <Character name="hiromitsu" emotion="concerned">
@@ -164,7 +164,7 @@ ALTER TABLE test ADD COLUMN ud DATE AFTER name;
 
 ### Input
 ```sql
-ALTER TABLE test MODIFY COLUMN id CHAR(8);
+ALTER TABLE test MODIFY id CHAR(8);
 ```
 
 ### Output
@@ -175,7 +175,7 @@ ALTER TABLE test MODIFY COLUMN id CHAR(8);
 
 ### Explanation
 既存カラムのデータ型を変更する操作。
-- `MODIFY COLUMN` で既存カラムの型を変更
+- `MODIFY` で既存カラムの型を変更
 - `INTEGER` から `CHAR(8)` に変更
 - データの互換性に注意が必要
 
@@ -205,7 +205,7 @@ ALTER TABLE test MODIFY COLUMN id CHAR(8);
 
 ### Input
 ```sql
-ALTER TABLE usr CHANGE COLUMN uname username CHAR(15);
+ALTER TABLE usr CHANGE uname username CHAR(15);
 ```
 
 ### Output
@@ -217,7 +217,7 @@ ALTER TABLE usr CHANGE COLUMN uname username CHAR(15);
 
 ### Explanation
 カラム名とデータ型を同時に変更する操作。
-- `CHANGE COLUMN` で既存カラムの名前と型を変更
+- `CHANGE` で既存カラムの名前と型を変更
 - `uname` から `username` に名前変更
 - 同時にデータ型も指定
 
@@ -235,7 +235,7 @@ ALTER TABLE usr CHANGE COLUMN uname username CHAR(15);
 
 ### Input
 ```sql
-ALTER TABLE usr DROP COLUMN family;
+ALTER TABLE usr DROP family;
 ```
 
 ### Output
@@ -247,12 +247,12 @@ ALTER TABLE usr DROP COLUMN family;
 
 ### Explanation
 カラムを完全に削除する操作。
-- `DROP COLUMN` でカラムを削除
+- `DROP` でカラムを削除
 - カラムに含まれていたデータも全て削除される
 - 復元は不可能
 
 <Character name="hiromitsu" emotion="panicked">
-待ってください！DROP COLUMNは取り返しがつかないです！バックアップなしでやったら...
+待ってください！DROPは取り返しがつかないです！バックアップなしでやったら...
 </Character>
 
 <Character name="tenchou" emotion="annoyed">
@@ -494,10 +494,10 @@ MySQLって...すごく複雑なんですね...
 - データ型: `INTEGER`, `CHAR(n)`, `DATE`, `TIME`
 
 #### テーブル変更
-- `ALTER TABLE ... ADD COLUMN` - カラム追加
-- `ALTER TABLE ... MODIFY COLUMN` - カラム変更
-- `ALTER TABLE ... CHANGE COLUMN` - カラム名と型変更
-- `ALTER TABLE ... DROP COLUMN` - カラム削除
+- `ALTER TABLE ... ADD` - カラム追加
+- `ALTER TABLE ... MODIFY` - カラム変更
+- `ALTER TABLE ... CHANGE` - カラム名と型変更
+- `ALTER TABLE ... DROP` - カラム削除
 
 #### テーブル削除
 - `DROP TABLE` - テーブル完全削除
