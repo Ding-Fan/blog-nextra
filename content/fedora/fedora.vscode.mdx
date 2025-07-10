@@ -17,17 +17,17 @@ sudo dnf install code # or code-insiders
 ## extensions
 
 - vim
-  - for vim: enable foldfix, enable system clipboard
 - github copilot
   - sign in to use
 - cline
 - gitignore
 - git graph v3
-- partial diff
 - gitlens
+- gruvbox theme
+- partial diff
+- live server
 - markdown all in one
 - markdownlint
-- gruvbox theme
 - simple react snippets
 - Extension Pack for Java
 - Tailwind CSS IntelliSense
@@ -44,20 +44,23 @@ sudo dnf install code # or code-insiders
 - uncheck Editor: Experimental Edit Context Enabled to make Japanese input [work properly](https://github.com/VSCodeVim/Vim/issues/9672#issuecomment-2975557747)
 
 ```json
-    "vim.useSystemClipboard": true,
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "editor.fontSize" = 21,
+    "editor.fontLigatures" = true,
     "vim.foldfix": true,
+    "vim.useSystemClipboard": true,
     "vim.easymotion": true,
     "vim.leader": ",",
-    "vim.insertModeKeyBindings": [ ],
-    "vim.normalModeKeyBindingsNonRecursive": [ ],
-    "vim.visualModeKeyBindingsNonRecursive": [ ],
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
     "github.copilot.enable": {
-      "markdown": true,
-      "plaintext": true,
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
     },
-    "editor.formatOnSave" = true,
-    "editor.fontLigatures" = true,
-    "editor.fontSize" = 21,
     "markdownlint.config": {
         "MD012": false, // Multiple consecutive blank lines
         "MD030": false, // Spaces after list markers
