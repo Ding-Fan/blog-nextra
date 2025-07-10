@@ -1,5 +1,6 @@
 import React from 'react';
 import { ct } from '../scripts/utils';
+import BaseImage from './image/BaseImage';
 
 interface AvatarProps {
     src: string;
@@ -8,6 +9,8 @@ interface AvatarProps {
     emotion?: string;
     size?: 'sm' | 'md' | 'lg';
     className?: string;
+    thumbnailSrc?: string;
+    isProgressive?: boolean;
 }
 
 const sizeClasses = {
@@ -17,7 +20,7 @@ const sizeClasses = {
 };
 
 const emotionEffects = {
-    excited: 'scale-110 shadow-lg shadow-green-300',
+    excited: 'animate-[jump_10s_ease-out_infinite]',
     angry: 'shadow-lg shadow-red-300',
     happy: 'shadow-lg shadow-yellow-300',
     confused: 'shadow-lg shadow-gray-300',
@@ -31,10 +34,11 @@ const emotionEffects = {
 export const Avatar: React.FC<AvatarProps> = ({
     src,
     alt,
-    name,
     emotion = 'normal',
     size = 'md',
-    className
+    className,
+    thumbnailSrc,
+    isProgressive = false
 }) => {
     const emotionEffect = emotionEffects[emotion as keyof typeof emotionEffects] || '';
     const sizeClass = sizeClasses[size];
@@ -46,9 +50,11 @@ export const Avatar: React.FC<AvatarProps> = ({
             emotionEffect,
             className
         )}>
-            <img
+            <BaseImage
                 src={src}
                 alt={alt}
+                thumbnailSrc={thumbnailSrc}
+                isProgressive={isProgressive}
                 className="w-full h-full object-cover transition-all duration-300 ease-in-out"
             />
         </div>

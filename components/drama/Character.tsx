@@ -49,17 +49,6 @@ const characterData = {
     }
 } as const;
 
-const emotionStyles = {
-    normal: '',
-    angry: 'shadow-red-200 shadow-lg',
-    happy: 'shadow-yellow-200 shadow-lg',
-    confused: 'shadow-gray-200 shadow-lg',
-    tired: 'shadow-purple-200 shadow-lg',
-    excited: 'shadow-green-200 shadow-md animate-pulse [animation-duration:2s]',
-    embarrassed: 'shadow-pink-200 shadow-lg',
-    thoughtful: 'shadow-blue-200 shadow-lg',
-    curious: 'shadow-orange-200 shadow-lg'
-} as const;
 
 const Character = ({
     name,
@@ -83,7 +72,6 @@ const Character = ({
     return (<div className={ct(
         'my-3 rounded-lg border-l-4 border-2 flex',
         colors,
-        !isAction && emotionStyles[emotion],
         className
     )}>
         {/* Left side - Avatar */}

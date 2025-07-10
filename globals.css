@@ -87,3 +87,15 @@ h2 {
   font-family: "DotGothic16", sans-serif;
   color: red;
 } */
+
+/* Custom keyframe animation for excited avatar */
+@keyframes jump {
+  0%, 100% { transform: translateY(0); }
+  2% { transform: translateY(-8px); }
+  4% { transform: translateY(0); }
+  7% { transform: translateY(-8px); }
+  9% { transform: translateY(0); }
+  12% { transform: translateY(-8px); }
+  14% { transform: translateY(0); }
+  21% { transform: translateY(0); }
+}
