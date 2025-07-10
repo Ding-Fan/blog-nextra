@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookAtlas,
   faChalkboardUser,
+  faCloudBolt,
+  faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faAmazon,
@@ -36,6 +38,12 @@ const FA_ICONS = {
   ),
   faChalkboardUser: (
     <FontAwesomeIcon icon={faChalkboardUser} className="text-green-600" />
+  ),
+  faCloudBolt: (
+    <FontAwesomeIcon icon={faCloudBolt} className="text-yellow-500" />
+  ),
+  faTriangleExclamation: (
+    <FontAwesomeIcon icon={faTriangleExclamation} className="text-red-500" />
   ),
 };
 
