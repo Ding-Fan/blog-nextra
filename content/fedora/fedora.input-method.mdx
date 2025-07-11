@@ -43,8 +43,12 @@ According to Arch wiki, Electron apps like VS Code need special configuration to
    ```
 
 3. **Replace the Exec line with Wayland flags:**
+
    ```bash
    Exec=/usr/share/code/code --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3 %F
+
+   # also for the new window
+   Exec=/usr/share/code/code --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3 --new-window %F
    ```
 
 4. **Save and restart**

@@ -1,7 +1,7 @@
 import ICONS from "./icons";
 import IconImage from "components/image/IconImage";
 import DynamicIcon from "components/DynamicIcon";
-import { createClient } from "utils/supabase/client";
+import { createClient } from "utils/supabase/server";
 
 interface DB_Link extends Link {
   icon_url: string;
@@ -11,7 +11,7 @@ interface DB_Link extends Link {
 
 async function getLinks(): Promise<DB_Link[]> {
   try {
-    const supabase = await createClient();
+    const supabase = createClient();
 
     let { data: links, error } = await supabase.from("links").select("*");
 
