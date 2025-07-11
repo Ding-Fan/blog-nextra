@@ -12,7 +12,7 @@ export interface CharacterProps {
     children: React.ReactNode;
     language?: Language;
     className?: string;
-    emotion?: 'normal' | 'angry' | 'happy' | 'confused' | 'tired' | 'excited' | 'embarrassed' | 'thoughtful' | 'curious';
+    emotion?: 'normal' | 'angry' | 'happy' | 'confused' | 'tired' | 'excited' | 'embarrassed' | 'thoughtful' | 'curious' | 'understanding' | 'amazed' | 'grateful' | 'proud' | 'gentle' | 'serious' | 'nervous';
     avatar?: string; // Optional custom avatar image path
     noAvatar?: boolean; // Set to true to disable avatar display
     isAction?: boolean; // Set to true for action descriptions
@@ -49,6 +49,46 @@ const characterData = {
     }
 } as const;
 
+// Japanese emotion tags mapping
+const emotionTags = {
+    normal: null,
+    angry: '怒り',
+    happy: '嬉しい',
+    confused: '困惑',
+    tired: '疲れた',
+    excited: '興奮',
+    embarrassed: '恥ずかしい',
+    thoughtful: '考え中',
+    curious: '好奇心',
+    understanding: '理解した',
+    amazed: '驚き',
+    grateful: '感謝',
+    proud: '誇らしい',
+    gentle: '優しい',
+    serious: '真剣',
+    nervous: '緊張'
+} as const;
+
+// Emotion tag background colors
+const emotionColors = {
+    normal: '',
+    angry: 'bg-red-500',
+    happy: 'bg-yellow-500',
+    confused: 'bg-gray-500',
+    tired: 'bg-purple-500',
+    excited: 'bg-green-500',
+    embarrassed: 'bg-pink-500',
+    thoughtful: 'bg-blue-700',
+    curious: 'bg-orange-500',
+    understanding: 'bg-emerald-500',
+    amazed: 'bg-yellow-600',
+    grateful: 'bg-amber-500',
+    proud: 'bg-violet-600',
+    gentle: 'bg-sky-500',
+    serious: 'bg-slate-600',
+    nervous: 'bg-cyan-500'
+} as const;
+
 
 const Character = ({
     name,
@@ -75,7 +115,7 @@ const Character = ({
         className
     )}>
         {/* Left side - Avatar */}
-        <div className="flex-shrink-0 border-r border-gray-300">
+        <div className="flex-shrink-0 border-r border-gray-300 relative">
             {avatarSrc ? (
                 <Avatar
                     src={avatarSrc}
@@ -86,6 +126,19 @@ const Character = ({
                 />
             ) : (
                 <span className="text-2xl">{character.avatar}</span>
+            )}
+            
+            {/* Emotion tag */}
+            {emotionTags[emotion] && (
+                <div className={ct(
+                    'absolute -top-2 -right-2 px-2 py-1 rounded text-xs font-bold text-white',
+                    'shadow-lg border border-white/20 animate-in fade-in duration-300',
+                    emotionColors[emotion],
+                    emotion === 'excited' && 'animate-bounce',
+                    emotion === 'amazed' && 'animate-pulse'
+                )}>
+                    {emotionTags[emotion]}
+                </div>
             )}
         </div>
 

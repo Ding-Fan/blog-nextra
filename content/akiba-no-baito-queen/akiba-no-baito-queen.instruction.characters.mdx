@@ -50,6 +50,24 @@ A middle-aged Japanese otaku, a maid cafe owner, overweight and friendly-looking
 - **Speech Style**: Polite but sometimes confused, mixes languages
 - **Role**: 主人公として学習者の役割を果たし、読者が言語学習の旅に共感できるようにします
 
+#### Linux Tutorial Episodes での特別な役割
+- **Learning Style**: 
+  - 「なぜ？」を多用して理解を深める
+  - 視覚的な説明を求める（「図で見せて」）
+  - 実例を通して学ぶ
+- **Common Reactions**:
+  - 「わあ！」「すごい！」など驚きの表現
+  - 「でも、これは何のために使うんですか？」実用性への疑問
+  - 「私もやってみたい！」積極的な学習意欲
+- **Confusion Patterns**:
+  - パスの概念が難しい（「../..って何？」）
+  - コマンドの順序を忘れる
+  - 「どこにいるかわからなくなった」
+- **Growth Moments**:
+  - 「あ、わかった！」突然の理解
+  - 「今度は私が教えてあげる」自信の表れ
+  - 「失敗してもいいから試してみる」勇気
+
 **画像生成プロンプト:**
 ```
 A young western girl with blonde hair in a ponytail, wearing a maid café uniform with a required cap as part of the outfit. because she is tall, the outfit is quite tight. her face looks slightly mature.She has bright, curious eyes and an enthusiastic but slightly confused expression. Her pose should show her adjusting her ponytail while smiling. She appears energetic and determined despite being tired (slight dark circles under eyes from studying late). The setting is inside an Akihabara maid café. Anime/manga art style, bright and cheerful lighting, character should embody the spirit of a dedicated language learner with a mix of excitement and occasional bewilderment.
@@ -72,6 +90,21 @@ A young western girl with blonde hair in a ponytail, wearing a maid café unifor
 - **Relationship**: 店長とは親しい関係で、名前で呼ばれる
 - **Role**: 技術学習エピソードで学習者役、実際の技術者のリアルな悩みを表現
 
+#### Linux Tutorial Episodes での特別な役割
+- **Teaching Style**: 患者で親切な先生として振る舞う
+- **Explanation Method**: 
+  - 「なぜ」このコマンドを使うのかを必ず説明
+  - 実際の使用例を交えて教える
+  - 初心者の混乱を予測して事前に説明
+- **Error Handling**: 
+  - 「よくある間違い」を紹介
+  - 間違いを修正する方法を教える
+  - 「私も最初は混乱した」という共感を示す
+- **Safety Awareness**: 
+  - 危険なコマンドの前には必ず警告
+  - 「削除前に確認」などの習慣を教える
+  - バックアップの重要性を強調
+
 **画像生成プロンプト:**
 ```
 A Japanese programmer in his late 20s or early 30s, wearing glasses and casual clothes (hoodie or polo shirt). He has a slightly anxious but intelligent expression, holding a laptop or notebook. He looks approachable and friendly, with the appearance of someone who works in tech but is comfortable in casual settings. The setting is inside an Akihabara maid café. Anime/manga art style, soft lighting, character should look like a regular customer who is familiar with the place and staff.
@@ -79,33 +112,59 @@ A Japanese programmer in his late 20s or early 30s, wearing glasses and casual c
 
 ## 感情表現システム
 
-キャラクターコンポーネントで利用可能な感情:
-- `normal` - デフォルト状態
-- `angry` - 赤い影効果
-- `happy` - 黄色い影で温かみを表現
-- `confused` - グレーの影
-- `tired` - 紫の影
-- `excited` - 緑の影とバウンスアニメーション
-- `nervous` - 不安を表現する水色の影
-- `embarrassed` - 恥ずかしがる瞬間のピンクの影
-- `thoughtful` - 熟考のための深い青の影
-- `curious` - 好奇心旺盛な瞬間のオレンジの影
+キャラクターコンポーネントで利用可能な感情（日本語テキストタグ表示）:
+
+### 基本感情
+- `normal` - タグなし（デフォルト状態）
+- `angry` - 怒り（赤色背景）
+- `happy` - 嬉しい（黄色背景）
+- `confused` - 困惑（グレー背景）
+- `tired` - 疲れた（紫色背景）
+- `excited` - 興奮（緑色背景 + バウンスアニメーション）
+- `nervous` - 緊張（水色背景）
+- `embarrassed` - 恥ずかしい（ピンク背景）
+
+### 学習関連感情
+- `thoughtful` - 考え中（深い青背景）
+- `curious` - 好奇心（オレンジ背景）
+- `understanding` - 理解した（明るい緑背景）
+- `amazed` - 驚き（金色背景 + キラキラ効果）
+- `grateful` - 感謝（温かい黄色背景）
+- `proud` - 誇らしい（深い紫背景）
+- `gentle` - 優しい（ソフトな青背景）
+- `serious` - 真剣（ダークグレー背景）
+
+### 技術実装仕様
+- **表示位置**: アバター画像の右上角
+- **フォントサイズ**: 12px（小さめで邪魔にならない）
+- **背景**: 半透明の色付き背景（各感情に対応）
+- **テキスト色**: 白色（読みやすさ優先）
+- **角丸**: 4px（ソフトな印象）
+- **アニメーション**: 
+  - `excited` - 軽いバウンス効果
+  - `amazed` - 微細なキラキラ効果
+  - その他 - フェードイン効果（0.3秒）
 
 ## キャラクター使用例
 
 ### 基本的な使用方法
 ```jsx
-{/* 自動アバター - 推奨 */}
+{/* 自動アバター - 推奨（右上に「嬉しい」タグが表示）*/}
 <Character name="tenchou" emotion="happy">
 こんにちは！
 </Character>
 
-{/* カスタムアバターオーバーライド */}
-<Character name="tenchou" avatar="/images/special-tenchou.png" emotion="happy">
-特別な場面です！
+{/* 驚きの感情（右上に「驚き」タグ + キラキラ効果）*/}
+<Character name="watashi" emotion="amazed">
+すごいです！
 </Character>
 
-{/* アバターなし、絵文字のみ */}
+{/* 理解した瞬間（右上に「理解した」タグ）*/}
+<Character name="watashi" emotion="understanding">
+あ、わかりました！
+</Character>
+
+{/* アバターなし、絵文字のみ（感情タグは表示されない）*/}
 <Character name="watashi" noAvatar={true} emotion="confused">
 内心の独白...
 </Character>
@@ -133,6 +192,30 @@ nervously adjusts her blonde ponytail and the required cap
 </Character>
 ```
 
+### Linux Tutorial コンテキスト
+```jsx
+{/* 好奇心を持って質問（右上に「好奇心」タグ）*/}
+<Character name="watashi" emotion="curious">
+../..って何ですか？どこに行くんですか？
+</Character>
+
+{/* 優しく説明（右上に「優しい」タグ）*/}
+<Character name="hiromitsu" emotion="gentle">
+いい質問ですね！..は「親ディレクトリ」という意味で、../..は「2つ上の階層」に移動します。
+</Character>
+
+{/* 理解の瞬間（右上に「理解した」タグ）*/}
+<Character name="watashi" emotion="understanding">
+あ、わかった！階段を2段上がるような感じですね！
+</Character>
+
+{/* 嬉しそうに反応（右上に「嬉しい」タグ）*/}
+<Character name="hiromitsu" emotion="happy">
+その通り！とても良い例えですね。
+</Character>
+```
+
+
 ## キャラクター一貫性のガイドライン
 
 ### 言語学習エピソード（メインシリーズ）
@@ -140,12 +223,31 @@ nervously adjusts her blonde ponytail and the required cap
 - **店長**: 少しせっかち、オタクの参照を使用、でも基本的に親切
 - **私**: 学習に熱心、言語的ミスをする、言語への分析的アプローチ
 
-### 技術学習エピソード（.excel、.software など）
+### 技術学習エピソード（.linux、.excel、.software など）
 専門的なキャラクターダイナミクスに焦点を当てます:
 - **店長**: 忍耐強く、励ましてくれる教師になり、ユーモラスな比喩を使用
 - **私**: 概念の理解に集中、明確化の質問をする
+- **浩三**: 実践的な経験を共有し、現実的な問題解決を提供
 - **コンテンツ**: 言語学習よりもスキル習得を優先
 - **ユーモア**: エンゲージメントを維持し、記憶の定着を助けるために使用
+
+#### Linux Tutorial Episodes での特別なガイドライン
+- **説明のペース**: 
+  - 複雑なコマンドの前に「なぜ必要か」を説明
+  - 一つのコマンドごとに理解を確認
+  - 視覚的な構造（tree）を多用
+- **リアルな学習体験**:
+  - 「私も最初は混乱した」という共感
+  - 「よくある間違い」を事前に紹介
+  - 成功体験を積み重ねる
+- **実用性の強調**:
+  - 「このコマンドは実際の仕事で...」
+  - 「プログラマーは毎日使う」
+  - 「覚えておくと便利」
+- **安全性の教育**:
+  - 危険なコマンドの警告
+  - 「必ず確認してから実行」
+  - バックアップの重要性
 
 ## プロット要素と秘密
 

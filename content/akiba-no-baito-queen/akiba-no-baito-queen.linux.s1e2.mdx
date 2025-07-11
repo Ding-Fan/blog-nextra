@@ -1,0 +1,959 @@
+# Linux編 S1E2: システムの構築
+
+import { Character, Scene, Narrator, Avatar } from '../../components/drama';
+
+<Scene 
+  title="第一幕: 好奇心の始まり" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:00"
+>
+
+<Narrator>
+あの114514事件から一週間が経った。店内は穏やかな午後の雰囲気に包まれている。浩三さんはいつものように角の席でノートパソコンを見ている。今日は落ち着いた表情で、例の慌てた様子はない。
+</Narrator>
+
+<Character name="watashi" emotion="curious">
+浩三さん、お疲れ様です。前から気になってたんですが...あの素晴らしいフォルダシステムって、どうやって作ったんですか？
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+あ、それを聞かれると思ってました。実は、最初から見せてあげたかったんです。
+</Character>
+
+<Character name="hiromitsu" emotion="thoughtful">
+そうですね！最初から見せてあげましょう。新しい仮想マシンを起動しますね。
+</Character>
+
+<Character name="watashi" emotion="excited">
+仮想マシン？なんですか、それ？
+</Character>
+
+<Character name="hiromitsu" emotion="gentle">
+コンピューターの中に別のコンピューターを作ることです。練習用にとても便利なんですよ。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第二幕: 新しい世界の始まり" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:05"
+>
+
+<Character name="hiromitsu" isAction>
+ノートパソコンでVMware Workstationを起動し、新しいUbuntuの仮想マシンを立ち上げる
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+今回は数字で、もっとシンプルな構造にしましょう。0と1だけで、二進法的な美しさがあります。
+</Character>
+
+<Character name="watashi" emotion="amazed">
+わあ、画面が真っ黒になって、文字がたくさん出てきました！
+</Character>
+
+<Character name="hiromitsu" emotion="gentle">
+これがLinuxの世界です。まずは現在地を確認してみましょう。
+</Character>
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+```
+
+<Character name="watashi" emotion="surprised">
+あ！今回は普通のフォルダがありますね！前回の0から9の数字フォルダとは違います！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+そうです！これは新しい、まっさらな環境です。ここから私のシステムを一から作っていきましょう。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第三幕: 建設の基礎 - mkdir コマンド" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:10"
+>
+
+<Character name="hiromitsu" emotion="normal">
+まず、新しいフォルダを作ってみましょう。`mkdir`コマンドを使います。
+</Character>
+
+### Input
+```bash
+mkdir secret-system
+```
+
+### Output
+```
+# コマンドが正常に実行される（出力なし）
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+Desktop  Documents  Downloads  Music  Pictures  Public  secret-system  Templates  Videos
+```
+
+### Explanation
+新しいディレクトリを作成するコマンド。
+- `mkdir` は "Make Directory" の略
+- 指定した名前のディレクトリを作成
+- 成功時は何も表示されない（No news is good news）
+- 作成後は`ls`で確認できる
+
+### 構造の可視化
+```
+/home/hiromitsu/
+├── Desktop/
+├── Documents/
+├── Downloads/
+├── Music/
+├── Pictures/
+├── Public/
+├── secret-system/    # 新しく作成
+├── Templates/
+└── Videos/
+```
+
+<Character name="watashi" emotion="excited">
+できました！secret-systemっていうフォルダが作られました！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+そうです！mkdirは「Make Directory」の略で、新しいフォルダを作るコマンドです。
+</Character>
+
+<Character name="hiromitsu" emotion="thoughtful">
+今度は、その中に入って、0と1でシンプルなバイナリシステムを作っていきましょう。
+</Character>
+
+### Input
+```bash
+cd secret-system
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/secret-system
+```
+
+### Input
+```bash
+mkdir 0 1
+```
+
+### Output
+```
+# コマンドが正常に実行される（出力なし）
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+0  1
+```
+
+### 現在の構造
+```
+secret-system/
+├── 0/
+└── 1/
+```
+
+<Character name="watashi" emotion="amazed">
+一度に2つのフォルダが作られました！0と1、とてもシンプルですね！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+そうです！mkdirは複数のディレクトリを一度に作ることができます。0と1だけなので、迷子になりにくいでしょう？
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第四幕: 階層の構築" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:15"
+>
+
+<Character name="hiromitsu" emotion="normal">
+今度は、階層を作ってみましょう。まず0の中に入って、さらに階層を作ります。
+</Character>
+
+### Input
+```bash
+cd 0
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/secret-system/0
+```
+
+### Input
+```bash
+mkdir 0
+```
+
+### Input
+```bash
+cd 0
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/secret-system/0/0
+```
+
+### Input
+```bash
+mkdir 0 1
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+0  1
+```
+
+### 現在の構造
+```
+secret-system/
+├── 0/
+│   └── 0/
+│       ├── 0/
+│       └── 1/
+└── 1/
+```
+
+<Character name="watashi" emotion="understanding">
+おお！階層ができました！0/0/0と0/0/1ですね！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+その通り！これで0/0/0と0/0/1の部分ができました。でも、残りの部分を一つずつ作るのは大変です。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第五幕: 効率的な複製 - cp コマンド" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:20"
+>
+
+<Character name="hiromitsu" emotion="normal">
+今度は、効率的に構造を複製してみましょう。`cp`コマンドです。
+</Character>
+
+### Input
+```bash
+cd ../..
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/secret-system
+```
+
+### Input
+```bash
+cp -r 0/0 0/1
+```
+
+### Input
+```bash
+ls 0/
+```
+
+### Output
+```
+0  1
+```
+
+### 現在の構造
+```
+secret-system/
+├── 0/
+│   ├── 0/
+│   │   ├── 0/
+│   │   └── 1/
+│   └── 1/      # 新しく複製された
+└── 1/
+```
+
+### Input
+```bash
+ls 0/1/
+```
+
+### Output
+```
+0  1
+```
+
+### 複製確認
+```
+secret-system/0/1/
+├── 0/         # 0/0から複製
+└── 1/         # 0/0から複製
+```
+
+### Explanation
+ディレクトリをコピーするコマンド。
+- `cp` は "Copy" の略
+- `-r` は "recursive" の略で、ディレクトリ全体をコピー
+- 既存の構造を複製して効率的に拡張
+- 0/0の構造を0/1にコピーして0/1/0と0/1/1を作成
+
+### 複製後の構造
+```
+secret-system/
+├── 0/
+│   ├── 0/
+│   │   ├── 0/
+│   │   └── 1/
+│   └── 1/           # コピーされた
+│       ├── 0/       # 0/0から複製
+│       └── 1/       # 0/0から複製
+└── 1/
+    ├── 0/
+    │   ├── 0/
+    │   └── 1/
+    └── 1/
+        ├── 0/
+        └── 1/
+```
+
+<Character name="watashi" emotion="amazed">
+すごい！0/0の構造がそのまま0/1にコピーされて、0/1/0と0/1/1ができました！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+その通り！cpコマンドを使えば、一度作った構造を効率的に複製できます。
+</Character>
+
+<Character name="hiromitsu" emotion="thoughtful">
+今度は、0全体を1にコピーして、完全な2×2×2構造を作りましょう。
+</Character>
+
+### Input
+```bash
+cp -r 0 1
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+0  1
+```
+
+### 現在の構造
+```
+secret-system/
+├── 0/
+│   ├── 0/
+│   │   ├── 0/
+│   │   └── 1/
+│   └── 1/
+│       ├── 0/
+│       └── 1/
+└── 1/         # 新しく複製された
+    ├── 0/
+    │   ├── 0/
+    │   └── 1/
+    └── 1/
+        ├── 0/
+        └── 1/
+```
+
+### Input
+```bash
+ls 1/
+```
+
+### Output
+```
+0  1
+```
+
+### Input
+```bash
+ls 1/1/
+```
+
+### Output
+```
+0  1
+```
+
+### 完成した2×2×2構造
+```
+secret-system/
+├── 0/
+│   ├── 0/
+│   │   ├── 0/ ✓
+│   │   └── 1/ ✓
+│   └── 1/
+│       ├── 0/ ✓
+│       └── 1/ ✓
+└── 1/
+    ├── 0/
+    │   ├── 0/ ✓
+    │   └── 1/ ✓
+    └── 1/
+        ├── 0/ ✓
+        └── 1/ ✓
+```
+
+<Character name="watashi" emotion="excited">
+できました！完全な2×2×2の構造ができました！
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第六幕: マーカーの作成 - touch コマンド" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:25"
+>
+
+<Character name="hiromitsu" emotion="normal">
+今度は、システムに目印となるファイルを作ってみましょう。`touch`コマンドです。
+</Character>
+
+### Input
+```bash
+cd 0/0/0
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/secret-system/0/0/0
+```
+
+### Input
+```bash
+touch secret-marker.txt
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+secret-marker.txt
+```
+
+### 現在の構造
+```
+secret-system/0/0/0/
+└── secret-marker.txt    # 秘密のマーカー配置
+```
+
+### Input
+```bash
+cd ../../../1/1/1
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/secret-system/1/1/1
+```
+
+### Input
+```bash
+touch treasure-marker.txt
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+treasure-marker.txt
+```
+
+### 現在の構造
+```
+secret-system/1/1/1/
+└── treasure-marker.txt  # 宝物のマーカー配置
+```
+
+### Explanation
+空のファイルを作成するコマンド。
+- `touch` は「触る」という意味
+- 新しい空のファイルを作成
+- システムの特定の場所にマーカーを配置
+- ファイルサイズは0バイト
+- 場所の目印として活用
+
+### マーカー配置後の構造
+```
+secret-system/
+├── 0/
+│   ├── 0/
+│   │   ├── 0/
+│   │   │   └── secret-marker.txt     # 秘密マーカー
+│   │   └── 1/
+│   └── 1/
+│       ├── 0/
+│       └── 1/
+└── 1/
+    ├── 0/
+    │   ├── 0/
+    │   └── 1/
+    └── 1/
+        ├── 0/
+        └── 1/
+            └── treasure-marker.txt   # 宝物マーカー
+```
+
+<Character name="watashi" emotion="curious">
+touchって「触る」という意味なんですね！各階層に目印ができました！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+そうです！これで、システムの重要な場所にマーカーが配置されました。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第七幕: システム探索" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:30"
+>
+
+<Character name="hiromitsu" emotion="normal">
+完成したシステムを探索してみましょう。まず、全体の構造を確認します。
+</Character>
+
+### Input
+```bash
+cd ../..
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/secret-system
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+0  1
+```
+
+### Input
+```bash
+ls 0/0/
+```
+
+### Output
+```
+0  1
+```
+
+### Input
+```bash
+ls 0/0/0/
+```
+
+### Output
+```
+secret-marker.txt
+```
+
+<Character name="watashi" emotion="excited">
+完璧な2×2×2構造ができています！そして、秘密のマーカーも発見しました！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+その通り！これで、完全なバイナリシステムの完成です。どこの階層に行っても、必ず0と1があります。
+</Character>
+
+<Character name="hiromitsu" emotion="thoughtful">
+今度は、自分で探索してみてください。例えば、1/1/1には何があるでしょうか？
+</Character>
+
+### Input
+```bash
+ls 1/1/1/
+```
+
+### Output
+```
+treasure-marker.txt
+```
+
+<Character name="watashi" emotion="amazed">
+treasure-marker.txtがありました！システムの宝物ですね！
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第八幕: 不要ファイルの削除 - rm コマンド" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:35"
+>
+
+<Character name="hiromitsu" emotion="normal">
+システムを綺麗に保つために、不要になったファイルを削除してみましょう。`rm`コマンドです。
+</Character>
+
+<Character name="hiromitsu" emotion="serious">
+ただし、このコマンドは慎重に使ってください。削除したファイルは復元できません。
+</Character>
+
+### Input
+```bash
+cd 0/0/0
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/secret-system/0/0/0
+```
+
+### Input
+```bash
+touch temp-file.txt
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+secret-marker.txt  temp-file.txt
+```
+
+### Input
+```bash
+rm temp-file.txt
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+secret-marker.txt
+```
+
+### Explanation
+ファイルを削除するコマンド。
+- `rm` は "Remove" の略
+- 指定したファイルを完全に削除
+- 削除したファイルは復元困難
+- システムの清掃に使用
+- 重要なファイルは削除前に確認
+
+### 清掃後の構造
+```
+secret-system/
+├── 0/
+│   ├── 0/
+│   │   ├── 0/
+│   │   │   └── secret-marker.txt     # 保持
+│   │   └── 1/
+│   └── 1/
+│       ├── 0/
+│       └── 1/
+└── 1/
+    ├── 0/
+    │   ├── 0/
+    │   └── 1/
+    └── 1/
+        ├── 0/
+        └── 1/
+            └── treasure-marker.txt   # 保持
+```
+
+<Character name="watashi" emotion="understanding">
+一時的なファイルが削除されました。重要なマーカーファイルは残っていますね！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+その通り！rmコマンドで不要なファイルを削除して、システムを綺麗に保つことができます。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第九幕: 完成したシステム" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:40"
+>
+
+<Character name="hiromitsu" emotion="happy">
+これで基本的なシステム構築は終わりです。私の秘密のフォルダシステムがどうやって作られるか分かりましたか？
+</Character>
+
+<Character name="watashi" emotion="excited">
+はい！mkdir で階層を作って、cp で効率的に複製して、touch で目印を作って、rm で掃除するんですね！
+</Character>
+
+<Character name="hiromitsu" emotion="proud">
+その通り！4つのコマンドだけで、完全な2×2×2バイナリシステムが構築できました。
+</Character>
+
+<Character name="hiromitsu" emotion="thoughtful">
+今回は仮想マシンを使ったので、安全に練習できました。実際の環境でも、必ずバックアップを取ってから作業してくださいね。
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+さあ、完成したシステムを自由に探索してみてください！どこに行っても、必ず道があります。
+</Character>
+
+<Character name="watashi" emotion="grateful">
+ありがとうございます！今度は私も自分のシステムを作ってみます！
+</Character>
+
+<Narrator>
+この日、私はLinuxでのシステム構築の基本を学んだ。作成、複製、マーカー、削除...これらのコマンドがあれば、デジタルの世界で自分だけの秘密のシステムを構築できる。浩三さんの美しいバイナリシステムの作り方が分かって、とても嬉しかった。
+</Narrator>
+
+</Scene>
+
+<Scene 
+  title="第十幕: 不思議な既視感" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 2:45"
+>
+
+<Narrator>
+浩三さんがラップトップを片付けている間、私は店内を見回していた。すると、カウンターで店長が何かを混ぜているのが見えた。
+</Narrator>
+
+<Character name="watashi" isAction>
+カウンターの方を何気なく見る
+</Character>
+
+<Character name="watashi" emotion="curious">
+（店長、何か作ってるのかな...）
+</Character>
+
+<Character name="tenchou" isAction>
+アイスティーにエナジードリンクを密かに混ぜている
+</Character>
+
+<Character name="tenchou" isAction>
+完成したドリンクを持って、浩三さんのテーブルに向かう
+</Character>
+
+<Character name="tenchou" emotion="normal">
+おまたせ！アイスティーしかなかったんだけどいいかな？
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+ありがとうございます！アイスティーで十分です！
+</Character>
+
+<Character name="watashi" isAction>
+その言葉を聞いて、なんとなく違和感を感じる
+</Character>
+
+<Character name="watashi" emotion="puzzled">
+（「アイスティー」...なんだか聞いたことがあるような...でも、思い出せない）
+</Character>
+
+<Character name="watashi" emotion="uncertain">
+（店長の新しいブレンドかな？でも、なんか気になる...きっと考えすぎだろう。）
+</Character>
+
+<Character name="hiromitsu" isAction>
+アイスティーを一口飲む
+</Character>
+
+<Character name="tenchou" isAction>
+遠くから浩三さんがアイスティーを飲む様子を見守りながら、満足そうに微笑む
+</Character>
+
+<Narrator>
+私はそのまま黙っていることにした。でも、なんとなく心の片隅に引っかかるものがあった。
+</Narrator>
+
+</Scene>
+
+## 今日学んだLinuxコマンド
+
+### mkdir (Make Directory)
+- **用途**: 新しいディレクトリを作成
+- **基本構文**: `mkdir ディレクトリ名`
+- **応用**: `mkdir -p path/to/directory` で階層を一度に作成
+- **重要性**: システム構築の基礎
+
+### touch (Touch)
+- **用途**: 空のファイルを作成、またはファイルのタイムスタンプを更新
+- **基本構文**: `touch ファイル名`
+- **応用**: `touch file1 file2 file3` で複数ファイルを同時作成
+- **重要性**: プレースホルダーやマーカーとして活用
+
+### cp (Copy)
+- **用途**: ファイルやディレクトリをコピー
+- **基本構文**: `cp 元ファイル 新しいファイル名`
+- **応用**: `cp -r ディレクトリ名 新しいディレクトリ名` でディレクトリをコピー
+- **重要性**: バックアップ作成に必須
+
+### mv (Move)
+- **用途**: ファイルやディレクトリを移動・リネーム
+- **基本構文**: `mv 元ファイル 新しい場所またはファイル名`
+- **応用**: `mv file1 file2 directory/` で複数ファイルを移動
+- **重要性**: ファイル整理の基本
+
+### rm (Remove)
+- **用途**: ファイルを削除
+- **基本構文**: `rm ファイル名`
+- **応用**: `rm -r ディレクトリ名` でディレクトリと中身を削除
+- **重要性**: 不要ファイルの削除（注意が必要）
+
+### rmdir (Remove Directory)
+- **用途**: 空のディレクトリを削除
+- **基本構文**: `rmdir ディレクトリ名`
+- **重要性**: 安全なディレクトリ削除
+
+### 今日のまとめ
+秋葉原のメイドカフェで、浩三さんが仮想マシンを使って、秘密のフォルダシステムの作り方を教えてくれました。0と1だけを使った美しいバイナリシステムで、とても分かりやすく説明してくれました。システム構築の基本：作成、複製、マーカー、削除をマスターしました。これで、自分だけのデジタルシステムを構築できるようになりました！
+
+## 全コマンドリファレンス
+
+### ✅ 学習済みコマンド
+- **pwd** - 現在のディレクトリパスを表示
+- **ls** - ディレクトリの内容を一覧表示
+- **cd** - ディレクトリを移動
+- **mkdir** - ディレクトリを作成
+- **rmdir** - 空のディレクトリを削除
+- **touch** - 空のファイルを作成、タイムスタンプを更新
+- **mv** - ファイル・ディレクトリを移動・リネーム
+- **cp** - ファイル・ディレクトリをコピー
+- **rm** - ファイル・ディレクトリを削除
+
+### 📚 今後学習予定のコマンド
+
+#### テキスト表示・編集
+- **cat** - ファイルの内容を表示
+- **more** - ファイルの内容をページごとに表示
+- **less** - ファイルの内容をスクロール表示
+- **echo** - テキストを出力
+
+#### リダイレクト・パイプ
+- **>** - 出力をファイルに書き込み（上書き）
+- **>>** - 出力をファイルに追記
+- **|** - コマンドの出力を別のコマンドに渡す
+
+#### 検索・フィルタ
+- **grep** - テキストパターンを検索
+- **egrep** - 拡張正規表現でテキスト検索
+- **find** - ファイル・ディレクトリを検索
+
+**進捗**: 9/19 コマンド完了
+
+### 2×2×2バイナリ構造の全体像
+```
+secret-system/
+├── 0/
+│   ├── 0/
+│   │   ├── 0/
+│   │   └── 1/
+│   └── 1/
+│       ├── 0/
+│       └── 1/
+└── 1/
+    ├── 0/
+    │   ├── 0/
+    │   └── 1/
+    └── 1/
+        ├── 0/
+        └── 1/
+```
+
+この構造は8つの最深階層パス（0/0/0, 0/0/1, 0/1/0, 0/1/1, 1/0/0, 1/0/1, 1/1/0, 1/1/1）を持つ完全な2×2×2バイナリツリーです。

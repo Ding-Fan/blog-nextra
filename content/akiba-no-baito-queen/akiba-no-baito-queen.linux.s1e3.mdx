@@ -1,0 +1,556 @@
+# Linux編 S1E3: ファイルの整理術
+
+import { Character, Scene, Narrator, Avatar } from '../../components/drama';
+
+<Scene 
+  title="第一幕: 新しい挑戦の始まり" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:00"
+>
+
+<Narrator>
+前回の2×2×2システム構築から数日が経った。私は浩三さんが教えてくれた方法で、自分なりのシステムを作って練習していた。今日もいつものように、カフェで浩三さんと会うことになった。
+</Narrator>
+
+<Character name="watashi" emotion="excited">
+浩三さん、こんにちは！前回教えていただいた方法で、自分でもシステムを作ってみました！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+それは素晴らしい！どんなシステムを作ったんですか？
+</Character>
+
+<Character name="watashi" emotion="proud">
+2×2×2の構造で、各階層にいろいろなファイルを作って実験してみました。でも、ファイルが散らかってしまって...
+</Character>
+
+<Character name="hiromitsu" emotion="understanding">
+なるほど、それはよくあることです。今日は、ファイルを整理する技術を教えてあげましょう。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第二幕: システムの現状確認" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:05"
+>
+
+<Character name="hiromitsu" isAction>
+ノートパソコンを開き、仮想マシンを起動する
+</Character>
+
+<Character name="hiromitsu" emotion="normal">
+まず、散らかったファイルを整理するためのデモンストレーションをしましょう。
+</Character>
+
+### Input
+```bash
+mkdir file-management-demo
+```
+
+### Input
+```bash
+cd file-management-demo
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/file-management-demo
+```
+
+### Input
+```bash
+touch report1.txt report2.txt draft.txt notes.txt temp.txt backup.txt
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+backup.txt  draft.txt  notes.txt  report1.txt  report2.txt  temp.txt
+```
+
+### 現在の構造
+```
+file-management-demo/
+├── backup.txt
+├── draft.txt
+├── notes.txt
+├── report1.txt
+├── report2.txt
+└── temp.txt
+```
+
+<Character name="watashi" emotion="understanding">
+わあ、確かに散らかってますね。これを整理するんですね？
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+その通りです！まず、ファイルを移動したり名前を変更したりする`mv`コマンドを学びましょう。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第三幕: ファイル移動の基本 - mv コマンド" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:10"
+>
+
+<Character name="hiromitsu" emotion="normal">
+`mv`コマンドは「Move」の略で、ファイルを移動したり、名前を変更したりできます。
+</Character>
+
+### Input
+```bash
+mv draft.txt draft-v1.txt
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+backup.txt  draft-v1.txt  notes.txt  report1.txt  report2.txt  temp.txt
+```
+
+### 現在の構造
+```
+file-management-demo/
+├── backup.txt
+├── draft-v1.txt        # リネーム完了
+├── notes.txt
+├── report1.txt
+├── report2.txt
+└── temp.txt
+```
+
+### Explanation
+ファイルやディレクトリを移動・リネームするコマンド。
+- `mv` は "Move" の略
+- 同じディレクトリ内では「リネーム」
+- 元のファイルは残らない（移動するため）
+- `mv 元ファイル 新しいファイル名`の形式
+
+### リネーム後の構造
+```
+file-management-demo/
+├── backup.txt
+├── draft-v1.txt        # draft.txt から変更
+├── notes.txt
+├── report1.txt
+├── report2.txt
+└── temp.txt
+```
+
+<Character name="watashi" emotion="amazed">
+draft.txtがdraft-v1.txtに名前が変わりました！元のファイルは消えてますね！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+そうです！mvは移動なので、元のファイルは残りません。今度は、ファイルを別のディレクトリに移動してみましょう。
+</Character>
+
+### Input
+```bash
+mkdir reports
+```
+
+### Input
+```bash
+mv report1.txt report2.txt reports/
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+backup.txt  draft-v1.txt  notes.txt  reports  temp.txt
+```
+
+### 現在の構造
+```
+file-management-demo/
+├── backup.txt
+├── draft-v1.txt
+├── notes.txt
+├── reports/            # 新しく作成
+│   ├── report1.txt     # 移動完了
+│   └── report2.txt     # 移動完了
+└── temp.txt
+```
+
+### Input
+```bash
+ls reports/
+```
+
+### Output
+```
+report1.txt  report2.txt
+```
+
+<Character name="watashi" emotion="excited">
+レポートファイルがreportsフォルダに移動しました！こちらからは消えています！
+</Character>
+
+### ファイル移動後の構造
+```
+file-management-demo/
+├── backup.txt
+├── draft-v1.txt
+├── notes.txt
+├── reports/
+│   ├── report1.txt     # 移動
+│   └── report2.txt     # 移動
+└── temp.txt
+```
+
+</Scene>
+
+<Scene 
+  title="第四幕: 詳細な整理作業" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:15"
+>
+
+<Character name="hiromitsu" emotion="normal">
+今度は、さらに詳細な整理をしてみましょう。アーカイブフォルダを作って、古いファイルを移動します。
+</Character>
+
+### Input
+```bash
+mkdir archive
+```
+
+### Input
+```bash
+mv backup.txt temp.txt archive/
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+archive  draft-v1.txt  notes.txt  reports
+```
+
+### 現在の構造
+```
+file-management-demo/
+├── archive/
+│   ├── backup.txt      # 移動完了
+│   └── temp.txt        # 移動完了
+├── draft-v1.txt
+├── notes.txt
+└── reports/
+    ├── report1.txt
+    └── report2.txt
+```
+
+### Input
+```bash
+ls archive/
+```
+
+### Output
+```
+backup.txt  temp.txt
+```
+
+<Character name="watashi" emotion="understanding">
+古いファイルが整理されました！フォルダ構造がとても綺麗になりましたね！
+</Character>
+
+### アーカイブ後の構造
+```
+file-management-demo/
+├── archive/
+│   ├── backup.txt      # アーカイブ
+│   └── temp.txt        # アーカイブ
+├── draft-v1.txt
+├── notes.txt
+└── reports/
+    ├── report1.txt
+    └── report2.txt
+```
+
+<Character name="hiromitsu" emotion="happy">
+その通りです！mvコマンドを使えば、ファイルを論理的に整理できます。複数のファイルを一度に移動することも可能です。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第五幕: 不要ディレクトリの削除 - rmdir コマンド" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:20"
+>
+
+<Character name="hiromitsu" emotion="normal">
+最後に、空になったディレクトリを削除する方法を学びましょう。`rmdir`コマンドです。
+</Character>
+
+<Character name="hiromitsu" emotion="serious">
+ただし、これも慎重に使ってください。まず、アーカイブフォルダを空にしてから削除してみましょう。
+</Character>
+
+### Input
+```bash
+rm archive/backup.txt archive/temp.txt
+```
+
+### Input
+```bash
+ls archive/
+```
+
+### Output
+```
+# 空のディレクトリ（何も表示されない）
+```
+
+### Input
+```bash
+rmdir archive
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+draft-v1.txt  notes.txt  reports
+```
+
+### Explanation
+空のディレクトリを削除するコマンド。
+- `rmdir` は "Remove Directory" の略
+- 空のディレクトリのみ削除可能
+- 中身があるディレクトリは削除できない
+- 安全な削除方法（誤削除防止）
+- `rm -r`は中身があっても削除可能だが危険
+
+### ディレクトリ削除後の構造
+```
+file-management-demo/
+├── draft-v1.txt
+├── notes.txt
+└── reports/
+    ├── report1.txt
+    └── report2.txt
+```
+
+<Character name="watashi" emotion="impressed">
+空のフォルダだけ削除できるんですね！安全な設計で安心です！
+</Character>
+
+<Character name="hiromitsu" emotion="happy">
+そうです！rmdirは安全性を重視した設計になっています。中身があるディレクトリは削除できないので、誤削除を防げます。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第六幕: 実践的な整理作業" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:25"
+>
+
+<Character name="hiromitsu" emotion="normal">
+今度は、もう少し実践的な整理をしてみましょう。プロジェクトごとにファイルを分類します。
+</Character>
+
+### Input
+```bash
+mkdir projects
+```
+
+### Input
+```bash
+cd projects
+```
+
+### Input
+```bash
+pwd
+```
+
+### Output
+```
+/home/hiromitsu/file-management-demo/projects
+```
+
+### Input
+```bash
+touch project-a.txt project-b.txt meeting-notes.txt
+```
+
+### Input
+```bash
+mkdir project-a project-b meetings
+```
+
+### Input
+```bash
+mv project-a.txt project-a/
+```
+
+### Input
+```bash
+mv project-b.txt project-b/
+```
+
+### Input
+```bash
+mv meeting-notes.txt meetings/
+```
+
+### Input
+```bash
+ls
+```
+
+### Output
+```
+meetings  project-a  project-b
+```
+
+### 現在の構造
+```
+projects/
+├── meetings/
+│   └── meeting-notes.txt   # 移動完了
+├── project-a/
+│   └── project-a.txt       # 移動完了
+└── project-b/
+    └── project-b.txt       # 移動完了
+```
+
+<Character name="watashi" emotion="amazed">
+プロジェクトごとに完璧に整理されました！これで作業がとても効率的になりそうです！
+</Character>
+
+### 最終的な整理構造
+```
+projects/
+├── meetings/
+│   └── meeting-notes.txt
+├── project-a/
+│   └── project-a.txt
+└── project-b/
+    └── project-b.txt
+```
+
+<Character name="hiromitsu" emotion="proud">
+その通りです！mvコマンドとrmdirコマンドを組み合わせれば、どんなに散らかったファイルも綺麗に整理できます。
+</Character>
+
+</Scene>
+
+<Scene 
+  title="第七幕: 整理術のまとめ" 
+  location="秋葉原のメイドカフェ" 
+  time="午後 3:30"
+>
+
+<Character name="hiromitsu" emotion="happy">
+これで、ファイル整理の基本技術は完璧です。システム構築と整理術を組み合わせれば、完璧なデジタル環境を作れます。
+</Character>
+
+<Character name="watashi" emotion="excited">
+はい！mkdir、cp、touch、rm でシステムを作って、mv で整理して、rmdir で掃除する。完璧なワークフローですね！
+</Character>
+
+<Character name="hiromitsu" emotion="thoughtful">
+そうです！前回のシステム構築と今回の整理術を組み合わせれば、どんなプロジェクトでも効率的に管理できます。
+</Character>
+
+<Character name="hiromitsu" emotion="gentle">
+実際の作業では、定期的にファイルを整理することが大切です。散らかる前に、こまめに整理する習慣をつけましょう。
+</Character>
+
+<Character name="watashi" emotion="grateful">
+ありがとうございます！今度は自分のプロジェクトを整理してみます！
+</Character>
+
+<Narrator>
+この日、私はLinuxでのファイル整理術を学んだ。移動、リネーム、ディレクトリ削除...これらの技術があれば、どんなに散らかったファイルでも美しく整理できる。浩三さんの教えてくれた方法で、デジタル環境をより効率的に管理できるようになった。
+</Narrator>
+
+</Scene>
+
+## 今日学んだLinuxコマンド
+
+### mv (Move)
+- **用途**: ファイルやディレクトリを移動・リネーム
+- **基本構文**: `mv 元ファイル 新しい場所またはファイル名`
+- **応用**: `mv file1 file2 directory/` で複数ファイルを移動
+- **重要性**: ファイル整理の基本
+
+### rmdir (Remove Directory)
+- **用途**: 空のディレクトリを削除
+- **基本構文**: `rmdir ディレクトリ名`
+- **重要性**: 安全なディレクトリ削除
+
+### 今日のまとめ
+秋葉原のメイドカフェで、浩三さんがファイル整理の技術を教えてくれました。mvコマンドでファイルを移動・リネームし、rmdirコマンドで空のディレクトリを安全に削除する方法を学びました。これで、前回のシステム構築技術と合わせて、完璧なファイル管理ができるようになりました！
+
+## 全コマンドリファレンス
+
+### ✅ 学習済みコマンド
+- **pwd** - 現在のディレクトリパスを表示
+- **ls** - ディレクトリの内容を一覧表示
+- **cd** - ディレクトリを移動
+- **mkdir** - ディレクトリを作成
+- **rmdir** - 空のディレクトリを削除
+- **touch** - 空のファイルを作成、タイムスタンプを更新
+- **mv** - ファイル・ディレクトリを移動・リネーム
+- **cp** - ファイル・ディレクトリをコピー
+- **rm** - ファイル・ディレクトリを削除
+
+### 📚 今後学習予定のコマンド
+
+#### テキスト表示・編集
+- **cat** - ファイルの内容を表示
+- **more** - ファイルの内容をページごとに表示
+- **less** - ファイルの内容をスクロール表示
+- **echo** - テキストを出力
+
+#### リダイレクト・パイプ
+- **>** - 出力をファイルに書き込み（上書き）
+- **>>** - 出力をファイルに追記
+- **|** - コマンドの出力を別のコマンドに渡す
+
+#### 検索・フィルタ
+- **grep** - テキストパターンを検索
+- **egrep** - 拡張正規表現でテキスト検索
+- **find** - ファイル・ディレクトリを検索
+
+**進捗**: 11/19 コマンド完了
+
+### ファイル管理ベストプラクティス
+1. **定期的な整理**: 散らかる前にこまめに整理
+2. **論理的な分類**: プロジェクトや用途別にディレクトリを作成
+3. **命名規則**: 一貫した命名規則でファイル名を管理
+4. **安全な削除**: rmdirで安全にディレクトリを削除
+5. **バックアップ**: 重要なファイルは移動前にコピーを作成
