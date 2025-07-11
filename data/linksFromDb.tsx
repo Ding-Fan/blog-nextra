@@ -1,22 +1,6 @@
 import ICONS from "./icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBookAtlas,
-  faChalkboardUser,
-  faCloudBolt,
-  faTriangleExclamation,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faAmazon,
-  faBluesky,
-  faDiscord,
-  faGithub,
-  faGoogle,
-  faSpotify,
-  faTelegram,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
 import IconImage from "components/image/IconImage";
+import DynamicIcon from "components/DynamicIcon";
 import { createClient } from "utils/supabase/client";
 
 interface DB_Link extends Link {
@@ -24,28 +8,6 @@ interface DB_Link extends Link {
   icon_name: string;
 }
 
-const FA_ICONS = {
-  faAmazon: <FontAwesomeIcon icon={faAmazon} className="text-yellow-500" />,
-  faSpotify: <FontAwesomeIcon icon={faSpotify} className="text-green-600" />,
-  faYoutube: <FontAwesomeIcon icon={faYoutube} className="text-red-600" />,
-  faGithub: <FontAwesomeIcon icon={faGithub} className="text-gray-600" />,
-  faGoogle: <FontAwesomeIcon icon={faGoogle} className="text-blue-400" />,
-  faDiscord: <FontAwesomeIcon icon={faDiscord} className="text-purple-700" />,
-  faTelegram: <FontAwesomeIcon icon={faTelegram} className="text-blue-500" />,
-  faBluesky: <FontAwesomeIcon icon={faBluesky} className="text-blue-300" />,
-  faBookAtlas: (
-    <FontAwesomeIcon icon={faBookAtlas} className="text-orange-500" />
-  ),
-  faChalkboardUser: (
-    <FontAwesomeIcon icon={faChalkboardUser} className="text-green-600" />
-  ),
-  faCloudBolt: (
-    <FontAwesomeIcon icon={faCloudBolt} className="text-yellow-500" />
-  ),
-  faTriangleExclamation: (
-    <FontAwesomeIcon icon={faTriangleExclamation} className="text-red-500" />
-  ),
-};
 
 async function getLinks(): Promise<DB_Link[]> {
   try {
@@ -69,23 +31,24 @@ export async function HomePageLinksFromDb() {
   const links = await getLinks();
 
   const getImage = (link: DB_Link) => {
-    let result;
-
     if (link.icon_url) {
-      result = (
+      return (
         <IconImage
           iconStyle="contained"
           src={link.icon_url}
           alt={link.note || link.url}
         />
       );
-    } else if (FA_ICONS[link.icon_name]) {
-      result = FA_ICONS[link.icon_name];
+    } else if (link.icon_name && link.icon_name.startsWith('fa')) {
+      // FontAwesome icon - use DynamicIcon
+      return <DynamicIcon name={link.icon_name} />;
+    } else if (link.icon_name && ICONS[link.icon_name]) {
+      // Custom SVG icon from icons.tsx
+      return ICONS[link.icon_name];
     } else {
-      result = ICONS[link.icon_name];
+      // Fallback to question mark if no icon found
+      return <DynamicIcon name="faQuestion" />;
     }
-
-    return result;
   };
 
   return links.map((link) => ({
