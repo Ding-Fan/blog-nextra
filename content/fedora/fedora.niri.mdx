@@ -18,6 +18,14 @@ sudo dnf install xwayland-satellite
 
 ```
 
+mako
+
+```bash
+# to see the notification history with content
+busctl --user call org.freedesktop.Notifications /fr/emersion/Mako fr.emersion.Mako ListNotifications -j \
+  | jq -r '.data[][] | select(.body.type == "s") | "\(.["app-name"].data)\n  \(.summary.data)\n  \(.body.data)\n"' 
+
+```
 
 install waybar
 
@@ -77,6 +85,8 @@ shell = "fish"
 install nmtui, for network configure when no gnome(in niri)
 
 install blueman, for bluetooth manager
+
+install pavucontrol, for audio control. Volume Control is the name of the installed app.
 
 install niriswitcher
 ```sh
