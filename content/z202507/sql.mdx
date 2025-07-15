@@ -244,6 +244,22 @@ SELECT title, brand FROM inventory WHERE cost = 120;
 ```
 *Displays title and brand from inventory table where cost equals 120*
 
+**Using Multiple and Complex Conditions:**
+
+You can combine conditions using `AND` and `OR`, and use comparison operators like `>`, `<`, `>=`, `<=`.
+
+```sql
+-- Using AND (costが100より大きく、brandが'A')
+SELECT title, brand, cost FROM inventory WHERE cost > 100 AND brand = 'A';
+```
+*Displays items where the cost is greater than 100 AND the brand is 'A'*
+
+```sql
+-- Using OR (costが50より小さい、またはbrandが'B')
+SELECT title, brand, cost FROM inventory WHERE cost < 50 OR brand = 'B';
+```
+*Displays items where the cost is less than 50 OR the brand is 'B'*
+
 -----
 
 ### データの追加 (INSERT INTO)
