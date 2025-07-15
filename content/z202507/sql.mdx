@@ -21,7 +21,7 @@ Semicolon `;` are used to end SQL statements.
 Create new tables in the database.
 
 **Basic Syntax:**
-```sql
+```sql showLineNumbers
 CREATE TABLE table_name (
     field_name1 DATA_TYPE(size) RESTRICTIONS,
     field_name2 DATA_TYPE(size) RESTRICTIONS,
@@ -61,7 +61,7 @@ CREATE TABLE table_name (
 
 **Practice Examples:**
 
-```sql
+```sql showLineNumbers
 -- Create users table (数字のid、20文字のname)
 CREATE TABLE users (
     id INT,
@@ -70,7 +70,7 @@ CREATE TABLE users (
 ```
 *Creates a table named "users" with integer id field and 20-character name field*
 
-```sql
+```sql showLineNumbers
 -- Create events table (日付のevent_date、時間のstart_time、100文字のdescription)
 CREATE TABLE events (
     event_date DATE,
@@ -80,7 +80,7 @@ CREATE TABLE events (
 ```
 *Creates events table with date, time, and description fields*
 
-```sql
+```sql showLineNumbers
 -- Create products table (8文字のcode（主キー）、20文字のtitle、時間のduration)
 CREATE TABLE products (
     code CHAR(8) PRIMARY KEY,
@@ -90,7 +90,7 @@ CREATE TABLE products (
 ```
 *Creates products table with code as primary key*
 
-```sql
+```sql showLineNumbers
 -- Create contacts table (数字のzip、100文字のaddress、20文字のname、15文字のphone、zipとnameにNOT NULL)
 CREATE TABLE contacts (
     zip INT NOT NULL,
@@ -114,64 +114,64 @@ Modify existing table structure.
 **⚠️ Important:** In exams, do not use `COLUMN` in `ADD COLUMN` (although it's correct SQL, it will be marked wrong in class)
 
 **Add Field:**
-```sql
+```sql showLineNumbers
 ALTER TABLE table_name ADD field_name DATA_TYPE AFTER existing_field;
 ```
-```sql
+```sql showLineNumbers
 -- Add email field to users table (nameの後ろ)
 ALTER TABLE users ADD email CHAR(50) AFTER name;
 ```
 *Adds an email field after the name field in users table*
 
-```sql
+```sql showLineNumbers
 -- Add created_date field to products table (priceの後ろ)
 ALTER TABLE products ADD created_date DATE AFTER price;
 ```
 *Adds a date field after the price field in products table*
 
 **Change Data Type:**
-```sql
+```sql showLineNumbers
 ALTER TABLE table_name MODIFY field_name NEW_DATA_TYPE(size);
 ```
-```sql
+```sql showLineNumbers
 -- Change users table id data type to string (idのデータ型を8文字に変更)
 ALTER TABLE users MODIFY id CHAR(8);
 ```
 *Changes the users table's id field data type from integer to 8-character string*
 
-```sql
+```sql showLineNumbers
 -- Change employees table department data type to larger size (departmentのデータ型を40文字に変更)
 ALTER TABLE employees MODIFY department CHAR(40);
 ```
 *Changes the employees table's department field size to 40 characters*
 
 **Change Field Name:**
-```sql
+```sql showLineNumbers
 ALTER TABLE table_name CHANGE old_field_name new_field_name DATA_TYPE(size);
 ```
-```sql
+```sql showLineNumbers
 -- Change users table username field name to login_name (usernameをlogin_nameに変更、データ型は15文字)
 ALTER TABLE users CHANGE username login_name CHAR(15);
 ```
 *Changes users table's username field name to login_name and sets data type to 15 characters*
 
-```sql
+```sql showLineNumbers
 -- Change contacts table phone field name to mobile (phoneをmobileに変更、データ型は50文字)
 ALTER TABLE contacts CHANGE phone mobile CHAR(50);
 ```
 *Changes contacts table's phone field name to mobile and sets data type to 50 characters*
 
 **Delete Field:**
-```sql
+```sql showLineNumbers
 ALTER TABLE table_name DROP field_name;
 ```
-```sql
+```sql showLineNumbers
 -- Delete age field from users table (ageのフィールドを削除)
 ALTER TABLE users DROP age;
 ```
 *Completely removes the age field from users table*
 
-```sql
+```sql showLineNumbers
 -- Delete old_price field from products table (old_priceのフィールドを削除)
 ALTER TABLE products DROP old_price;
 ```
@@ -182,19 +182,19 @@ ALTER TABLE products DROP old_price;
 Delete entire tables from the database.
 
 **Basic Syntax:**
-```sql
+```sql showLineNumbers
 DROP TABLE table_name;
 ```
 
 **Practice Examples:**
 
-```sql
+```sql showLineNumbers
 -- Delete old_logs table (old_logsテーブルを削除)
 DROP TABLE old_logs;
 ```
 *Completely removes the table named "old_logs"*
 
-```sql
+```sql showLineNumbers
 -- Delete temp_data table (temp_dataテーブルを削除)
 DROP TABLE temp_data;
 ```
@@ -207,24 +207,24 @@ DROP TABLE temp_data;
 Retrieve data from tables. You can display specific fields or all fields (`*`), and use `WHERE` to specify conditions.
 
 **Basic Syntax:**
-```sql
+```sql showLineNumbers
 SELECT field_name1, field_name2 FROM table_name WHERE condition;
 ```
 
 **Display All Fields:**
-```sql
+```sql showLineNumbers
 SELECT * FROM table_name;
 ```
 
 **Practice Examples:**
 
-```sql
+```sql showLineNumbers
 -- Display date, user_id, content from posts table (postsテーブルからdate・user_id・contentを表示)
 SELECT date, user_id, content FROM posts;
 ```
 *Displays all data from the specified three fields in posts table*
 
-```sql
+```sql showLineNumbers
 -- Display product_id, title, cost from inventory table (inventoryテーブルからproduct_id・title・costを表示)
 SELECT product_id, title, cost FROM inventory;
 ```
@@ -232,13 +232,13 @@ SELECT product_id, title, cost FROM inventory;
 
 **Conditional Data Display:**
 
-```sql
+```sql showLineNumbers
 -- Display user_id, full_name from members table where status = 2 (statusが2のuser_id・full_nameを表示)
 SELECT user_id, full_name FROM members WHERE status = 2;
 ```
 *Displays user_id and full_name from members table where status field value equals 2*
 
-```sql
+```sql showLineNumbers
 -- Display title, brand from inventory table where cost = 120 (costが120のtitle・brandを表示)
 SELECT title, brand FROM inventory WHERE cost = 120;
 ```
@@ -248,13 +248,13 @@ SELECT title, brand FROM inventory WHERE cost = 120;
 
 You can combine conditions using `AND` and `OR`, and use comparison operators like `>`, `<`, `>=`, `<=`.
 
-```sql
+```sql showLineNumbers
 -- Using AND (costが100より大きく、brandが'A')
 SELECT title, brand, cost FROM inventory WHERE cost > 100 AND brand = 'A';
 ```
 *Displays items where the cost is greater than 100 AND the brand is 'A'*
 
-```sql
+```sql showLineNumbers
 -- Using OR (costが50より小さい、またはbrandが'B')
 SELECT title, brand, cost FROM inventory WHERE cost < 50 OR brand = 'B';
 ```
@@ -267,20 +267,20 @@ SELECT title, brand, cost FROM inventory WHERE cost < 50 OR brand = 'B';
 Add new data (insert) into tables.
 
 **Basic Syntax:**
-```sql
+```sql showLineNumbers
 INSERT INTO table_name (field_name1, field_name2) VALUES (value1, value2);
 ```
 
 **Practice Examples:**
 
-```sql
--- Add data to members table: user_id = "alice", full_name = "johnson" (user_idが「alice」、full_nameが「johnson」)
-INSERT INTO members (user_id, full_name) VALUES ('alice', 'johnson');
+```sql showLineNumbers
+-- Add data to members table: user_id = "agatha", full_name = "christie" (user_idが「agatha」、full_nameが「christie」)
+INSERT INTO members (user_id, full_name) VALUES ('agatha', 'christie');
 ```
 *Adds one new member record to members table*
 
-```sql
--- Add data to songs table: title = "melody", duration = 2:30 (titleが「melody」、durationが2分30秒)
-INSERT INTO songs (title, duration) VALUES ('melody', '00:02:30');
+```sql showLineNumbers
+-- Add data to songs table: title = "sample", duration = 3:44 (titleが「sample」、durationが3分44秒)
+INSERT INTO songs (title, duration) VALUES ('sample', '00:03:44');
 ```
 *Adds song title and duration to songs table (time format: hours:minutes:seconds)*
