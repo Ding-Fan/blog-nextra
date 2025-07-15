@@ -2,9 +2,20 @@ import React from "react";
 import RichImage, { RichImageProps } from "./RichImage";
 import { ct } from "../../scripts/utils";
 
-interface Props extends RichImageProps {}
+interface Props extends RichImageProps {
+  isProgressive?: boolean;
+  thumbnailSrc?: string;
+}
 
-const GalleryImage = ({ src, caption, loading = "lazy", className }: Props) => {
+const GalleryImage = ({ 
+  src, 
+  caption, 
+  loading = "lazy", 
+  className, 
+  isProgressive = true, // Default to progressive for galleries
+  thumbnailSrc,
+  ...props 
+}: Props) => {
   return (
     <RichImage
       caption={caption}
@@ -13,6 +24,9 @@ const GalleryImage = ({ src, caption, loading = "lazy", className }: Props) => {
       effect="framed"
       src={src}
       loading={loading}
+      isProgressive={isProgressive}
+      thumbnailSrc={thumbnailSrc}
+      {...props}
     />
   );
 };

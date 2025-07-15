@@ -1,0 +1,46 @@
+# Configuring Multi-Monitor Setup in Niri
+
+https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+
+### Step 1: Identify Your Monitors
+Use `niri msg outputs` to get information about your connected monitors, including their names and logical sizes:
+
+```bash
+niri msg outputs
+```
+
+Look for the **Logical size** values in the output - you'll need these for positioning.
+
+### Step 2: Configure Monitor Layout
+Edit your niri config file to set up the monitor arrangement. Use the monitor names from the previous command.
+
+**Example Configuration:**
+This setup places an external monitor (DP-3) above a laptop monitor (eDP-1):
+
+```kdl
+output "eDP-1" {
+    scale 2.5
+    transform "normal"
+    position x=0 y=1080
+}
+
+output "DP-3" {
+    scale 2.0
+    transform "normal"
+    position x=0 y=0
+}
+```
+
+### Configuration Breakdown:
+- **`scale`**: Adjusts the display scaling (higher = larger UI elements)
+- **`transform`**: Display rotation (`"normal"`, `"90"`, `"180"`, `"270"`)
+- **`position`**: 
+  - `x=0 y=0` places the monitor at the top-left origin
+  - `x=0 y=1080` places the monitor 1080 pixels below the origin
+
+### Layout Logic:
+- **DP-3** (external): positioned at `y=0` (top)
+- **eDP-1** (laptop): positioned at `y=1080` (bottom, below the external monitor)
+- Both monitors aligned at `x=0` (left edge)
+
+**Tip:** Adjust the `y` position values based on the actual logical height of your top monitor to ensure proper alignment.

@@ -18,6 +18,14 @@ sudo dnf install xwayland-satellite
 
 ```
 
+mako
+
+```bash
+# to see the notification history with content
+busctl --user call org.freedesktop.Notifications /fr/emersion/Mako fr.emersion.Mako ListNotifications -j \
+  | jq -r '.data[][] | select(.body.type == "s") | "\(.["app-name"].data)\n  \(.summary.data)\n  \(.body.data)\n"' 
+
+```
 
 install waybar
 
@@ -38,11 +46,6 @@ environment {
     // for brave, go to brave://flags/
     // set "Preferred Ozone platform" to Wayland and relaunch
     // https://discussion.fedoraproject.org/t/fix-ui-scale-bug-electron-apps-too-small/142940/3
-    // set the following in the .desktop EXEC
-    // for example, the file is /usr/share/applications/code.desktop
-    // --enable-features=UseOzonePlatform --ozone-platform-hint=auto
-    // The result looks like 
-    // Exec=/usr/share/code/code --enable-features=UseOzonePlatform --ozone-platform=wayland %F
 }
 
 // disable middle click paste
@@ -82,6 +85,8 @@ shell = "fish"
 install nmtui, for network configure when no gnome(in niri)
 
 install blueman, for bluetooth manager
+
+install pavucontrol, for audio control. Volume Control is the name of the installed app.
 
 install niriswitcher
 ```sh
