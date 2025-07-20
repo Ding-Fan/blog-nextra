@@ -22,8 +22,19 @@ export const PROMPTS: Prompt[] = [
   },
   {
     title: "refine",
-    content:
-      "Please refine my content by making only minimal changes, preserving the original tone and language, and avoiding the use of em dashes. Additionally, provide an explanation that describes both the emotional response the refined content is intended to evoke and the message viewers are likely to understand. Make sure the explanation is written in the same language as the original content. Content start: ",
+    content: `
+Please refine my content following these guidelines:
+
+• **Language**: Preserve the original language
+• **Style**: Keep the original tone and style (casual stays casual)
+• **Changes**: Make minimal improvements focusing only on flow and clarity
+• **Word Choice**: Use simple, everyday language
+• **Avoid**: Em dashes, jargon, technical terms, overly formal words
+• **Output**: Provide both refined content and explanation
+• **Explanation**: Describe the emotional response and message in the same language as original
+
+Content start:
+    `,
     tags: ["writing"],
   },
   {
