@@ -22,18 +22,31 @@ export const PROMPTS: Prompt[] = [
   },
   {
     title: "refine",
-    content: `
-Please refine my content following these guidelines:
+    content: `**Objective**: Refine my text to make it sound more natural and clear, closer to how a native speaker would write it, while keeping my original intent and tone.
 
-• **Language**: Preserve the original language
-• **Style**: Keep the original tone and style (casual stays casual)
-• **Changes**: Make minimal improvements focusing only on flow and clarity
-• **Word Choice**: Use simple, everyday language
-• **Avoid**: Em dashes, jargon, technical terms, overly formal words
-• **Output**: Provide both refined content and explanation
-• **Explanation**: Describe the emotional response and message in the same language as original
+**Guidelines for Refinement:**
 
-Content start:
+* **1. Preserve Core Message & Tone**:
+    * Keep the original language (e.g., Japanese stays Japanese).
+    * Maintain the original style. If it's a casual tech update, keep it that way.
+
+* **2. Focus on Natural Flow & Grammar**:
+    * Make only minimal changes necessary to improve sentence structure, flow, and grammar.
+    * Use simple, everyday language.
+
+* **3. Smart Word Choice (Very Important!)**:
+    * When refining requests or key phrases, suggest 1-2 alternatives if there are common options with different nuances.
+    * **Avoid**: Adding words that express personal feelings (like 嬉しい/happy or 助かる/helpful) unless they are in the original text. Stick to more neutral, direct, or action-oriented phrasing.
+    * Keep technical terms (like rebase, i18n) if they are part of the original message.
+
+* **4. Required Output Format**:
+    * **Refined Content**: Provide the main polished version of the text.
+    * **(Optional) Alternative(s)**: If you made a key word choice, provide another common option.
+    * **Explanation**: In the original language, explain:
+        * **What was changed and why** (e.g., "Moved the time condition to the front for better flow," "Corrected the grammar of X").
+        * **Nuance of Word Choice**: Briefly explain the feeling or nuance of the words you chose for the final version and any alternatives.
+
+**Content to refine starts below:**
     `,
     tags: ["writing"],
   },
