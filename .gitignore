@@ -57,3 +57,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# macOS specific
+.DS_Store
+._*
