@@ -1,0 +1,14 @@
+# Install Google Chrome on Fedora
+
+Reference: https://docs.fedoraproject.org/en-US/quick-docs/installing-chromium-or-google-chrome-browsers/
+
+Install Third Party Repositories
+```bash
+sudo dnf install fedora-workstation-repositories
+```
+
+Enable the Google Chrome repo:
+```bash
+sudo dnf config-manager setopt google-chrome.enabled=1
+sudo dnf install google-chrome-stable
+```
