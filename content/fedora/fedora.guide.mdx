@@ -46,13 +46,46 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
 fisher install jethrokuan/z
 ```
 
-### Git Configuration
+### Essential Account Setup & Security
+
+#### Bitwarden
+
+Password manager.
+
+##### Flathub Applications Installation
+
+For detailed application installation via Flatpak from Flathub, see [Flathub Applications Guide](./fedora.guide.flathub.mdx).
+
+#### Brave Browser Installation & Sync
+
 ```bash
-# Configure Git
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-git config --global pull.rebase false
-git config --global init.defaultBranch main
+# Install Brave Browser
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf install -y brave-browser
+
+# Launch Brave and sign in to sync bookmarks, passwords, and settings
+# brave-browser
+```
+
+#### GitHub SSH Key Setup
+```bash
+# Generate SSH key for GitHub
+ssh-keygen -t ed25519 -C "your.email@example.com"
+
+# Start SSH agent and add key
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# Copy public key to clipboard
+cat ~/.ssh/id_ed25519.pub
+
+# Add the copied key to your GitHub account:
+# 1. Go to GitHub.com → Settings → SSH and GPG keys
+# 2. Click "New SSH key"
+# 3. Paste the key and give it a descriptive title
+# 4. Test the connection:
+ssh -T git@github.com
 ```
 
 ### Essential System Tools
