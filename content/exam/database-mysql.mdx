@@ -1,0 +1,104 @@
+# Database MySQL
+
+Login:
+
+```sh
+mysql -u <username> -p
+```
+
+username might be `root` or any other MySQL user you have created.
+
+Show databases:
+
+```sql
+SHOW DATABASES;
+```
+
+Choose a database:
+
+```sql
+USE <database_name>;
+```
+
+
+## テーブル作成
+
+- `CREATE TABLE` - 新しいテーブルを作成
+- データ型: `INTEGER`, `CHAR(n)`, `DATE`, `TIME`
+
+テーブル名がtest、フィールドが数字のid、20文字のnameのテーブルを作成してみろ！
+
+```sql
+CREATE TABLE test ( id INT, name CHAR(20) );
+```
+
+テーブル名がlog、フィールドが日付のLD、時間のLT、100文字のlogのテーブルを作成しろ！
+
+```sql
+CREATE TABLE log ( LD DATE, LT TIME, log CHAR(100) );
+```
+
+## テーブル変更
+
+- `ALTER TABLE ... ADD` - カラム追加
+- `ALTER TABLE ... MODIFY` - カラム変更
+- `ALTER TABLE ... CHANGE` - カラム名と型変更
+- `ALTER TABLE ... DROP` - カラム削除
+
+今度はテーブルを変更してみよう！testテーブルに日付のudでフィールドを追加する、場所はnameの後ろとする！
+
+```sql
+ALTER TABLE test ADD ud DATE AFTER name;
+```
+
+testテーブルのidのデータ型を8文字に変更する！
+
+```sql
+ALTER TABLE test MODIFY id CHAR(8);
+```
+
+usrテーブルのunameのフィールド名をusernameに変更する、データ型は15文字とする！
+
+```sql
+ALTER TABLE usr CHANGE uname username CHAR(15);
+```
+
+usrテーブルのfamilyのフィールドを削除する！
+
+```sql
+ALTER TABLE usr DROP family;
+```
+
+## テーブル削除
+
+- `DROP TABLE` - テーブル完全削除
+
+crashテーブルを削除する！
+
+```sql
+DROP TABLE crash;
+```
+
+## データ操作
+
+- `SELECT` - データ取得
+- `WHERE` - 条件指定
+- `INSERT INTO` - データ挿入
+
+じゃあ今度は見るだけだ！scheduleテーブルからpdate・uid・memoを表示する！
+
+```sql
+SELECT pdate, uid, memo FROM schedule;
+```
+
+じゃあ条件付きの検索だ！usrテーブルから、familyが2のuid・unameを表示する！
+
+```sql
+SELECT uid, uname FROM usr WHERE family = 2;
+```
+
+usrテーブルにuidが「agatha」、unameが「christie」となるデータを追加する！
+
+```sql
+INSERT INTO usr (uid, uname) VALUES ('agatha', 'christie');
+```
