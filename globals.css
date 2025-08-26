@@ -50,7 +50,8 @@
 
 @font-face {
   font-family: "Inconsolata Regular Nerd Font Complete";
-  src: url("/fonts/Inconsolata Regular Nerd Font Complete.ttf") format("truetype");
+  src: url("/fonts/Inconsolata Regular Nerd Font Complete.ttf")
+    format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -72,7 +73,8 @@ body {
 
 article {
   color: rgb(var(--tx) / var(--tw-text-opacity, 1));
-  font-family: var(--font-yukyokasho), "AtkinsonHyperlegibleNext-Light", "FZBIAOYSK";
+  font-family: var(--font-yukyokasho), "AtkinsonHyperlegibleNext-Light",
+    "FZBIAOYSK";
 }
 
 h1 {
@@ -90,12 +92,150 @@ h2 {
 
 /* Custom keyframe animation for excited avatar */
 @keyframes jump {
-  0%, 100% { transform: translateY(0); }
-  2% { transform: translateY(-8px); }
-  4% { transform: translateY(0); }
-  7% { transform: translateY(-8px); }
-  9% { transform: translateY(0); }
-  12% { transform: translateY(-8px); }
-  14% { transform: translateY(0); }
-  21% { transform: translateY(0); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  2% {
+    transform: translateY(-8px);
+  }
+  4% {
+    transform: translateY(0);
+  }
+  7% {
+    transform: translateY(-8px);
+  }
+  9% {
+    transform: translateY(0);
+  }
+  12% {
+    transform: translateY(-8px);
+  }
+  14% {
+    transform: translateY(0);
+  }
+  21% {
+    transform: translateY(0);
+  }
+}
+
+/* Print Styles */
+@media print {
+  /* Hide navigation and non-essential elements */
+  nav,
+  .nextra-sidebar,
+  .nextra-toc,
+  .nextra-nav-container,
+  .nextra-breadcrumb,
+  .nextra-sidebar-container,
+  .nextra-toc-container,
+  .nextra-navigation,
+  .nextra-menu,
+  .nextra-steps,
+  aside,
+  [data-nextra-sidebar],
+  [class*="sidebar"],
+  [class*="toc"],
+  [class*="navigation"],
+  [class*="breadcrumb"],
+  footer,
+  .nextra-footer,
+  .custom-footer,
+  [role="contentinfo"],
+  [class*="footer"],
+  .print-button {
+    display: none !important;
+  }
+
+  html {
+    background: white !important;
+  }
+
+  /* Optimize page layout for print */
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black !important;
+  }
+
+  /* Ensure main content takes full width */
+  main,
+  article,
+  .nextra-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    box-shadow: none !important;
+  }
+
+  /* Optimize typography for print */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black !important;
+    page-break-after: avoid;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Handle page breaks */
+  pre,
+  blockquote,
+  table,
+  figure {
+    page-break-inside: avoid;
+  }
+
+  /* Optimize code blocks */
+  pre {
+    background: #f8f8f8 !important;
+    border: 1px solid #ddd !important;
+    padding: 0.5rem !important;
+    overflow: visible !important;
+    white-space: pre-wrap !important;
+  }
+
+  /* Show URLs for links */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  /* Hide decorative elements and controls */
+  .nextra-theme-switch,
+  .nextra-search,
+  .nextra-sidebar-toggle,
+  .nextra-hamburger,
+  .nextra-callout,
+  .nextra-steps,
+  .nextra-banner,
+  [data-theme],
+  [role="navigation"],
+  [aria-label*="navigation"],
+  [aria-label*="sidebar"],
+  [aria-label*="menu"] {
+    display: none !important;
+  }
+
+  /* Force main content to full width */
+  .nextra-container,
+  .nextra-content-wrapper,
+  .nextra-body-typesetting-article {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Ensure good contrast for text */
+  * {
+    color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
 }

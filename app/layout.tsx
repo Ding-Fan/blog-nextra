@@ -1,5 +1,6 @@
 import { Layout, Navbar } from "nextra-theme-docs";
 import Footer from "../components/Footer";
+import PrintButton from "../components/PrintButton";
 import { Banner, Head, Search } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 // Required for theme styles, previously was imported under the hood
@@ -50,6 +51,7 @@ const navbar = (
     logo={<span>又不是不能写博客</span>}
   // projectLink="https://github.com/shuding/nextra"
   >
+    <PrintButton />
   </Navbar>
 );
 export default async function RootLayout({ children }) {

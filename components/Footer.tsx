@@ -9,7 +9,7 @@ type Props = {};
 const Footer = (props: Props) => {
   const [fired, setFired] = useState(false);
   return (
-    <div className="flex flex-col md:flex-row justify-center w-full">
+    <div className="custom-footer flex flex-col md:flex-row justify-center w-full">
       <div className="text-gray-400 p-6">
         {fired ? (
           <div className="">
