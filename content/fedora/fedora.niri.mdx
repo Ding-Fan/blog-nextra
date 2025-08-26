@@ -1,22 +1,5 @@
 # Fedora Niri
 
-install niri
-
-```bash
-dnf copr enable yalter/niri
-
-sudo dnf install niri
-```
-
-- https://github.com/YaLTeR/niri/wiki/Xwayland#using-xwayland-satellite
-
-```bash
-# install xwayland-satellite
-# https://copr.fedorainfracloud.org/coprs/ulysg/xwayland-satellite/
-sudo dnf copr enable ulysg/xwayland-satellite
-sudo dnf install xwayland-satellite
-
-```
 
 mako
 
@@ -26,61 +9,6 @@ busctl --user call org.freedesktop.Notifications /fr/emersion/Mako fr.emersion.M
   | jq -r '.data[][] | select(.body.type == "s") | "\(.["app-name"].data)\n  \(.summary.data)\n  \(.body.data)\n"' 
 
 ```
-
-install waybar
-
-add these to ~/.config/niri/config.kdl
-
-```kdl
-spawn-at-startup "xwayland-satellite"
-spawn-at-startup "waybar"
-// Or, if you built it by hand:
-// spawn-at-startup "~/path/to/code/target/release/xwayland-satellite"
-
-environment {
-    DISPLAY ":0"
-
-    // https://github.com/YaLTeR/niri/blob/e0b0b04b445f7044f383e50104f861e632e1c905/wiki/Application-Issues.md?plain=1#L14
-    // seems not working
-    // ELECTRON_OZONE_PLATFORM_HINT "auto"
-    // for brave, go to brave://flags/
-    // set "Preferred Ozone platform" to Wayland and relaunch
-    // https://discussion.fedoraproject.org/t/fix-ui-scale-bug-electron-apps-too-small/142940/3
-}
-
-// disable middle click paste
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous
-clipboard {
-    disable-primary
-}
-```
-
-
-
-
-config alacritty
-
-```toml
-# https://alacritty.org/config-alacritty.html
-# create this config file
-# $HOME/.config/alacritty/alacritty.toml
-
-
-# Alacritty configuration file
-
-# https://alacritty.org/config-alacritty.html#window
-[window]
-opacity = 0.9
-
-# https://alacritty.org/config-alacritty.html#terminal
-[terminal]
-shell = "fish"
-
-```
-
-- https://github.com/alacritty/alacritty-theme
-- https://github.com/spacebird-dev/alacritty-theme-switcher?tab=readme-ov-file
-
 
 
 install better-control

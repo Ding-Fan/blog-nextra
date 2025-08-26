@@ -1,0 +1,824 @@
+# Complete Fedora Installation & Development Setup Guide
+
+A comprehensive step-by-step guide to set up a complete development environment with niri window manager on Fedora Linux.
+
+**Prerequisites:** This guide assumes you have already installed Fedora. If you need installation instructions, see [Fedora Installation Process](./fedora.guide.installation.mdx).
+
+---
+
+## Post-Installation System Setup
+
+### Initial System Update
+```bash
+# Update all packages
+sudo dnf update -y
+
+# Update Flatpak
+flatpak update
+```
+
+### Enable RPM Fusion Repositories
+
+https://rpmfusion.org/Configuration#Installing_Free_and_Nonfree_Repositories
+
+```bash
+# Install both free and non-free repositories
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# For Fedora 41+, enable openh264 repository
+sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
+
+```
+
+### Shell Setup (Fish)
+```bash
+# Install Fish shell
+sudo dnf install -y fish
+
+# Set Fish as default shell
+chsh -s /usr/bin/fish
+
+# Install Fisher (Fish plugin manager)
+# https://github.com/jorgebucaran/fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+# Here to find fish plugins
+# https://github.com/jorgebucaran/awsm.fish#readme
+fisher install jethrokuan/z
+```
+
+### Git Configuration
+```bash
+# Configure Git
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git config --global pull.rebase false
+git config --global init.defaultBranch main
+```
+
+### Essential System Tools
+```bash
+
+sudo dnf install -y tldr 7z htop unar fastfetch wget curl
+
+# others
+
+# Development tools
+sudo dnf groupinstall -y "Development Tools" "Development Libraries"
+
+# Compression tools
+sudo dnf install -y  p7zip p7zip-plugins
+
+# System monitoring
+sudo dnf install -y btop wavemon
+
+# Network tools
+sudo dnf install -y telnet 
+
+# Text processing
+sudo dnf install -y fd-find ripgrep
+
+# Modern alternatives
+sudo dnf install -y bat exa
+```
+
+### Graphics Drivers
+
+#### Intel Graphics Optimization
+```bash
+# For screen flickering issues (XPS 13 and similar)
+sudo vi /etc/default/grub
+
+# Add i915.enable_psr=0 to GRUB_CMDLINE_LINUX line:
+# GRUB_CMDLINE_LINUX="rhgb quiet i915.enable_psr=0"
+
+# Update GRUB
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
+### Multimedia Codecs
+```bash
+sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+```
+
+---
+
+## niri Window Manager Setup
+
+### Install niri
+```bash
+# Install niri from COPR repository
+sudo dnf copr enable -y yalter/niri
+sudo dnf install -y niri
+
+# Install additional dependencies
+sudo dnf install -y fuzzel swaybg swaylock swayidle
+```
+
+### Waybar Installation & Configuration
+```bash
+# Install waybar for status bar
+sudo dnf install -y waybar
+
+# Note: Add 'spawn-at-startup "waybar"' to your niri config after creating it
+
+# Create waybar config directory
+mkdir -p ~/.config/waybar
+
+# Create waybar configuration file at ~/.config/waybar/config
+# Copy and paste the following content:
+```
+
+```json
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    
+    "modules-left": ["custom/niri-workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "battery", "tray"],
+
+    "custom/niri-workspaces": {
+        "format": "{}",
+        "exec": "niri msg workspaces | jq -r '.[] | select(.is_active == true) | .name'",
+        "interval": 1
+    },
+
+    "clock": {
+        "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "tray": {
+        "spacing": 10
+    }
+}
+```
+
+```bash
+
+### niri Configuration
+```bash
+# Create config directory
+mkdir -p ~/.config/niri
+
+# Create niri configuration file at ~/.config/niri/config.kdl
+# Copy and paste the following content:
+```
+
+```kdl
+// niri configuration file  
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            // Add your preferred layout options
+        }
+    }
+
+    touchpad {
+        tap true
+        dwt true
+        natural-scroll true
+    }
+
+    mouse {
+        natural-scroll false
+        accel-speed 0.2
+    }
+}
+
+output "eDP-1" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    transform "normal"
+}
+
+layout {
+    gaps 16
+    center-focused-column "never"
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 4
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+
+    border {
+        width 2
+        active-color "#ffc87f"
+        inactive-color "#505050"
+    }
+}
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Basic window management
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+
+    Mod+Ctrl+H { move-column-left; }
+    Mod+Ctrl+L { move-column-right; }
+    Mod+Ctrl+J { move-window-down; }
+    Mod+Ctrl+K { move-window-up; }
+
+    // Applications
+    Mod+T { spawn "alacritty"; }
+    Mod+D { spawn "fuzzel"; }
+    Mod+Q { close-window; }
+
+    // Workspaces
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+
+    // System
+    Mod+Shift+E { quit; }
+    Mod+Shift+P { power-off-monitors; }
+
+    // Screenshot
+    Print { spawn "slurp" "|" "grim" "-g" "-" "-" "|" "wl-copy"; }
+}
+
+window-rules {
+    // Example window rules
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+```
+
+### Alacritty Terminal Installation & Configuration
+```bash
+# Install alacritty terminal
+sudo dnf install -y alacritty
+
+# Create alacritty config directory
+mkdir -p ~/.config/alacritty
+```
+
+**Note:** Update niri keybinding to use alacritty - in `~/.config/niri/config.kdl`, change to `Mod+T { spawn "alacritty"; }`
+
+Create the file `~/.config/alacritty/alacritty.toml` with this configuration:
+
+```toml
+# https://alacritty.org/config-alacritty.html
+# Alacritty configuration file
+
+# https://alacritty.org/config-alacritty.html#window
+[window]
+opacity = 0.9
+padding = { x = 8, y = 8 }
+
+# https://alacritty.org/config-alacritty.html#terminal
+[terminal]
+shell = "fish"
+
+[font]
+normal = { family = "JetBrains Mono", style = "Regular" }
+bold = { family = "JetBrains Mono", style = "Bold" }
+italic = { family = "JetBrains Mono", style = "Italic" }
+bold_italic = { family = "JetBrains Mono", style = "Bold Italic" }
+size = 12
+
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#a6adc8"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[env]
+TERM = "xterm-256color"
+```
+
+**Additional Alacritty Resources:**
+- [Official Alacritty Configuration Documentation](https://alacritty.org/config-alacritty.html)
+- [Alacritty Themes Collection](https://github.com/alacritty/alacritty-theme)
+- [Alacritty Theme Switcher](https://github.com/spacebird-dev/alacritty-theme-switcher)
+
+### Application Launcher & Wayland Tools
+```bash
+# Install fuzzel launcher
+sudo dnf install -y fuzzel
+
+# Install additional Wayland tools
+sudo dnf install -y grim slurp wl-clipboard
+```
+
+### Xwayland Support (X11 Applications)
+
+For running X11 applications in niri's Wayland environment:
+
+```bash
+# Install xwayland-satellite for better X11 app support
+sudo dnf copr enable ulysg/xwayland-satellite
+sudo dnf install xwayland-satellite
+```
+
+Add Xwayland configuration to `~/.config/niri/config.kdl`:
+
+```kdl
+// Start xwayland-satellite with niri
+spawn-at-startup "xwayland-satellite"
+
+// Environment variables for X11 compatibility
+environment {
+    DISPLAY ":0"
+
+    // https://github.com/YaLTeR/niri/blob/e0b0b04b445f7044f383e50104f861e632e1c905/wiki/Application-Issues.md?plain=1#L14
+    // seems not working
+    // ELECTRON_OZONE_PLATFORM_HINT "auto"
+    // for brave, go to brave://flags/
+    // set "Preferred Ozone platform" to Wayland and relaunch
+    // https://discussion.fedoraproject.org/t/fix-ui-scale-bug-electron-apps-too-small/142940/3
+}
+```
+
+**References:**
+- [Official Niri Xwayland Documentation](https://github.com/YaLTeR/niri/wiki/Xwayland#using-xwayland-satellite)
+- [Xwayland-satellite COPR Repository](https://copr.fedorainfracloud.org/coprs/ulysg/xwayland-satellite/)
+
+### NiriSwitcher (Window/Workspace Switching)
+
+Enhanced Alt+Tab functionality for better window and workspace navigation:
+
+```bash
+# Install niriswitcher for better window switching
+sudo dnf copr enable isaksamsten/niriswitcher
+sudo dnf install niriswitcher
+```
+
+Add niriswitcher configuration to `~/.config/niri/config.kdl`:
+
+```kdl
+// Start niriswitcher daemon
+spawn-at-startup "niriswitcher"
+
+// Enhanced window switching (add to binds section)
+binds {
+    // ... your existing binds ...
+    
+    // Window switching with niriswitcher
+    Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    Alt+Grave repeat=false { spawn "niriswitcherctl" "show" "--workspace"; }
+    Alt+Shift+Grave repeat=false { spawn "niriswitcherctl" "show" "--workspace"; }
+}
+```
+
+**Reference:** [NiriSwitcher Configuration](https://github.com/isaksamsten/niriswitcher?tab=readme-ov-file#configuration)
+
+### System Control Tools
+
+Essential system management utilities for niri environment:
+
+```bash
+# Install system management utilities
+sudo dnf install -y nmtui blueman pavucontrol
+```
+
+**Tools Overview:**
+- **nmtui**: Network Manager TUI for WiFi/network configuration
+- **blueman**: Bluetooth device manager
+- **pavucontrol**: PulseAudio volume control (appears as "Volume Control")
+
+**Additional niri Configuration:**
+Add these optional settings to your `~/.config/niri/config.kdl`:
+
+```kdl
+// Disable middle click paste (optional)
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous
+clipboard {
+    disable-primary
+}
+```
+
+**References:**
+- [Better Control Panel](https://github.com/better-ecosystem/better-control) - Alternative unified control panel
+
+### Start niri Session
+1. Log out of current session
+2. At login screen, select niri session
+3. Or start from command line: `niri`
+
+
+
+---
+
+## Development Environment
+
+
+### Modern CLI Tools
+```bash
+
+# bat (better cat)
+sudo dnf install -y bat
+
+# exa (better ls)
+sudo dnf install -y exa
+echo 'alias ls=exa' >> ~/.config/fish/config.fish
+echo 'alias ll="exa -la"' >> ~/.config/fish/config.fish
+
+```
+
+### Development Tools Manager (mise)
+```bash
+# Install mise
+curl https://mise.run | sh
+echo '~/.local/share/mise/shims' >> ~/.config/fish/fish_variables
+
+# Install common development tools
+mise install node@lts
+mise install python@latest
+mise install go@latest
+mise install rust@latest
+
+# Set global versions
+mise global node@lts python@latest go@latest rust@latest
+```
+
+### Docker Installation
+```bash
+# Add Docker repository
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
+# Install Docker
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Enable and start Docker
+sudo systemctl enable --now docker
+
+# Add user to docker group
+sudo usermod -aG docker $USER
+
+# Logout and login for group changes to take effect
+```
+
+---
+
+## Essential Applications
+
+### Web Browsers
+```bash
+# Install Brave Browser
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf install -y brave-browser
+
+# Install Chrome (alternative)
+sudo dnf install -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+```
+
+### VS Code Installation & Configuration
+
+**Installation:**
+```bash
+# Install the key and repository
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+
+# Update package cache and install
+dnf check-update
+sudo dnf install -y code
+```
+
+**Recommended Extensions:**
+- vim
+- GitHub Copilot
+- Cline
+- GitIgnore
+- Git Graph v3
+- GitLens
+- Gruvbox Theme
+- Partial Diff
+- Live Server
+- Markdown All in One
+- markdownlint
+- Simple React Snippets
+- Extension Pack for Java
+- Tailwind CSS IntelliSense
+- MDX
+
+**Settings Configuration:**
+Add these settings to your VS Code `settings.json`:
+
+```json
+{
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "editor.fontSize": 21,
+    "editor.fontLigatures": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.smoothScrolling": true,
+    "editor.fontFamily": "'Mononoki Nerd Font Mono', 'JetBrains Mono', monospace",
+    "editor.experimentalEditContextEnabled": false,
+    "vim.foldfix": true,
+    "vim.useSystemClipboard": true,
+    "vim.easymotion": true,
+    "vim.leader": ",",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "markdownlint.config": {
+        "MD012": false,
+        "MD030": false,
+        "MD007": false
+    }
+}
+```
+
+**Additional Setup:**
+- Remove Ctrl+P keyboard shortcut in Vim mode to enable default VS Code shortcut
+- Turn on auto save on focus change
+- Set editor word wrap to wordWrapColumn
+- Enable editor smooth scrolling
+- Disable "Editor: Experimental Edit Context Enabled" for proper Japanese input support
+  - https://github.com/VSCodeVim/Vim/issues/9672#issuecomment-2975557747
+
+**Reference:** [Official VS Code Linux Installation Guide](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions)
+
+### Other Development Editors
+```bash
+# Install Cursor (via AppImage)
+mkdir -p ~/Applications
+cd ~/Applications
+# Download latest Cursor AppImage from cursor.sh
+# Make executable and create wrapper script
+```
+
+### Media and Productivity
+```bash
+# Music player
+sudo dnf install -y strawberry
+
+# E-book manager
+sudo dnf install -y calibre
+
+# Archive manager
+sudo dnf install -y file-roller
+
+# Screenshot tool
+sudo dnf install -y flameshot
+
+# Video player
+flatpak install -y flathub org.videolan.VLC
+
+# Image viewer
+sudo dnf install -y eog
+```
+
+### Font Management
+```bash
+# Install font manager
+sudo dnf install -y font-manager
+
+# Install additional fonts
+sudo dnf install -y \
+    google-noto-fonts \
+    google-noto-cjk-fonts \
+    google-noto-emoji-fonts \
+    fira-code-fonts \
+    jetbrains-mono-fonts
+```
+
+---
+
+## Advanced Configuration
+
+### AppImage Integration
+```bash
+# Install AppImageLauncher
+sudo dnf copr enable -y probono/AppImageLauncher
+sudo dnf install -y appimagelauncher
+
+# Create ~/Applications directory for AppImages
+mkdir -p ~/Applications
+
+# Add ~/Applications to PATH
+echo 'set -gx PATH $PATH ~/Applications' >> ~/.config/fish/config.fish
+```
+
+### Tailscale VPN
+```bash
+# Install Tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
+
+# Enable and start
+sudo systemctl enable --now tailscaled
+
+# Connect to Tailscale network
+sudo tailscale up
+```
+
+### Syncthing Setup
+```bash
+# Install Syncthing via Flatpak
+flatpak install -y flathub com.github.zocker_160.SyncThingy
+
+# Configure via web interface at http://127.0.0.1:8384/
+```
+
+### System Optimizations
+```bash
+# Enable fractional scaling for HiDPI displays
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+# Optimize swappiness for SSD
+echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
+
+# Enable fstrim timer for SSD maintenance
+sudo systemctl enable --now fstrim.timer
+```
+
+### Security Enhancements
+```bash
+# Install and configure firewall
+sudo dnf install -y firewalld
+sudo systemctl enable --now firewalld
+
+# Enable automatic updates (optional)
+sudo dnf install -y dnf-automatic
+sudo systemctl enable --now dnf-automatic-install.timer
+```
+
+### Java Development Kit
+```bash
+# Install Java 21 LTS
+sudo dnf install -y java-21-openjdk-devel
+
+# Set JAVA_HOME
+echo 'set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk' >> ~/.config/fish/config.fish
+```
+
+---
+
+## Final Steps & Verification
+
+### System Verification
+```bash
+
+# Verify development tools
+node --version
+python --version
+go version
+cargo --version
+docker --version
+
+# Check Git configuration
+git config --list
+```
+
+### Performance Monitoring
+```bash
+# Monitor system performance
+htop
+
+# Check WiFi signal strength
+wavemon
+
+# Monitor disk usage
+df -h
+```
+
+### Backup Configuration
+```bash
+# Create backup of configurations
+mkdir -p ~/backups/dotfiles
+cp -r ~/.config ~/backups/dotfiles/
+cp ~/.bashrc ~/.profile ~/backups/dotfiles/ 2>/dev/null || true
+```
+
+---
+
+## Troubleshooting
+
+### Common Issues
+
+#### Screen Flickering (Intel Graphics)
+Already covered in the Intel Graphics section above.
+
+#### AppImage Not Running
+```bash
+# Make AppImage executable
+chmod +x your-app.AppImage
+
+# Create wrapper script in ~/.local/bin/
+mkdir -p ~/.local/bin
+```
+
+#### niri Not Starting
+```bash
+# Check niri logs
+journalctl --user -u niri
+
+# Verify dependencies
+niri validate
+```
+
+#### Font Issues in Applications
+```bash
+# Install additional fonts
+sudo dnf install -y fontconfig
+
+# Refresh font cache
+fc-cache -fv
+```
+
+---
+
+## Next Steps
+
+1. **Customize niri**: Modify `~/.config/niri/config.kdl` to fit your workflow
+2. **Install Development IDEs**: Based on your programming needs
+3. **Set up Cloud Storage**: Configure Dropbox, OneDrive, or Google Drive
+4. **Gaming Setup**: Install Steam, Lutris if needed
+5. **Backup Strategy**: Set up automated backups with Timeshift or rsync
+
+---
+
+This completes your Fedora installation and development environment setup with niri window manager. The system is now ready for professional development work with modern tools and a highly efficient tiling window manager.
