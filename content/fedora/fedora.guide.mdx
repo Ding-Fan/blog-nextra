@@ -540,12 +540,15 @@ sudo usermod -aG docker $USER
 ### Web Browsers
 ```bash
 # Install Brave Browser
-sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+# https://brave.com/linux/
+sudo dnf install dnf-plugins-core
+
+sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+
 sudo dnf install -y brave-browser
 
 # Install Chrome (alternative)
-sudo dnf install -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+# download rpm from official website
 ```
 
 ### VS Code Installation & Configuration
