@@ -1,0 +1,35 @@
+# NiriSwitcher Configuration for niri
+
+Complete guide to installing and configuring NiriSwitcher for enhanced window and workspace switching in niri window manager on Fedora.
+
+---
+
+## NiriSwitcher (Window/Workspace Switching)
+
+Enhanced Alt+Tab functionality for better window and workspace navigation:
+
+```bash
+# Install niriswitcher for better window switching
+sudo dnf copr enable isaksamsten/niriswitcher
+sudo dnf install niriswitcher
+```
+
+Add niriswitcher configuration to `~/.config/niri/config.kdl`:
+
+```kdl
+// Start niriswitcher daemon
+spawn-at-startup "niriswitcher"
+
+// Enhanced window switching (add to binds section)
+binds {
+    // ... your existing binds ...
+    
+    // Window switching with niriswitcher
+    Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    Alt+Grave repeat=false { spawn "niriswitcherctl" "show" "--workspace"; }
+    Alt+Shift+Grave repeat=false { spawn "niriswitcherctl" "show" "--workspace"; }
+}
+```
+
+**Reference:** [NiriSwitcher Configuration](https://github.com/isaksamsten/niriswitcher?tab=readme-ov-file#configuration)

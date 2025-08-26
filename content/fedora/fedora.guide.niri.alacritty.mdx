@@ -1,0 +1,75 @@
+# Alacritty Terminal Configuration for niri
+
+Complete guide to installing and configuring Alacritty terminal emulator in a niri window manager environment on Fedora.
+
+---
+
+## Alacritty Terminal Installation & Configuration
+```bash
+# Install alacritty terminal
+sudo dnf install -y alacritty
+
+# Create alacritty config directory
+mkdir -p ~/.config/alacritty
+```
+
+**Note:** Update niri keybinding to use alacritty - in `~/.config/niri/config.kdl`, change to `Mod+T { spawn "alacritty"; }`
+
+Create the file `~/.config/alacritty/alacritty.toml` with this configuration:
+
+```toml
+# https://alacritty.org/config-alacritty.html
+# Alacritty configuration file
+
+# https://alacritty.org/config-alacritty.html#window
+[window]
+opacity = 0.9
+padding = { x = 8, y = 8 }
+
+# https://alacritty.org/config-alacritty.html#terminal
+[terminal]
+shell = "fish"
+
+[font]
+normal = { family = "JetBrains Mono", style = "Regular" }
+bold = { family = "JetBrains Mono", style = "Bold" }
+italic = { family = "JetBrains Mono", style = "Italic" }
+bold_italic = { family = "JetBrains Mono", style = "Bold Italic" }
+size = 12
+
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#a6adc8"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[env]
+TERM = "xterm-256color"
+```
+
+**Additional Alacritty Resources:**
+- [Official Alacritty Configuration Documentation](https://alacritty.org/config-alacritty.html)
+- [Alacritty Themes Collection](https://github.com/alacritty/alacritty-theme)
+- [Alacritty Theme Switcher](https://github.com/spacebird-dev/alacritty-theme-switcher)

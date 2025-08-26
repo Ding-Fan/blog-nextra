@@ -1,0 +1,38 @@
+# Xwayland Support for niri
+
+Complete guide to setting up Xwayland support in niri window manager for running X11 applications in a Wayland environment on Fedora.
+
+---
+
+## Xwayland Support (X11 Applications)
+
+For running X11 applications in niri's Wayland environment:
+
+```bash
+# Install xwayland-satellite for better X11 app support
+sudo dnf copr enable ulysg/xwayland-satellite
+sudo dnf install xwayland-satellite
+```
+
+Add Xwayland configuration to `~/.config/niri/config.kdl`:
+
+```kdl
+// Start xwayland-satellite with niri
+spawn-at-startup "xwayland-satellite"
+
+// Environment variables for X11 compatibility
+environment {
+    DISPLAY ":0"
+
+    // https://github.com/YaLTeR/niri/blob/e0b0b04b445f7044f383e50104f861e632e1c905/wiki/Application-Issues.md?plain=1#L14
+    // seems not working
+    // ELECTRON_OZONE_PLATFORM_HINT "auto"
+    // for brave, go to brave://flags/
+    // set "Preferred Ozone platform" to Wayland and relaunch
+    // https://discussion.fedoraproject.org/t/fix-ui-scale-bug-electron-apps-too-small/142940/3
+}
+```
+
+**References:**
+- [Official Niri Xwayland Documentation](https://github.com/YaLTeR/niri/wiki/Xwayland#using-xwayland-satellite)
+- [Xwayland-satellite COPR Repository](https://copr.fedorainfracloud.org/coprs/ulysg/xwayland-satellite/)
