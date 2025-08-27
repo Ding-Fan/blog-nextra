@@ -1,0 +1,121 @@
+# niri Installation & Configuration for Fedora
+
+Complete guide to installing and configuring niri window manager on Fedora Linux.
+
+---
+
+## Install niri
+```bash
+# Install niri from COPR repository
+sudo dnf copr enable -y yalter/niri
+sudo dnf install -y niri
+
+# Install additional dependencies
+sudo dnf install -y fuzzel swaybg swaylock swayidle
+```
+
+## niri Configuration
+```bash
+# Create config directory
+mkdir -p ~/.config/niri
+
+# Create niri configuration file at ~/.config/niri/config.kdl
+# Copy and paste the following content:
+```
+
+```kdl
+// niri configuration file  
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            // Add your preferred layout options
+        }
+    }
+
+    touchpad {
+        tap true
+        dwt true
+        natural-scroll true
+    }
+
+    mouse {
+        natural-scroll false
+        accel-speed 0.2
+    }
+}
+
+output "eDP-1" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    transform "normal"
+}
+
+layout {
+    gaps 16
+    center-focused-column "never"
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 4
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+
+    border {
+        width 2
+        active-color "#ffc87f"
+        inactive-color "#505050"
+    }
+}
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Basic window management
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+
+    Mod+Ctrl+H { move-column-left; }
+    Mod+Ctrl+L { move-column-right; }
+    Mod+Ctrl+J { move-window-down; }
+    Mod+Ctrl+K { move-window-up; }
+
+    // Applications
+    Mod+T { spawn "alacritty"; }
+    Mod+D { spawn "fuzzel"; }
+    Mod+Q { close-window; }
+
+    // Workspaces
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+
+    // System
+    Mod+Shift+E { quit; }
+    Mod+Shift+P { power-off-monitors; }
+
+    // Screenshot
+    Print { spawn "slurp" "|" "grim" "-g" "-" "-" "|" "wl-copy"; }
+}
+
+window-rules {
+    // Example window rules
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+```

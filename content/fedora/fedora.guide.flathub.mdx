@@ -1,0 +1,103 @@
+# Flathub Applications Installation Guide
+
+A comprehensive guide to installing essential applications via Flatpak from Flathub on Fedora Linux.
+
+---
+
+## Essential Applications
+
+### Web Browsers
+```bash
+# Install Microsoft Edge
+flatpak install -y flathub com.microsoft.Edge
+```
+
+### Security & Privacy
+```bash
+# Install Bitwarden password manager
+flatpak install -y flathub com.bitwarden.desktop
+```
+
+### Communication
+```bash
+# Install Telegram
+flatpak install -y flathub org.telegram.desktop
+
+# Install Discord
+flatpak install -y flathub com.discordapp.Discord
+```
+
+### Development Tools
+```bash
+# Install Zed editor
+flatpak install -y flathub dev.zed.Zed
+
+# Install GNOME Extensions manager
+flatpak install -y flathub org.gnome.Extensions
+```
+
+### Media & Entertainment
+```bash
+# Install Spotify
+flatpak install -y flathub com.spotify.Client
+
+# Install VLC media player
+flatpak install -y flathub org.videolan.VLC
+```
+
+### Productivity Tools
+```bash
+# Install LocalSend for file sharing
+flatpak install -y flathub org.localsend.localsend_app
+
+# Run LocalSend
+flatpak run org.localsend.localsend_app
+```
+
+---
+
+## Remote Desktop Tools
+
+### Remmina Installation
+```bash
+# Add Flathub repository (if not already added)
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Install H.264 codec support
+flatpak install -y flathub org.freedesktop.Platform
+flatpak install -y flathub org.freedesktop.Platform.openh264
+
+# Install Remmina
+flatpak install --user -y flathub org.remmina.Remmina
+
+# Run Remmina
+flatpak run --user org.remmina.Remmina
+```
+
+---
+
+## Known Issues
+
+### Applications with Compatibility Problems
+```bash
+# These applications may not work properly:
+# - kooha (screen recorder)
+# - peek (GIF recorder)
+```
+
+---
+
+## Verification
+
+### Check Installed Applications
+```bash
+# List installed Flatpak applications
+flatpak list --app
+
+# Update all Flatpak applications
+flatpak update
+```
+
+---
+
+This completes the essential Flathub applications setup for your Fedora system. All applications are installed via Flatpak for better security isolation and easier maintenance.

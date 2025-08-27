@@ -1,0 +1,38 @@
+# System Control Tools for niri
+
+Essential system management utilities and configuration for niri window manager environment on Fedora.
+
+---
+
+## System Control Tools
+
+Essential system management utilities for niri environment:
+
+```bash
+# Install system management utilities
+sudo dnf install -y nmtui blueman pavucontrol
+```
+
+**Tools Overview:**
+- **nmtui**: Network Manager TUI for WiFi/network configuration
+- **blueman**: Bluetooth device manager
+- **pavucontrol**: PulseAudio volume control (appears as "Volume Control")
+
+**Additional niri Configuration:**
+Add these optional settings to your `~/.config/niri/config.kdl`:
+
+```kdl
+// Disable middle click paste (optional)
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous
+clipboard {
+    disable-primary
+}
+```
+
+**References:**
+- [Better Control Panel](https://github.com/better-ecosystem/better-control) - Alternative unified control panel
+
+## Start niri Session
+1. Log out of current session
+2. At login screen, select niri session
+3. Or start from command line: `niri`

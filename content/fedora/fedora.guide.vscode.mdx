@@ -1,0 +1,79 @@
+# VS Code Installation & Configuration for Fedora
+
+Complete guide to installing and configuring Visual Studio Code on Fedora Linux with recommended extensions and settings.
+
+---
+
+## VS Code Installation & Configuration
+
+### Installation
+```bash
+# Install the key and repository
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+
+# Update package cache and install
+dnf check-update
+sudo dnf install -y code
+```
+
+### Recommended Extensions
+- vim
+- GitHub Copilot
+- Cline
+- GitIgnore
+- Git Graph v3
+- GitLens
+- Gruvbox Theme
+- Partial Diff
+- Live Server
+- Markdown All in One
+- markdownlint
+- Simple React Snippets
+- Extension Pack for Java
+- Tailwind CSS IntelliSense
+- MDX
+
+### Settings Configuration
+Add these settings to your VS Code `settings.json`:
+
+```json
+{
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "editor.fontSize": 21,
+    "editor.fontLigatures": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.smoothScrolling": true,
+    "editor.fontFamily": "'Mononoki Nerd Font Mono', 'JetBrains Mono', monospace",
+    "editor.experimentalEditContextEnabled": false,
+    "vim.foldfix": true,
+    "vim.useSystemClipboard": true,
+    "vim.easymotion": true,
+    "vim.leader": ",",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "markdownlint.config": {
+        "MD012": false,
+        "MD030": false,
+        "MD007": false
+    }
+}
+```
+
+### Additional Setup
+- Remove Ctrl+P keyboard shortcut in Vim mode to enable default VS Code shortcut
+- Turn on auto save on focus change
+- Set editor word wrap to wordWrapColumn
+- Enable editor smooth scrolling
+- Disable "Editor: Experimental Edit Context Enabled" for proper Japanese input support
+  - https://github.com/VSCodeVim/Vim/issues/9672#issuecomment-2975557747
+
+**Reference:** [Official VS Code Linux Installation Guide](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions)
