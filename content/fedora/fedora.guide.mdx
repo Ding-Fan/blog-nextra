@@ -47,16 +47,11 @@ fisher install jethrokuan/z
 ```
 
 
-#### Bitwarden
-
-Password manager.
-
-flatpak install flathub com.bitwarden.desktop
+[install bitwarden](./fedora.guide.flathub.mdx)
 
 and log in
 
-
-Install vscode. Download from official website.
+[install vscode](./fedora.guide.niri.vscode.mdx)
 
 ### Essential Account Setup & Security
 
@@ -103,9 +98,8 @@ sudo dnf install -y stow
 ### Essential System Tools
 ```bash
 
-sudo dnf install -y tldr 7z htop unar fastfetch wget curl
+sudo dnf install -y tldr 7z htop unar fastfetch wget curl btop wavemon telnet
 
-# others
 
 # Development tools
 sudo dnf groupinstall -y "Development Tools" "Development Libraries"
@@ -113,11 +107,6 @@ sudo dnf groupinstall -y "Development Tools" "Development Libraries"
 # Compression tools
 sudo dnf install -y  p7zip p7zip-plugins
 
-# System monitoring
-sudo dnf install -y btop wavemon
-
-# Network tools
-sudo dnf install -y telnet 
 
 # Text processing
 sudo dnf install -y fd-find ripgrep
@@ -270,22 +259,24 @@ cd ~/Applications
 ```bash
 # Music player
 sudo dnf install -y strawberry
-
 # E-book manager
 sudo dnf install -y calibre
-
 # Archive manager
 sudo dnf install -y file-roller
-
 # Screenshot tool
 sudo dnf install -y flameshot
-
 # Video player
 flatpak install -y flathub org.videolan.VLC
-
 # Image viewer
 sudo dnf install -y eog
 ```
+
+[install mise](./fedora.mise.mdx)
+install claude code
+then
+which claude  # Should show an alias to ~/.claude/local/claude
+claude migrate-installer
+install pnpm
 
 ### Font Management
 ```bash
@@ -390,11 +381,6 @@ git config --list
 
 ### Performance Monitoring
 ```bash
-# Monitor system performance
-htop
-
-# Check WiFi signal strength
-wavemon
 
 # Monitor disk usage
 df -h

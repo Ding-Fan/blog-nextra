@@ -8,21 +8,19 @@ install fcitx5 with Japanese and Chinese input method
 sudo dnf install fcitx5 fcitx5-autostart fcitx5-gtk fcitx5-qt fcitx5-chinese-addons fcitx5-mozc
 ```
 
-install kimpanel for input method
+install kimpanel for input method, no need for niri
 
 reboot
 
 ### in fcitx configuration
 
-add `Pinyin` and `Mozc`
+add `Shuangpin` and `Mozc`
 
 in Global Options, set Trigger Input Method to Control+Shift+Space .
 
-in addons, set Pinyin with Shuangpin Profile Xiaohe
+in addons, set Shuangpin with Shuangpin Profile Xiaohe
 
-it seems my xiaohe is not working, trying to remove Pinyin and add it again, still not working
-
-双拼没有生效
+if 双拼没有生效
 原来是添加输入法时，选择了 Pinyin 而不是 Shuangpin 。重新添加 Shuangpin 就好了。
 
 
