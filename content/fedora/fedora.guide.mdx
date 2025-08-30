@@ -97,9 +97,7 @@ sudo dnf install -y stow
 
 ### Essential System Tools
 ```bash
-
-sudo dnf install -y tldr 7z htop unar fastfetch wget curl btop wavemon telnet
-
+sudo dnf install -y tldr 7z htop unar fastfetch wget curl btop wavemon telnet strawberry calibre brightnessctl
 
 # Development tools
 sudo dnf groupinstall -y "Development Tools" "Development Libraries"
@@ -191,21 +189,7 @@ echo 'alias ll="exa -la"' >> ~/.config/fish/config.fish
 
 ```
 
-### Development Tools Manager (mise)
-```bash
-# Install mise
-curl https://mise.run | sh
-echo '~/.local/share/mise/shims' >> ~/.config/fish/fish_variables
-
-# Install common development tools
-mise install node@lts
-mise install python@latest
-mise install go@latest
-mise install rust@latest
-
-# Set global versions
-mise global node@lts python@latest go@latest rust@latest
-```
+[Development Tools Manager (mise)](./fedora.mise.mdx)
 
 ### Docker Installation
 ```bash
@@ -257,16 +241,8 @@ cd ~/Applications
 
 ### Media and Productivity
 ```bash
-# Music player
-sudo dnf install -y strawberry
-# E-book manager
-sudo dnf install -y calibre
 # Archive manager
 sudo dnf install -y file-roller
-# Screenshot tool
-sudo dnf install -y flameshot
-# Video player
-flatpak install -y flathub org.videolan.VLC
 # Image viewer
 sudo dnf install -y eog
 ```
@@ -367,13 +343,6 @@ echo 'set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk' >> ~/.config/fish/config.f
 
 ### System Verification
 ```bash
-
-# Verify development tools
-node --version
-python --version
-go version
-cargo --version
-docker --version
 
 # Check Git configuration
 git config --list
