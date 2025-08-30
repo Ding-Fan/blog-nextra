@@ -36,3 +36,13 @@ environment {
 **References:**
 - [Official Niri Xwayland Documentation](https://github.com/YaLTeR/niri/wiki/Xwayland#using-xwayland-satellite)
 - [Xwayland-satellite COPR Repository](https://copr.fedorainfracloud.org/coprs/ulysg/xwayland-satellite/)
+
+## For Brave Browser
+
+Use this command to open brave browser:
+
+```sh
+brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
+```
+
+Open `brave://flags/` and set "Preferred Ozone platform" to Wayland and relaunch.
