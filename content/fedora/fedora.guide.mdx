@@ -30,21 +30,7 @@ sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 
 ```
 
-### Shell Setup (Fish)
-```bash
-# Install Fish shell
-sudo dnf install -y fish
-
-# Set Fish as default shell
-chsh -s /usr/bin/fish
-
-# Install Fisher (Fish plugin manager)
-# https://github.com/jorgebucaran/fisher
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-# Here to find fish plugins
-# https://github.com/jorgebucaran/awsm.fish#readme
-fisher install jethrokuan/z
-```
+For detailed shell setup and Fish configuration, see [Shell Setup Guide](./fedora.guide.shell.mdx).
 
 
 [install bitwarden](./fedora.guide.flathub.mdx)
@@ -52,6 +38,16 @@ fisher install jethrokuan/z
 and log in
 
 [install vscode](./fedora.guide.niri.vscode.mdx)
+
+## screenshots with swappy
+
+```bash
+sudo dnf install -y swappy grim slurp
+
+grim -g "$(slurp)" - | swappy -f -
+```
+
+
 
 ### Essential Account Setup & Security
 
@@ -97,7 +93,7 @@ sudo dnf install -y stow
 
 ### Essential System Tools
 ```bash
-sudo dnf install -y tldr 7z htop unar fastfetch wget curl btop wavemon telnet strawberry calibre brightnessctl
+sudo dnf install -y tldr 7z htop unar fastfetch wget curl btop wavemon telnet strawberry calibre brightnessctl mako
 
 # Development tools
 sudo dnf groupinstall -y "Development Tools" "Development Libraries"

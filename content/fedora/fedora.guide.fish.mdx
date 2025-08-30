@@ -1,0 +1,17 @@
+# Shell Setup (Fish)
+
+```bash
+# Install Fish shell
+sudo dnf install -y fish
+
+# Set Fish as default shell
+chsh -s /usr/bin/fish
+
+# Install Fisher (Fish plugin manager)
+# https://github.com/jorgebucaran/fisherfisher install decors/fish-colored-man
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher fisher install decors/fish-colored-maninstall jorgebucaran/fisher
+# Here to find fish plugins
+# https://github.com/jorgebucaran/awsm.fish#readme
+fisher install jethrokuan/z
+fisher install decors/fish-colored-man
+```

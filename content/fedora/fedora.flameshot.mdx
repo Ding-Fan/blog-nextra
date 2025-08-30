@@ -1,16 +1,28 @@
 # Fedora Flameshot
 
+We use [swappy](https://github.com/jtheoof/swappy)
+
+We don't use flameshot because it doesn't support wayland well.
+
 
 ```bash
 # install flameshot
+flatpak install flathub org.flameshot.Flameshot
+
+sudo dnf install -y grim slurp xdg-desktop-portal-wlr
+
+flatpak run org.flameshot.Flameshot
+
 # https://flameshot.org/docs/guide/wayland-help/#gnome-shortcut-does-not-trigger-flameshot
 # install script
-sudo dnf install -y flameshot script
+sudo dnf install -y script
 
 # in settings remove default prt sc and
 # set this as the customize shortcut of the key prtsc
 script --command "flameshot gui" /dev/null
 ```
+
+start flameshot, open configuration, in General check Use grim to capture screenshots
 
 
 ## config flameshot for niri
