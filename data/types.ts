@@ -16,6 +16,10 @@ export interface Link {
   weight?: number; // base is 10, higher is more important
   description?: ReactNode;
   needFetch?: boolean;
+  tile_size?: 'small' | 'medium' | 'wide' | 'large';
+  position?: number;
+  tile_color?: string;
+  live_content?: string;
 }
 
 export interface Word {
