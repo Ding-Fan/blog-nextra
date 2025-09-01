@@ -6,6 +6,10 @@ import { createClient } from "utils/supabase/server";
 interface DB_Link extends Link {
   icon_url: string;
   icon_name: string;
+  tile_size: 'small' | 'medium' | 'wide' | 'large';
+  position: number;
+  tile_color: string;
+  live_content: string;
 }
 
 
@@ -13,7 +17,7 @@ async function getLinks(): Promise<DB_Link[]> {
   try {
     const supabase = createClient();
 
-    let { data: links, error } = await supabase.from("links").select("*");
+    let { data: links, error } = await supabase.from("b_links").select("*");
 
     if (error) {
       console.error(error);
@@ -57,5 +61,9 @@ export async function HomePageLinksFromDb() {
     image: getImage(link),
     tags: link.tags,
     weight: link.weight,
+    tile_size: link.tile_size,
+    position: link.position,
+    tile_color: link.tile_color,
+    live_content: link.live_content,
   }));
 }
