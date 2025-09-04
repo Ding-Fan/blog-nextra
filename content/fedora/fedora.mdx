@@ -9,6 +9,8 @@ sudo dnf update
 flatpak update
 ```
 
+
+
 install telnet
 
 install wavemon, to monitor wifi signal strength
@@ -108,3 +110,15 @@ exec "$APPIMAGE_PATH" $WAYLAND_FLAGS "$@"
 make it exectuable `chmod +x ~/.local/bin/cursor`
 
 install docker https://docs.docker.com/engine/install/fedora/#install-using-the-repository
+
+
+## issue
+
+### bluetooth disappeared after suspend
+
+Set this to disable bluetooth autosuspend, and reboot
+
+```bash
+sudo grubby --update-kernel=ALL --args="btusb.enable_autosuspend=0"
+```
+
