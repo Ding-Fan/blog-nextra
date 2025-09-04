@@ -16,10 +16,10 @@ export interface Link {
   weight?: number; // base is 10, higher is more important
   description?: ReactNode;
   needFetch?: boolean;
-  tile_size?: 'small' | 'medium' | 'wide' | 'large';
+  tileSize?: 'small' | 'medium' | 'wide' | 'large'; // 1x1, 2x1, 4x1, 2x2
   position?: number;
-  tile_color?: string;
-  live_content?: string;
+  tileColor?: string; // Windows Phone blue palette
+  liveContent?: string;
 }
 
 export interface Word {
