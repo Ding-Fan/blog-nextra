@@ -122,3 +122,11 @@ Set this to disable bluetooth autosuspend, and reboot
 sudo grubby --update-kernel=ALL --args="btusb.enable_autosuspend=0"
 ```
 
+not working. try to update firmware via `fwupdmgr`
+
+```bash
+sudo fwupdmgr refresh
+sudo fwupdmgr update
+```
+
+
