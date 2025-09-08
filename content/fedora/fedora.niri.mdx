@@ -44,3 +44,19 @@ add this to niri config
 ```
 
 https://github.com/better-ecosystem/better-control
+
+to enable audio output to monitor connected via HDMI or DisplayPort, you can use `pavucontrol` (PulseAudio Volume Control) to manage your audio devices.
+
+In the pavucontrol window that opens, go to the Configuration tab.
+
+You will see a list of your audio hardware. Find the one that corresponds to your graphics card (it will likely mention Intel, HDMI, or DisplayPort).
+
+Next to that device, you will see a dropdown menu labeled Profile. It is likely set to "Off".
+
+Click the dropdown menu and select a profile that includes "Digital Stereo (HDMI) Output" or "(DisplayPort) Output".
+
+Now, switch to the Output Devices tab. You should see your monitor listed as a new audio output device.
+
+You can set it as the default by clicking the checkmark icon (Set as Fallback).
+
+Your system will now recognize and use your monitor for audio output.
