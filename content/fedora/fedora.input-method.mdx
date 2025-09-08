@@ -23,6 +23,22 @@ in addons, set Shuangpin with Shuangpin Profile Xiaohe
 if 双拼没有生效
 原来是添加输入法时，选择了 Pinyin 而不是 Shuangpin 。重新添加 Shuangpin 就好了。
 
+### Adjust UI Font Size for High DPI Displays
+
+When the fcitx5 UI is too small on high-resolution displays, you can increase the font size:
+
+1. **Open the configuration tool from your terminal:**
+   ```bash
+   fcitx5-configtool
+   ```
+
+2. **Go to the "Add-ons" tab.**
+
+3. **Scroll down to "Classic User Interface" in the list and click the "Configure" button.**
+
+4. **In the new window, you will see a "Font" setting.**
+
+5. **Click on it and increase the font size. For a 4K screen with 200% scaling, you'll likely want to double the default size (e.g., change from 12 to 24).**
 
 ## Fix Input Method for Electron Apps (VS Code)
 
