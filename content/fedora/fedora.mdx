@@ -81,6 +81,19 @@ sudo vi /etc/default/grub
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
+try fix flickering
+
+sudo grubby --update-kernel=ALL --args="i915.enable_psr=0"
+sudo grubby --update-kernel=ALL --args="i915.enable_fbc=0"
+
+- screen flickering blinking
+
+  - https://bennis-blog.de/tag/popos/
+  - https://askubuntu.com/questions/1404771/screen-flicker-after-fresh-install-of-ubuntu-22-04
+  - https://www.dell.com/community/Linux-General/XPS-13-7390-Ubuntu-Screen-flickering/td-p/7430121/page/3
+    screen flickerling fix
+    https://gitlab.freedesktop.org/drm/intel/-/issues/4703#note_1531208
+
 
 
 to make AppImage work as command

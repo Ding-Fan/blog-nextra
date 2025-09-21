@@ -71,3 +71,9 @@ flatpak update
 ---
 
 This completes the essential Flathub applications setup for your Fedora system. All applications are installed via Flatpak for better security isolation and easier maintenance.
+
+## scale
+
+flatpak override --user --env=GDK_SCALE=2 --env=QT_SCALE_FACTOR=2
+flatpak override --user --env=GDK_SCALE=1 com.discordapp.Discord
+flatpak override --user --reset
