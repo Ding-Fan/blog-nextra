@@ -73,3 +73,15 @@ This enables native Wayland mode and proper input method support for Japanese/Ch
 
 Reference: https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
 
+## Fix Telegram Crash
+
+Create `~/.config/environment.d/90-my-variables.conf`
+
+```sh filename=~/.config/environment.d/90-my-variables.conf
+# fix telegram crash
+# fcitx5 has /etc/profile.d/fcitx5.sh to set env vars
+# we should override it here instead of modifying that file
+# and reboot
+QT_IM_MODULES=wayland;fcitx
+QT_IM_MODULE=fcitx
+```
