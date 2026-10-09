@@ -28,6 +28,14 @@ function readExistingMeta() {
 }
 
 // Get all date folders (z + 6-digit format: zYYYYMM)
+function hasContentPages(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).some((entry) =>
+    entry.isDirectory()
+      ? hasContentPages(path.join(directory, entry.name))
+      : entry.isFile() && /\.mdx?$/.test(entry.name),
+  );
+}
+
 function getDateFolders() {
   const items = fs.readdirSync(contentDir, { withFileTypes: true });
 
@@ -35,6 +43,7 @@ function getDateFolders() {
     .filter((item) => item.isDirectory())
     .map((item) => item.name)
     .filter((name) => /^z\d{6}$/.test(name)) // Match z + YYYYMM format
+    .filter((name) => hasContentPages(path.join(contentDir, name)))
     .sort((a, b) => b.localeCompare(a)); // Sort descending (newest first)
 }
 
