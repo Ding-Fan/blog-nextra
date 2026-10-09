@@ -1,0 +1,72 @@
+---
+title: "Remote Desktop Works—Until You Press Alt+L"
+description: "One-KVM, Fedora, a missing shortcut, and knowing when to stop debugging."
+date: "2026-10-09"
+---
+
+# Remote Desktop Works—Until You Press Alt+L
+
+*3-minute read*
+
+My goal sounded modest: control my Fedora laptop from my Mac. Fedora runs Niri on Wayland, with Zellij in my terminal. I already owned One-KVM hardware. Connect HDMI and USB, open its dashboard, get back to work.
+
+Instead, remote access became its own project.
+
+## First failure: video, not networking
+
+One-KVM’s dashboard loaded. Login worked. Video showed **“WebRTC connection failed.”**
+
+That message sent us toward networking: STUN, TURN, Brave’s privacy settings. Chrome failed too. Meanwhile, checks on Fedora showed an active desktop and connected HDMI output.
+
+Useful clues, but none explained why video failed.
+
+Earlier console logs finally exposed something concrete:
+
+```text
+POST /api/webrtc/offer → 500
+Video error: No capture device configured
+```
+
+In this case, video setup failed before connection negotiation. After addressing capture-device configuration, video worked.
+
+First lesson: **an error’s headline names where failure appeared, not necessarily what caused it.** “WebRTC failed” did not mean “change relay servers.”
+
+## Second failure: whose keyboard is this?
+
+Seeing Fedora’s desktop was only half of remote control. Some shortcuts still triggered actions on my Mac instead.
+
+I tried One-KVM’s RustDesk integration, hoping a native client would handle keyboard capture better. This path still controlled Fedora through One-KVM; it was not RustDesk installed directly on Fedora.
+
+Keyboard behavior stayed inconsistent. Map mode delivered letters without expected modifiers. Legacy mode handled some combinations, but not others. Another input-source setting produced uppercase letters where I expected Super shortcuts.
+
+Tempting conclusion: my Niri or Zellij bindings must be wrong.
+
+But physical input on Fedora worked. So did One-KVM’s webpage virtual keyboard: it could send both `Super+l` and `Alt+l` successfully.
+
+That distinction mattered. Clicking virtual keys does not test whether physical Mac keystrokes reach the browser. Same visible shortcut, different input path.
+
+## Follow the missing event
+
+With physical keyboard input, `Option+h` worked in One-KVM’s browser viewer. `Option+l` did nothing.
+
+We added a small browser key-event listener. Pressing `Option+h` logged `KeyH` with `alt: true`. Pressing `Option+l` produced no `KeyL` event.
+
+Now there was a better question than “Why is Fedora ignoring this?”
+
+**What on my Mac consumes this shortcut before the page receives it?**
+
+Raycast and Karabiner were running. Quitting Raycast restored physical `Option+l` in the browser.
+
+That was the decisive test—not another remote keyboard mode, not another Fedora binding change. A local shortcut conflict had looked like a remote-input failure.
+
+RustDesk still failed afterward. There were multiple problems, not one explanation waiting to unlock everything. The remaining RustDesk behavior suggested an input-compatibility issue, but we did not establish which side caused it.
+
+## A stopping point, not a perfect fix
+
+I considered installing RustDesk directly on Fedora to bypass One-KVM’s integration. With Wayland compatibility adding more uncertainty, I stopped pursuing it. That is not proof RustDesk cannot work on Wayland; it was my limit for this setup.
+
+Browser control became the practical fallback. Physical `Alt+l` worked with Raycast closed; the virtual keyboard handled combinations that physical input could not reliably send. Not every shortcut was solved.
+
+The useful result was knowing which path worked, which remained broken, and which settings did not need changing.
+
+**Remote access should help me use my computer—not become the main thing I do with it.**

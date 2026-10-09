@@ -3,8 +3,7 @@ export default {
   index: "又不是不能写博客",
 
   // Date folders (auto-generated in descending order)
-  "z202509": { title: "2025-09" },
-  "z202508": { title: "2025-08" },
+  "z202610": { title: "2026-10" },
   "z202507": { title: "2025-07" },
   "z202506": { title: "2025-06" },
   "z202505": { title: "2025-05" },
@@ -14,14 +13,6 @@ export default {
 
   // write: {},
   // input: {},
-  about: {
-    title: "About",
-    type: "page",
-  },
-  now: {
-    title: "Now",
-    type: "page",
-  },
   // contact: {
   //   title: "📧 Send Email",
   //   type: "page",

@@ -14,7 +14,7 @@ config.autoAddCss = false;
 
 import localFont from 'next/font/local'
 
-export const YuKyokasho = localFont({
+const YuKyokasho = localFont({
   src: [
     {
       path: '../public/fonts/YuKyokasho/YuKyokasho_b.ttf',
